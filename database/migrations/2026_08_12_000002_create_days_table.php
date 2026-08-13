@@ -8,18 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('partners', function (Blueprint $table) {
+        Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('logo_url')->nullable();
-            $table->string('niveau');
-            $table->string('site_web')->nullable();
+            $table->date('date')->unique();
+            $table->string('label', 50);
             $table->timestamps();
+            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('partners');
+        Schema::dropIfExists('days');
     }
 };
