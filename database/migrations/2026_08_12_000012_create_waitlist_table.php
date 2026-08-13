@@ -8,18 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('waitlist', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('role')->default('admin');
-            $table->timestamps();
+            $table->boolean('notified')->default(false);
+            $table->boolean('registered')->default(false);
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('waitlist');
     }
 };

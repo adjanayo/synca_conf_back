@@ -8,17 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('faqs', function (Blueprint $table) {
+        Schema::create('faq_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
-            $table->text('reponse');
-            $table->string('categorie')->nullable();
+            $table->string('name', 50)->unique();
             $table->timestamps();
+            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('faqs');
+        Schema::dropIfExists('faq_categories');
     }
 };

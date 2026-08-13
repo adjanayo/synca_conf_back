@@ -8,18 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('contact_messages', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->string('name', 200);
             $table->string('email');
+            $table->string('subject')->nullable();
             $table->text('message');
-            $table->timestamp('date')->nullable();
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
+            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('contact_messages');
     }
 };
