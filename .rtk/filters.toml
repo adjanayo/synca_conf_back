@@ -1,0 +1,22 @@
+# Project-local RTK filters — commit this file with your repo.
+# Filters here override user-global and built-in filters.
+# Docs: https://github.com/rtk-ai/rtk#custom-filters
+schema_version = 1
+
+# Suppress Python build noise
+[filters.uv]
+description = "Compact uv output"
+match_command = "^uv\\s+"
+strip_ansi = true
+strip_lines_matching = ["^\\s*$", "^Downloading", "^Installing", "^Resolving"]
+max_lines = 30
+on_empty = "uv: ok"
+
+# Suppress FastAPI/uvicorn startup noise
+[filters.uvicorn]
+description = "Compact uvicorn output"
+match_command = "^uvicorn\\s+"
+strip_ansi = true
+strip_lines_matching = ["^\\s*$", "^Uvicorn running"]
+max_lines = 20
+on_empty = "uvicorn: ok"

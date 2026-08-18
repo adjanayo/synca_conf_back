@@ -1,0 +1,126 @@
+# macOS
+.DS_Store
+._*
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Build
+dist/
+build/
+
+# Docker
+docker-compose.override.yml
+
+# Python
+__pycache__/
+*.py[codz]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+/lib/
+/lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Environments
+.env
+.envrc
+.env.staging
+.env.staging.secrets
+.env.prod
+.env.prod.secrets
+
+# Local dev credentials
+ACCOUNTS.md
+
+# Sauvegardes locales
+/backups/
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff
+.ruff_cache/
+
+# Pyre
+.pyre/
+
+# Pytype
+.pytype/
+
+# Cython
+cython_debug/
+
+# IDE
+.cursorignore
+.cursorindexingignore
+
+# marimo
+marimo/_static/
+marimo/_lsp/
+__marimo__/
+sbom/
+
+# TypeScript
+*.tsbuildinfo
+
+# Git worktrees
+/.worktrees/
+
+# Subagent scratch
+/.superpowers/
