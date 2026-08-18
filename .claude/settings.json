@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "defaultMode": "plan",
+    "additionalDirectories": ["."]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Glob|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f graphify-out/COMPASS.md ] && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"graphify: Knowledge graph exists. Read graphify-out/COMPASS.md for the architectural overview (token-optimized) before searching raw files.\"}}' || true"
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_DEFAULT_MODE": "plan",
+    "CAVEMAN_MODE": "ultra",
+    "PROJECT_NAME": "${PWD##*/}"
+  },
+  "caveman": {
+    "mode": "ultra",
+    "preserve": ["code", "paths", "errors"],
+    "compressExamples": false
+  },
+  "context7": {
+    "autoEnable": true,
+    "preferLocal": false,
+    "cacheDocs": true
+  },
+  "rtk": {
+    "autoOptimize": true,
+    "threshold": 60,
+    "excludeCommands": ["npm install", "yarn install", "pip install"]
+  }
+}
