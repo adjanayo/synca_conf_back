@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Exposition — Synca Conf Dakar 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D1117; --ink-soft:#161B22; --paper:#F5F1E6; --paper-dim:#EAE4D3;
+    --teal:#1FB6A6; --ochre:#C9852E; --alert:#D6503F; --line: rgba(245,241,230,0.14); --line-dark: rgba(13,17,23,0.12);
+    --font-display:'Fraunces', serif; --font-mono:'IBM Plex Mono', monospace; --font-body:'IBM Plex Sans', sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 32px; }
+  .eyebrow{ font-family:var(--font-mono); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--teal); display:inline-block; }
+  h1,h2,h3{ font-family:var(--font-display); margin:0; font-weight:600; }
+  section{ padding:60px 0; border-bottom:1px solid var(--line-dark); }
+  section:last-of-type{ border-bottom:none; }
+
+  .hero{ background:var(--ink); color:var(--paper); }
+  .hero-inner{ max-width:920px; margin:0 auto; padding:84px 32px 60px; }
+  .hero h1{ font-size:clamp(32px,5vw,52px); line-height:1.05; color:#FBF8F0; max-width:680px; }
+  .hero h1 em{ font-style:italic; color:var(--teal); }
+  .hero p.lede{ font-size:16.5px; color:#C9C3B4; max-width:560px; margin-top:18px; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:28px; margin-top:36px; padding-top:22px; border-top:1px solid var(--line); }
+  .hero-meta div{ font-family:var(--font-mono); font-size:11.5px; color:#8B8676; }
+  .hero-meta strong{ display:block; font-family:var(--font-body); font-size:14.5px; color:var(--paper); font-weight:600; margin-top:5px; }
+
+  .info-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-dark); margin-top:30px; border:1px solid var(--line-dark); }
+  .info-card{ background:var(--paper); padding:22px 22px; }
+  .info-card h4{ font-size:14.5px; font-weight:700; margin:0 0 6px; }
+  .info-card p{ font-size:13px; color:#4a4638; margin:0; }
+  .info-mark{ font-family:var(--font-mono); font-size:11.5px; color:var(--teal); margin-bottom:8px; display:block; }
+
+  .formsec{ background:var(--ink); color:var(--paper); }
+  .formsec .eyebrow{ color:var(--teal); }
+  .formsec h2{ font-size:clamp(24px,3.2vw,34px); color:#FBF8F0; }
+  .formsec p.sub{ color:#C9C3B4; font-size:14.5px; margin-top:10px; max-width:520px; }
+
+  form{ margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:20px 26px; }
+  .full{ grid-column:1/-1; }
+  .sect-label{ grid-column:1/-1; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ochre); margin-top:18px; padding-top:18px; border-top:1px solid var(--line); }
+  .sect-label:first-of-type{ margin-top:0; padding-top:0; border-top:none; }
+  label{ font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:#8FE9DD; display:block; margin-bottom:7px; }
+  input, select, textarea{ width:100%; background:var(--ink-soft); border:1px solid var(--line); color:var(--paper); padding:11px 13px; font-family:var(--font-body); font-size:14px; border-radius:6px; }
+  textarea{ resize:vertical; min-height:76px; }
+  input:focus, select:focus, textarea:focus{ outline:none; border-color:var(--teal); }
+  fieldset{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; }
+  fieldset legend{ font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:#8FE9DD; padding:0 6px; }
+  .checkline{ display:flex; align-items:flex-start; gap:8px; font-size:13.5px; color:#DAD5C6; margin-bottom:8px; }
+  .checkline input{ width:auto; margin-top:3px; }
+  .checkrow{ display:flex; flex-wrap:wrap; gap:14px; }
+  .checkchip{ display:flex; align-items:center; gap:6px; font-size:13.5px; color:#DAD5C6; background:var(--ink-soft); border:1px solid var(--line); padding:8px 12px; border-radius:6px; }
+  .checkchip input{ width:auto; }
+  .charte{ font-size:12px; color:#8B8676; background:rgba(31,182,166,0.06); border:1px solid rgba(31,182,166,0.3); padding:12px 16px; border-radius:6px; }
+
+  .btn{ font-family:var(--font-mono); font-size:13px; letter-spacing:.04em; text-transform:uppercase; background:var(--teal); color:#04231F; border:none; padding:15px 26px; border-radius:6px; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; gap:10px; transition:transform .15s ease, background .15s ease; }
+  .btn:hover{ background:#39D2C1; transform:translateY(-1px); }
+  .btn:disabled{ opacity:.6; cursor:default; transform:none; }
+  #confirm{ font-family:var(--font-mono); font-size:12.5px; color:var(--teal); display:none; margin-left:14px; }
+
+  footer{ background:var(--paper-dim); padding:26px 0; }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--font-mono); font-size:11px; color:#8B8676; }
+
+  @media (max-width:720px){
+    .info-grid{ grid-template-columns:1fr; }
+    form{ grid-template-columns:1fr; }
+    section{ padding:44px 0; }
+    .hero-inner{ padding:64px 24px 44px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Espace exposition</div>
+    <h1>Exposez à <em>Synca Conf</em> Dakar 2027</h1>
+    <p class="lede">Présentez votre entreprise, vos produits et vos solutions devant plus de 1 800 participants et 300 entreprises venus de 5 pays et plus.</p>
+    <div class="hero-meta">
+      <div>Lieu<strong>Grand Théâtre de Dakar</strong></div>
+      <div>Dates<strong>16 – 18 mars 2027</strong></div>
+      <div>Format<strong>Stands sur 3 jours</strong></div>
+      <div>Public<strong>Décideurs, talents, investisseurs</strong></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Pourquoi exposer</div>
+    <h2>Une visibilité directe auprès de votre marché</h2>
+    <div class="info-grid">
+      <div class="info-card"><span class="info-mark">01</span><h4>Visibilité ciblée</h4><p>Face à un public de décideurs tech, d'investisseurs et de jeunes talents panafricains.</p></div>
+      <div class="info-card"><span class="info-mark">02</span><h4>Génération de contacts</h4><p>Rencontres directes avec des prospects, partenaires et recrues potentielles.</p></div>
+      <div class="info-card"><span class="info-mark">03</span><h4>Formats flexibles</h4><p>Stand standard, premium ou mutualisé, combinable avec d'autres formats (masterclass, panel).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="formsec">
+  <div class="wrap">
+    <div class="eyebrow">Inscription</div>
+    <h2>Formulaire d'inscription — Espace exposition</h2>
+    <p class="sub">Merci de compléter les champs ci-dessous. Notre équipe reviendra vers vous pour confirmer votre stand et les modalités pratiques.</p>
+
+    <form id="exp-form" onsubmit="return false;">
+
+      <div class="sect-label">Entreprise</div>
+      <div><label for="e-nom">Nom de l'entreprise / organisation</label><input id="e-nom" type="text" required></div>
+      <div><label for="e-secteur">Secteur d'activité</label><input id="e-secteur" type="text" required></div>
+
+      <div><label for="e-pays">Pays</label><input id="e-pays" type="text" required></div>
+      <div><label for="e-ville">Ville</label><input id="e-ville" type="text" required></div>
+
+      <div class="full"><label for="e-web">Site web et réseaux sociaux</label><input id="e-web" type="text" placeholder="https:// …"></div>
+
+      <div class="sect-label">Contact référent</div>
+      <div><label for="e-contact">Nom et prénom</label><input id="e-contact" type="text" required></div>
+      <div><label for="e-fonction">Fonction</label><input id="e-fonction" type="text" required></div>
+      <div><label for="e-email">Email</label><input id="e-email" type="email" required></div>
+      <div><label for="e-tel">Téléphone</label><input id="e-tel" type="tel" required></div>
+
+      <div class="sect-label">Stand souhaité</div>
+      <div class="full">
+        <label>Type de stand</label>
+        <div class="checkrow">
+          <label class="checkchip"><input type="radio" name="stand" required> Standard</label>
+          <label class="checkchip"><input type="radio" name="stand"> Premium</label>
+          <label class="checkchip"><input type="radio" name="stand"> Mutualisé</label>
+        </div>
+      </div>
+      <div><label for="e-reps">Nombre de représentants sur le stand</label><input id="e-reps" type="number" min="1" required></div>
+      <div><label for="e-partenariat">Palier de sponsoring associé (le cas échéant)</label><input id="e-partenariat" type="text" placeholder="Titre / Or / Argent / Bronze / Aucun"></div>
+
+      <div class="full"><label for="e-produits">Produits / services à présenter</label><textarea id="e-produits" required></textarea></div>
+
+      <div class="sect-label">Besoins logistiques</div>
+      <div class="full">
+        <div class="checkrow">
+          <label class="checkchip"><input type="checkbox"> Électricité</label>
+          <label class="checkchip"><input type="checkbox"> Mobilier (table, chaises)</label>
+          <label class="checkchip"><input type="checkbox"> Écran / TV</label>
+          <label class="checkchip"><input type="checkbox"> Connexion Wifi</label>
+          <label class="checkchip"><input type="checkbox"> Signalétique dédiée</label>
+        </div>
+      </div>
+
+      <div class="sect-label">Autres formats souhaités</div>
+      <div class="full">
+        <div class="checkrow">
+          <label class="checkchip"><input type="checkbox"> Masterclass</label>
+          <label class="checkchip"><input type="checkbox"> Panel / table ronde</label>
+          <label class="checkchip"><input type="checkbox"> Side event</label>
+          <label class="checkchip"><input type="checkbox"> Présentation de solution</label>
+        </div>
+      </div>
+
+      <div class="sect-label">Visuels et règlement</div>
+      <div class="full"><label for="e-visuels">Logo et visuels — lien de partage (Drive, WeTransfer…)</label><input id="e-visuels" type="text" placeholder="https:// …"></div>
+      <div class="full">
+        <label for="e-paiement">Mode de règlement souhaité</label>
+        <select id="e-paiement">
+          <option value="">Sélectionner…</option>
+          <option>Virement bancaire</option>
+          <option>Mobile Money</option>
+          <option>Chèque</option>
+          <option>À définir avec l'équipe Synca</option>
+        </select>
+      </div>
+
+      <fieldset class="full">
+        <legend>Engagement</legend>
+        <label class="checkline"><input type="checkbox" required> J'accepte le règlement de l'espace exposition (horaires de montage/démontage, assurance du matériel exposé, respect des consignes de sécurité).</label>
+      </fieldset>
+
+      <div class="charte full">Votre inscription sera confirmée après validation par l'équipe Partenariats de Synca Conf, sous réserve de disponibilité des emplacements.</div>
+
+      <div class="full" style="display:flex; align-items:center; gap:6px;">
+        <button type="submit" class="btn" id="submit-btn">Envoyer mon inscription →</button>
+        <span id="confirm">✓ Inscription envoyée — merci !</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Espace exposition — Synca Conf Dakar 2027</span>
+    <span>16–18 mars 2027 · Grand Théâtre de Dakar</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('exp-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('confirm').style.display = 'inline';
+    document.getElementById('submit-btn').setAttribute('disabled', 'true');
+  });
+</script>
+
+</body>
+</html>

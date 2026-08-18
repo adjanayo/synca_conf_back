@@ -181,8 +181,9 @@ Exceptions:
 - **LOCAL VS PROD AWARENESS:** Separate instructions for local dev and production.
 
 ## 3. PROJECT PARADIGMS
-- **CORE PRODUCT:** SaaS backend API with FastAPI.
-- **SECURITY FIRST:** Schema isolation with `SET LOCAL app.current_tenant` in PostgreSQL. Secure PII with Fernet. Enforce RBAC.
+- **CORE PRODUCT:** Single-event conference backend API with FastAPI (SYNCA CONF 2027) — mono-tenant, not a multi-tenant SaaS. No schema-per-tenant isolation, no `SET LOCAL app.current_tenant`.
+- **DATABASE:** MySQL 8 (not PostgreSQL) via SQLAlchemy 2.0 async + Alembic migrations.
+- **SECURITY FIRST:** Relational RBAC (roles/permissions pivot tables, no Casbin) on `admin_users`. Secure PII with Fernet where applicable. See `syncaconf/planning_fastapi.md` for the full architecture, sprint plan, and cost-minimized deployment (Hetzner CX11 + Docker Compose + Caddy, ~4.30€/month).
 
 ## 4. INTERACTIVE PROCESS
 - Work one step at a time.
