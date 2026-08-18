@@ -248,6 +248,45 @@ CREATE TABLE contact_messages (
     created_at  TIMESTAMP DEFAULT NOW()
 );
 
+-- ── EXPOSANTS ──
+CREATE TABLE exhibitors (
+    id                    SERIAL PRIMARY KEY,
+    organization_name     VARCHAR(200) NOT NULL,
+    sector                VARCHAR(100) NOT NULL,
+    country               VARCHAR(100) NOT NULL,
+    city                  VARCHAR(100) NOT NULL,
+    website_url           VARCHAR(255),
+    contact_name          VARCHAR(200) NOT NULL,
+    contact_position      VARCHAR(200) NOT NULL,
+    contact_email         VARCHAR(255) NOT NULL,
+    contact_phone         VARCHAR(20) NOT NULL,
+    stand_type            VARCHAR(20) NOT NULL CHECK (stand_type IN ('Standard','Premium','Mutualisé')),
+    reps_count            INT NOT NULL CHECK (reps_count >= 1),
+    linked_partner_level  VARCHAR(50),
+    products_services     TEXT NOT NULL,
+    equipment_needs       TEXT,
+    side_activities       TEXT,
+    visuals_url           VARCHAR(255),
+    payment_method        VARCHAR(50) CHECK (payment_method IN ('Virement bancaire','Mobile Money','Chèque','À définir avec l''équipe Synca')),
+    rules_accepted        BOOLEAN NOT NULL DEFAULT FALSE,
+    gdpr_consent          BOOLEAN NOT NULL DEFAULT FALSE,
+    status                VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending','contacted','negotiating','confirmed','rejected')),
+    is_public              BOOLEAN DEFAULT FALSE,
+    created_at            TIMESTAMP DEFAULT NOW()
+);
+
+-- ── FENÊTRES DE CAMPAGNE (dates début/fin par étape de lancement) ──
+CREATE TABLE campaign_windows (
+    id          SERIAL PRIMARY KEY,
+    key         VARCHAR(30) NOT NULL UNIQUE CHECK (key IN ('call_for_speaker','ticketing','call_for_partner','call_for_ambassador','call_for_exhibitor')),
+    start_at    TIMESTAMP NOT NULL,
+    end_at      TIMESTAMP NOT NULL,
+    is_active   BOOLEAN DEFAULT TRUE,
+    created_at  TIMESTAMP DEFAULT NOW(),
+    updated_at  TIMESTAMP DEFAULT NOW(),
+    CHECK (end_at > start_at)
+);
+
 -- ── ADMIN ──
 CREATE TABLE admin_users (
     id          SERIAL PRIMARY KEY,
@@ -270,6 +309,8 @@ CREATE INDEX idx_speakers_status ON speakers(status);
 CREATE INDEX idx_ambassadors_status ON ambassadors(status);
 CREATE INDEX idx_partners_status ON partners(status);
 CREATE INDEX idx_partners_level ON partners(level_id);
+CREATE INDEX idx_exhibitors_status ON exhibitors(status);
+CREATE INDEX idx_campaign_windows_key ON campaign_windows(key);
 ```
 
 ---
@@ -291,7 +332,11 @@ partner_levels ──< partners
 
 faq_categories ──< faqs
 
-waitlist | ambassadors | contact_messages | admin_users
+waitlist | ambassadors | contact_messages | admin_users | exhibitors
+
+campaign_windows (indépendante — une ligne par étape : call_for_speaker,
+                   ticketing, call_for_partner, call_for_ambassador,
+                   call_for_exhibitor)
 ```
 
 ---
@@ -324,6 +369,7 @@ waitlist | ambassadors | contact_messages | admin_users
 | `newsletter_consent` | boolean | — | ✓ |
 
 **Logique métier :**
+- Ouvert uniquement pendant la fenêtre `campaign_windows.key = 'ticketing'` (voir §5bis) — avant/après → `403`, formulaire caché côté frontend, page waitlist affichée
 - Vérifier si `pass_type_id` est valide et actif
 - Si `promo_code` fourni → valider (existe, actif, non épuisé, dans dates valides) → calculer réduction
 - Après validation → rediriger vers paiement
@@ -382,11 +428,12 @@ waitlist | ambassadors | contact_messages | admin_users
 | `gdpr_consent` | boolean | doit être `true` | ✓ |
 
 **Logique métier :**
+- Ouvert uniquement pendant la fenêtre `campaign_windows.key = 'call_for_speaker'` (voir §5bis) — sinon `403`
 - Upload photo vers Cloudinary/S3 → `photo_url`
 - `status = pending` par défaut
 - Envoi accusé de réception automatique par email
 - Back-office : admin peut accepter/rejeter → `status = accepted|rejected`
-- Si accepté → `is_public = true` (apparaît sur la page /speakers)
+- Si accepté → `is_public = true` (apparaît sur la page /speakers) — indépendant de la fenêtre de campagne : l'annonce publique peut se faire à tout moment (cf. `Infos.md`)
 
 ---
 
@@ -417,6 +464,7 @@ waitlist | ambassadors | contact_messages | admin_users
 | `gdpr_consent` | boolean | doit être `true` | ✓ |
 
 **Logique métier :**
+- Ouvert uniquement pendant la fenêtre `campaign_windows.key = 'call_for_ambassador'` (voir §5bis) — sinon `403`
 - `status = pending` par défaut
 - Si accepté → générer `promo_code` unique → lier `promo_code_id`
 - Envoi kit digital (visuels, textes, code promo)
@@ -448,6 +496,7 @@ waitlist | ambassadors | contact_messages | admin_users
 | `gdpr_consent` | boolean | doit être `true` | ✓ |
 
 **Logique métier :**
+- Ouvert uniquement pendant la fenêtre `campaign_windows.key = 'call_for_partner'` (voir §5bis) — sinon `403`
 - `status = pending` par défaut
 - Envoi automatique email confirmation + dossier sponsoring PDF + lien calendly
 - Back-office : workflow `pending` → `contacted` → `negotiating` → `confirmed|rejected`
@@ -455,7 +504,42 @@ waitlist | ambassadors | contact_messages | admin_users
 
 ---
 
-### F. Formulaire Liste d'Attente
+### F. Formulaire Exposant (Espace Exposition)
+**Endpoint:** `POST /api/exhibitors/apply`
+**Table:** `exhibitors`
+
+| Champ | Type | Validation | Obligatoire |
+|-------|------|-----------|:----------:|
+| `organization_name` | string(200) | — | ✓ |
+| `sector` | string(100) | — | ✓ |
+| `country` | string(100) | — | ✓ |
+| `city` | string(100) | — | ✓ |
+| `website_url` | url | — | ✗ |
+| `contact_name` | string(200) | — | ✓ |
+| `contact_position` | string(200) | — | ✓ |
+| `contact_email` | email | format email | ✓ |
+| `contact_phone` | string(20) | — | ✓ |
+| `stand_type` | enum | `Standard`, `Premium`, `Mutualisé` | ✓ |
+| `reps_count` | int | ≥ 1 | ✓ |
+| `linked_partner_level` | string(50) | palier de sponsoring associé, le cas échéant | ✗ |
+| `products_services` | text | produits/services à présenter | ✓ |
+| `equipment_needs` | array[enum] | `Électricité`, `Mobilier`, `Écran/TV`, `Wifi`, `Signalétique dédiée` | ✗ |
+| `side_activities` | array[enum] | `Masterclass`, `Panel/table ronde`, `Side event`, `Présentation de solution` | ✗ |
+| `visuals_url` | url | lien logo/visuels (Drive, WeTransfer…) | ✗ |
+| `payment_method` | enum | `Virement bancaire`, `Mobile Money`, `Chèque`, `À définir avec l'équipe Synca` | ✗ |
+| `rules_accepted` | boolean | doit être `true` (règlement espace exposition) | ✓ |
+| `gdpr_consent` | boolean | doit être `true` | ✓ |
+
+**Logique métier :**
+- Ouvert uniquement pendant la fenêtre `campaign_windows.key = 'call_for_exhibitor'` (voir §5bis) — sinon `403`
+- `status = pending` par défaut
+- Envoi automatique email confirmation
+- Back-office : workflow `pending` → `contacted` → `negotiating` → `confirmed|rejected`
+- Si `confirmed` + visuels fournis → `is_public = true`
+
+---
+
+### G. Formulaire Liste d'Attente
 **Endpoint:** `POST /api/waitlist`
 **Table:** `waitlist`
 
@@ -464,13 +548,14 @@ waitlist | ambassadors | contact_messages | admin_users
 | `email` | email | unique, format email | ✓ |
 
 **Logique métier :**
+- Toujours ouvert (pas de fenêtre de campagne — c'est justement le mécanisme utilisé avant l'ouverture de `ticketing`)
 - Ajouter à la waitlist
-- Quand billetterie ouvre → envoi email à tous les `notified = false` → passer `notified = true`
+- Quand `campaign_windows.key = 'ticketing'` démarre → envoi email à tous les `notified = false` → passer `notified = true`
 - Si l'utilisateur s'inscrit → `registered = true`
 
 ---
 
-### G. Formulaire Contact
+### H. Formulaire Contact
 **Endpoint:** `POST /api/contact`
 **Table:** `contact_messages`
 
@@ -484,7 +569,7 @@ waitlist | ambassadors | contact_messages | admin_users
 
 ---
 
-### H. Formulaire Newsletter (page d'accueil)
+### I. Formulaire Newsletter (page d'accueil)
 **Endpoint:** `POST /api/newsletter`
 **Table:** `users.newsletter_consent` ou table dédiée
 
@@ -494,7 +579,7 @@ waitlist | ambassadors | contact_messages | admin_users
 
 ---
 
-### I. Formulaire Connexion Admin (Back-office)
+### J. Formulaire Connexion Admin (Back-office)
 **Endpoint:** `POST /api/admin/login`
 **Table:** `admin_users`
 
@@ -514,15 +599,18 @@ waitlist | ambassadors | contact_messages | admin_users
 | `GET` | `/api/pass-types` | Liste des pass disponibles |
 | `GET` | `/api/speakers?theme=&format=` | Speakers publics (filtrés) |
 | `GET` | `/api/partners?level=` | Partenaires publics |
+| `GET` | `/api/exhibitors?public=true` | Exposants publics |
 | `GET` | `/api/faqs?category=` | FAQ |
+| `GET` | `/api/campaign-windows` | Fenêtres de campagne actives/à venir (pour affichage frontend) |
 | `POST` | `/api/waitlist` | Inscription liste d'attente |
-| `POST` | `/api/register` | Inscription participant |
+| `POST` | `/api/register` | Inscription participant (ouvert seulement si fenêtre `ticketing` active) |
 | `POST` | `/api/payments` | Initier paiement |
 | `POST` | `/api/payments/webhook` | Callback paiement |
 | `POST` | `/api/promo/validate` | Valider un code promo |
-| `POST` | `/api/speakers/apply` | Candidature speaker |
-| `POST` | `/api/ambassadors/apply` | Candidature ambassadeur |
-| `POST` | `/api/partners/apply` | Candidature partenaire |
+| `POST` | `/api/speakers/apply` | Candidature speaker (ouvert seulement si fenêtre `call_for_speaker` active) |
+| `POST` | `/api/ambassadors/apply` | Candidature ambassadeur (ouvert seulement si fenêtre `call_for_ambassador` active) |
+| `POST` | `/api/partners/apply` | Candidature partenaire (ouvert seulement si fenêtre `call_for_partner` active) |
+| `POST` | `/api/exhibitors/apply` | Candidature exposant (ouvert seulement si fenêtre `call_for_exhibitor` active) |
 | `POST` | `/api/contact` | Formulaire contact |
 | `POST` | `/api/newsletter` | Inscription newsletter |
 | `POST` | `/api/admin/login` | Connexion admin |
@@ -533,8 +621,12 @@ waitlist | ambassadors | contact_messages | admin_users
 | `PATCH` | `/api/admin/ambassadors/:id` | Accepter/rejeter ambassadeur |
 | `GET` | `/api/admin/partners` | Liste partenaires |
 | `PATCH` | `/api/admin/partners/:id` | Mettre à jour statut partenaire |
+| `GET` | `/api/admin/exhibitors` | Liste exposants |
+| `PATCH` | `/api/admin/exhibitors/:id` | Mettre à jour statut exposant |
 | `GET` | `/api/admin/contacts` | Messages contact |
 | `GET` | `/api/admin/stats` | Dashboard stats |
+| `GET` | `/api/admin/campaign-windows` | Liste des fenêtres de campagne |
+| `PATCH` | `/api/admin/campaign-windows/:key` | Modifier `start_at`/`end_at`/`is_active` d'une fenêtre |
 
 ---
 
@@ -543,11 +635,33 @@ waitlist | ambassadors | contact_messages | admin_users
 1. **Ouverture billetterie :** Le formulaire d'inscription est caché avant une date configurable. Une page d'attente avec compteur + waitlist est affichée.
 2. **Code promo :** Un code promo peut être créé par un admin ou généré automatiquement pour un ambassadeur accepté. Réduction en % ou montant fixe.
 3. **Génération billet :** Déclenchée automatiquement après `payment.status = completed`. PDF avec QR code unique + envoi email.
-4. **Workflow validation :** Speakers, ambassadeurs, partenaires suivent un pipeline `pending → accepted/rejected` via le back-office admin.
+4. **Workflow validation :** Speakers, ambassadeurs, partenaires, exposants suivent un pipeline `pending → accepted/rejected` (ou `pending → contacted → negotiating → confirmed/rejected` pour partenaires/exposants) via le back-office admin.
 5. **Protection formulaires :** reCAPTCHA sur tous les formulaires publics. RGPD obligatoire.
 6. **Emails transactionnels :**
    - Inscription : confirmation + vérification email
-   - Speaker/Ambassadeur/Partenaire : accusé de réception
+   - Speaker/Ambassadeur/Partenaire/Exposant : accusé de réception
    - Paiement : confirmation + billet PDF
    - Waitlist : notification ouverture
-7. **Upload fichiers :** Photos speakers → Cloudinary/S3. Logos partenaires → Cloudinary/S3. Billets PDF → stockage sécurisé.
+7. **Upload fichiers :** Photos speakers → Backblaze B2. Logos partenaires/visuels exposants → Backblaze B2. Billets PDF → stockage sécurisé.
+
+---
+
+## 5bis. Fenêtres de campagne (dates début/fin)
+
+D'après `Infos.md`, le lancement du projet suit des étapes successives, dont cinq ont une fenêtre temporelle propre (début **et** fin) qui contrôle l'ouverture du formulaire public correspondant :
+
+| `campaign_windows.key` | Formulaire gardé | Étape (`Infos.md`) |
+|---|---|---|
+| `call_for_speaker` | `POST /api/speakers/apply` | Call for speaker |
+| `ticketing` | `POST /api/register` | Lancement de la billetterie |
+| `call_for_partner` | `POST /api/partners/apply` | Call for partner |
+| `call_for_ambassador` | `POST /api/ambassadors/apply` | Call for ambassador |
+| `call_for_exhibitor` | `POST /api/exhibitors/apply` | Call for exhibitor |
+
+**Règles :**
+- Chaque endpoint concerné vérifie `NOW() BETWEEN start_at AND end_at AND is_active = true` avant d'accepter la soumission ; hors fenêtre → `403` avec message explicite (`"Cette candidature n'est pas encore ouverte"` / `"Cette candidature est clôturée"`).
+- `is_active` est un coupe-circuit manuel indépendant des dates (permet de fermer une campagne en urgence sans changer `end_at`).
+- `GET /api/campaign-windows` expose les fenêtres (dates + statut) publiquement pour que le frontend affiche compte à rebours / état "à venir" / "fermé" — sans exposer de données sensibles.
+- L'étape « Lancement du site » (première étape de `Infos.md`) n'a pas de fenêtre dédiée : c'est la mise en ligne elle-même, pas un formulaire.
+- **L'annonce publique** (`is_public = true` sur `speakers`/`partners`/`exhibitors`) est **indépendante** de la fenêtre de campagne : un admin peut rendre un speaker/partenaire public à tout moment après acceptation, même après la fermeture de l'appel à candidatures (cf. `Infos.md` : "l'annonce des speakers et partenaires a tout moment").
+- Les fenêtres sont gérées par le back-office (`PATCH /api/admin/campaign-windows/:key`), réservé aux rôles `superadmin`/`admin`.
