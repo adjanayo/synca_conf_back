@@ -156,12 +156,13 @@ Approche retenue (coût zéro, cohérente avec `ENVIRONMENT` déjà prévu dans 
 | 8.1 | Logs structurés séparés (`security`, `payment`, `app`) | `loguru` uniquement, rotation quotidienne (90j `security`, 365j `payment`) |
 | 8.2 | Erreurs applicatives | Couvertes par les logs `loguru` (8.1) — pas de Sentry, pas de SDK/service SaaS supplémentaire (voir `syncaconf/planning_fastapi.md` §3) |
 | 8.3 | Monitoring uptime | UptimeRobot (gratuit) sur `/health` — seul service externe conservé, poll externe donc zéro empreinte sur la VPS |
-| 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j |
-| 8.5 | Procédure de restauration testée | restauration à blanc validée au moins une fois avant lancement |
+| 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j — seule donnée d'état réellement sur la VPS (fichiers déjà externalisés sur B2, voir 4.10) |
+| 8.5 | Procédure de restauration testée **sur un hôte différent** | restaurer le dump B2 sur une VPS/conteneur MySQL neuf (pas la même instance) — c'est ça qui prouve que le backup est exploitable, pas juste qu'il existe |
 | 8.6 | Alerting basique | webhook UptimeRobot → email ou canal notif |
 | 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, zéro service superflu (Redis/Celery/Node/Adminer/Mailpit/Sentry) — détail dans `syncaconf/planning_fastapi.md` §3 |
 | 8.8 | Limites mémoire + logs Docker bornés (vérifié : `docker stats` + `du -sh /var/lib/docker/containers/*` sous contrôle) | `mem_limit` par service (app 600M/db 800M/caddy 100M), `json-file` `max-size=10m,max-file=3` |
-| 8.8 | Vérification mémoire sous charge | `docker stats` pendant un test de charge simulant un pic d'ouverture billetterie — pas de swap déclenché |
+| 8.9 | Vérification mémoire sous charge | `docker stats` pendant un test de charge simulant un pic d'ouverture billetterie — pas de swap déclenché |
+| 8.10 | **Dry-run migration vers un nouveau serveur** | provisionner une VPS Hetzner neuve, `git clone` + `docker compose up`, restaurer le dump B2 (8.5), copier `.env` depuis le gestionnaire de secrets (jamais depuis l'ancien serveur en clair), basculer le domaine — chronométré, pour connaître le temps d'indisponibilité réel avant d'en avoir besoin en urgence |
 
 ---
 
@@ -175,7 +176,7 @@ Objectif : à la fin du projet, toute la connaissance nécessaire pour reprendre
 | 9.2 | Modèle de données | schéma MySQL final (ERD texte ou image), différences vs `schema.md` d'origine | `docs/DATA_MODEL.md` |
 | 9.3 | RBAC | matrice rôles × permissions, comment ajouter un rôle/permission | `docs/RBAC.md` |
 | 9.4 | Sécurité | checklist reconstituée pour ce projet (remplace l'ancien `SECURITY_CHECKLIST.md` générique supprimé) — CORS, headers, rate limiting, upload, webhooks, RGPD | `docs/SECURITY.md` |
-| 9.5 | Déploiement | runbook pas-à-pas : provisioning Hetzner, Docker Compose, Caddy, variables d'env, premier déploiement, rollback | `docs/DEPLOYMENT.md` |
+| 9.5 | Déploiement & migration serveur | runbook pas-à-pas : provisioning Hetzner, Docker Compose, Caddy, variables d'env, premier déploiement, rollback, **+ section dédiée "changer de serveur"** (provisioning nouvelle VPS, restauration MySQL depuis B2, où récupérer/régénérer chaque secret, bascule DNS + réémission cert Caddy, ordre des étapes pour minimiser la coupure) | `docs/DEPLOYMENT.md` |
 | 9.6 | Exploitation / runbook incident | que faire si : webhook paiement en échec, DB down, backup corrompu, clé API expirée | `docs/RUNBOOK.md` |
 | 9.7 | Variables d'environnement | référence complète de chaque variable, obligatoire/optionnelle, où l'obtenir | `docs/ENVIRONMENT.md` |
 | 9.8 | Journal des décisions | pourquoi MySQL et pas Postgres, pourquoi RBAC maison et pas Casbin, pourquoi Hetzner et pas Railway — déjà amorcé dans `syncaconf/planning_fastapi.md`, à consolider ici | `docs/DECISIONS.md` |
@@ -191,7 +192,8 @@ Accès : `docs/` reste dans le repo Git (accès = accès repo, donc déjà restr
 - [ ] `ENVIRONMENT=production`, docs API désactivées (7.4) confirmé par test manuel (`curl https://.../docs` → 404)
 - [ ] CORS restreint au domaine réel du frontend
 - [ ] Webhooks paiement testés en conditions réelles (sandbox → live)
-- [ ] Backup MySQL vérifié fonctionnel + restauration testée
+- [ ] Backup MySQL vérifié fonctionnel + restauration testée **sur un hôte différent** (8.5)
+- [ ] Dry-run migration vers un nouveau serveur effectué au moins une fois, temps d'indisponibilité mesuré (8.10)
 - [ ] UptimeRobot actif et alertant réellement (test d'une fausse alerte)
 - [ ] `docs/` complet et à jour (Phase 9)
 - [ ] Domaine + certificat HTTPS (Caddy) validés
