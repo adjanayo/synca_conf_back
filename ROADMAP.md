@@ -1,6 +1,7 @@
 # ROADMAP — SYNCA CONF 2027 Backend
 
 > Backend seul (FastAPI + MySQL + RBAC + backoffice). Aucun scope frontend.
+> Principe de sobriété : 3 conteneurs en production (FastAPI, MySQL, Caddy), aucun outil optionnel (pas d'Adminer/Mailpit/Sentry/Redis/Celery), une seule dépendance par besoin (PyJWT, argon2-cffi, loguru) — détail dans `syncaconf/planning_fastapi.md` §4bis.
 > Document vivant : toute nouvelle portée ou correction de trajectoire se fait ici, avant implémentation (cf. `change-control`, `quality-engineer`).
 > Statuts par étape : `Not Started` / `In Progress` / `Test Done`. Une étape `Test Done` ne se retouche que pour un vrai bug ou une demande explicite (voir `.claude/skills/change-control/SKILL.md`).
 > Stack et coûts détaillés : `syncaconf/planning_fastapi.md`.
@@ -12,12 +13,13 @@
 | # | Étape | Livrable | Vérification |
 |---|---|---|---|
 | 0.1 | Structure repo `app/api`, `app/models`, `app/schemas`, `app/core`, `app/services`, `app/deps`, `tests/` | Squelette FastAPI qui démarre | `uvicorn app.main:app --reload` répond sur `/health` |
-| 0.2 | Docker Compose dev (FastAPI + MySQL 8 + Adminer) — Adminer dev uniquement, jamais en prod | `docker-compose.yml` | `docker compose up` → 3 services healthy |
-| 0.3 | Dockerfile multi-stage, base `python:3.12-slim` | `Dockerfile` | image finale < 200 Mo, aucune dépendance de build résiduelle |
-| 0.4 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` |
-| 0.5 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur |
-| 0.6 | CI GitHub Actions (lint + tests) | `.github/workflows/ci.yml` | pipeline vert sur push |
-| 0.7 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap |
+| 0.2 | Docker Compose dev — **2 services seulement : FastAPI + MySQL 8.** Pas d'Adminer, pas de Mailpit : debug DB via `docker compose exec mysql mysql`, emails en dev loggés par `loguru` (backend console, pas d'envoi réel) | `docker-compose.yml` | `docker compose up` → 2 services healthy, aucun conteneur superflu |
+| 0.3 | Dockerfile multi-stage strict (`builder` → `python:3.12-slim` final), non-root, `requirements.txt` runtime séparé de `requirements-dev.txt`, `.dockerignore` | `Dockerfile`, `.dockerignore` | image finale < 200 Mo, `docker history` ne montre aucun compilateur/header résiduel |
+| 0.4 | `docker-compose.yml` : `mem_limit` par service (app 600M / db 800M / caddy 100M en prod), logs `json-file` `max-size=10m,max-file=3` | `docker-compose.yml`, `docker-compose.prod.yml` | `docker stats` confirme les limites appliquées |
+| 0.5 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` |
+| 0.6 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur |
+| 0.7 | CI GitHub Actions (lint + tests + scan image Trivy) | `.github/workflows/ci.yml` | pipeline vert sur push, 0 vulnérabilité `HIGH`/`CRITICAL` non traitée sur l'image buildée |
+| 0.8 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap |
 
 ---
 
@@ -44,8 +46,8 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 
 | # | Étape | Détail | Vérification |
 |---|---|---|---|
-| 2.1 | Hash mots de passe (`argon2-cffi` ou `passlib[bcrypt]`) | `app/core/security.py` | test hash/verify |
-| 2.2 | JWT access + refresh token | `app/services/auth_service.py` | test expiration, signature invalide rejetée |
+| 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) | `app/core/security.py` | test hash/verify |
+| 2.2 | JWT access + refresh token : `PyJWT` | `app/services/auth_service.py` | test expiration, signature invalide rejetée |
 | 2.3 | `POST /api/admin/login` | rate limit `slowapi` 5/min par email+IP | test brute-force bloqué |
 | 2.4 | Dependency `require_permission(code)` | `app/deps/rbac.py` | test 403 si permission manquante |
 | 2.5 | Endpoints RBAC admin (gestion rôles/permissions) | `PATCH /api/admin/roles/:id` | test superadmin seul autorisé |
@@ -85,7 +87,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | 4.9 | reCAPTCHA v3 partagé | `app/services/recaptcha.py` | seuil score configurable (0.5 par défaut) |
 | 4.10 | Upload fichiers → Backblaze B2 | `app/services/storage.py` | renommage UUID+timestamp, jamais le nom original |
 | 4.11 | Dependency `require_open_campaign(key)` | `app/deps/campaign_windows.py` — vérifie `NOW() BETWEEN start_at AND end_at AND is_active=true` | 403 explicite hors fenêtre, testé fenêtre ouverte/fermée/désactivée |
-| 4.12 | Emails transactionnels (Resend) | accusé réception, confirmation inscription | test envoi en mode sandbox/dev (Mailpit ou équivalent) |
+| 4.12 | Emails transactionnels (Resend) | accusé réception, confirmation inscription | prod : envoi réel Resend ; dev : backend console `loguru` (email loggé, pas envoyé) — pas de conteneur SMTP de test |
 
 ---
 
@@ -153,13 +155,14 @@ Approche retenue (coût zéro, cohérente avec `ENVIRONMENT` déjà prévu dans 
 
 | # | Étape | Outil |
 |---|---|---|
-| 8.1 | Logs structurés séparés (`security`, `payment`, `app`) | `structlog` ou `loguru`, rotation quotidienne |
-| 8.2 | Erreurs applicatives | Sentry (tier gratuit 5k events/mois) |
-| 8.3 | Monitoring uptime | UptimeRobot (gratuit) sur `/health` |
+| 8.1 | Logs structurés séparés (`security`, `payment`, `app`) | `loguru` uniquement, rotation quotidienne (90j `security`, 365j `payment`) |
+| 8.2 | Erreurs applicatives | Couvertes par les logs `loguru` (8.1) — pas de Sentry, pas de SDK/service SaaS supplémentaire (voir `syncaconf/planning_fastapi.md` §4bis) |
+| 8.3 | Monitoring uptime | UptimeRobot (gratuit) sur `/health` — seul service externe conservé, poll externe donc zéro empreinte sur la VPS |
 | 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j |
 | 8.5 | Procédure de restauration testée | restauration à blanc validée au moins une fois avant lancement |
-| 8.6 | Alerting basique | webhook Sentry/UptimeRobot → email ou canal notif |
-| 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, pas de service superflu (Redis/Celery/Node) — détail dans `syncaconf/planning_fastapi.md` §4 |
+| 8.6 | Alerting basique | webhook UptimeRobot → email ou canal notif |
+| 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, zéro service superflu (Redis/Celery/Node/Adminer/Mailpit/Sentry) — détail dans `syncaconf/planning_fastapi.md` §4/§4bis |
+| 8.8 | Limites mémoire + logs Docker bornés (vérifié : `docker stats` + `du -sh /var/lib/docker/containers/*` sous contrôle) | `mem_limit` par service (app 600M/db 800M/caddy 100M), `json-file` `max-size=10m,max-file=3` |
 | 8.8 | Vérification mémoire sous charge | `docker stats` pendant un test de charge simulant un pic d'ouverture billetterie — pas de swap déclenché |
 
 ---
@@ -191,11 +194,13 @@ Accès : `docs/` reste dans le repo Git (accès = accès repo, donc déjà restr
 - [ ] CORS restreint au domaine réel du frontend
 - [ ] Webhooks paiement testés en conditions réelles (sandbox → live)
 - [ ] Backup MySQL vérifié fonctionnel + restauration testée
-- [ ] Sentry + UptimeRobot actifs et alertant réellement (test d'une fausse alerte)
+- [ ] UptimeRobot actif et alertant réellement (test d'une fausse alerte)
 - [ ] `docs/` complet et à jour (Phase 9)
 - [ ] Domaine + certificat HTTPS (Caddy) validés
 - [ ] Charge basique testée (nombre d'inscriptions attendu en pic d'ouverture billetterie)
-- [ ] Ressources VPS confirmées sous le budget : 1 worker Uvicorn, `innodb_buffer_pool_size` réduit, aucun service superflu tournant (`docker compose ps` = FastAPI + MySQL + Caddy uniquement)
+- [ ] Ressources VPS confirmées sous le budget : 1 worker Uvicorn, `innodb_buffer_pool_size` réduit, `docker compose ps` = **exactement** FastAPI + MySQL + Caddy, rien de plus
+- [ ] `mem_limit` actifs sur les 3 services, `docker stats` sous les seuils (§4bis de `syncaconf/planning_fastapi.md`), logs Docker bornés (`max-size`/`max-file`)
+- [ ] Image `app` en production < 200 Mo, aucune dépendance de build/dev résiduelle (`docker history synca-app:latest` propre)
 
 ---
 
