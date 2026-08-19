@@ -1,7 +1,7 @@
 # ROADMAP — SYNCA CONF 2027 Backend
 
 > Backend seul (FastAPI + MySQL + RBAC + backoffice). Aucun scope frontend.
-> Principe de sobriété : 3 conteneurs en production (FastAPI, MySQL, Caddy), aucun outil optionnel (pas d'Adminer/Mailpit/Sentry/Redis/Celery), une seule dépendance par besoin (PyJWT, argon2-cffi, loguru) — détail dans `syncaconf/planning_fastapi.md` §4bis.
+> Principe de sobriété : 3 conteneurs en production (FastAPI, MySQL, Caddy), aucun outil optionnel (pas d'Adminer/Mailpit/Sentry/Redis/Celery), une seule dépendance par besoin (PyJWT, argon2-cffi, loguru) — détail dans `syncaconf/planning_fastapi.md` §3.
 > Document vivant : toute nouvelle portée ou correction de trajectoire se fait ici, avant implémentation (cf. `change-control`, `quality-engineer`).
 > Statuts par étape : `Not Started` / `In Progress` / `Test Done`. Une étape `Test Done` ne se retouche que pour un vrai bug ou une demande explicite (voir `.claude/skills/change-control/SKILL.md`).
 > Stack et coûts détaillés : `syncaconf/planning_fastapi.md`.
@@ -108,9 +108,7 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 
 ---
 
-## Phase 6 — Backoffice admin (SQLAdmin)
-
-> Révisé depuis FastAPI-Admin : celui-ci dépend de Tortoise ORM, incompatible avec la stack SQLAlchemy retenue (aurait fait tourner deux ORM en parallèle). SQLAdmin est nativement SQLAlchemy + Starlette/FastAPI — réutilise directement les modèles de la Phase 1, zéro dépendance ORM supplémentaire.
+## Phase 6 — Backoffice admin (SQLAdmin, natif SQLAlchemy — voir `syncaconf/planning_fastapi.md` §2)
 
 | # | Étape | Détail |
 |---|---|---|
@@ -156,12 +154,12 @@ Approche retenue (coût zéro, cohérente avec `ENVIRONMENT` déjà prévu dans 
 | # | Étape | Outil |
 |---|---|---|
 | 8.1 | Logs structurés séparés (`security`, `payment`, `app`) | `loguru` uniquement, rotation quotidienne (90j `security`, 365j `payment`) |
-| 8.2 | Erreurs applicatives | Couvertes par les logs `loguru` (8.1) — pas de Sentry, pas de SDK/service SaaS supplémentaire (voir `syncaconf/planning_fastapi.md` §4bis) |
+| 8.2 | Erreurs applicatives | Couvertes par les logs `loguru` (8.1) — pas de Sentry, pas de SDK/service SaaS supplémentaire (voir `syncaconf/planning_fastapi.md` §3) |
 | 8.3 | Monitoring uptime | UptimeRobot (gratuit) sur `/health` — seul service externe conservé, poll externe donc zéro empreinte sur la VPS |
 | 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j |
 | 8.5 | Procédure de restauration testée | restauration à blanc validée au moins une fois avant lancement |
 | 8.6 | Alerting basique | webhook UptimeRobot → email ou canal notif |
-| 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, zéro service superflu (Redis/Celery/Node/Adminer/Mailpit/Sentry) — détail dans `syncaconf/planning_fastapi.md` §4/§4bis |
+| 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, zéro service superflu (Redis/Celery/Node/Adminer/Mailpit/Sentry) — détail dans `syncaconf/planning_fastapi.md` §3 |
 | 8.8 | Limites mémoire + logs Docker bornés (vérifié : `docker stats` + `du -sh /var/lib/docker/containers/*` sous contrôle) | `mem_limit` par service (app 600M/db 800M/caddy 100M), `json-file` `max-size=10m,max-file=3` |
 | 8.8 | Vérification mémoire sous charge | `docker stats` pendant un test de charge simulant un pic d'ouverture billetterie — pas de swap déclenché |
 
@@ -199,7 +197,7 @@ Accès : `docs/` reste dans le repo Git (accès = accès repo, donc déjà restr
 - [ ] Domaine + certificat HTTPS (Caddy) validés
 - [ ] Charge basique testée (nombre d'inscriptions attendu en pic d'ouverture billetterie)
 - [ ] Ressources VPS confirmées sous le budget : 1 worker Uvicorn, `innodb_buffer_pool_size` réduit, `docker compose ps` = **exactement** FastAPI + MySQL + Caddy, rien de plus
-- [ ] `mem_limit` actifs sur les 3 services, `docker stats` sous les seuils (§4bis de `syncaconf/planning_fastapi.md`), logs Docker bornés (`max-size`/`max-file`)
+- [ ] `mem_limit` actifs sur les 3 services, `docker stats` sous les seuils (§3 de `syncaconf/planning_fastapi.md`), logs Docker bornés (`max-size`/`max-file`)
 - [ ] Image `app` en production < 200 Mo, aucune dépendance de build/dev résiduelle (`docker history synca-app:latest` propre)
 
 ---

@@ -23,7 +23,7 @@ Réécriture en cours : **FastAPI + MySQL + RBAC**, backoffice inclus, mono-tena
 - Billets PDF : `reportlab` (pur Python, pas de dépendances système comme weasyprint)
 - Pas de Redis/Celery, pas de Sentry, pas d'Adminer/Mailpit : `BackgroundTasks` FastAPI + logs `loguru` suffisent à cette échelle
 - **3 conteneurs en production, sans exception : FastAPI, MySQL, Caddy** — images multi-stage minimales, non-root, versions épinglées, `mem_limit` et logs bornés par service
-- Déploiement cible : Hetzner CX11 (2 Go RAM) + Docker Compose (image `python:3.12-slim`, build multi-stage) + Caddy, 1 seul worker Uvicorn — détails dans `syncaconf/planning_fastapi.md` §4/§4bis
+- Déploiement cible : Hetzner CX11 (2 Go RAM) + Docker Compose (image `python:3.12-slim`, build multi-stage) + Caddy, 1 seul worker Uvicorn — détails dans `syncaconf/planning_fastapi.md` §3
 
 ## Statut
 
