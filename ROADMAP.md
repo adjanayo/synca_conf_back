@@ -19,7 +19,9 @@
 | 0.5 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` |
 | 0.6 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur |
 | 0.7 | CI GitHub Actions (lint + tests + scan image Trivy) | `.github/workflows/ci.yml` | pipeline vert sur push, 0 vulnérabilité `HIGH`/`CRITICAL` non traitée sur l'image buildée |
-| 0.8 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap |
+| 0.8 | Caddyfile (domaine, HTTPS auto, headers sécurité de base, reverse proxy vers `app`) | `Caddyfile` | `docker compose -f docker-compose.prod.yml up` sert en HTTPS avec cert valide |
+| 0.9 | CD GitHub Actions : déploiement sur push `main` (SSH vers la VPS, `docker compose pull && up -d`) | `.github/workflows/deploy.yml` | déploiement effectif observé sur la VPS après un push |
+| 0.10 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap |
 
 ---
 
