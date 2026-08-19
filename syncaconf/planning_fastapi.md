@@ -22,15 +22,16 @@
 | Validation | Pydantic v2 |
 | Auth | JWT (access + refresh) via `python-jose` / `authlib` |
 | RBAC | Rôles/permissions maison en table pivot (décidé — voir §2) |
-| Backoffice | FastAPI-Admin (décidé — voir §2) |
+| Backoffice | **SQLAdmin** (décidé — voir §2, révisé) |
+| Génération PDF billet | `reportlab` (pur Python, pas de dépendances système) |
 | Upload fichiers | Backblaze B2 (compatible S3, tier gratuit 10 Go) |
 | Emails | Resend (tier gratuit 3000/mois) |
 | Paiement | Stripe + Wave/Orange Money (webhooks signés) |
-| Queue/async jobs | FastAPI `BackgroundTasks` (léger, pas de Redis/Celery — coût infra en moins) |
-| Rate limiting | `slowapi` (clone Flask-Limiter pour FastAPI) |
+| Queue/async jobs | FastAPI `BackgroundTasks` — pas de Redis/Celery, aucun service supplémentaire à faire tourner |
+| Rate limiting | `slowapi` (clone Flask-Limiter pour FastAPI, en mémoire — pas de backend Redis requis) |
 | Tests | pytest + pytest-asyncio + httpx AsyncClient |
 | Reverse proxy / HTTPS | Caddy (auto Let's Encrypt, gratuit, léger) |
-| Conteneurisation | Docker + docker-compose |
+| Conteneurisation | Docker multi-stage build, image `python:3.12-slim` |
 | Monitoring | UptimeRobot (gratuit) + Sentry (tier gratuit 5k events/mois) |
 
 ---
@@ -48,9 +49,11 @@ admin_users (id, email, password_hash, role_id, ...)
 
 - Dependency FastAPI `require_permission("speakers.approve")` réutilisable sur chaque route admin.
 
-### Backoffice (décidé)
+### Backoffice — révisé : SQLAdmin (pas FastAPI-Admin)
 
-**FastAPI-Admin**, pas de SPA dédiée : un seul service à builder/héberger au lieu de deux (API + front séparé). Économie de temps de dev + pas d'hébergement statique additionnel. Si besoin d'une UI plus riche plus tard, une SPA peut être branchée sur la même API sans rien casser côté backend.
+Décision initiale (FastAPI-Admin) corrigée après vérification de sa dépendance réelle : **FastAPI-Admin est bâti sur Tortoise ORM**, pas SQLAlchemy. L'utiliser aurait fait tourner deux ORM en parallèle dans la même app (SQLAlchemy pour l'API, Tortoise pour l'admin) — plus de dépendances installées, plus de RAM consommée, deux façons différentes de parler à MySQL à maintenir. Contraire à l'objectif de minimiser les ressources.
+
+**[SQLAdmin](https://github.com/aminalaee/sqladmin)** retenu à la place : admin interface conçue nativement pour SQLAlchemy + Starlette/FastAPI. Mêmes bénéfices que la décision initiale (un seul service à builder/héberger, pas de SPA séparée, pas d'hébergement statique additionnel) sans le coût du double-ORM — elle réutilise directement les modèles SQLAlchemy déjà écrits pour l'API.
 
 ---
 
@@ -84,11 +87,11 @@ admin_users (id, email, password_hash, role_id, ...)
 
 ### Sprint 5 — Paiement & billetterie
 - `/api/payments` (init) + `/api/payments/webhook` (vérif signature, idempotence)
-- Génération ticket (QR code + PDF) après `status=completed`
+- Génération ticket (QR code + PDF avec `reportlab` — pur Python, pas de Pango/Cairo comme weasyprint) après `status=completed`
 - `/api/promo/validate`
 
-### Sprint 6 — Backoffice admin
-- CRUD statuts (speakers/ambassadors/partners: pending→accepted/rejected/confirmed)
+### Sprint 6 — Backoffice admin (SQLAdmin)
+- CRUD statuts (speakers/ambassadors/partners/exhibitors: pending→accepted/rejected/confirmed) via vues SQLAdmin sur les modèles SQLAlchemy existants
 - `/api/admin/stats` dashboard
 - Audit log des actions admin (table `audit_logs` + middleware)
 
@@ -134,11 +137,20 @@ Options écartées et pourquoi :
 - Fly.io : free tier limité et moins prévisible que Hetzner à budget fixe.
 - Coolify : confort d'UI de déploiement, mais coûte de la RAM qu'on préfère garder pour l'appli sur une petite VPS.
 
+### Tuning ressources sur la CX11 (2 Go RAM) — pour ne pas swapper/OOM
+
+- **Uvicorn : 1 seul worker** (`--workers 1`), pas de Gunicorn multi-worker — le trafic d'un événement (pics ponctuels d'inscription, pas de charge continue) ne justifie pas plus, et chaque worker supplémentaire duplique la mémoire de l'app.
+- **MySQL** : `innodb_buffer_pool_size=256M` (au lieu du défaut souvent proportionnel à la RAM totale), `max_connections=50` — largement suffisant pour un backend mono-instance, évite qu'InnoDB réserve trop de mémoire par défaut.
+- **Image Docker multi-stage** (`python:3.12-slim` en base, dépendances de build jetées dans le stage final) — image plus petite = moins de RAM/disque au démarrage, déploiements plus rapides.
+- **Pas de service applicatif superflu** : ni Redis, ni Celery worker, ni Node.js pour un build de backoffice — SQLAdmin est rendu server-side par FastAPI lui-même.
+- Marge RAM restante sur 2 Go avec ce tuning : confortable pour Caddy + OS + pics ponctuels (webhooks paiement, génération PDF).
+
 ---
 
 ## Checklist de validation
 
-- [x] MySQL confirmé — mise à jour de `CLAUDE.md` (PostgreSQL/multi-tenant) à faire séparément, à ta demande
+- [x] MySQL confirmé — `CLAUDE.md` mis à jour (PostgreSQL/multi-tenant retiré)
 - [x] RBAC maison (table pivot) retenu — pas de Casbin
-- [x] Backoffice: FastAPI-Admin retenu — pas de SPA dédiée
+- [x] Backoffice: **SQLAdmin** retenu (révisé depuis FastAPI-Admin — incompatibilité ORM, voir §2) — pas de SPA dédiée
 - [x] Déploiement : Hetzner CX11 + Docker Compose + Caddy (sans Coolify) — ~4,30€/mois tout compris
+- [x] Ressources : 1 worker Uvicorn, MySQL `innodb_buffer_pool_size` réduit, image Docker multi-stage, zéro service superflu (pas de Redis/Celery)

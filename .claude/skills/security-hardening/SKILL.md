@@ -1,6 +1,6 @@
 ---
 name: security-hardening
-description: Use whenever code touches authentication, passwords, customer access codes, RBAC, customer PII, payment proof validation, network/port exposure, or infra secrets — Casbin policy/model changes, password hashing/complexity/lockout rules, Fernet/pgcrypto encryption, payment-proof anti-fraud checks, JWT handling, or Traefik/ModSecurity/Docker-secrets/port config. Trigger on any change touching customer records, login/password logic, payment or order-lookup code, auth routes, or secrets/WAF/port config.
+description: Use whenever code touches authentication, passwords, RBAC, registrant/participant PII, payment webhook validation, network/port exposure, or infra secrets — RBAC policy changes, password hashing/complexity/lockout rules, Fernet encryption, payment webhook signature/idempotence checks, JWT handling, or Caddy/Docker-Compose/port config. Trigger on any change touching registrant records, login/password logic, payment or promo-code logic, auth routes, or secrets/port config.
 ---
 
 # Security Hardening
@@ -14,17 +14,16 @@ Security is layered: don't treat any single layer as sufficient — each exists 
 
 ## PII
 
-- Customer PII (name, phone, address) is encrypted at the application layer before write, pgcrypto at the database layer. Any new PII field follows the same pattern — don't add a plaintext column because "it's just a phone number."
+- Customer/registrant PII (name, phone, address) is encrypted at the application layer (`cryptography.Fernet`) before write where it's genuinely sensitive. Any new PII field follows the same pattern — don't add a plaintext column because "it's just a phone number."
 - Verify by inspecting the raw DB row, not just the API response.
 
 ## Auth
 
-- JWTs carry `tenant_id` + `role`. A route is only "protected" once it goes through the full `get_current_user` → tenant-context → RBAC chain.
-- A tenant with `status != "active"` must be locked out of its entire dashboard.
+- JWTs carry `admin_user_id` + `role`. A route is only "protected" once it goes through the full `get_current_user` → RBAC (`require_permission`) chain — this project is mono-tenant, there is no tenant context to thread through.
 
 ### API docs are never publicly readable
 
-`/docs`, `/redoc`, and `/openapi.json` are disabled whenever `ENVIRONMENT != "local"`. Phase 3.2 upgrades this to gated: re-enable in production, but wrap behind `require_role(SuperAdmin)` — not Owner, not Manager.
+`/docs`, `/redoc`, and `/openapi.json` are disabled whenever `ENVIRONMENT != "local"` (see `ROADMAP.md` §7.4). If the team needs prod access, gate a non-standard path (`/internal/docs`) behind Caddy Basic Auth — never re-open the default paths publicly.
 
 ### Password policy
 
@@ -42,9 +41,9 @@ Security is layered: don't treat any single layer as sufficient — each exists 
 
 ## Infra
 
-- Secrets go into Docker Swarm secrets in production — never into plain env vars or committed `.env` files.
-- **Only Traefik is internet-facing in production** — backend API included. Postgres/Redis/MinIO must never be reachable from outside.
+- Secrets live in `.env` on the VPS (never committed, permissions locked down) — no Docker Swarm, this is a single-VPS Docker Compose deployment.
+- **Only Caddy is internet-facing in production** — backend API included. MySQL must never be reachable from outside the Compose network (no published port).
 
 ## When reviewing a change
 
-Ask: (1) does this cross a tenant boundary without `SET LOCAL app.current_tenant`? (2) does this write PII without encryption? (3) does this touch a payment proof without the DB-level uniqueness check? (4) does this add a new role-gated action without a policy entry? (5) does this create/check a password without Argon2id + complexity + lockout? (6) does production compose publish a port for anything other than Traefik? A "yes" to any blocks the change.
+Ask: (1) does this write PII without encryption where it's genuinely sensitive? (2) does this touch a payment webhook without signature verification + idempotence? (3) does this add a new role-gated action without a `role_permissions` entry? (4) does this create/check a password without Argon2id + complexity + lockout? (5) does the production compose publish a port for anything other than Caddy? (6) does this touch a `campaign_windows`-gated endpoint without the `require_open_campaign` dependency? A "yes" to any blocks the change.

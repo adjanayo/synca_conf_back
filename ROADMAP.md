@@ -12,11 +12,12 @@
 | # | Étape | Livrable | Vérification |
 |---|---|---|---|
 | 0.1 | Structure repo `app/api`, `app/models`, `app/schemas`, `app/core`, `app/services`, `app/deps`, `tests/` | Squelette FastAPI qui démarre | `uvicorn app.main:app --reload` répond sur `/health` |
-| 0.2 | Docker Compose dev (FastAPI + MySQL 8 + Adminer) | `docker-compose.yml` | `docker compose up` → 3 services healthy |
-| 0.3 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` |
-| 0.4 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur |
-| 0.5 | CI GitHub Actions (lint + tests) | `.github/workflows/ci.yml` | pipeline vert sur push |
-| 0.6 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap |
+| 0.2 | Docker Compose dev (FastAPI + MySQL 8 + Adminer) — Adminer dev uniquement, jamais en prod | `docker-compose.yml` | `docker compose up` → 3 services healthy |
+| 0.3 | Dockerfile multi-stage, base `python:3.12-slim` | `Dockerfile` | image finale < 200 Mo, aucune dépendance de build résiduelle |
+| 0.4 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` |
+| 0.5 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur |
+| 0.6 | CI GitHub Actions (lint + tests) | `.github/workflows/ci.yml` | pipeline vert sur push |
+| 0.7 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap |
 
 ---
 
@@ -97,7 +98,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | 5.3 | Webhooks Stripe / Wave / Orange Money | vérification signature obligatoire (HMAC/secret), sinon 401 |
 | 5.4 | Idempotence webhook | ne jamais traiter deux fois le même `transaction_ref` |
 | 5.5 | Transaction atomique paiement + génération ticket | `DB.transaction()` équivalent SQLAlchemy (`async with session.begin()`) |
-| 5.6 | Génération billet PDF + QR code | `qrcode` + `reportlab`/`weasyprint`, upload B2 → `pdf_url` |
+| 5.6 | Génération billet PDF + QR code | `qrcode` + `reportlab` (pur Python — pas de `weasyprint`, qui traîne Pango/Cairo/GDK-Pixbuf, trop lourd pour la VPS ciblée), upload B2 → `pdf_url` |
 | 5.7 | Email billet | envoi post-génération |
 | 5.8 | Logs paiement séparés | canal `payment` dédié (succès + échecs), rétention longue |
 
@@ -105,11 +106,13 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 
 ---
 
-## Phase 6 — Backoffice admin (FastAPI-Admin)
+## Phase 6 — Backoffice admin (SQLAdmin)
+
+> Révisé depuis FastAPI-Admin : celui-ci dépend de Tortoise ORM, incompatible avec la stack SQLAlchemy retenue (aurait fait tourner deux ORM en parallèle). SQLAdmin est nativement SQLAlchemy + Starlette/FastAPI — réutilise directement les modèles de la Phase 1, zéro dépendance ORM supplémentaire.
 
 | # | Étape | Détail |
 |---|---|---|
-| 6.1 | Intégration FastAPI-Admin sur les modèles SQLAlchemy | vues CRUD auto pour `speakers`, `ambassadors`, `partners`, `exhibitors`, `contact_messages` |
+| 6.1 | Intégration SQLAdmin sur les modèles SQLAlchemy existants | vues CRUD auto pour `speakers`, `ambassadors`, `partners`, `exhibitors`, `contact_messages` |
 | 6.2 | Actions custom workflow statut | `PATCH /api/admin/speakers/:id`, `/ambassadors/:id`, `/partners/:id`, `/exhibitors/:id` — protégées par `require_permission` |
 | 6.3 | Génération auto `promo_code` à l'acceptation d'un ambassadeur | déclenché depuis l'action d'acceptation |
 | 6.4 | Gestion des fenêtres de campagne | `GET /api/admin/campaign-windows`, `PATCH /api/admin/campaign-windows/:key` — modifier dates + `is_active`, réservé `superadmin`/`admin` |
@@ -156,6 +159,8 @@ Approche retenue (coût zéro, cohérente avec `ENVIRONMENT` déjà prévu dans 
 | 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j |
 | 8.5 | Procédure de restauration testée | restauration à blanc validée au moins une fois avant lancement |
 | 8.6 | Alerting basique | webhook Sentry/UptimeRobot → email ou canal notif |
+| 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, pas de service superflu (Redis/Celery/Node) — détail dans `syncaconf/planning_fastapi.md` §4 |
+| 8.8 | Vérification mémoire sous charge | `docker stats` pendant un test de charge simulant un pic d'ouverture billetterie — pas de swap déclenché |
 
 ---
 
@@ -169,7 +174,7 @@ Objectif : à la fin du projet, toute la connaissance nécessaire pour reprendre
 | 9.2 | Modèle de données | schéma MySQL final (ERD texte ou image), différences vs `schema.md` d'origine | `docs/DATA_MODEL.md` |
 | 9.3 | RBAC | matrice rôles × permissions, comment ajouter un rôle/permission | `docs/RBAC.md` |
 | 9.4 | Sécurité | checklist reconstituée pour ce projet (remplace l'ancien `SECURITY_CHECKLIST.md` générique supprimé) — CORS, headers, rate limiting, upload, webhooks, RGPD | `docs/SECURITY.md` |
-| 9.5 | Déploiement | runbook pas-à-pas : provisioning Hetzner, Docker Compose, Caddy, variables d'env, premher déploiement, rollback | `docs/DEPLOYMENT.md` |
+| 9.5 | Déploiement | runbook pas-à-pas : provisioning Hetzner, Docker Compose, Caddy, variables d'env, premier déploiement, rollback | `docs/DEPLOYMENT.md` |
 | 9.6 | Exploitation / runbook incident | que faire si : webhook paiement en échec, DB down, backup corrompu, clé API expirée | `docs/RUNBOOK.md` |
 | 9.7 | Variables d'environnement | référence complète de chaque variable, obligatoire/optionnelle, où l'obtenir | `docs/ENVIRONMENT.md` |
 | 9.8 | Journal des décisions | pourquoi MySQL et pas Postgres, pourquoi RBAC maison et pas Casbin, pourquoi Hetzner et pas Railway — déjà amorcé dans `syncaconf/planning_fastapi.md`, à consolider ici | `docs/DECISIONS.md` |
@@ -190,6 +195,7 @@ Accès : `docs/` reste dans le repo Git (accès = accès repo, donc déjà restr
 - [ ] `docs/` complet et à jour (Phase 9)
 - [ ] Domaine + certificat HTTPS (Caddy) validés
 - [ ] Charge basique testée (nombre d'inscriptions attendu en pic d'ouverture billetterie)
+- [ ] Ressources VPS confirmées sous le budget : 1 worker Uvicorn, `innodb_buffer_pool_size` réduit, aucun service superflu tournant (`docker compose ps` = FastAPI + MySQL + Caddy uniquement)
 
 ---
 
