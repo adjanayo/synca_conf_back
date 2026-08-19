@@ -9,7 +9,6 @@ Réécriture en cours : **FastAPI + MySQL + RBAC**, backoffice inclus, mono-tena
 - [`ROADMAP.md`](ROADMAP.md) — plan de construction détaillé en 10 phases (backend uniquement, hors frontend), jusqu'à la checklist de lancement production
 - [`syncaconf/planning_fastapi.md`](syncaconf/planning_fastapi.md) — architecture, stack technique, RBAC, coûts, tuning ressources et déploiement
 - [`syncaconf/schema.md`](syncaconf/schema.md) — schéma fonctionnel des tables, formulaires et endpoints, adapté MySQL (inclut fenêtres de campagne `campaign_windows` et formulaire exposants)
-- [`syncaconf/securite.md`](syncaconf/securite.md) — exigences sécurité de référence (rédigées pour une implémentation Laravel, à réadapter à FastAPI)
 - [`syncaconf/Infos.md`](syncaconf/Infos.md) — contraintes métier (steps de lancement, tarification)
 - [`CLAUDE.md`](CLAUDE.md) — règles projet pour les agents IA (stack, conventions, workflow)
 

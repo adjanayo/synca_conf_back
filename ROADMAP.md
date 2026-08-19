@@ -35,7 +35,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 | 1.4 | Paiement & billetterie | `promo_codes`, `payments`, `tickets`, `waitlist` | FK et contraintes `status` testées |
 | 1.5 | Candidatures | `speakers`, `ambassadors`, `partners`, `exhibitors` | workflow `status` (`pending→...`) testé |
 | 1.6 | Contenu & contact | `faqs`, `contact_messages` | CRUD basique testé |
-| 1.7 | RBAC | `roles`, `permissions`, `role_permissions`, `admin_users` (remplace le rôle `enum` unique de `securite.md`) | seed des 4 rôles + permissions de base |
+| 1.7 | RBAC | `roles`, `permissions`, `role_permissions`, `admin_users` (rôle relationnel, pas un `enum` unique sur la colonne) | seed des 4 rôles + permissions de base |
 | 1.8 | Fenêtres de campagne | `campaign_windows` (`call_for_speaker`, `ticketing`, `call_for_partner`, `call_for_ambassador`, `call_for_exhibitor`), seed avec dates par défaut | `end_at > start_at` contraint et testé |
 | 1.9 | Index | tous les index listés dans `schema.md` §1 | `EXPLAIN` sur requêtes chaudes (liste inscriptions, recherche email) |
 | 1.10 | Modèles SQLAlchemy + schémas Pydantic pour toutes les tables ci-dessus | `app/models/*.py`, `app/schemas/*.py` | tests de sérialisation |
@@ -118,7 +118,7 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 | 6.4 | Gestion des fenêtres de campagne | `GET /api/admin/campaign-windows`, `PATCH /api/admin/campaign-windows/:key` — modifier dates + `is_active`, réservé `superadmin`/`admin` |
 | 6.5 | `GET /api/admin/stats` | dashboard : inscriptions, revenus, taux conversion promo, candidatures par statut |
 | 6.6 | `GET /api/admin/registrations`, `/contacts` | listing filtrable/paginé |
-| 6.7 | Export CSV (inscriptions, paiements) | réservé `superadmin` (cf. policy `securite.md` §1.3) |
+| 6.7 | Export CSV (inscriptions, paiements) | réservé `superadmin` via `require_permission("export.data")` |
 | 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) |
 
 ---
@@ -154,6 +154,21 @@ Approche retenue (coût zéro, cohérente avec `ENVIRONMENT` déjà prévu dans 
 | # | Étape | Outil |
 |---|---|---|
 | 8.1 | Logs structurés séparés (`security`, `payment`, `app`) | `loguru` uniquement, rotation quotidienne (90j `security`, 365j `payment`) |
+
+**Événements à logguer (8.1)** — table de référence pour l'implémentation :
+
+| Événement | Canal | Niveau |
+|---|---|---|
+| Connexion admin réussie / échouée | `security` | `info` / `warning` |
+| Création/modification d'un compte admin | `security` | `info` |
+| Paiement réussi / échoué | `payment` | `info` / `warning` |
+| Webhook signature invalide | `security` | `warning` |
+| Rate limit déclenché | `security` | `warning` |
+| 403 / 401 répétés | `security` | `warning` |
+| Upload fichier échoué | `security` | `warning` |
+
+| # | Étape | Outil |
+|---|---|---|
 | 8.2 | Erreurs applicatives | Couvertes par les logs `loguru` (8.1) — pas de Sentry, pas de SDK/service SaaS supplémentaire (voir `syncaconf/planning_fastapi.md` §3) |
 | 8.3 | Monitoring uptime | UptimeRobot (gratuit) sur `/health` — seul service externe conservé, poll externe donc zéro empreinte sur la VPS |
 | 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j — seule donnée d'état réellement sur la VPS (fichiers déjà externalisés sur B2, voir 4.10) |
