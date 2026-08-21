@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('sessions_conf', function (Blueprint $table) {
             $table->id();
             $table->foreignId('day_id')->constrained('days');
             $table->string('title', 200);
@@ -20,12 +20,12 @@ return new class extends Migration
             $table->unsignedBigInteger('speaker_id')->nullable();
             $table->boolean('is_public')->default(true);
             $table->timestamps();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('sessions_conf');
     }
 };

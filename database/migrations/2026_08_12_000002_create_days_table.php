@@ -13,7 +13,7 @@ return new class extends Migration
             $table->date('date')->unique();
             $table->string('label', 50);
             $table->timestamps();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

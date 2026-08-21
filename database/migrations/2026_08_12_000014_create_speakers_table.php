@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('status', 20)->default('pending');
             $table->boolean('is_public')->default(false);
             $table->timestamps();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

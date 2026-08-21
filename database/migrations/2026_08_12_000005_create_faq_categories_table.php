@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50)->unique();
             $table->timestamps();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

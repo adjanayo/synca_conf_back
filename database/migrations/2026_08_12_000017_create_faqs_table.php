@@ -15,7 +15,7 @@ return new class extends Migration
             $table->text('answer');
             $table->unsignedInteger('sort_order')->default(0);
             $table->timestamps();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

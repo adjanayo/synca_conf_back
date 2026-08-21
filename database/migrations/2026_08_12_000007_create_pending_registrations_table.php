@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('country', 100);
             $table->string('city', 100);
             $table->string('sector', 50)->nullable();
-            $table->string('profile', 30)->nullable();
+            $table->string('profile', 30);
+            $table->string('profile_other', 100)->nullable(); // rempli uniquement si profile = 'Autre'
             $table->string('experience_level', 30)->nullable();
             $table->string('linkedin_url')->nullable();
             $table->string('portfolio_url')->nullable();

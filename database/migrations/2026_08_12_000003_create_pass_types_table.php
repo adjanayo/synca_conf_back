@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('max_days')->default(3);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

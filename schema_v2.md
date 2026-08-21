@@ -114,8 +114,9 @@ CREATE TABLE pending_registrations (
     country             VARCHAR(100) NOT NULL,
     city                VARCHAR(100) NOT NULL,
     sector              VARCHAR(50) CHECK (sector IN ('Dev','Data','Design','Cybersec','Product','IA','Autre')),
-    profile                  VARCHAR(30) NOT NULL CHECK (profile IN ('Étudiant','Professionnel','Entrepreneur','Recruteur','Autre')),
-    UNIQUE
+    profile             VARCHAR(30) NOT NULL CHECK (profile IN ('Étudiant','Professionnel','Entrepreneur','Recruteur','Autre')) UNIQUE,
+    profile_other       VARCHAR(100),
+
     experience_level    VARCHAR(30) CHECK (experience_level IN ('Débutant','Junior','Senior','Expert')),
     linkedin_url        VARCHAR(255),
     portfolio_url       VARCHAR(255),
@@ -131,7 +132,6 @@ CREATE TABLE pending_registrations (
     updated_at          TIMESTAMP DEFAULT NOW()
 );
 
--- Profils multi-choix de la pré-inscription
 
 ```
 
@@ -219,7 +219,8 @@ CREATE TABLE waitlist (
 ## Sessions / programme
 
 ```sql
-CREATE TABLE sessions (
+CREATE TABLE sessions_conf
+ (
     id          SERIAL PRIMARY KEY,
     day_id      INT NOT NULL REFERENCES days(id),
     title       VARCHAR(200) NOT NULL,
@@ -273,7 +274,7 @@ CREATE TABLE speakers (
     updated_by            INT REFERENCES admin_users(id)
 );
 
-ALTER TABLE sessions ADD CONSTRAINT fk_speaker FOREIGN KEY (speaker_id) REFERENCES speakers(id);
+ALTER TABLE sessions_conf ADD CONSTRAINT fk_speaker FOREIGN KEY (speaker_id) REFERENCES speakers(id);
 ```
 
 ## Ambassadeurs
@@ -391,8 +392,8 @@ CREATE TABLE site_metrics (
 ## Index
 
 ```sql
-CREATE INDEX idx_sessions_day ON sessions(day_id);
-CREATE INDEX idx_sessions_category ON sessions(category);
+CREATE INDEX idx_sessions_conf_day ON sessions_conf(day_id);
+CREATE INDEX idx_sessions_conf_category ON sessions_conf(category);
 
 CREATE INDEX idx_pending_reg_email ON pending_registrations(email);
 CREATE INDEX idx_pending_reg_token ON pending_registrations(resume_token);
@@ -499,7 +500,7 @@ Alimente `waitlist` : email uniquement.
 
 - **Connexion admin** : email + mot de passe → session/JWT.
 - **Gestion référentiels** (CRUD) : `days`, `pass_types`, `partner_levels`, `faq_categories`, `promo_codes`.
-- **Gestion programme** : créer/modifier une `session` (jour, titre, catégorie, horaires, salle, speaker).
+- **Gestion programme** : créer/modifier une session de conférence dans `sessions_conf` (jour, titre, catégorie, horaires, salle, speaker).
 - **Traitement des candidatures** : formulaire de validation pour `speakers`, `ambassadors`, `partners` — changer `status` (`pending` → `accepted`/`confirmed`/`rejected`), avec `updated_by` = l'admin connecté. Pour un ambassadeur accepté, génération automatique d'un `promo_code` lié.
 - **Gestion FAQ** : CRUD `faqs` par catégorie.
 - **Messages de contact** : liste + marquer comme lu (`is_read`).

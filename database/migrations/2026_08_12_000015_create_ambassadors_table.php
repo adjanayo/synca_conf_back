@@ -32,7 +32,7 @@ return new class extends Migration
             $table->foreignId('promo_code_id')->nullable()->constrained('promo_codes')->nullOnDelete();
             $table->string('status', 20)->default('pending');
             $table->timestamps();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

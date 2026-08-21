@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedInteger('value')->default(0);
             $table->text('note')->nullable();
             $table->timestamp('updated_at')->useCurrent();
-            $table->foreignId('updated_by')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
             $table->unique(['metric_key', 'metric_date']);
         });
     }
