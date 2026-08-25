@@ -350,4 +350,19 @@ pytest tests/test_rbac.py -v
 
 ---
 
+### 1.8 — Fenêtres de campagne (`campaign_windows`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_campaign_windows.py -v
+```
+→ attendu : `2 passed` (5 fenêtres seedées avec des dates placeholder — à ajuster via le back-office en Phase 6.4 —, contrainte `end_at > start_at` rejette une mise à jour invalide avec `DBAPIError` (MySQL renvoie une `OperationalError` pour un `CHECK` violé, pas une `IntegrityError`)).
+
+- [x] 1.8 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

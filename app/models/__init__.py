@@ -1,4 +1,5 @@
 from app.models.applications import Ambassador, Exhibitor, Partner, Speaker
+from app.models.campaign import CampaignWindow
 from app.models.content import ContactMessage, Faq
 from app.models.payments import Payment, PromoCode, Ticket, Waitlist
 from app.models.rbac import AdminUser, Permission, Role, RolePermission
@@ -9,6 +10,7 @@ from app.models.users import User, UserProfile
 __all__ = [
     "AdminUser",
     "Ambassador",
+    "CampaignWindow",
     "ContactMessage",
     "Day",
     "Exhibitor",
