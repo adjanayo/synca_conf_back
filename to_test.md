@@ -234,4 +234,24 @@ python3 -c "import yaml; yaml.safe_load(open('.github/workflows/deploy.yml'))"
 
 ---
 
+## Phase 1 — Modèle de données
+
+### 1.1 — Référentiels (`days`, `pass_types`, `partner_levels`, `faq_categories`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_referentials.py -v
+```
+
+1. Attendu : migration appliquée, `3 passed` (unicité `date` sur `days` testée via `IntegrityError`, défauts `PassType.max_days=3`/`is_active=True` vérifiés, insertion `PartnerLevel`/`FaqCategory` basique).
+2. Réversibilité : `alembic downgrade base && alembic upgrade head` → sans erreur.
+3. `docker compose down` pour nettoyer.
+
+- [x] 1.1 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
