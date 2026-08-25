@@ -365,4 +365,25 @@ pytest tests/test_campaign_windows.py -v
 
 ---
 
+### 1.9 — Index (`schema.md` §1)
+
+Tous les index listés dans `schema.md` §1 ont déjà été posés au fil des migrations 1.1-1.8 (`index=True`/`unique=True` sur les colonnes concernées : `users.email`, `sessions.day_id`/`category`, `payments.user_id`/`status`, `tickets.user_id`/`ticket_number`, `speakers`/`ambassadors`/`partners`/`exhibitors.status`, `partners.level_id`, `campaign_windows.key`). Cette étape est une vérification, pas une nouvelle migration.
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+docker compose exec db mysql -uroot -p"$MYSQL_ROOT_PASSWORD" syncaconf -e "
+EXPLAIN SELECT * FROM users WHERE email = 'x@example.com';
+EXPLAIN SELECT * FROM payments WHERE status = 'pending';
+EXPLAIN SELECT * FROM sessions WHERE day_id = 1 AND category = 'workshop';
+"
+```
+→ attendu : colonne `key` renseignée (`ix_users_email`, `ix_payments_status`, `ix_sessions_category`/`ix_sessions_day_id`), jamais `type=ALL` (full scan) sur ces requêtes. Avec au moins une ligne en table, une recherche par égalité sur une colonne `UNIQUE` (`email`, `ticket_number`) doit donner `type=const`.
+
+- [x] 1.9 validé — tous les index présents et effectivement utilisés par l'optimiseur MySQL.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

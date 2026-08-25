@@ -41,7 +41,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 | 1.6 | Contenu & contact | `faqs`, `contact_messages` | CRUD basique testé | ✅ Test Done |
 | 1.7 | RBAC | `roles`, `permissions`, `role_permissions`, `admin_users` (rôle relationnel, pas un `enum` unique sur la colonne) | seed des 4 rôles + permissions de base | ✅ Test Done |
 | 1.8 | Fenêtres de campagne | `campaign_windows` (`call_for_speaker`, `ticketing`, `call_for_partner`, `call_for_ambassador`, `call_for_exhibitor`), seed avec dates par défaut | `end_at > start_at` contraint et testé | ✅ Test Done |
-| 1.9 | Index | tous les index listés dans `schema.md` §1 | `EXPLAIN` sur requêtes chaudes (liste inscriptions, recherche email) | ⬜ Not Started |
+| 1.9 | Index | tous les index listés dans `schema.md` §1 | `EXPLAIN` sur requêtes chaudes (liste inscriptions, recherche email) | ✅ Test Done |
 | 1.10 | Modèles SQLAlchemy + schémas Pydantic pour toutes les tables ci-dessus | `app/models/*.py`, `app/schemas/*.py` | tests de sérialisation | ⬜ Not Started |
 
 ---
