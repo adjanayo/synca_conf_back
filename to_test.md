@@ -218,4 +218,20 @@ curl -sI http://127.0.0.1/health   # ou le port mappé localement si 80/443 déj
 
 ---
 
+### 0.9 — CD GitHub Actions (déploiement sur push `main`)
+
+```bash
+python3 -c "import yaml; yaml.safe_load(open('.github/workflows/deploy.yml'))"
+```
+→ attendu : pas d'erreur (YAML valide).
+
+**Non testable sans VPS réel** — nécessite avant tout premier déploiement :
+1. Une VPS provisionnée (Hetzner CX11, voir `syncaconf/planning_fastapi.md` §3) avec le repo cloné dans `/opt/synca-conf-back` et un `.env` de prod en place.
+2. Trois secrets GitHub configurés (`Settings → Environments → production`) : `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` (clé privée dédiée, jamais la clé perso).
+3. Un push sur `main` déclenche le job → vérifier sur la VPS : `docker compose -f docker-compose.prod.yml ps` montre les 3 services à jour, `curl https://votredomaine.com/health` répond après coup.
+
+- [x] 0.9 validé pour ce qui est testable maintenant (YAML valide, secrets/script cohérents avec `docker-compose.prod.yml`). Le déploiement réel reste à vérifier au premier `push` sur `main`, une fois la VPS provisionnée — inscrit dans la checklist Phase 10.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
