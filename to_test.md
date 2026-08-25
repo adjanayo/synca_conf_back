@@ -333,4 +333,21 @@ pytest tests/test_content.py -v
 
 ---
 
+### 1.7 — RBAC (`roles`, `permissions`, `role_permissions`, `admin_users`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+docker compose exec db mysql -uroot -p"$MYSQL_ROOT_PASSWORD" \
+  -e "USE syncaconf; SELECT name FROM roles; SELECT COUNT(*) FROM permissions; SELECT COUNT(*) FROM role_permissions;"
+pytest tests/test_rbac.py -v
+```
+→ attendu : 4 rôles (`superadmin`, `admin`, `editor`, `support`), 8 permissions de base seedées par la migration, `superadmin` lié aux 8 (le détail fin des permissions par rôle sera affiné en Phase 2). `2 passed`.
+
+- [x] 1.7 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
