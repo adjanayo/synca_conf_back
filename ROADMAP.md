@@ -34,7 +34,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 | # | Étape | Tables | Vérification | Statut |
 |---|---|---|---|---|
 | 1.1 | Référentiels | `days`, `pass_types`, `partner_levels`, `faq_categories` | migration + seed de test | ✅ Test Done |
-| 1.2 | Utilisateurs & profils | `users`, `user_profiles` | contrainte unicité email testée | ⬜ Not Started |
+| 1.2 | Utilisateurs & profils | `users`, `user_profiles` | contrainte unicité email testée | ✅ Test Done |
 | 1.3 | Programme | `sessions` (FK `days`, `speakers` posé en 1.5) | filtre par jour/catégorie testé | ⬜ Not Started |
 | 1.4 | Paiement & billetterie | `promo_codes`, `payments`, `tickets`, `waitlist` | FK et contraintes `status` testées | ⬜ Not Started |
 | 1.5 | Candidatures | `speakers`, `ambassadors`, `partners`, `exhibitors` | workflow `status` (`pending→...`) testé | ⬜ Not Started |

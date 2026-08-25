@@ -254,4 +254,19 @@ pytest tests/test_referentials.py -v
 
 ---
 
+### 1.2 — Utilisateurs & profils (`users`, `user_profiles`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_users.py -v
+```
+→ attendu : `2 passed` (unicité `email` testée, unicité `(user_id, profile)` testée).
+
+- [x] 1.2 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
