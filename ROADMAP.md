@@ -10,18 +10,20 @@
 
 ## Phase 0 — Bootstrap & tooling
 
-| # | Étape | Livrable | Vérification |
-|---|---|---|---|
-| 0.1 | Structure repo `app/api`, `app/models`, `app/schemas`, `app/core`, `app/services`, `app/deps`, `tests/` | Squelette FastAPI qui démarre | `uvicorn app.main:app --reload` répond sur `/health` |
-| 0.2 | Docker Compose dev — **2 services seulement : FastAPI + MySQL 8.** Pas d'Adminer, pas de Mailpit : debug DB via `docker compose exec mysql mysql`, emails en dev loggés par `loguru` (backend console, pas d'envoi réel) | `docker-compose.yml` | `docker compose up` → 2 services healthy, aucun conteneur superflu |
-| 0.3 | Dockerfile multi-stage strict (`builder` → `python:3.12-slim` final), non-root, `requirements.txt` runtime séparé de `requirements-dev.txt`, `.dockerignore` | `Dockerfile`, `.dockerignore` | image finale < 200 Mo, `docker history` ne montre aucun compilateur/header résiduel |
-| 0.4 | `docker-compose.yml` : `mem_limit` par service (app 600M / db 800M / caddy 100M en prod), logs `json-file` `max-size=10m,max-file=3` | `docker-compose.yml`, `docker-compose.prod.yml` | `docker stats` confirme les limites appliquées |
-| 0.5 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` |
-| 0.6 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur |
-| 0.7 | CI GitHub Actions (lint + tests + scan image Trivy) | `.github/workflows/ci.yml` | pipeline vert sur push, 0 vulnérabilité `HIGH`/`CRITICAL` non traitée sur l'image buildée |
-| 0.8 | Caddyfile (domaine, HTTPS auto, headers sécurité de base, reverse proxy vers `app`) | `Caddyfile` | `docker compose -f docker-compose.prod.yml up` sert en HTTPS avec cert valide |
-| 0.9 | CD GitHub Actions : déploiement sur push `main` (SSH vers la VPS, `docker compose pull && up -d`) | `.github/workflows/deploy.yml` | déploiement effectif observé sur la VPS après un push |
-| 0.10 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap |
+| # | Étape | Livrable | Vérification | Statut |
+|---|---|---|---|---|
+| 0.1 | Structure repo `app/api`, `app/models`, `app/schemas`, `app/core`, `app/services`, `app/deps`, `tests/` | Squelette FastAPI qui démarre | `uvicorn app.main:app --reload` répond sur `/health` | Test Done |
+| 0.2 | Docker Compose dev — **2 services seulement : FastAPI + MySQL 8.** Pas d'Adminer, pas de Mailpit : debug DB via `docker compose exec mysql mysql`, emails en dev loggés par `loguru` (backend console, pas d'envoi réel) | `docker-compose.yml` | `docker compose up` → 2 services healthy, aucun conteneur superflu | Test Done |
+| 0.3 | Dockerfile multi-stage strict (`builder` → `python:3.12-slim` final), non-root, `requirements.txt` runtime séparé de `requirements-dev.txt`, `.dockerignore` | `Dockerfile`, `.dockerignore` | image finale < 200 Mo, `docker history` ne montre aucun compilateur/header résiduel | Test Done* |
+| 0.4 | `docker-compose.yml` : `mem_limit` par service (app 600M / db 800M / caddy 100M en prod), logs `json-file` `max-size=10m,max-file=3` | `docker-compose.yml`, `docker-compose.prod.yml` | `docker stats` confirme les limites appliquées | Not Started |
+| 0.5 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` | Not Started |
+| 0.6 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur | Not Started |
+| 0.7 | CI GitHub Actions (lint + tests + scan image Trivy) | `.github/workflows/ci.yml` | pipeline vert sur push, 0 vulnérabilité `HIGH`/`CRITICAL` non traitée sur l'image buildée | Not Started |
+| 0.8 | Caddyfile (domaine, HTTPS auto, headers sécurité de base, reverse proxy vers `app`) | `Caddyfile` | `docker compose -f docker-compose.prod.yml up` sert en HTTPS avec cert valide | Not Started |
+| 0.9 | CD GitHub Actions : déploiement sur push `main` (SSH vers la VPS, `docker compose pull && up -d`) | `.github/workflows/deploy.yml` | déploiement effectif observé sur la VPS après un push | Not Started |
+| 0.10 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap | Fait via `to_test.md` |
+
+\* 0.3 : non-root confirmé, multi-stage confirmé (compilateurs présents uniquement dans le stage `builder`, jamais copiés dans `runtime`). Taille mesurée localement sur build natif arm64 (Mac dev) = 289 Mo, au-dessus de la cible car `python:3.12-slim` lui-même pèse ~205 Mo sur arm64. La cible de production est amd64 (Hetzner) où l'image officielle est nettement plus légère : la mesure définitive et bloquante se fait dans la CI (0.7), qui build pour `linux/amd64` et vérifie le seuil réel.
 
 ---
 

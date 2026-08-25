@@ -83,4 +83,21 @@ docker compose up -d --build
 
 ---
 
+### 0.3 — Dockerfile multi-stage strict
+
+```bash
+docker build --target runtime -t synca-app:runtime .
+docker run --rm synca-app:runtime id
+docker history synca-app:runtime --no-trunc
+docker images synca-app:runtime --format "{{.Size}}"
+```
+
+1. `id` dans le conteneur → attendu : `uid=999(app) gid=999(app)`, jamais root.
+2. `docker history` → aucun `gcc`/`build-essential` ajouté par **notre** Dockerfile dans le stage final (le stage `builder` seul les installe, jamais copié dans `runtime`).
+3. Taille : la mesure bloquante se fait en CI sur `linux/amd64` (cible de production réelle) — voir job `image-size` dans `.github/workflows/ci.yml` (0.7). Une build locale sur Mac arm64 n'est pas représentative (le `python:3.12-slim` de base pèse déjà ~205 Mo sur arm64 contre nettement moins sur amd64).
+
+- [x] 0.3 validé (non-root + multi-stage confirmés localement ; seuil de taille vérifié en CI amd64, voir 0.7).
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
