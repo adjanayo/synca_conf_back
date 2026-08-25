@@ -195,4 +195,27 @@ Vérification propre à la CI (nécessite un push, `ubuntu-latest` = amd64 natif
 
 ---
 
+### 0.8 — Caddyfile (headers sécurité, reverse proxy, HTTPS auto)
+
+```bash
+docker run --rm -e DOMAIN=":80" \
+  -v "$(pwd)/Caddyfile:/etc/caddy/Caddyfile:ro" \
+  caddy:2.11.4-alpine caddy validate --config /etc/caddy/Caddyfile
+```
+→ attendu : `Valid configuration`.
+
+```bash
+docker compose -f docker-compose.prod.yml up -d --build
+curl -sI http://127.0.0.1/health   # ou le port mappé localement si 80/443 déjà pris
+```
+
+1. Attendu : `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy` tous présents ; pas de header `Server` (retiré via `-Server`) ; `Via: 1.1 Caddy` (normal, ne fuite pas de version).
+2. `curl http://.../health` (GET, pas HEAD) → `{"status":"ok"}`.
+3. **HTTPS avec certificat valide (Let's Encrypt automatique) : non testable en local.** Caddy n'émet un certificat que pour un domaine public résolvable avec le port 443 accessible depuis Internet — nécessite le vrai déploiement VPS (`DOMAIN=votredomaine.com` dans `.env` de prod). À vérifier lors du premier déploiement réel (voir 0.9/checklist Phase 10) : `curl -I https://votredomaine.com/health` → certificat valide, pas d'avertissement navigateur.
+4. Nettoyage : `docker compose -f docker-compose.prod.yml down`.
+
+- [x] 0.8 validé pour tout ce qui est testable sans domaine public/VPS réel (syntaxe, headers, reverse proxy). Le test HTTPS/certificat réel reste une vérification de déploiement, pas de dev local — inscrit dans la checklist Phase 10.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
