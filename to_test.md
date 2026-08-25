@@ -139,4 +139,31 @@ python3 -c "from app.core.config import get_settings; print(get_settings().datab
 
 ---
 
+### 0.6 — Alembic init + première migration (vide)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1   # depuis l'hôte, le port MySQL du conteneur est publié sur 3306
+alembic upgrade head
+```
+
+1. Attendu : `Running upgrade  -> <rev>, initial (empty)`, aucune erreur.
+2. Vérifier la table de suivi Alembic :
+   ```bash
+   docker compose exec db mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "USE syncaconf; SHOW TABLES;"
+   ```
+   → attendu : `alembic_version`.
+3. Réversibilité :
+   ```bash
+   alembic downgrade base && alembic upgrade head
+   ```
+   → attendu : les deux sans erreur.
+4. `docker compose build app` → toujours vert avec `cryptography` ajouté (requis par `asyncmy` pour `caching_sha2_password`, l'auth par défaut de MySQL 8).
+5. Nettoyage : `docker compose down`.
+
+- [x] 0.6 validé — pipeline Alembic (async, `mysql+asyncmy`) fonctionnel de bout en bout contre un vrai MySQL 8.4.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
