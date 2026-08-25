@@ -100,4 +100,22 @@ docker images synca-app:runtime --format "{{.Size}}"
 
 ---
 
+### 0.4 — `mem_limit` + logs bornés (docker-compose.prod.yml)
+
+> En local, si les ports 80/443 sont déjà pris par un autre projet, mapper temporairement `caddy` sur `8080:80`/`8443:443` dans un `docker-compose.override.yml` (déjà dans `.gitignore`, jamais commité) — remettre `80:80`/`443:443` avant tout déploiement réel.
+
+```bash
+docker compose -f docker-compose.prod.yml up -d --build
+docker stats --no-stream --format "{{.Name}} {{.MemUsage}}"
+```
+
+1. Attendu : `app` plafonné à 600MiB, `db` à 800MiB, `caddy` à 100MiB (colonne "MemUsage / Limit").
+2. `curl` à travers Caddy (ou le port override en local) → `{"status":"ok"}`.
+3. `docker compose -f docker-compose.prod.yml logs caddy --tail 20` → reverse proxy actif, pas d'erreur bloquante (le warning "no automatic HTTPS" est normal tant que `DOMAIN` n'est pas un vrai domaine public, voir 0.8).
+4. Nettoyage : `docker compose -f docker-compose.prod.yml down`.
+
+- [x] 0.4 validé — 3 services (`app`/`db`/`caddy`) démarrent avec les `mem_limit` corrects et logs `json-file` bornés (`max-size=10m,max-file=3`), `/health` accessible via Caddy.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
