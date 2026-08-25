@@ -386,4 +386,27 @@ EXPLAIN SELECT * FROM sessions WHERE day_id = 1 AND category = 'workshop';
 
 ---
 
+### 1.10 — Schémas Pydantic pour toutes les tables
+
+```bash
+source .venv/bin/activate
+pytest tests/test_schemas.py -v
+```
+→ attendu : `11 passed` — un schéma `*Read` (Pydantic v2, `from_attributes=True`) par table de la Phase 1, validé par sérialisation depuis une instance ORM construite en mémoire (pas besoin de DB pour ce test, contrairement aux autres). Vérifie notamment que `AdminUserRead` n'expose jamais `password_hash`.
+
+Suite complète (avec DB, base fraîche pour éviter tout résidu d'une vérification manuelle précédente) :
+```bash
+docker compose up -d db
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/ -v
+```
+→ attendu : `34 passed`.
+
+⚠️ Si des tests échouent avec des erreurs `Duplicate entry` sur des valeurs comme `'Standard'`, c'est un résidu de données insérées manuellement (ex. session `mysql -e "INSERT ..."` pour un `EXPLAIN`) qui persiste dans le volume `mysql_data` même après `docker compose down` (sans `-v`, le volume survit). Nettoyer avec `docker compose down -v` puis remigrer.
+
+- [x] 1.10 validé — Phase 1 (modèle de données) complète.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
