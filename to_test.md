@@ -409,4 +409,20 @@ pytest tests/ -v
 
 ---
 
+## Phase 2 — Auth & RBAC
+
+### 2.1 — Hash mots de passe (Argon2id via `argon2-cffi`)
+
+```bash
+source .venv/bin/activate
+pip install -r requirements-dev.txt
+pytest tests/test_security.py -v
+docker compose build app
+```
+→ attendu : `2 passed` (hash différent du mot de passe en clair, vérification correcte accepte/rejette), build Docker toujours vert avec `argon2-cffi` (extension C compilée dans le stage `builder` alpine).
+
+- [x] 2.1 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

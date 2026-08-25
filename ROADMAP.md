@@ -50,7 +50,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 
 | # | Étape | Détail | Vérification | Statut |
 |---|---|---|---|---|
-| 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) | `app/core/security.py` | test hash/verify | ⬜ Not Started |
+| 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) | `app/core/security.py` | test hash/verify | ✅ Test Done |
 | 2.2 | JWT access + refresh token : `PyJWT` | `app/services/auth_service.py` | test expiration, signature invalide rejetée | ⬜ Not Started |
 | 2.3 | `POST /api/admin/login` | rate limit `slowapi` 5/min par email+IP | test brute-force bloqué | ⬜ Not Started |
 | 2.4 | Dependency `require_permission(code)` | `app/deps/rbac.py` | test 403 si permission manquante | ⬜ Not Started |
