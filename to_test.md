@@ -166,4 +166,29 @@ alembic upgrade head
 
 ---
 
+### 0.7 — CI GitHub Actions (lint + tests + scan image Trivy)
+
+Reproduction locale de `.github/workflows/ci.yml` :
+
+```bash
+source .venv/bin/activate
+ruff check .
+docker compose up -d db
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest -v
+docker compose down
+```
+
+→ attendu : `ruff` sans violation, migration verte, `1 passed`.
+
+Vérification propre à la CI (nécessite un push, `ubuntu-latest` = amd64 natif) :
+1. Job `lint-and-test` : service MySQL 8.4 éphémère, mêmes étapes que ci-dessus.
+2. Job `image-scan` : build `--target runtime` sur runner amd64 (la mesure de taille fiable, contrairement au Mac arm64 local, cf. 0.3), échoue si > 200 Mo, puis scan Trivy (`HIGH`/`CRITICAL` non corrigés → échec du pipeline).
+3. Sur GitHub : `Actions` → dernier run sur `dev` → les deux jobs verts.
+
+- [x] 0.7 validé localement (lint + migration + tests) ; jobs CI (taille image amd64 + Trivy) à confirmer au premier push GitHub — voir Actions du repo après ce commit.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
