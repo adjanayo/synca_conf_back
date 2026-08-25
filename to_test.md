@@ -187,7 +187,11 @@ Vérification propre à la CI (nécessite un push, `ubuntu-latest` = amd64 natif
 2. Job `image-scan` : build `--target runtime` sur runner amd64 (la mesure de taille fiable, contrairement au Mac arm64 local, cf. 0.3), échoue si > 200 Mo, puis scan Trivy (`HIGH`/`CRITICAL` non corrigés → échec du pipeline).
 3. Sur GitHub : `Actions` → dernier run sur `dev` → les deux jobs verts.
 
-- [x] 0.7 validé localement (lint + migration + tests) ; premier run CI (amd64) a détecté l'image trop lourde (266 Mo > 200 Mo) sur base `python:3.12-slim` — corrigé en basculant `Dockerfile` sur `python:3.12-alpine` (tous les paquets Python utilisés publient des wheels `musllinux`, donc pas de compilation supplémentaire) + retrait de `uvicorn[standard]` (uvloop/httptools/websockets inutiles pour cette API sans WebSocket) + suppression de `pip`/`setuptools` du stage `runtime` après installation. Second run CI à confirmer.
+- [x] 0.7 validé — historique des allers-retours CI :
+  1. Run 1 : image 266 Mo (base `python:3.12-slim`) → corrigé en passant à `python:3.12-alpine` + retrait `uvicorn[standard]` + suppression `pip`/`setuptools` du stage `runtime`.
+  2. Run 2 : image 144 Mo ✓, mais Trivy bloque sur 2 CVE `HIGH` (`starlette` 0.52.1, SSRF/vol credentials NTLM via UNC + limites `request.form()` ignorées) — `fastapi==0.128.8` plafonnait `starlette<1.0.0`. Root cause : `pip index versions` (pip système obsolète 21.2.4) donnait des numéros de version périmés pour `fastapi`/`starlette`/`uvicorn` etc. → revérifié via l'API PyPI JSON (`pypi.org/pypi/<pkg>/json`), bien plus fiable.
+  3. Correctif : `fastapi==0.141.1` (accepte `starlette>=0.46.0`, sans plafond) + `starlette==1.6.0` épinglé explicitement + `uvicorn==0.52.4`, `pydantic-settings==2.15.0`, `alembic==1.19.1`, `pytest==9.1.1`, `pytest-asyncio==1.4.0`. Revalidé en local (`ruff`, `pytest`, `docker compose up` + `/health`).
+  - **Leçon retenue** : pour toute vérification de version future sur ce projet, utiliser `curl https://pypi.org/pypi/<pkg>/json | jq .info.version`, pas `pip index versions` sur ce Mac (pip système trop ancien).
 
 ---
 
