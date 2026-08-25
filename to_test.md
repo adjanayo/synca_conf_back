@@ -286,4 +286,19 @@ Note technique (à surveiller sur toutes les prochaines migrations) : le `downgr
 
 ---
 
+### 1.4 — Paiement & billetterie (`promo_codes`, `payments`, `tickets`, `waitlist`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_payments.py -v
+```
+→ attendu : `4 passed` (FK invalide rejetée, `status` par défaut `pending`, un seul ticket par paiement (`UniqueConstraint(payment_id)`), unicité `waitlist.email`).
+
+- [x] 1.4 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
