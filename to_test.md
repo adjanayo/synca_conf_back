@@ -318,4 +318,19 @@ Vérifie aussi que la FK `sessions.speaker_id → speakers.id` (posée en attent
 
 ---
 
+### 1.6 — Contenu & contact (`faqs`, `contact_messages`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_content.py -v
+```
+→ attendu : `2 passed` (CRUD complet `Faq` — create/read/update/delete — et `ContactMessage.is_read=False` par défaut).
+
+- [x] 1.6 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

@@ -38,7 +38,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 | 1.3 | Programme | `sessions` (FK `days`, `speakers` posé en 1.5) | filtre par jour/catégorie testé | ✅ Test Done |
 | 1.4 | Paiement & billetterie | `promo_codes`, `payments`, `tickets`, `waitlist` | FK et contraintes `status` testées | ✅ Test Done |
 | 1.5 | Candidatures | `speakers`, `ambassadors`, `partners`, `exhibitors` | workflow `status` (`pending→...`) testé | ✅ Test Done |
-| 1.6 | Contenu & contact | `faqs`, `contact_messages` | CRUD basique testé | ⬜ Not Started |
+| 1.6 | Contenu & contact | `faqs`, `contact_messages` | CRUD basique testé | ✅ Test Done |
 | 1.7 | RBAC | `roles`, `permissions`, `role_permissions`, `admin_users` (rôle relationnel, pas un `enum` unique sur la colonne) | seed des 4 rôles + permissions de base | ⬜ Not Started |
 | 1.8 | Fenêtres de campagne | `campaign_windows` (`call_for_speaker`, `ticketing`, `call_for_partner`, `call_for_ambassador`, `call_for_exhibitor`), seed avec dates par défaut | `end_at > start_at` contraint et testé | ⬜ Not Started |
 | 1.9 | Index | tous les index listés dans `schema.md` §1 | `EXPLAIN` sur requêtes chaudes (liste inscriptions, recherche email) | ⬜ Not Started |
