@@ -118,4 +118,25 @@ docker stats --no-stream --format "{{.Name}} {{.MemUsage}}"
 
 ---
 
+### 0.5 — `.env.example` aligné avec `app/core/config.py`
+
+```bash
+source .venv/bin/activate
+pip install -r requirements-dev.txt   # sqlalchemy[asyncio], asyncmy, alembic ajoutés
+pytest tests/test_health.py -v
+python3 -c "from app.core.config import get_settings; print(get_settings().database_url)"
+```
+
+1. Attendu : `pytest` toujours vert (config DB n'affecte pas `/health`).
+2. `database_url` construit correctement : `mysql+asyncmy://syncaconf:change-me-app@db:3306/syncaconf` (valeurs par défaut = celles de `.env.example`).
+3. Rebuild Docker pour confirmer qu'`asyncmy` (extension C) compile dans le stage `builder` :
+   ```bash
+   docker compose build app --no-cache
+   ```
+   → attendu : build vert, pas d'erreur de compilation.
+
+- [x] 0.5 validé — `.env.example` et `Settings` cohérents, `asyncmy`/`sqlalchemy`/`alembic` installés et buildables en conteneur.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

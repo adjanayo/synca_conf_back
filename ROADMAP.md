@@ -3,7 +3,7 @@
 > Backend seul (FastAPI + MySQL + RBAC + backoffice). Aucun scope frontend.
 > Principe de sobriété : 3 conteneurs en production (FastAPI, MySQL, Caddy), aucun outil optionnel (pas d'Adminer/Mailpit/Sentry/Redis/Celery), une seule dépendance par besoin (PyJWT, argon2-cffi, loguru) — détail dans `syncaconf/planning_fastapi.md` §3.
 > Document vivant : toute nouvelle portée ou correction de trajectoire se fait ici, avant implémentation (cf. `change-control`, `quality-engineer`).
-> Statuts par étape : `Not Started` / `In Progress` / `Test Done`. Une étape `Test Done` ne se retouche que pour un vrai bug ou une demande explicite (voir `.claude/skills/change-control/SKILL.md`).
+> Statuts par étape : ⬜ `Not Started` / 🚧 `In Progress` / ✅ `Test Done`. Une étape ✅ `Test Done` ne se retouche que pour un vrai bug ou une demande explicite (voir `.claude/skills/change-control/SKILL.md`).
 > Stack et coûts détaillés : `syncaconf/planning_fastapi.md`.
 
 ---
@@ -12,16 +12,16 @@
 
 | # | Étape | Livrable | Vérification | Statut |
 |---|---|---|---|---|
-| 0.1 | Structure repo `app/api`, `app/models`, `app/schemas`, `app/core`, `app/services`, `app/deps`, `tests/` | Squelette FastAPI qui démarre | `uvicorn app.main:app --reload` répond sur `/health` | Test Done |
-| 0.2 | Docker Compose dev — **2 services seulement : FastAPI + MySQL 8.** Pas d'Adminer, pas de Mailpit : debug DB via `docker compose exec mysql mysql`, emails en dev loggés par `loguru` (backend console, pas d'envoi réel) | `docker-compose.yml` | `docker compose up` → 2 services healthy, aucun conteneur superflu | Test Done |
-| 0.3 | Dockerfile multi-stage strict (`builder` → `python:3.12-slim` final), non-root, `requirements.txt` runtime séparé de `requirements-dev.txt`, `.dockerignore` | `Dockerfile`, `.dockerignore` | image finale < 200 Mo, `docker history` ne montre aucun compilateur/header résiduel | Test Done* |
-| 0.4 | `docker-compose.yml` : `mem_limit` par service (app 600M / db 800M / caddy 100M en prod), logs `json-file` `max-size=10m,max-file=3` | `docker-compose.yml`, `docker-compose.prod.yml` | `docker stats` confirme les limites appliquées | Test Done |
-| 0.5 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` | Not Started |
-| 0.6 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur | Not Started |
-| 0.7 | CI GitHub Actions (lint + tests + scan image Trivy) | `.github/workflows/ci.yml` | pipeline vert sur push, 0 vulnérabilité `HIGH`/`CRITICAL` non traitée sur l'image buildée | Not Started |
-| 0.8 | Caddyfile (domaine, HTTPS auto, headers sécurité de base, reverse proxy vers `app`) | `Caddyfile` | `docker compose -f docker-compose.prod.yml up` sert en HTTPS avec cert valide | Not Started |
-| 0.9 | CD GitHub Actions : déploiement sur push `main` (SSH vers la VPS, `docker compose pull && up -d`) | `.github/workflows/deploy.yml` | déploiement effectif observé sur la VPS après un push | Not Started |
-| 0.10 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap | Fait via `to_test.md` |
+| 0.1 | Structure repo `app/api`, `app/models`, `app/schemas`, `app/core`, `app/services`, `app/deps`, `tests/` | Squelette FastAPI qui démarre | `uvicorn app.main:app --reload` répond sur `/health` | ✅ Test Done |
+| 0.2 | Docker Compose dev — **2 services seulement : FastAPI + MySQL 8.** Pas d'Adminer, pas de Mailpit : debug DB via `docker compose exec mysql mysql`, emails en dev loggés par `loguru` (backend console, pas d'envoi réel) | `docker-compose.yml` | `docker compose up` → 2 services healthy, aucun conteneur superflu | ✅ Test Done |
+| 0.3 | Dockerfile multi-stage strict (`builder` → `python:3.12-slim` final), non-root, `requirements.txt` runtime séparé de `requirements-dev.txt`, `.dockerignore` | `Dockerfile`, `.dockerignore` | image finale < 200 Mo, `docker history` ne montre aucun compilateur/header résiduel | ✅ Test Done* |
+| 0.4 | `docker-compose.yml` : `mem_limit` par service (app 600M / db 800M / caddy 100M en prod), logs `json-file` `max-size=10m,max-file=3` | `docker-compose.yml`, `docker-compose.prod.yml` | `docker stats` confirme les limites appliquées | ✅ Test Done |
+| 0.5 | `.env.example` réécrit pour FastAPI/MySQL (pas Postgres/Redis/MinIO) | fichier à la racine | valeurs cohérentes avec `app/core/config.py` | ⬜ Not Started |
+| 0.6 | Alembic init + première migration (tables vides) | `alembic/` | `alembic upgrade head` sans erreur | ⬜ Not Started |
+| 0.7 | CI GitHub Actions (lint + tests + scan image Trivy) | `.github/workflows/ci.yml` | pipeline vert sur push, 0 vulnérabilité `HIGH`/`CRITICAL` non traitée sur l'image buildée | ⬜ Not Started |
+| 0.8 | Caddyfile (domaine, HTTPS auto, headers sécurité de base, reverse proxy vers `app`) | `Caddyfile` | `docker compose -f docker-compose.prod.yml up` sert en HTTPS avec cert valide | ⬜ Not Started |
+| 0.9 | CD GitHub Actions : déploiement sur push `main` (SSH vers la VPS, `docker compose pull && up -d`) | `.github/workflows/deploy.yml` | déploiement effectif observé sur la VPS après un push | ⬜ Not Started |
+| 0.10 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap | ✅ Fait via `to_test.md` |
 
 \* 0.3 : non-root confirmé, multi-stage confirmé (compilateurs présents uniquement dans le stage `builder`, jamais copiés dans `runtime`). Taille mesurée localement sur build natif arm64 (Mac dev) = 289 Mo, au-dessus de la cible car `python:3.12-slim` lui-même pèse ~205 Mo sur arm64. La cible de production est amd64 (Hetzner) où l'image officielle est nettement plus légère : la mesure définitive et bloquante se fait dans la CI (0.7), qui build pour `linux/amd64` et vérifie le seuil réel.
 
@@ -31,46 +31,46 @@
 
 Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0 / MySQL : `ENUM` natif MySQL au lieu de `CHECK`, `JSON` pour les champs multi-valeurs (`social_handles`), tailles `VARCHAR` conservées.
 
-| # | Étape | Tables | Vérification |
-|---|---|---|---|
-| 1.1 | Référentiels | `days`, `pass_types`, `partner_levels`, `faq_categories` | migration + seed de test |
-| 1.2 | Utilisateurs & profils | `users`, `user_profiles` | contrainte unicité email testée |
-| 1.3 | Programme | `sessions` (FK `days`, `speakers` posé en 1.5) | filtre par jour/catégorie testé |
-| 1.4 | Paiement & billetterie | `promo_codes`, `payments`, `tickets`, `waitlist` | FK et contraintes `status` testées |
-| 1.5 | Candidatures | `speakers`, `ambassadors`, `partners`, `exhibitors` | workflow `status` (`pending→...`) testé |
-| 1.6 | Contenu & contact | `faqs`, `contact_messages` | CRUD basique testé |
-| 1.7 | RBAC | `roles`, `permissions`, `role_permissions`, `admin_users` (rôle relationnel, pas un `enum` unique sur la colonne) | seed des 4 rôles + permissions de base |
-| 1.8 | Fenêtres de campagne | `campaign_windows` (`call_for_speaker`, `ticketing`, `call_for_partner`, `call_for_ambassador`, `call_for_exhibitor`), seed avec dates par défaut | `end_at > start_at` contraint et testé |
-| 1.9 | Index | tous les index listés dans `schema.md` §1 | `EXPLAIN` sur requêtes chaudes (liste inscriptions, recherche email) |
-| 1.10 | Modèles SQLAlchemy + schémas Pydantic pour toutes les tables ci-dessus | `app/models/*.py`, `app/schemas/*.py` | tests de sérialisation |
+| # | Étape | Tables | Vérification | Statut |
+|---|---|---|---|---|
+| 1.1 | Référentiels | `days`, `pass_types`, `partner_levels`, `faq_categories` | migration + seed de test | ⬜ Not Started |
+| 1.2 | Utilisateurs & profils | `users`, `user_profiles` | contrainte unicité email testée | ⬜ Not Started |
+| 1.3 | Programme | `sessions` (FK `days`, `speakers` posé en 1.5) | filtre par jour/catégorie testé | ⬜ Not Started |
+| 1.4 | Paiement & billetterie | `promo_codes`, `payments`, `tickets`, `waitlist` | FK et contraintes `status` testées | ⬜ Not Started |
+| 1.5 | Candidatures | `speakers`, `ambassadors`, `partners`, `exhibitors` | workflow `status` (`pending→...`) testé | ⬜ Not Started |
+| 1.6 | Contenu & contact | `faqs`, `contact_messages` | CRUD basique testé | ⬜ Not Started |
+| 1.7 | RBAC | `roles`, `permissions`, `role_permissions`, `admin_users` (rôle relationnel, pas un `enum` unique sur la colonne) | seed des 4 rôles + permissions de base | ⬜ Not Started |
+| 1.8 | Fenêtres de campagne | `campaign_windows` (`call_for_speaker`, `ticketing`, `call_for_partner`, `call_for_ambassador`, `call_for_exhibitor`), seed avec dates par défaut | `end_at > start_at` contraint et testé | ⬜ Not Started |
+| 1.9 | Index | tous les index listés dans `schema.md` §1 | `EXPLAIN` sur requêtes chaudes (liste inscriptions, recherche email) | ⬜ Not Started |
+| 1.10 | Modèles SQLAlchemy + schémas Pydantic pour toutes les tables ci-dessus | `app/models/*.py`, `app/schemas/*.py` | tests de sérialisation | ⬜ Not Started |
 
 ---
 
 ## Phase 2 — Auth & RBAC
 
-| # | Étape | Détail | Vérification |
-|---|---|---|---|
-| 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) | `app/core/security.py` | test hash/verify |
-| 2.2 | JWT access + refresh token : `PyJWT` | `app/services/auth_service.py` | test expiration, signature invalide rejetée |
-| 2.3 | `POST /api/admin/login` | rate limit `slowapi` 5/min par email+IP | test brute-force bloqué |
-| 2.4 | Dependency `require_permission(code)` | `app/deps/rbac.py` | test 403 si permission manquante |
-| 2.5 | Endpoints RBAC admin (gestion rôles/permissions) | `PATCH /api/admin/roles/:id` | test superadmin seul autorisé |
-| 2.6 | Audit log connexions (succès/échec) | table `audit_logs` + middleware | entrée créée à chaque login |
+| # | Étape | Détail | Vérification | Statut |
+|---|---|---|---|---|
+| 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) | `app/core/security.py` | test hash/verify | ⬜ Not Started |
+| 2.2 | JWT access + refresh token : `PyJWT` | `app/services/auth_service.py` | test expiration, signature invalide rejetée | ⬜ Not Started |
+| 2.3 | `POST /api/admin/login` | rate limit `slowapi` 5/min par email+IP | test brute-force bloqué | ⬜ Not Started |
+| 2.4 | Dependency `require_permission(code)` | `app/deps/rbac.py` | test 403 si permission manquante | ⬜ Not Started |
+| 2.5 | Endpoints RBAC admin (gestion rôles/permissions) | `PATCH /api/admin/roles/:id` | test superadmin seul autorisé | ⬜ Not Started |
+| 2.6 | Audit log connexions (succès/échec) | table `audit_logs` + middleware | entrée créée à chaque login | ⬜ Not Started |
 
 ---
 
 ## Phase 3 — Endpoints publics (lecture)
 
-| # | Étape | Endpoint |
-|---|---|---|
-| 3.1 | Jours & programme | `GET /api/days`, `GET /api/sessions?day=&category=` |
-| 3.2 | Pass | `GET /api/pass-types` |
-| 3.3 | Speakers publics | `GET /api/speakers?theme=&format=` (filtre `is_public=true`) |
-| 3.4 | Partenaires publics | `GET /api/partners?level=` (filtre `is_public=true`) |
-| 3.5 | Exposants publics | `GET /api/exhibitors?public=true` (filtre `is_public=true`) |
-| 3.6 | FAQ | `GET /api/faqs?category=` |
-| 3.7 | Fenêtres de campagne | `GET /api/campaign-windows` (dates + statut, pour affichage frontend) |
-| 3.8 | Pagination/tri commun | dependency partagée `app/deps/pagination.py` |
+| # | Étape | Endpoint | Statut |
+|---|---|---|---|
+| 3.1 | Jours & programme | `GET /api/days`, `GET /api/sessions?day=&category=` | ⬜ Not Started |
+| 3.2 | Pass | `GET /api/pass-types` | ⬜ Not Started |
+| 3.3 | Speakers publics | `GET /api/speakers?theme=&format=` (filtre `is_public=true`) | ⬜ Not Started |
+| 3.4 | Partenaires publics | `GET /api/partners?level=` (filtre `is_public=true`) | ⬜ Not Started |
+| 3.5 | Exposants publics | `GET /api/exhibitors?public=true` (filtre `is_public=true`) | ⬜ Not Started |
+| 3.6 | FAQ | `GET /api/faqs?category=` | ⬜ Not Started |
+| 3.7 | Fenêtres de campagne | `GET /api/campaign-windows` (dates + statut, pour affichage frontend) | ⬜ Not Started |
+| 3.8 | Pagination/tri commun | dependency partagée `app/deps/pagination.py` | ⬜ Not Started |
 
 Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune donnée `is_public=false` ne fuite.
 
