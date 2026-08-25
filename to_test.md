@@ -425,4 +425,16 @@ docker compose build app
 
 ---
 
+### 2.2 — JWT access + refresh (`PyJWT`)
+
+```bash
+source .venv/bin/activate
+pytest tests/test_auth_service.py -v
+```
+→ attendu : `5 passed`, aucun warning (`JWT_SECRET_KEY` par défaut ≥ 32 octets pour HS256). Couvre : round-trip access/refresh, rejet d'un token du mauvais type, rejet d'un token expiré, rejet d'une signature invalide.
+
+- [x] 2.2 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

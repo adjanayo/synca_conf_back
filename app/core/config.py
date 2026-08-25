@@ -15,6 +15,11 @@ class Settings(BaseSettings):
     mysql_password: str = "change-me-app"
     mysql_database: str = "syncaconf"
 
+    jwt_secret_key: str = "change-me-in-production-min-32-bytes-long"
+    jwt_algorithm: str = "HS256"
+    access_token_expire_minutes: int = 15
+    refresh_token_expire_days: int = 7
+
     @property
     def database_url(self) -> str:
         return (
