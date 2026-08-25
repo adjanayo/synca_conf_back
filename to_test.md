@@ -48,4 +48,39 @@ pip install -r requirements-dev.txt
 
 ---
 
+### 0.2 — Docker Compose dev (FastAPI + MySQL 8, 2 services seulement)
+
+```bash
+cp .env.example .env   # si pas déjà fait
+docker compose up -d --build
+```
+
+1. Vérifier que seuls 2 services tournent, tous les deux `healthy`/`running` :
+   ```bash
+   docker compose ps
+   ```
+   → attendu : `app` et `db` uniquement (pas d'Adminer/Mailpit/Sentry/Redis).
+
+2. Santé de l'app à travers le conteneur :
+   ```bash
+   curl http://127.0.0.1:8010/health
+   ```
+   → attendu : `{"status":"ok"}`.
+   (Port hôte `8010` choisi pour éviter les conflits avec d'autres projets locaux sur `8000` — configurable dans `docker-compose.yml`.)
+
+3. Logs sans erreur :
+   ```bash
+   docker compose logs app --tail 50
+   ```
+   → attendu : aucune erreur au démarrage.
+
+4. Nettoyage :
+   ```bash
+   docker compose down
+   ```
+
+- [x] 0.2 validé — `docker compose up` démarre exactement 2 services (`app`, `db`), `db` healthy avant que `app` ne démarre (`depends_on: condition: service_healthy`), `/health` répond à travers le conteneur.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
