@@ -4,6 +4,7 @@ from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, Integer, String, Tex
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
+from app.models.applications import Speaker
 from app.models.referentials import Day
 
 SESSION_CATEGORY_VALUES = (
@@ -33,10 +34,11 @@ class Session(Base):
     start_time: Mapped[time] = mapped_column(Time, nullable=False)
     end_time: Mapped[time] = mapped_column(Time, nullable=False)
     room: Mapped[str | None] = mapped_column(String(100))
-    # FK vers speakers.id ajoutée en 1.5 (la table speakers n'existe pas encore ici),
-    # cf. schema.md §1 (ALTER TABLE sessions ADD CONSTRAINT fk_speaker ...).
-    speaker_id: Mapped[int | None] = mapped_column(Integer)
+    speaker_id: Mapped[int | None] = mapped_column(
+        Integer, ForeignKey("speakers.id", name="fk_sessions_speaker_id")
+    )
     is_public: Mapped[bool] = mapped_column(Boolean, default=True, server_default="1")
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
     day: Mapped[Day] = relationship()
+    speaker: Mapped[Speaker | None] = relationship()

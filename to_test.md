@@ -301,4 +301,21 @@ pytest tests/test_payments.py -v
 
 ---
 
+### 1.5 — Candidatures (`speakers`, `ambassadors`, `partners`, `exhibitors`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_applications.py -v
+```
+→ attendu : `6 passed` (statut par défaut `pending`/`is_public=False`, transition de workflow speaker (`pending→accepted`+`is_public=True`), `social_handles` JSON round-trip, FK `partners.level_id` invalide rejetée, workflow partenaire complet `pending→contacted→negotiating→confirmed`, exposant par défaut `pending`/non public).
+
+Vérifie aussi que la FK `sessions.speaker_id → speakers.id` (posée en attente depuis 1.3) a bien été ajoutée : `alembic check` → `No new upgrade operations detected.`
+
+- [x] 1.5 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
