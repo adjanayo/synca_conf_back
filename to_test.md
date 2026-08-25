@@ -269,4 +269,21 @@ pytest tests/test_users.py -v
 
 ---
 
+### 1.3 — Programme (`sessions`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_sessions.py -v
+```
+→ attendu : `1 passed` (filtre par `day_id` + `category` testé).
+
+Note technique (à surveiller sur toutes les prochaines migrations) : le `downgrade()` auto-généré par Alembic tente parfois de `DROP INDEX` sur un index qui porte encore une FK — MySQL refuse. Correctif appliqué : `downgrade()` fait un simple `op.drop_table(...)` (qui gère lui-même FK + index), plutôt que les `drop_index` individuels générés automatiquement.
+
+- [x] 1.3 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
