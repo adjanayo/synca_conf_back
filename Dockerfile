@@ -1,10 +1,8 @@
-FROM python:3.12-slim AS builder
+FROM python:3.12-alpine AS builder
 
 WORKDIR /build
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends build-essential default-libmysqlclient-dev pkg-config libssl-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache gcc musl-dev openssl-dev
 
 COPY requirements.txt .
 RUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
@@ -16,16 +14,18 @@ COPY requirements-dev.txt .
 RUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements-dev.txt
 
 
-FROM python:3.12-slim AS runtime
+FROM python:3.12-alpine AS runtime
 
-RUN groupadd --system app && useradd --system --gid app --no-create-home app
+RUN addgroup -S app && adduser -S -G app -H app
 
 WORKDIR /app
 
 COPY --from=builder /wheels /wheels
 COPY requirements.txt .
 RUN pip install --no-cache-dir --no-index --find-links=/wheels -r requirements.txt \
-    && rm -rf /wheels requirements.txt
+    && rm -rf /wheels requirements.txt \
+    && find /usr/local/lib/python3.12 -type d -name "__pycache__" -prune -exec rm -rf {} \; \
+    && python -m pip uninstall -y pip setuptools
 
 COPY app/ app/
 
@@ -39,9 +39,9 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 
-FROM python:3.12-slim AS dev
+FROM python:3.12-alpine AS dev
 
-RUN groupadd --system app && useradd --system --gid app --no-create-home app
+RUN addgroup -S app && adduser -S -G app -H app
 
 WORKDIR /app
 

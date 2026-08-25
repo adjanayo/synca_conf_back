@@ -187,7 +187,7 @@ Vérification propre à la CI (nécessite un push, `ubuntu-latest` = amd64 natif
 2. Job `image-scan` : build `--target runtime` sur runner amd64 (la mesure de taille fiable, contrairement au Mac arm64 local, cf. 0.3), échoue si > 200 Mo, puis scan Trivy (`HIGH`/`CRITICAL` non corrigés → échec du pipeline).
 3. Sur GitHub : `Actions` → dernier run sur `dev` → les deux jobs verts.
 
-- [x] 0.7 validé localement (lint + migration + tests) ; jobs CI (taille image amd64 + Trivy) à confirmer au premier push GitHub — voir Actions du repo après ce commit.
+- [x] 0.7 validé localement (lint + migration + tests) ; premier run CI (amd64) a détecté l'image trop lourde (266 Mo > 200 Mo) sur base `python:3.12-slim` — corrigé en basculant `Dockerfile` sur `python:3.12-alpine` (tous les paquets Python utilisés publient des wheels `musllinux`, donc pas de compilation supplémentaire) + retrait de `uvicorn[standard]` (uvloop/httptools/websockets inutiles pour cette API sans WebSocket) + suppression de `pip`/`setuptools` du stage `runtime` après installation. Second run CI à confirmer.
 
 ---
 
