@@ -881,4 +881,21 @@ Génération automatique d'un `promo_code` à l'acceptation → reportée à la 
 
 ---
 
+### 4.5 — Candidature partenaire (`POST /api/partners/apply`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_partner_apply.py -v
+```
+→ attendu : `5 passed` — fenêtre `call_for_partner` fermée → `403` ; candidature réussie sans logo (`logo_url=null`) ; candidature réussie avec logo (URL sans le nom de fichier original) ; `level_id` inexistant → `400` ; faux logo → `400`.
+
+⚠️ Bug corrigé dans `app/core/multipart.py::parse_multipart_form()` pendant cette étape : un champ liste (`objectives: list[str]`) envoyé avec **un seul élément** est indiscernable d'un champ scalaire sur le fil HTTP multipart — la fonction inspecte maintenant l'annotation de type du modèle Pydantic (`list[...]` ou `X | None` contenant une liste) et utilise systématiquement `form.getlist()` pour ces champs, peu importe le nombre de valeurs envoyées. Couvert par `test_partner_apply_success_without_logo` (`objectives=["Visibilité"]`, un seul élément).
+
+- [x] 4.5 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

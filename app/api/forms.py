@@ -12,6 +12,8 @@ from app.models import (
     Ambassador,
     ContactMessage,
     NewsletterSubscriber,
+    Partner,
+    PartnerLevel,
     PassType,
     PromoCode,
     Speaker,
@@ -20,10 +22,11 @@ from app.models import (
     Waitlist,
 )
 from app.schemas.ambassador_apply import AmbassadorApplyCreate
-from app.schemas.applications import AmbassadorRead, SpeakerRead
+from app.schemas.applications import AmbassadorRead, PartnerRead, SpeakerRead
 from app.schemas.contact import ContactCreate
 from app.schemas.content import ContactMessageRead
 from app.schemas.newsletter import NewsletterCreate, NewsletterSubscriberRead
+from app.schemas.partner_apply import PartnerApplyCreate
 from app.schemas.payments import WaitlistRead
 from app.schemas.register import RegisterCreate
 from app.schemas.speaker_apply import SpeakerApplyCreate
@@ -249,3 +252,57 @@ async def apply_as_ambassador(
     await db.refresh(ambassador)
 
     return AmbassadorRead.model_validate(ambassador)
+
+
+@router.post(
+    "/partners/apply",
+    response_model=PartnerRead,
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_open_campaign("call_for_partner"))],
+)
+async def apply_as_partner(
+    request: Request,
+    logo: UploadFile | None = File(default=None),
+    db: AsyncSession = Depends(get_db),
+) -> PartnerRead:
+    body = await parse_multipart_form(request, PartnerApplyCreate)
+
+    level = await db.get(PartnerLevel, body.level_id)
+    if level is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Ce palier de partenariat n'est pas valide.",
+        )
+
+    logo_url = None
+    if logo is not None and logo.filename:
+        content = await logo.read()
+        try:
+            logo_url = await upload_file(content, logo.filename, logo.content_type or "")
+        except UploadRejectedError as exc:
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
+    partner = Partner(
+        organization_name=body.organization_name,
+        sector=body.sector,
+        country=body.country,
+        city=body.city,
+        website_url=body.website_url,
+        contact_name=body.contact_name,
+        contact_position=body.contact_position,
+        contact_email=body.contact_email,
+        contact_phone=body.contact_phone,
+        level_id=body.level_id,
+        has_budget=body.has_budget,
+        objectives=", ".join(body.objectives),
+        previous_sponsor=body.previous_sponsor,
+        message=body.message,
+        heard_from=body.heard_from,
+        gdpr_consent=body.gdpr_consent,
+        logo_url=logo_url,
+    )
+    db.add(partner)
+    await db.commit()
+    await db.refresh(partner)
+
+    return PartnerRead.model_validate(partner)

@@ -1,6 +1,18 @@
+import types
+import typing
+
 from fastapi import HTTPException, Request, status
 from pydantic import BaseModel, ValidationError
 from starlette.datastructures import UploadFile as StarletteUploadFile
+
+
+def _is_list_annotation(annotation: object) -> bool:
+    origin = typing.get_origin(annotation)
+    if origin is list:
+        return True
+    if origin in (typing.Union, types.UnionType):
+        return any(_is_list_annotation(arg) for arg in typing.get_args(annotation))
+    return False
 
 
 async def parse_multipart_form(request: Request, model: type[BaseModel]) -> BaseModel:
@@ -11,14 +23,25 @@ async def parse_multipart_form(request: Request, model: type[BaseModel]) -> Base
     route signature breaks form-field flattening (both end up nested under
     a literal "body" key instead of the individual field names). Parsing
     the form directly avoids that bug.
+
+    A field typed as a list (e.g. `objectives: list[str]`) is always read
+    with `getlist()`, even when the client sends exactly one value for it
+    -- otherwise a single-item list is indistinguishable from a plain
+    scalar field on the wire, and Pydantic won't auto-wrap a bare string
+    into a one-item list.
     """
     form = await request.form()
-    data: dict[str, str] = {}
-    for key in form:
-        value = form[key]
-        if isinstance(value, StarletteUploadFile):
-            continue  # file fields are handled separately by the caller
-        data[key] = value
+    data: dict[str, str | list[str]] = {}
+
+    for field_name, field_info in model.model_fields.items():
+        if field_name not in form:
+            continue
+        if _is_list_annotation(field_info.annotation):
+            data[field_name] = form.getlist(field_name)
+            continue
+        value = form[field_name]
+        if not isinstance(value, StarletteUploadFile):
+            data[field_name] = value
 
     try:
         return model(**data)
