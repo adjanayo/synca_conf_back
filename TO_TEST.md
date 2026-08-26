@@ -929,6 +929,22 @@ Accusé de réception câblé sur `register`, `speakers/apply`, `ambassadors/app
 
 - [x] 4.12 validé — **Phase 4 (formulaires publics écriture) complète.**
 
+### Optimisation taille image (préventif avant Phase 5)
+
+Marge quasi épuisée après 4.12 (198/200 Mo). Ajout d'un `strip --strip-unneeded` sur tous les `.so` compilés du stage `runtime` (symboles de debug retirés des extensions C de `cryptography`/`asyncmy`/`pydantic_core`/`PIL`/`sqlalchemy`/`greenlet`) — `binutils` installé et désinstallé dans la même couche pour ne rien ajouter au poids final.
+
+```bash
+docker build --target runtime -t synca-app:check .
+docker images synca-app:check --format "{{.Size}}"
+docker run --rm synca-app:check python -c "import boto3, PIL, sqlalchemy, asyncmy, cryptography, pydantic; print('OK')"
+docker run --rm -d --name check -e ENVIRONMENT=production -e JWT_SECRET_KEY=test-secret-key-at-least-32-bytes-long -e DB_HOST=nonexistent -p 8099:8000 synca-app:check
+curl http://127.0.0.1:8099/health
+docker stop check && docker rmi synca-app:check
+```
+→ attendu : tous les imports OK, `/health` répond `{"status":"ok"}`. Taille locale arm64 : 349 Mo → 281 Mo (indicatif). **Mesure bloquante en CI amd64** — voir prochain commit.
+
+- [x] validé (fonctionnel local + suite complète 143 tests). Confirmation CI amd64 au prochain push.
+
 ---
 
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
