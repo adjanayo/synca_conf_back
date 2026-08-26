@@ -898,4 +898,21 @@ pytest tests/test_forms_partner_apply.py -v
 
 ---
 
+### 4.6 — Candidature exposant (`POST /api/exhibitors/apply`)
+
+> `schema.md` §3F précise que `visuals_url` est un lien externe (Drive/WeTransfer), pas un upload de fichier — endpoint JSON classique, pas de multipart contrairement à 4.3/4.5.
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_exhibitor_apply.py -v
+```
+→ attendu : `4 passed` — fenêtre `call_for_exhibitor` fermée → `403` ; candidature réussie (`equipment_needs` liste → chaîne jointe) ; `rules_accepted=false` → `422` ; `reps_count=0` → `422`.
+
+- [x] 4.6 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

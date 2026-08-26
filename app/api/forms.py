@@ -11,6 +11,7 @@ from app.deps.campaign_windows import require_open_campaign
 from app.models import (
     Ambassador,
     ContactMessage,
+    Exhibitor,
     NewsletterSubscriber,
     Partner,
     PartnerLevel,
@@ -22,9 +23,10 @@ from app.models import (
     Waitlist,
 )
 from app.schemas.ambassador_apply import AmbassadorApplyCreate
-from app.schemas.applications import AmbassadorRead, PartnerRead, SpeakerRead
+from app.schemas.applications import AmbassadorRead, ExhibitorRead, PartnerRead, SpeakerRead
 from app.schemas.contact import ContactCreate
 from app.schemas.content import ContactMessageRead
+from app.schemas.exhibitor_apply import ExhibitorApplyCreate
 from app.schemas.newsletter import NewsletterCreate, NewsletterSubscriberRead
 from app.schemas.partner_apply import PartnerApplyCreate
 from app.schemas.payments import WaitlistRead
@@ -306,3 +308,40 @@ async def apply_as_partner(
     await db.refresh(partner)
 
     return PartnerRead.model_validate(partner)
+
+
+@router.post(
+    "/exhibitors/apply",
+    response_model=ExhibitorRead,
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_open_campaign("call_for_exhibitor"))],
+)
+async def apply_as_exhibitor(
+    body: ExhibitorApplyCreate, db: AsyncSession = Depends(get_db)
+) -> ExhibitorRead:
+    exhibitor = Exhibitor(
+        organization_name=body.organization_name,
+        sector=body.sector,
+        country=body.country,
+        city=body.city,
+        website_url=body.website_url,
+        contact_name=body.contact_name,
+        contact_position=body.contact_position,
+        contact_email=body.contact_email,
+        contact_phone=body.contact_phone,
+        stand_type=body.stand_type,
+        reps_count=body.reps_count,
+        linked_partner_level=body.linked_partner_level,
+        products_services=body.products_services,
+        equipment_needs=", ".join(body.equipment_needs) if body.equipment_needs else None,
+        side_activities=", ".join(body.side_activities) if body.side_activities else None,
+        visuals_url=body.visuals_url,
+        payment_method=body.payment_method,
+        rules_accepted=body.rules_accepted,
+        gdpr_consent=body.gdpr_consent,
+    )
+    db.add(exhibitor)
+    await db.commit()
+    await db.refresh(exhibitor)
+
+    return ExhibitorRead.model_validate(exhibitor)
