@@ -19,6 +19,7 @@ from app.api.rbac import router as rbac_router
 from app.api.user_me import router as user_me_router
 from app.core.config import get_settings
 from app.core.rate_limit import limiter
+from app.core.security_headers import SecurityHeadersMiddleware
 
 settings = get_settings()
 
@@ -38,6 +39,7 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PATCH", "DELETE"],
     allow_headers=["Authorization", "Content-Type"],
 )
+app.add_middleware(SecurityHeadersMiddleware, hsts_enabled=settings.environment == "production")
 
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)

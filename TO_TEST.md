@@ -1186,4 +1186,34 @@ pytest tests/test_user_me.py tests/test_forms_register.py -v
 
 ---
 
+### 7.1, 7.4, 7.5, 7.7 — déjà couverts par des phases précédentes
+
+Vérification rétroactive avant de démarrer la Phase 7, pas de nouveau code :
+- **7.1 CORS** : `CORSMiddleware` avec `CORS_ORIGINS` en liste blanche, jamais de wildcard — livré en 4.x, `tests/test_cors.py`.
+- **7.4 Docs verrouillées en prod** : `docs_url=None` si `ENVIRONMENT=production` — livré en Phase 0.
+- **7.5 Validation stricte** : chaque endpoint a un schéma Pydantic v2 typé depuis la Phase 1 — vrai par construction, vérifié en revue à chaque étape plutôt que par un test dédié.
+- **7.7 Secrets** : `.env`/`.envrc`/`.env.*` dans `.gitignore`, `MYSQL_USER` applicatif séparé de `MYSQL_ROOT_PASSWORD` — livré en Phase 0.
+
+- [x] 7.1, 7.4, 7.5, 7.7 validés (rétroactivement).
+
+---
+
+### 7.2 — Headers de sécurité HTTP
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_security_headers.py -v
+```
+→ attendu : `4 passed`.
+
+- `SecurityHeadersMiddleware` (`app/core/security_headers.py`) ajoute `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` sur **toutes** les réponses, et `Strict-Transport-Security` seulement si `ENVIRONMENT=production` (l'envoyer en local sur HTTP simple n'aurait aucun effet réel).
+- **CSP différencié** : `default-src 'none'; frame-ancestors 'none'` sur l'API JSON (aucun script/style/image n'y a jamais sa place) ; `default-src 'self'; script-src 'self' 'unsafe-inline'; ...` sur `/admin` (SQLAdmin, 6.1) et `/docs`/`/redoc`/`/openapi.json` (Swagger/Redoc), qui ont besoin de scripts/styles inline same-origin pour fonctionner.
+
+- [x] 7.2 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

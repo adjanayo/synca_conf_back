@@ -131,17 +131,17 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 
 ## Phase 7 — Sécurité & durcissement
 
-| # | Étape | Détail |
-|---|---|---|
-| 7.1 | CORS restreint au domaine frontend uniquement | `app/main.py` |
-| 7.2 | Headers sécurité HTTP | CSP, HSTS (prod uniquement), X-Frame-Options, X-Content-Type-Options, Referrer-Policy — middleware Starlette custom |
-| 7.3 | Rate limiting global + par endpoint sensible | `slowapi` : 60/min public, 30/min admin, 5/min login, 3/min formulaires publics |
-| 7.4 | **Verrouillage documentation API en production** | voir section dédiée ci-dessous |
-| 7.5 | Validation stricte de toutes les entrées | Pydantic v2 partout, aucun endpoint sans schéma de requête typé |
-| 7.6 | Protection upload | MIME réel + vérif image, taille max (5 Mo photo, 10 Mo logo), stockage hors serveur web (B2) |
-| 7.7 | Secrets | `.env` hors repo, jamais commité, utilisateur DB dédié à privilèges limités (pas root) |
-| 7.8 | Chiffrement PII sensible si besoin | `cryptography.Fernet` sur champs identifiés (à confirmer selon champs réellement sensibles) |
-| 7.9 | Revue sécurité | passer `security-review`/`security-hardening` sur le diff de chaque étape auth/paiement/PII avant `Test Done` |
+| # | Étape | Détail | Statut |
+|---|---|---|---|
+| 7.1 | CORS restreint au domaine frontend uniquement | `app/main.py` | ✅ Test Done — déjà livré en Phase 3/4 (`CORS_ORIGINS`, jamais de wildcard), `tests/test_cors.py` |
+| 7.2 | Headers sécurité HTTP | CSP, HSTS (prod uniquement), X-Frame-Options, X-Content-Type-Options, Referrer-Policy — middleware Starlette custom | ✅ Test Done — CSP différencié : verrouillé (`default-src 'none'`) sur l'API JSON, permissif same-origin (`self`+`unsafe-inline`) sur `/admin` et `/docs`/`/redoc`/`/openapi.json` qui en ont besoin |
+| 7.3 | Rate limiting global + par endpoint sensible | `slowapi` : 60/min public, 30/min admin, 5/min login, 3/min formulaires publics | ⬜ Not Started — 5/min login déjà fait (2.3), le reste manque |
+| 7.4 | **Verrouillage documentation API en production** | voir section dédiée ci-dessous | ✅ Test Done — déjà livré en Phase 0 (`docs_url=None` si `ENVIRONMENT=production`) |
+| 7.5 | Validation stricte de toutes les entrées | Pydantic v2 partout, aucun endpoint sans schéma de requête typé | ✅ Test Done — vrai par construction depuis la Phase 1, vérifié en revue à chaque étape |
+| 7.6 | Protection upload | MIME réel + vérif image, taille max (5 Mo photo, 10 Mo logo), stockage hors serveur web (B2) | ⬜ Not Started — actuellement une limite unique de 10 Mo (4.10), pas encore différenciée par type |
+| 7.7 | Secrets | `.env` hors repo, jamais commité, utilisateur DB dédié à privilèges limités (pas root) | ✅ Test Done — `.gitignore`, `MYSQL_USER` applicatif distinct de `MYSQL_ROOT_PASSWORD` depuis la Phase 0 |
+| 7.8 | Chiffrement PII sensible si besoin | `cryptography.Fernet` sur champs identifiés (à confirmer selon champs réellement sensibles) | ⬜ Not Started |
+| 7.9 | Revue sécurité | passer `security-review`/`security-hardening` sur le diff de chaque étape auth/paiement/PII avant `Test Done` | 🚧 En continu — déjà fait à chaque étape sensible (voir `TO_TEST.md`), formalisé ici une dernière fois sur l'ensemble de la Phase 7 |
 
 ### 7.4 — Documentation API non publique en production
 
