@@ -37,6 +37,9 @@ jobs:
       # CI-only value -- never the production secret, which has no default
       # (see app/core/config.py) and must be set for real in the deploy env.
       JWT_SECRET_KEY: ci-test-secret-key-not-for-production-use-only-32b
+      # CI-only Fernet key (7.8) -- generated once for this test key, never
+      # the production key, which also has no default.
+      FERNET_KEY: DCvwpRDZK1RJuv1KF0UDar2qdP6QBzXmS_QQbkqTgCQ=
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7

@@ -140,7 +140,7 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 | 7.5 | Validation stricte de toutes les entrées | Pydantic v2 partout, aucun endpoint sans schéma de requête typé | ✅ Test Done — vrai par construction depuis la Phase 1, vérifié en revue à chaque étape |
 | 7.6 | Protection upload | MIME réel + vérif image, taille max (5 Mo photo, 10 Mo logo), stockage hors serveur web (B2) | ✅ Test Done — `upload_file(..., max_bytes=...)` : `MAX_PHOTO_BYTES=5 Mo` pour les photos speaker, `MAX_UPLOAD_BYTES=10 Mo` par défaut inchangé pour logos/billets PDF |
 | 7.7 | Secrets | `.env` hors repo, jamais commité, utilisateur DB dédié à privilèges limités (pas root) | ✅ Test Done — `.gitignore`, `MYSQL_USER` applicatif distinct de `MYSQL_ROOT_PASSWORD` depuis la Phase 0 |
-| 7.8 | Chiffrement PII sensible si besoin | `cryptography.Fernet` sur champs identifiés (à confirmer selon champs réellement sensibles) | ⬜ Not Started |
+| 7.8 | Chiffrement PII sensible si besoin | `cryptography.Fernet` sur champs identifiés (à confirmer selon champs réellement sensibles) | ✅ Test Done — champs retenus : `users.phone_whatsapp` et `users.special_needs` (jamais utilisés en lookup/unique, contrairement à `email`) |
 | 7.9 | Revue sécurité | passer `security-review`/`security-hardening` sur le diff de chaque étape auth/paiement/PII avant `Test Done` | 🚧 En continu — déjà fait à chaque étape sensible (voir `TO_TEST.md`), formalisé ici une dernière fois sur l'ensemble de la Phase 7 |
 
 ### 7.4 — Documentation API non publique en production

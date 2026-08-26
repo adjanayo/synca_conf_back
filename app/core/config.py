@@ -25,6 +25,12 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 7
 
+    # Same reasoning as JWT_SECRET_KEY: no default, so a deployment that
+    # forgets to set FERNET_KEY fails to start rather than silently
+    # encrypting PII (7.8) with a key baked into the repo. Generate with
+    # `python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"`.
+    fernet_key: str
+
     # Empty by default -- app/services/recaptcha.py treats an empty key as
     # "not configured" and skips verification (local dev/CI has no real
     # Google reCAPTCHA credentials). Production must set a real key.

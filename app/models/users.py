@@ -7,12 +7,12 @@ from sqlalchemy import (
     ForeignKey,
     Integer,
     String,
-    Text,
     UniqueConstraint,
     func,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.core.crypto import EncryptedString
 from app.core.database import Base
 
 GENDER_VALUES = ("Homme", "Femme", "Autre")
@@ -36,7 +36,9 @@ class User(Base):
     # never re-issued through a "forgot my token" flow, same anti-enumeration
     # posture as security-hardening's customer-access-code guidance.
     access_token: Mapped[str | None] = mapped_column(String(64), unique=True, index=True)
-    phone_whatsapp: Mapped[str] = mapped_column(String(20), nullable=False)
+    # Encrypted at the application layer (7.8) -- a phone number is genuinely
+    # sensitive PII and is never looked up by equality, unlike email.
+    phone_whatsapp: Mapped[str] = mapped_column(EncryptedString, nullable=False)
     country: Mapped[str] = mapped_column(String(100), nullable=False)
     city: Mapped[str] = mapped_column(String(100), nullable=False)
     sector: Mapped[str | None] = mapped_column(Enum(*SECTOR_VALUES, name="user_sector"))
@@ -45,7 +47,9 @@ class User(Base):
     )
     linkedin_url: Mapped[str | None] = mapped_column(String(255))
     portfolio_url: Mapped[str | None] = mapped_column(String(255))
-    special_needs: Mapped[str | None] = mapped_column(Text)
+    # Health/accessibility-adjacent free text -- encrypted at rest (7.8) for
+    # the same reason as phone_whatsapp.
+    special_needs: Mapped[str | None] = mapped_column(EncryptedString)
     heard_from: Mapped[str | None] = mapped_column(String(100))
     gdpr_consent: Mapped[bool] = mapped_column(
         Boolean, nullable=False, default=False, server_default="0"

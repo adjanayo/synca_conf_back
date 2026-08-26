@@ -1257,4 +1257,25 @@ pytest tests/test_storage.py tests/test_forms_speaker_apply.py -v
 
 ---
 
+### 7.8 — Chiffrement applicatif des champs PII sensibles
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_crypto.py -v
+```
+→ attendu : `3 passed`.
+
+- **Champs retenus** : `users.phone_whatsapp` et `users.special_needs` — les deux champs PII les plus sensibles qui ne servent **jamais** à un lookup ou une contrainte d'unicité (contrairement à `email`, chiffrer un champ non-déterministe casserait `WHERE email = ...` et l'unicité). D'autres tables (speakers/ambassadors/partners/exhibitors) ont aussi des téléphones en clair, mais laissées hors scope de cette passe (candidatures internes à l'équipe organisatrice, moins exposées que les données d'inscription grand public) — amendement documenté, à revisiter si le besoin se confirme.
+- **`app/core/crypto.py::EncryptedString`** : `TypeDecorator` SQLAlchemy backé par `Text` (un token Fernet est bien plus long que le texte en clair — base64 de IV + ciphertext + HMAC). Chiffre à l'écriture (`process_bind_param`), déchiffre à la lecture (`process_result_value`) — totalement transparent pour le reste du code (services/routes lisent `user.phone_whatsapp` normalement).
+- **`FERNET_KEY`** : nouveau setting requis (pas de défaut, même raisonnement que `JWT_SECRET_KEY` — un défaut en dur serait la vraie clé de prod pour tout déploiement qui oublierait de la définir). `.env.example`/`.env` ont une clé Fernet valide pour le dev local ; CI a sa propre clé de test dans `ci.yml`.
+- **Migration `d7d5f8910852`** : `phone_whatsapp` élargi de `VARCHAR(20)` à `TEXT` (trop petit pour un token Fernet), puis chiffrement des lignes existantes en place (boucle Python dans `upgrade()`, `special_needs` inclus même si son type SQL ne change pas). `downgrade()` fait l'inverse (déchiffre, rétrécit la colonne).
+- **Vérifié en inspectant la ligne brute** (`security-hardening` : « Verify by inspecting the raw DB row, not just the API response ») — `test_raw_db_row_is_not_plaintext` fait un `SELECT` SQL direct et confirme que ni le téléphone ni le besoin spécial n'apparaissent en clair, alors que la lecture ORM (`user.phone_whatsapp`) retourne bien la valeur déchiffrée.
+
+- [x] 7.8 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
