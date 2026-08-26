@@ -17,9 +17,9 @@ sequenceDiagram
     participant P8 as test_webhook_increments_promo_usage_count_on_completion()
     participant P9 as make_user()
     participant P10 as make_user()
-    participant P11 as make_user_and_pass()
-    participant P12 as test_register_duplicate_email_conflict()
-    participant P13 as register()
+    participant P11 as register()
+    participant P12 as make_user_and_pass()
+    participant P13 as test_register_duplicate_email_conflict()
     participant P14 as make_user()
     participant P15 as make_user_and_pass_type()
     participant P16 as make_user()
@@ -171,12 +171,12 @@ sequenceDiagram
     P7-->>- P0: return
     P0->>+ P8: calls
     P8-->>- P0: return
-    P0->>+ P11: calls
-    P11-->>- P0: return
-    P0->>+ P44: calls
-    P44-->>- P0: return
     P0->>+ P12: calls
     P12-->>- P0: return
+    P0->>+ P44: calls
+    P44-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
     P0->>+ P45: calls
     P45-->>- P0: return
     P0->>+ P46: calls

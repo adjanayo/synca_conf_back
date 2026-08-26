@@ -1,25 +1,15 @@
 # SecurityHeadersMiddleware & BaseHTTPMiddleware
 
-> 5 nodes · cohesion 0.40
+> 6 nodes · cohesion 0.47
 
 ## Key Concepts
 
-- [SecurityHeadersMiddleware](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L18) (4 connections)
-- **BaseHTTPMiddleware** (1 connections)
-- [.dispatch()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L23) (1 connections)
-- [.__init__()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L19) (1 connections)
-- [security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L1) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class SecurityHeadersMiddleware {
-        +security_headers.py()
-        +.__init__()
-        +.dispatch()
-    }
-```
+- [test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L1) (5 connections)
+- [_make_test_app()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L11) (3 connections)
+- [test_common_headers_always_present()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L21) (2 connections)
+- [test_hsts_only_sent_when_enabled()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L34) (2 connections)
+- [test_admin_routes_get_permissive_same_origin_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L66) (1 connections)
+- [test_api_routes_get_locked_down_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L54) (1 connections)
 
 ## Relationships
 
@@ -27,11 +17,11 @@ classDiagram
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py)
 
 ## Audit Trail
 
-- EXTRACTED: 8 (100%)
+- EXTRACTED: 14 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

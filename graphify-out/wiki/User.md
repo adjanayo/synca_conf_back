@@ -187,12 +187,12 @@ sequenceDiagram
     P50-->>- P0: return
     P0->>+ P51: calls
     P51-->>- P0: return
+    P0->>+ P52: calls
+    P52-->>- P0: return
     P0->>+ P12: calls
     P12-->>- P0: return
     P0->>+ P14: calls
     P14-->>- P0: return
-    P0->>+ P52: calls
-    P52-->>- P0: return
     P0->>+ P53: calls
     P53-->>- P0: return
     P0->>+ P19: calls
@@ -215,9 +215,9 @@ sequenceDiagram
 - [[test_webhook_increments_promo_usage_count_on_completion()]] `INFERRED`
 - [[make_user()]] `INFERRED`
 - [[make_user()]] `INFERRED`
+- [[register()]] `INFERRED`
 - [[make_user_and_pass()]] `INFERRED`
 - [[test_register_duplicate_email_conflict()]] `INFERRED`
-- [[register()]] `INFERRED`
 - [[make_user()]] `INFERRED`
 - [[make_user_and_pass_type()]] `INFERRED`
 - [[make_user()]] `INFERRED`

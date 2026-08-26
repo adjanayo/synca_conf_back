@@ -1,28 +1,30 @@
 # [_make_test_app() & test_common_headers_always_present()] Cluster
 
-> 6 nodes · cohesion 0.47
+> 8 nodes · cohesion 0.29
 
 ## Key Concepts
 
-- [test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L1) (5 connections)
-- [_make_test_app()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L11) (3 connections)
-- [test_common_headers_always_present()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L21) (2 connections)
-- [test_hsts_only_sent_when_enabled()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L34) (2 connections)
-- [test_admin_routes_get_permissive_same_origin_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L66) (1 connections)
-- [test_api_routes_get_locked_down_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L54) (1 connections)
+- [env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L1) (4 connections)
+- [run_async_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L63) (3 connections)
+- [run_migrations_online()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L81) (3 connections)
+- [Run migrations in 'offline' mode.      This configures the context with just a U](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L33) (2 connections)
+- [In this scenario we need to create an Engine     and associate a connection with](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L64) (2 connections)
+- [Run migrations in 'online' mode.](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L82) (2 connections)
+- [run_migrations_offline()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L32) (2 connections)
+- [do_run_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L56) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[[run_async_migrations() & run_migrations_online()] Cluster]] (3 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py)
 
 ## Audit Trail
 
-- EXTRACTED: 14 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 16 (84%)
+- INFERRED: 3 (16%)
 - AMBIGUOUS: 0 (0%)
 
 ---

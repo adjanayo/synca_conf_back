@@ -7,12 +7,12 @@
     },
     {
       "label": "register()",
-      "risk": 0.474,
+      "risk": 0.491,
       "type": "FUNCTION"
     },
     {
       "label": "apply_as_partner()",
-      "risk": 0.429,
+      "risk": 0.446,
       "type": "FUNCTION"
     },
     {

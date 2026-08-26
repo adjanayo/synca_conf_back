@@ -14,29 +14,31 @@ sequenceDiagram
     participant P5 as test_validate_is_real_image_rejects_fake_image()
     participant P6 as apply_as_speaker()
     participant P7 as Speaker
-    participant P8 as parse_multipart_form()
-    participant P9 as apply_as_partner()
-    participant P10 as generate_and_upload_ticket_pdf()
-    participant P11 as test_upload_file_rejects_disallowed_content_type()
-    participant P12 as test_upload_file_success_never_uses_original_filename()
-    participant P13 as test_upload_file_respects_custom_max_bytes()
-    participant P14 as _generate_key()
-    participant P15 as test_upload_file_rejects_oversized_file()
-    participant P16 as test_upload_file_rejects_fake_image_bytes()
-    participant P17 as test_upload_file_pdf_skips_image_validation()
-    participant P18 as verify_recaptcha()
-    participant P19 as payment_webhook()
-    participant P20 as send_email()
-    participant P21 as configure_logging()
-    participant P22 as build_admin_auth()
-    participant P23 as Settings
-    participant P24 as _client()
-    participant P25 as test_expired_token_rejected()
-    participant P26 as .process_bind_param()
-    participant P27 as .process_result_value()
-    participant P28 as db_session()
-    participant P29 as upgrade()
-    participant P30 as downgrade()
+    participant P8 as application_received_email()
+    participant P9 as parse_multipart_form()
+    participant P10 as apply_as_partner()
+    participant P11 as Partner
+    participant P12 as generate_and_upload_ticket_pdf()
+    participant P13 as test_upload_file_rejects_disallowed_content_type()
+    participant P14 as test_upload_file_success_never_uses_original_filename()
+    participant P15 as test_upload_file_respects_custom_max_bytes()
+    participant P16 as _generate_key()
+    participant P17 as test_upload_file_rejects_oversized_file()
+    participant P18 as test_upload_file_rejects_fake_image_bytes()
+    participant P19 as test_upload_file_pdf_skips_image_validation()
+    participant P20 as verify_recaptcha()
+    participant P21 as payment_webhook()
+    participant P22 as send_email()
+    participant P23 as configure_logging()
+    participant P24 as build_admin_auth()
+    participant P25 as Settings
+    participant P26 as _client()
+    participant P27 as test_expired_token_rejected()
+    participant P28 as .process_bind_param()
+    participant P29 as .process_result_value()
+    participant P30 as db_session()
+    participant P31 as upgrade()
+    participant P32 as downgrade()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P0: calls
@@ -51,12 +53,6 @@ sequenceDiagram
     P4-->>- P2: return
     P2->>+ P5: calls
     P5-->>- P2: return
-    P1->>+ P3: calls
-    P3-->>- P1: return
-    P3->>+ P1: calls
-    P1-->>- P3: return
-    P3->>+ P2: calls
-    P2-->>- P3: return
     P1->>+ P6: calls
     P6-->>- P1: return
     P6->>+ P1: calls
@@ -65,12 +61,20 @@ sequenceDiagram
     P7-->>- P6: return
     P6->>+ P8: calls
     P8-->>- P6: return
-    P1->>+ P9: calls
-    P9-->>- P1: return
+    P6->>+ P9: calls
+    P9-->>- P6: return
     P1->>+ P10: calls
     P10-->>- P1: return
-    P1->>+ P11: calls
-    P11-->>- P1: return
+    P10->>+ P1: calls
+    P1-->>- P10: return
+    P10->>+ P11: calls
+    P11-->>- P10: return
+    P10->>+ P8: calls
+    P8-->>- P10: return
+    P10->>+ P9: calls
+    P9-->>- P10: return
+    P1->>+ P3: calls
+    P3-->>- P1: return
     P1->>+ P12: calls
     P12-->>- P1: return
     P1->>+ P13: calls
@@ -83,10 +87,10 @@ sequenceDiagram
     P16-->>- P1: return
     P1->>+ P17: calls
     P17-->>- P1: return
-    P0->>+ P18: calls
-    P18-->>- P0: return
-    P0->>+ P19: calls
-    P19-->>- P0: return
+    P1->>+ P18: calls
+    P18-->>- P1: return
+    P1->>+ P19: calls
+    P19-->>- P1: return
     P0->>+ P20: calls
     P20-->>- P0: return
     P0->>+ P21: calls
@@ -109,6 +113,10 @@ sequenceDiagram
     P29-->>- P0: return
     P0->>+ P30: calls
     P30-->>- P0: return
+    P0->>+ P31: calls
+    P31-->>- P0: return
+    P0->>+ P32: calls
+    P32-->>- P0: return
 ```
 
 ## Connections by Relation
