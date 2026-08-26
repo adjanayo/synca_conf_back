@@ -6,7 +6,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.rate_limit import limiter
-from app.models import User
+from app.models import Ticket, User
+from app.schemas.tickets import TicketRead
 from app.schemas.users import UserRead
 
 router = APIRouter(prefix="/api/user", tags=["user-me"])
@@ -42,6 +43,27 @@ async def get_me(
     request: Request, user: User = Depends(get_current_participant)
 ) -> UserRead:
     return UserRead.model_validate(user)
+
+
+@router.get("/me/tickets", response_model=list[TicketRead])
+@limiter.limit("60/minute")
+async def get_my_tickets(
+    request: Request,
+    user: User = Depends(get_current_participant),
+    db: AsyncSession = Depends(get_db),
+) -> list[TicketRead]:
+    """TODO.md: ticket download from the web page.
+
+    Scoped to `Ticket.user_id == user.id` -- no `{ticket_id}` path param
+    anywhere, so there's nothing here for another user's bearer token to
+    substitute in and no IDOR surface. `pdf_url` itself points at a
+    UUID-keyed B2 object (app/services/storage.py::_generate_key), so the
+    email delivery path (4.12/5.7) isn't guessable either.
+    """
+    tickets = (
+        await db.execute(select(Ticket).where(Ticket.user_id == user.id))
+    ).scalars().all()
+    return [TicketRead.model_validate(t) for t in tickets]
 
 
 @router.delete("/me", status_code=status.HTTP_200_OK)
