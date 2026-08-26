@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.pagination import Pagination, pagination_params
 from app.deps.rbac import get_current_admin
 from app.models import ContactMessage
@@ -12,7 +13,9 @@ router = APIRouter(prefix="/api/admin", tags=["admin-contacts"])
 
 
 @router.get("/contacts", response_model=list[ContactMessageRead])
+@limiter.limit("30/minute")
 async def list_contacts(
+    request: Request,
     is_read: bool | None = None,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),

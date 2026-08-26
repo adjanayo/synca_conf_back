@@ -5,4 +5,4 @@ from slowapi.util import get_remote_address
 # the request body (email) without a body-caching middleware -- rate
 # limiting is per-IP here; per-account brute-force protection is the
 # lockout in app/services/auth_service.py, keyed by email instead.
-limiter = Limiter(key_func=get_remote_address)
+limiter = Limiter(key_func=get_remote_address, default_limits=["60/minute"])

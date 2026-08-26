@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.rbac import require_permission
 from app.models.campaign import CAMPAIGN_WINDOW_KEY_VALUES, CampaignWindow
 from app.schemas.campaign import CampaignWindowRead, CampaignWindowUpdate
@@ -11,7 +12,9 @@ router = APIRouter(prefix="/api/admin/campaign-windows", tags=["admin-campaign-w
 
 
 @router.get("", response_model=list[CampaignWindowRead])
+@limiter.limit("30/minute")
 async def list_campaign_windows_admin(
+    request: Request,
     db: AsyncSession = Depends(get_db),
     _admin=Depends(require_permission("campaign_windows.manage")),
 ) -> list[CampaignWindowRead]:
@@ -22,7 +25,9 @@ async def list_campaign_windows_admin(
 
 
 @router.patch("/{key}", response_model=CampaignWindowRead)
+@limiter.limit("30/minute")
 async def update_campaign_window(
+    request: Request,
     key: str,
     body: CampaignWindowUpdate,
     db: AsyncSession = Depends(get_db),

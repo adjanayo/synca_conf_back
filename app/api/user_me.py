@@ -1,9 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.models import User
 from app.schemas.users import UserRead
 
@@ -33,13 +34,19 @@ async def get_current_participant(
 
 
 @router.get("/me", response_model=UserRead)
-async def get_me(user: User = Depends(get_current_participant)) -> UserRead:
+@limiter.limit("60/minute")
+async def get_me(
+    request: Request, user: User = Depends(get_current_participant)
+) -> UserRead:
     return UserRead.model_validate(user)
 
 
 @router.delete("/me", status_code=status.HTTP_200_OK)
+@limiter.limit("60/minute")
 async def delete_me(
-    user: User = Depends(get_current_participant), db: AsyncSession = Depends(get_db)
+    request: Request,
+    user: User = Depends(get_current_participant),
+    db: AsyncSession = Depends(get_db),
 ) -> dict[str, str]:
     """Right to erasure (RGPD) via anonymization, not a physical delete --
     tickets/payments keep their user_id for financial/audit records, but the

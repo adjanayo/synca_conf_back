@@ -3,6 +3,20 @@ from sqlalchemy import event
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.core.config import get_settings
+from app.core.rate_limit import limiter
+
+
+@pytest.fixture(autouse=True)
+def _reset_rate_limiter():
+    # The Limiter singleton (app/core/rate_limit.py) persists its in-memory
+    # counters across tests within the same process. Without a reset, tests
+    # that call the same now-rate-limited endpoint (3/min on public forms,
+    # 30/min on admin routes, etc.) more than a few times across the whole
+    # suite start seeing 429s that have nothing to do with what they're
+    # actually testing.
+    limiter.reset()
+    yield
+    limiter.reset()
 
 
 @pytest.fixture

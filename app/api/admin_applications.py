@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.rbac import require_permission
 from app.models import Ambassador, Exhibitor, Partner, Speaker
 from app.schemas.admin_applications import (
@@ -22,7 +23,9 @@ router = APIRouter(prefix="/api/admin", tags=["admin-applications"])
 
 
 @router.patch("/speakers/{speaker_id}", response_model=SpeakerRead)
+@limiter.limit("30/minute")
 async def update_speaker_status(
+    request: Request,
     speaker_id: int,
     body: SpeakerStatusUpdate,
     db: AsyncSession = Depends(get_db),
@@ -42,7 +45,9 @@ async def update_speaker_status(
 
 
 @router.patch("/ambassadors/{ambassador_id}", response_model=AmbassadorRead)
+@limiter.limit("30/minute")
 async def update_ambassador_status(
+    request: Request,
     ambassador_id: int,
     body: AmbassadorStatusUpdate,
     db: AsyncSession = Depends(get_db),
@@ -63,7 +68,9 @@ async def update_ambassador_status(
 
 
 @router.patch("/partners/{partner_id}", response_model=PartnerRead)
+@limiter.limit("30/minute")
 async def update_partner_status(
+    request: Request,
     partner_id: int,
     body: PartnerStatusUpdate,
     db: AsyncSession = Depends(get_db),
@@ -81,7 +88,9 @@ async def update_partner_status(
 
 
 @router.patch("/exhibitors/{exhibitor_id}", response_model=ExhibitorRead)
+@limiter.limit("30/minute")
 async def update_exhibitor_status(
+    request: Request,
     exhibitor_id: int,
     body: ExhibitorStatusUpdate,
     db: AsyncSession = Depends(get_db),

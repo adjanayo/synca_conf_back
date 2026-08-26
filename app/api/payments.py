@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import get_settings
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.models import PassType, Payment, PromoCode, Ticket, User
 from app.schemas.payment_create import PaymentCreate
 from app.schemas.payment_webhook import PaymentWebhookPayload
@@ -26,8 +27,9 @@ router = APIRouter(prefix="/api", tags=["payments"])
 
 
 @router.post("/promo/validate", response_model=PromoValidateResponse)
+@limiter.limit("60/minute")
 async def validate_promo(
-    body: PromoValidateRequest, db: AsyncSession = Depends(get_db)
+    request: Request, body: PromoValidateRequest, db: AsyncSession = Depends(get_db)
 ) -> PromoValidateResponse:
     promo = await get_valid_promo_code(db, body.code)
     if promo is None:
@@ -42,8 +44,9 @@ async def validate_promo(
 
 
 @router.post("/payments", response_model=PaymentRead, status_code=status.HTTP_201_CREATED)
+@limiter.limit("60/minute")
 async def create_payment(
-    body: PaymentCreate, db: AsyncSession = Depends(get_db)
+    request: Request, body: PaymentCreate, db: AsyncSession = Depends(get_db)
 ) -> PaymentRead:
     user = await db.get(User, body.user_id)
     if user is None:
@@ -86,6 +89,7 @@ async def create_payment(
 
 
 @router.post("/payments/webhook/{provider}")
+@limiter.limit("60/minute")
 async def payment_webhook(
     provider: Literal["stripe", "wave", "orange_money"],
     request: Request,

@@ -1216,4 +1216,27 @@ pytest tests/test_security_headers.py -v
 
 ---
 
+### 7.3 — Rate limiting par palier (60/30/5/3 par minute)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_rate_limiting.py -v
+```
+→ attendu : `3 passed`.
+
+- ⚠️ Piège découvert : `Limiter(default_limits=["60/minute"])` de `slowapi` est censé s'appliquer automatiquement à **toute** route non décorée via `SlowAPIMiddleware`, mais son mécanisme de résolution (`_find_route_handler`, qui inspecte `app.routes`) ne retrouve jamais le handler des routes montées via `app.include_router(...)` dans cette combinaison FastAPI/Starlette — confirmé en traçant l'appel en conditions réelles (`handler=None` à chaque requête). Résultat : le défaut global est silencieusement un no-op sur toutes les routes de ce projet.
+- **Fix retenu** : décorer **chaque route** explicitement avec `@limiter.limit(...)` (mécanisme différent, vérifié fonctionnel — c'est celui déjà utilisé par le login 5/min depuis 2.3) plutôt que de compter sur le défaut implicite :
+  - **60/min** : tous les `GET` publics (`app/api/public.py`), `POST /api/payments`, `POST /api/promo/validate`, `POST /api/payments/webhook/{provider}`, `GET`/`DELETE /api/user/me`.
+  - **30/min** : toutes les routes `/api/admin/*` sauf le login (`rbac.py`, `admin_applications.py`, `admin_campaign_windows.py`, `admin_stats.py`, `admin_registrations.py`, `admin_contacts.py`, `admin_export.py`).
+  - **5/min** : `POST /api/admin/login` (déjà fait, 2.3).
+  - **3/min** : les 8 formulaires d'écriture publics (`waitlist`, `register`, `contact`, `newsletter`, `speakers/apply`, `ambassadors/apply`, `partners/apply`, `exhibitors/apply`).
+- **Régression corrigée** : ajouter ces décorateurs a cassé 5 tests existants qui appellent le même endpoint plusieurs fois dans le même fichier (`test_forms_register.py`, `test_forms_partner_apply.py`) — le `Limiter` est un singleton dont l'état en mémoire survit entre les tests. Fixé par une fixture `autouse` dans `tests/conftest.py` (`_reset_rate_limiter`) qui appelle `limiter.reset()` avant/après **chaque** test de la suite.
+
+- [x] 7.3 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

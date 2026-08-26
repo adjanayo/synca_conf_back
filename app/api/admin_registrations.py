@@ -1,10 +1,11 @@
 from typing import Literal
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.pagination import Pagination, pagination_params
 from app.deps.rbac import require_permission
 from app.models import PassType, Payment, Ticket, User
@@ -15,7 +16,9 @@ router = APIRouter(prefix="/api/admin", tags=["admin-registrations"])
 
 
 @router.get("/registrations", response_model=list[RegistrationRead])
+@limiter.limit("30/minute")
 async def list_registrations(
+    request: Request,
     payment_status: Literal[*PAYMENT_STATUS_VALUES] | None = None,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),

@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.pagination import Pagination, pagination_params
 from app.models import CampaignWindow, Day, Exhibitor, Faq, Partner, PassType, Session, Speaker
 from app.schemas import (
@@ -20,13 +21,16 @@ router = APIRouter(prefix="/api", tags=["public"])
 
 
 @router.get("/days", response_model=list[DayRead])
-async def list_days(db: AsyncSession = Depends(get_db)) -> list[DayRead]:
+@limiter.limit("60/minute")
+async def list_days(request: Request, db: AsyncSession = Depends(get_db)) -> list[DayRead]:
     days = (await db.execute(select(Day).order_by(Day.date))).scalars().all()
     return [DayRead.model_validate(day) for day in days]
 
 
 @router.get("/sessions", response_model=list[SessionRead])
+@limiter.limit("60/minute")
 async def list_sessions(
+    request: Request,
     day: int | None = None,
     category: str | None = None,
     pagination: Pagination = Depends(pagination_params),
@@ -46,14 +50,19 @@ async def list_sessions(
 
 
 @router.get("/pass-types", response_model=list[PassTypeRead])
-async def list_pass_types(db: AsyncSession = Depends(get_db)) -> list[PassTypeRead]:
+@limiter.limit("60/minute")
+async def list_pass_types(
+    request: Request, db: AsyncSession = Depends(get_db)
+) -> list[PassTypeRead]:
     query = select(PassType).where(PassType.is_active.is_(True)).order_by(PassType.price)
     pass_types = (await db.execute(query)).scalars().all()
     return [PassTypeRead.model_validate(pass_type) for pass_type in pass_types]
 
 
 @router.get("/speakers", response_model=list[SpeakerRead])
+@limiter.limit("60/minute")
 async def list_speakers(
+    request: Request,
     theme: str | None = None,
     format: str | None = None,
     pagination: Pagination = Depends(pagination_params),
@@ -71,7 +80,9 @@ async def list_speakers(
 
 
 @router.get("/partners", response_model=list[PartnerRead])
+@limiter.limit("60/minute")
 async def list_partners(
+    request: Request,
     level: int | None = None,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),
@@ -88,7 +99,9 @@ async def list_partners(
 
 
 @router.get("/exhibitors", response_model=list[ExhibitorRead])
+@limiter.limit("60/minute")
 async def list_exhibitors(
+    request: Request,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),
 ) -> list[ExhibitorRead]:
@@ -107,7 +120,9 @@ async def list_exhibitors(
 
 
 @router.get("/faqs", response_model=list[FaqRead])
+@limiter.limit("60/minute")
 async def list_faqs(
+    request: Request,
     category: int | None = None,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),
@@ -122,7 +137,10 @@ async def list_faqs(
 
 
 @router.get("/campaign-windows", response_model=list[CampaignWindowRead])
-async def list_campaign_windows(db: AsyncSession = Depends(get_db)) -> list[CampaignWindowRead]:
+@limiter.limit("60/minute")
+async def list_campaign_windows(
+    request: Request, db: AsyncSession = Depends(get_db)
+) -> list[CampaignWindowRead]:
     query = select(CampaignWindow).order_by(CampaignWindow.start_at)
     windows = (await db.execute(query)).scalars().all()
     return [CampaignWindowRead.model_validate(window) for window in windows]

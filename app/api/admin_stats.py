@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.rbac import require_permission
 from app.models import Ambassador, Exhibitor, Partner, Payment, Speaker, Ticket
 from app.schemas.admin_stats import AdminStatsRead
@@ -18,7 +19,9 @@ _APPLICATION_MODELS = {
 
 
 @router.get("/stats", response_model=AdminStatsRead)
+@limiter.limit("30/minute")
 async def get_admin_stats(
+    request: Request,
     db: AsyncSession = Depends(get_db),
     # Revenue is the most sensitive figure on this dashboard -- reuse the
     # existing payments.view code rather than inventing a new one for a

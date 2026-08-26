@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.rbac import require_permission
 from app.models import AdminUser, Permission, Role, RolePermission
 from app.schemas.rbac import RoleUpdate, RoleWithPermissionsRead
@@ -11,7 +12,9 @@ router = APIRouter(prefix="/api/admin", tags=["rbac"])
 
 
 @router.patch("/roles/{role_id}", response_model=RoleWithPermissionsRead)
+@limiter.limit("30/minute")
 async def update_role_permissions(
+    request: Request,
     role_id: int,
     body: RoleUpdate,
     db: AsyncSession = Depends(get_db),

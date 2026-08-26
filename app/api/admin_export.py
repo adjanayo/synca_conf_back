@@ -1,11 +1,12 @@
 import csv
 import io
 
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends, Request, Response
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter
 from app.deps.rbac import require_permission
 from app.models import PassType, Payment, Ticket, User
 
@@ -26,7 +27,9 @@ def _csv_response(rows: list[list[str]], header: list[str], filename: str) -> Re
 
 
 @router.get("/registrations")
+@limiter.limit("30/minute")
 async def export_registrations_csv(
+    request: Request,
     db: AsyncSession = Depends(get_db),
     _admin=Depends(require_permission("export.data")),
 ) -> Response:
@@ -66,7 +69,9 @@ async def export_registrations_csv(
 
 
 @router.get("/payments")
+@limiter.limit("30/minute")
 async def export_payments_csv(
+    request: Request,
     db: AsyncSession = Depends(get_db),
     _admin=Depends(require_permission("export.data")),
 ) -> Response:

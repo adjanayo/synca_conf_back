@@ -16,6 +16,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.multipart import parse_multipart_form
+from app.core.rate_limit import limiter
 from app.deps.campaign_windows import require_open_campaign
 from app.models import (
     Ambassador,
@@ -59,8 +60,9 @@ async def _validate_promo_code(db: AsyncSession, code: str) -> None:
 
 
 @router.post("/waitlist", response_model=WaitlistRead, status_code=status.HTTP_201_CREATED)
+@limiter.limit("3/minute")
 async def join_waitlist(
-    body: WaitlistCreate, db: AsyncSession = Depends(get_db)
+    request: Request, body: WaitlistCreate, db: AsyncSession = Depends(get_db)
 ) -> WaitlistRead:
     entry = Waitlist(email=body.email)
     db.add(entry)
@@ -83,8 +85,12 @@ async def join_waitlist(
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(require_open_campaign("ticketing"))],
 )
+@limiter.limit("3/minute")
 async def register(
-    body: RegisterCreate, background_tasks: BackgroundTasks, db: AsyncSession = Depends(get_db)
+    request: Request,
+    body: RegisterCreate,
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_db),
 ) -> RegisterResponse:
     pass_type = await db.get(PassType, body.pass_type_id)
     if pass_type is None or not pass_type.is_active:
@@ -141,7 +147,10 @@ async def register(
 @router.post(
     "/contact", response_model=ContactMessageRead, status_code=status.HTTP_201_CREATED
 )
-async def contact(body: ContactCreate, db: AsyncSession = Depends(get_db)) -> ContactMessageRead:
+@limiter.limit("3/minute")
+async def contact(
+    request: Request, body: ContactCreate, db: AsyncSession = Depends(get_db)
+) -> ContactMessageRead:
     await verify_recaptcha(body.captcha)
 
     message = ContactMessage(
@@ -157,8 +166,9 @@ async def contact(body: ContactCreate, db: AsyncSession = Depends(get_db)) -> Co
 @router.post(
     "/newsletter", response_model=NewsletterSubscriberRead, status_code=status.HTTP_201_CREATED
 )
+@limiter.limit("3/minute")
 async def subscribe_newsletter(
-    body: NewsletterCreate, db: AsyncSession = Depends(get_db)
+    request: Request, body: NewsletterCreate, db: AsyncSession = Depends(get_db)
 ) -> NewsletterSubscriberRead:
     subscriber = NewsletterSubscriber(email=body.email)
     db.add(subscriber)
@@ -181,6 +191,7 @@ async def subscribe_newsletter(
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(require_open_campaign("call_for_speaker"))],
 )
+@limiter.limit("3/minute")
 async def apply_as_speaker(
     request: Request,
     background_tasks: BackgroundTasks,
@@ -239,7 +250,9 @@ async def apply_as_speaker(
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(require_open_campaign("call_for_ambassador"))],
 )
+@limiter.limit("3/minute")
 async def apply_as_ambassador(
+    request: Request,
     body: AmbassadorApplyCreate,
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
@@ -284,6 +297,7 @@ async def apply_as_ambassador(
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(require_open_campaign("call_for_partner"))],
 )
+@limiter.limit("3/minute")
 async def apply_as_partner(
     request: Request,
     background_tasks: BackgroundTasks,
@@ -345,7 +359,9 @@ async def apply_as_partner(
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(require_open_campaign("call_for_exhibitor"))],
 )
+@limiter.limit("3/minute")
 async def apply_as_exhibitor(
+    request: Request,
     body: ExhibitorApplyCreate,
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
