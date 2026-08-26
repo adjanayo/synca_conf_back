@@ -5,6 +5,7 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 
 from app.admin.setup import init_admin
+from app.api.admin_applications import router as admin_applications_router
 from app.api.auth import router as auth_router
 from app.api.forms import router as forms_router
 from app.api.payments import router as payments_router
@@ -41,6 +42,7 @@ app.include_router(rbac_router)
 app.include_router(public_router)
 app.include_router(forms_router)
 app.include_router(payments_router)
+app.include_router(admin_applications_router)
 
 init_admin(app)
 

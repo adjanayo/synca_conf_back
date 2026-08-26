@@ -119,7 +119,7 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 | # | Étape | Détail | Statut |
 |---|---|---|---|
 | 6.1 | Intégration SQLAdmin sur les modèles SQLAlchemy existants | vues CRUD auto pour `speakers`, `ambassadors`, `partners`, `exhibitors`, `contact_messages` | ✅ Test Done — login réutilise `authenticate_admin` (2.3), accès par vue gardé par `is_accessible()` (permission RBAC recalculée à chaque requête, `contact_messages` ouvert à tout admin authentifié faute de code dédié) |
-| 6.2 | Actions custom workflow statut | `PATCH /api/admin/speakers/:id`, `/ambassadors/:id`, `/partners/:id`, `/exhibitors/:id` — protégées par `require_permission` | ⬜ Not Started |
+| 6.2 | Actions custom workflow statut | `PATCH /api/admin/speakers/:id`, `/ambassadors/:id`, `/partners/:id`, `/exhibitors/:id` — protégées par `require_permission` | ✅ Test Done — accepter un speaker/confirmer un partner-exhibitor bascule `is_public=true` (visible sur les endpoints publics 3.3/3.4/3.5), rejeter/toute autre transition le laisse `false` |
 | 6.3 | Génération auto `promo_code` à l'acceptation d'un ambassadeur | déclenché depuis l'action d'acceptation | ⬜ Not Started |
 | 6.4 | Gestion des fenêtres de campagne | `GET /api/admin/campaign-windows`, `PATCH /api/admin/campaign-windows/:key` — modifier dates + `is_active`, réservé `superadmin`/`admin` | ⬜ Not Started |
 | 6.5 | `GET /api/admin/stats` | dashboard : inscriptions, revenus, taux conversion promo, candidatures par statut | ⬜ Not Started |

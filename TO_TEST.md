@@ -1055,4 +1055,23 @@ pytest tests/test_admin_panel.py -v
 
 ---
 
+### 6.2 — PATCH statut speakers/ambassadors/partners/exhibitors
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_applications.py -v
+```
+→ attendu : `12 passed`.
+
+- **Speakers/ambassadors** : statut binaire `accepted`/`rejected` (`APPLICATION_STATUS_VALUES`). Accepter un speaker bascule automatiquement `is_public=true` — il n'y a pas d'étape de publication séparée dans le roadmap ; rejeter le laisse `false`. Les ambassadeurs n'ont pas de colonne `is_public` (la génération du `promo_code` à l'acceptation est 6.3, pas encore fait).
+- **Partners/exhibitors** : statut libre parmi `NEGOTIATION_STATUS_VALUES` (`pending`, `contacted`, `negotiating`, `confirmed`, `rejected`) puisque `schema.md` décrit ces endpoints comme "mettre à jour le statut", pas un simple accepter/rejeter. `is_public=true` seulement si `status == "confirmed"` — toute autre valeur (y compris `negotiating`) le laisse `false`.
+- **Sécurité** : chaque endpoint est gardé par `require_permission(...)` avec le code RBAC exact du seed 1.7 (`speakers.approve`, `ambassadors.approve`, `partners.manage`, `exhibitors.manage`) — testé 403 pour un rôle sans ce code, 404 pour un id inconnu, 422 pour une valeur de statut hors enum.
+
+- [x] 6.2 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
