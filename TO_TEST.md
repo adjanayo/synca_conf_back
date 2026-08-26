@@ -1112,4 +1112,22 @@ pytest tests/test_admin_campaign_windows.py -v
 
 ---
 
+### 6.5 — `GET /api/admin/stats`
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_stats.py -v
+```
+→ attendu : `3 passed`.
+
+- Champs : `total_registrations` (nb de `Ticket`), `total_revenue`/`completed_payments`/`payments_with_promo` (agrégats `Payment.status='completed'`), `promo_conversion_rate` (`payments_with_promo / completed_payments`, `0.0` si aucun paiement complété — pas de division par zéro), `applications_by_status` (comptage `GROUP BY status` pour speakers/ambassadors/partners/exhibitors).
+- **Sécurité** : gardé par `require_permission("payments.view")` — le revenu est le chiffre le plus sensible du dashboard, réutilise ce code plutôt que d'en créer un nouveau pour un seul endpoint en lecture seule.
+
+- [x] 6.5 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
