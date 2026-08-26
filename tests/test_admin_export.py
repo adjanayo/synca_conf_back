@@ -48,10 +48,10 @@ async def make_admin_with_permission(db_session, role_name: str, code: str | Non
     return admin
 
 
-async def make_payment(db_session, status: str) -> Payment:
+async def make_payment(db_session, status: str, first_name: str = "Awa") -> Payment:
     unique = uuid.uuid4().hex[:8]
     user = User(
-        first_name="Awa",
+        first_name=first_name,
         last_name="Diop",
         email=f"export-{unique}@example.com",
         phone_whatsapp="+221771234567",
@@ -159,3 +159,25 @@ async def test_export_payments_forbidden_without_permission(db_session, client):
         )
 
     assert response.status_code == 403
+
+
+@pytest.mark.asyncio
+async def test_export_registrations_neutralizes_csv_formula_injection(db_session, client):
+    # CWE-1236: first_name comes straight from the fully public POST
+    # /api/register with no character-class restriction -- a name starting
+    # with "=" would otherwise execute as a formula when the CSV is opened
+    # in Excel/LibreOffice/Sheets.
+    admin = await make_admin_with_permission(db_session, "export-admin3", "export.data")
+    await make_payment(db_session, "completed", first_name='=HYPERLINK("http://evil.example")')
+    token = create_access_token(subject=str(admin.id))
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        response = await http.get(
+            "/api/admin/export/registrations", headers={"Authorization": f"Bearer {token}"}
+        )
+
+    assert response.status_code == 200
+    reader = csv.reader(io.StringIO(response.text))
+    rows = list(reader)
+    malicious_row = next(row for row in rows[1:] if "HYPERLINK" in row[1])
+    assert malicious_row[1].startswith("'=")

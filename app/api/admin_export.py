@@ -12,12 +12,26 @@ from app.models import PassType, Payment, Ticket, User
 
 router = APIRouter(prefix="/api/admin/export", tags=["admin-export"])
 
+# CSV/formula injection (CWE-1236): a cell starting with one of these
+# triggers formula evaluation in Excel/LibreOffice/Google Sheets. User-
+# supplied text (first_name/last_name on the fully public POST /api/register,
+# transaction_ref echoed back from a payment webhook) can start with any of
+# them -- prefixing with a single quote neutralizes it without changing the
+# visible value in any spreadsheet application.
+_FORMULA_TRIGGER_CHARS = ("=", "+", "-", "@", "\t", "\r")
+
+
+def _sanitize_csv_cell(value: str) -> str:
+    if value.startswith(_FORMULA_TRIGGER_CHARS):
+        return f"'{value}"
+    return value
+
 
 def _csv_response(rows: list[list[str]], header: list[str], filename: str) -> Response:
     buffer = io.StringIO()
     writer = csv.writer(buffer)
     writer.writerow(header)
-    writer.writerows(rows)
+    writer.writerows([[_sanitize_csv_cell(cell) for cell in row] for row in rows])
 
     return Response(
         content=buffer.getvalue(),

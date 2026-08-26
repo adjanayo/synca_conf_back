@@ -1278,4 +1278,25 @@ pytest tests/test_crypto.py -v
 
 ---
 
+### 7.9 — Revue sécurité formalisée (Phase 6 + Phase 7)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_export.py -v
+```
+→ attendu : `5 passed`.
+
+Revue `security-review` passée sur l'ensemble du diff Phase 6 (backoffice SQLAdmin, RBAC admin) + Phase 7 (headers, rate limiting, chiffrement PII) :
+- **Auth SQLAdmin** (`app/admin/auth.py`) : réutilise `authenticate_admin`, JWT revalidé et permissions recalculées à chaque requête, session signée `itsdangerous` — pas de contournement trouvé.
+- **RBAC sur les nouvelles routes admin** : `require_permission`/`get_current_admin` résolus avant le corps de la route sur chacune, aucune route sensible sans garde.
+- **`EncryptedString` (Fernet)** : clé exigée via variable d'env, pas de valeur par défaut, pas de réutilisation d'IV.
+- **1 finding corrigé** : **injection de formule CSV** (`app/api/admin_export.py`) — `first_name`/`last_name` viennent de `POST /api/register`, entièrement public, sans restriction de caractères. Une valeur commençant par `=`, `+`, `-`, `@`, tabulation ou retour chariot s'exécute comme une formule à l'ouverture dans Excel/LibreOffice/Sheets (ex. `=HYPERLINK(...)` pour exfiltrer des données). Fixé par `_sanitize_csv_cell()` : préfixe d'une apostrophe toute cellule commençant par un de ces caractères, appliqué à **toutes** les cellules des deux exports (pas seulement celles jugées « à risque » aujourd'hui — un futur champ ajouté hérite automatiquement de la protection).
+
+- [x] 7.9 validé — **Phase 7 complète.**
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
