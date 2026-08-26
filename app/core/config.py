@@ -15,7 +15,12 @@ class Settings(BaseSettings):
     mysql_password: str = "change-me-app"
     mysql_database: str = "syncaconf"
 
-    jwt_secret_key: str = "change-me-in-production-min-32-bytes-long"
+    # No default on purpose (security review finding): a hardcoded fallback
+    # here would be the actual production signing key for any deployment
+    # that forgets to set JWT_SECRET_KEY, since nothing else would catch it
+    # (the string is 32+ bytes, so PyJWT's InsecureKeyLengthWarning would
+    # never fire either). Missing the env var now fails startup loudly.
+    jwt_secret_key: str
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 7

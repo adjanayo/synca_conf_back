@@ -442,7 +442,18 @@ Build Docker toujours vert avec `argon2-cffi` (extension C compilée dans le sta
 source .venv/bin/activate
 pytest tests/test_auth_service.py -v
 ```
-→ attendu : `5 passed`, aucun warning (`JWT_SECRET_KEY` par défaut ≥ 32 octets pour HS256). Couvre : round-trip access/refresh, rejet d'un token du mauvais type, rejet d'un token expiré, rejet d'une signature invalide.
+→ attendu : `5 passed`, aucun warning (`JWT_SECRET_KEY` ≥ 32 octets pour HS256). Couvre : round-trip access/refresh, rejet d'un token du mauvais type, rejet d'un token expiré, rejet d'une signature invalide.
+
+**Correctif sécurité (revue `security-review`)** : `jwt_secret_key` n'a plus de valeur par défaut en dur dans `app/core/config.py` — un placeholder public dans un repo public devient la vraie clé de signature de tout déploiement qui oublie de le surcharger, permettant de forger des JWT admin. Vérification :
+```bash
+python3 -c "
+import os
+os.environ.pop('JWT_SECRET_KEY', None)
+from app.core.config import Settings
+Settings(_env_file=None)
+"
+```
+→ attendu : `pydantic.ValidationError` (démarrage refusé sans `JWT_SECRET_KEY`). La CI (`.github/workflows/ci.yml`) fournit une valeur de test dédiée (`ci-test-secret-key-not-for-production-use-only-32b`), jamais la valeur de prod.
 
 - [x] 2.2 validé.
 
