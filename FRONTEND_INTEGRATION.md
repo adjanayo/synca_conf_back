@@ -831,7 +831,59 @@ Inscription newsletter. Toujours ouvert.
 
 ---
 
-## 6. Formats d'erreur
+## 6. Espace participant (`Bearer` token, pas de login)
+
+Il n'y a pas de login participant : le seul identifiant est l'`access_token` reçu **une fois**, dans la réponse de `POST /api/register` (§5.2). Le frontend doit le stocker et l'envoyer en header `Authorization: Bearer <access_token>` sur les 3 routes ci-dessous. Voir §7 pour les précautions de stockage.
+
+### 6.1 `GET /api/user/me`
+
+Relit les données du participant connecté.
+
+**Réponse** `200` : schéma `UserRead` (mêmes champs que la réponse de `/register`, sans `access_token`).
+
+### 6.2 `GET /api/user/me/tickets`
+
+Liste les billets du participant connecté — **uniquement les siens** (filtré côté serveur sur le `user_id` associé au token, il n'y a pas de `GET /api/tickets/:id` par identifiant arbitraire).
+
+**Réponse** `200` :
+```json
+[
+  {
+    "id": 12,
+    "ticket_number": "SYNCA-000042",
+    "pdf_url": "https://f000.backblazeb2.com/file/synca-uploads/20260826-....pdf",
+    "is_scanned": false,
+    "created_at": "2026-08-26T14:30:00"
+  }
+]
+```
+
+`pdf_url` est le lien direct de téléchargement (bouton "Télécharger mon billet" sur la page ou dans l'email de confirmation, §5.2/§8) — un simple `<a href>`, pas de proxy backend nécessaire.
+
+### 6.3 `DELETE /api/user/me`
+
+Droit à l'effacement RGPD : anonymise le compte (nom/email/téléphone remplacés, `access_token` révoqué). Les billets/paiements restent en base pour la compta, mais détachés de toute donnée personnelle identifiable. **Irréversible et à usage unique** — un second appel avec le même token renvoie `401`.
+
+**Erreurs communes aux 3 routes** :
+- `401` — token manquant, invalide ou révoqué (compte déjà supprimé)
+
+---
+
+## 7. Sécurité — ce que le frontend doit respecter
+
+Points qui ne se voient pas dans le schéma JSON mais que le frontend doit gérer pour ne pas introduire de faille côté client :
+
+- **Stockage de `access_token`** — ni cookie ni `localStorage` (XSS = vol du token) : préférer la mémoire JS (variable de state) ou, si la session doit survivre un refresh de page, `sessionStorage`. Jamais dans une URL, un log, ou un outil d'analytics.
+- **Ne jamais construire une URL de billet à la main** — toujours passer par `GET /api/user/me/tickets` (§6.2) pour obtenir `pdf_url` ; ne pas essayer de deviner/reconstruire un lien à partir d'un `ticket_number` ou d'un id. Le backend ne route pas les billets par id — ce n'est pas juste "poli", `GET /api/tickets/:id` n'existe pas.
+- **CORS strict** — l'API n'autorise que les origines listées dans `CORS_ORIGINS` côté serveur (pas de wildcard `*`). Un domaine de prod non enregistré doit être ajouté côté backend avant déploiement, le frontend ne peut pas contourner ça.
+- **Uploads (logo partenaire §5.5, photo speaker §5.3)** — le backend revalide déjà le type MIME réel et la taille (5 Mo photo / 10 Mo logo, cf. `TO_TEST.md` 7.6) et rejette en `400` sinon ; valider aussi côté client pour l'UX, mais ne pas s'y fier comme seul garde-fou.
+- **reCAPTCHA** — si activé en prod (`RECAPTCHA_SECRET_KEY` configuré côté backend), les formulaires publics (§5) attendent un jeton reCAPTCHA dans le body ; en son absence le backend accepte tout (mode dev), donc ce n'est pas testable en local sans clé réelle.
+- **`403` vs `401`** — `401` = pas de token / token invalide (participant ou admin) ; `403` = token valide mais action non autorisée (permission RBAC manquante, ou fenêtre de campagne fermée pour un formulaire). Ne pas les traiter comme équivalents dans l'UI : `401` doit renvoyer vers "reconnectez-vous" (admin) ou "session expirée" (participant), `403` doit afficher un message métier (ex. "les candidatures partenaires sont closes").
+- **Toujours HTTPS en prod** — le Bearer token circule en clair sur HTTP ; Caddy termine le TLS en prod (voir `Caddyfile`), mais un appel direct à l'IP du VPS en HTTP ne doit jamais être fait depuis le frontend de prod.
+
+---
+
+## 8. Formats d'erreur
 
 Toutes les erreurs suivent le même format :
 
@@ -873,7 +925,7 @@ Quand la limite est dépassée, la réponse est :
 
 ---
 
-## 7. Pagination
+## 9. Pagination
 
 Les endpoints de liste (`sessions`, `speakers`, `partners`, `exhibitors`, `faqs`) supportent la pagination. La réponse est un **tableau brut** (pas un objet wrapper) :
 
@@ -891,7 +943,7 @@ GET /api/speakers?limit=10&offset=10  → 10 suivants
 
 ---
 
-## 8. Ce qui n'est pas encore disponible
+## 10. Ce qui n'est pas encore disponible
 
 - **Paiement/billetterie** — Phase 5 terminée côté backend (webhooks Stripe/Wave/Orange Money, génération billet PDF + QR code) mais pas encore testée en conditions réelles. Les endpoints `POST /api/payments` et `POST /api/promo/validate` existent mais ne doivent pas encore être consommés par le frontend en production.
 - **Refresh token endpoint** — pas encore exposé, seul le login émet une paire access+refresh.
@@ -900,7 +952,7 @@ Le suivi d'avancement précis est dans `ROADMAP.md` à la racine du repo.
 
 ---
 
-## 9. Inspecter la base de données directement
+## 11. Inspecter la base de données directement
 
 ```bash
 make db-shell
@@ -908,7 +960,7 @@ make db-shell
 
 ---
 
-## 10. Retours attendus
+## 12. Retours attendus
 
 Ce guide et l'API sont amenés à changer. Remontez en particulier :
 - Un champ manquant ou mal typé dans une réponse (`GET /api/...`) par rapport à ce dont l'UI a besoin.
