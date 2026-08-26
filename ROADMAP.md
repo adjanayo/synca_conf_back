@@ -125,7 +125,7 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 | 6.5 | `GET /api/admin/stats` | dashboard : inscriptions, revenus, taux conversion promo, candidatures par statut | ✅ Test Done — gardé par `require_permission("payments.view")` (chiffre le plus sensible du dashboard, pas de code dédié dans le seed 1.7) |
 | 6.6 | `GET /api/admin/registrations`, `/contacts` | listing filtrable/paginé | ✅ Test Done — `registrations` gardé par `payments.view` (filtre `payment_status`), `contacts` ouvert à tout admin authentifié (même politique que `contact_messages` en 6.1) ; pagination partagée (3.8) sur les deux |
 | 6.7 | Export CSV (inscriptions, paiements) | réservé `superadmin` via `require_permission("export.data")` | ✅ Test Done — `GET /api/admin/export/registrations` et `/payments`, `Content-Disposition: attachment`, non paginé (export complet, pas une vue liste) |
-| 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) | ⬜ Not Started |
+| 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) | ✅ Test Done — amendement : ajout de `users.access_token` (généré à l'inscription, seul moyen d'authentifier un participant, il n'y a pas de login pour eux) ; retourné une seule fois dans la réponse de `POST /api/register` |
 
 ---
 

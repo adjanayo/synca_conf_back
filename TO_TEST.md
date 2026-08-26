@@ -1167,4 +1167,23 @@ pytest tests/test_admin_export.py -v
 
 ---
 
+### 6.8 — Droit d'accès RGPD (`GET`/`DELETE /api/user/me`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_user_me.py tests/test_forms_register.py -v
+```
+→ attendu : `14 passed`.
+
+- ⚠️ Amendement : il n'existe aucun login pour les participants (contrairement aux `admin_users`) — impossible d'implémenter `GET`/`DELETE /api/user/me` sans un moyen de les authentifier. Ajout de `users.access_token` (`String(64)`, unique, nullable — migration `e3a07849ada9`), généré via `secrets.token_urlsafe(32)` à `POST /api/register` et retourné **une seule fois** dans la réponse (`RegisterResponse`, qui étend `UserRead`) — pas de flux « mot de passe oublié », même posture anti-énumération que les codes d'accès clients (`security-hardening`).
+- **`GET /api/user/me`** : `Authorization: Bearer <access_token>` → `UserRead` (sans le token). Token invalide/absent → `401` générique (`get_current_participant`, distinct de `get_current_admin`).
+- **`DELETE /api/user/me`** : anonymisation, pas de suppression physique — `first_name`/`last_name`/`email`/`phone_whatsapp`/`gender`/`linkedin_url`/`portfolio_url`/`special_needs`/`heard_from` scrubbés, `email` remplacé par `anonymized-<id>@deleted.synca.conf` (reste unique), `access_token` révoqué (`None`) pour empêcher un rejeu. Les `tickets`/`payments` gardent leur `user_id` intact (conservés pour l'audit financier). Testé : le jeton ne peut plus être réutilisé après une première suppression (`401` sur le second appel).
+
+- [x] 6.8 validé — **Phase 6 complète.**
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

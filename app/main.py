@@ -16,6 +16,7 @@ from app.api.forms import router as forms_router
 from app.api.payments import router as payments_router
 from app.api.public import router as public_router
 from app.api.rbac import router as rbac_router
+from app.api.user_me import router as user_me_router
 from app.core.config import get_settings
 from app.core.rate_limit import limiter
 
@@ -53,6 +54,7 @@ app.include_router(admin_stats_router)
 app.include_router(admin_registrations_router)
 app.include_router(admin_contacts_router)
 app.include_router(admin_export_router)
+app.include_router(user_me_router)
 
 init_admin(app)
 

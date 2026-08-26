@@ -1,4 +1,6 @@
 
+import secrets
+
 from fastapi import (
     APIRouter,
     BackgroundTasks,
@@ -38,7 +40,7 @@ from app.schemas.partner_apply import PartnerApplyCreate
 from app.schemas.payments import WaitlistRead
 from app.schemas.register import RegisterCreate
 from app.schemas.speaker_apply import SpeakerApplyCreate
-from app.schemas.users import UserRead
+from app.schemas.users import RegisterResponse
 from app.schemas.waitlist import WaitlistCreate
 from app.services.email_service import send_email
 from app.services.promo_service import get_valid_promo_code
@@ -77,13 +79,13 @@ async def join_waitlist(
 
 @router.post(
     "/register",
-    response_model=UserRead,
+    response_model=RegisterResponse,
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(require_open_campaign("ticketing"))],
 )
 async def register(
     body: RegisterCreate, background_tasks: BackgroundTasks, db: AsyncSession = Depends(get_db)
-) -> UserRead:
+) -> RegisterResponse:
     pass_type = await db.get(PassType, body.pass_type_id)
     if pass_type is None or not pass_type.is_active:
         raise HTTPException(
@@ -110,6 +112,7 @@ async def register(
         heard_from=body.heard_from,
         gdpr_consent=body.gdpr_consent,
         newsletter_consent=body.newsletter_consent,
+        access_token=secrets.token_urlsafe(32),
     )
     db.add(user)
     try:
@@ -132,7 +135,7 @@ async def register(
         subject="Confirmation d'inscription — SYNCA CONF 2027",
         body=f"Bonjour {user.first_name}, votre inscription à SYNCA CONF 2027 est confirmée.",
     )
-    return UserRead.model_validate(user)
+    return RegisterResponse.model_validate(user)
 
 
 @router.post(

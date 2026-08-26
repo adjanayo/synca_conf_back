@@ -69,6 +69,7 @@ async def test_register_success(db_session, client):
     assert response.status_code == 201
     body = response.json()
     assert body["email"] == "awa@example.com"
+    assert len(body["access_token"]) > 20
 
 
 @pytest.mark.asyncio

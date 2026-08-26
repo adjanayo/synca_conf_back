@@ -30,6 +30,12 @@ class User(Base):
     gender: Mapped[str | None] = mapped_column(Enum(*GENDER_VALUES, name="user_gender"))
     email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False, index=True)
     email_verified: Mapped[bool] = mapped_column(Boolean, default=False, server_default="0")
+    # RGPD self-service (6.8): bearer credential for GET/DELETE /api/user/me.
+    # No login exists for participants, so this is generated once at
+    # registration (secrets.token_urlsafe) and given to the user then --
+    # never re-issued through a "forgot my token" flow, same anti-enumeration
+    # posture as security-hardening's customer-access-code guidance.
+    access_token: Mapped[str | None] = mapped_column(String(64), unique=True, index=True)
     phone_whatsapp: Mapped[str] = mapped_column(String(20), nullable=False)
     country: Mapped[str] = mapped_column(String(100), nullable=False)
     city: Mapped[str] = mapped_column(String(100), nullable=False)

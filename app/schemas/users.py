@@ -32,3 +32,11 @@ class UserRead(BaseModel):
     newsletter_consent: bool
     created_at: datetime.datetime
     updated_at: datetime.datetime
+
+
+class RegisterResponse(UserRead):
+    # Only ever returned once, at registration -- the participant's bearer
+    # credential for GET/DELETE /api/user/me (6.8). There's no login for
+    # participants and no "forgot my token" recovery, so this is the one
+    # moment it's shown.
+    access_token: str
