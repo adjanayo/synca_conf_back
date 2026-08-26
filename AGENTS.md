@@ -37,3 +37,15 @@ Applies to ANY agent (opencode, Cursor, Codex, Gemini CLI, etc.).
 1. Stage and commit as normal.
 2. Run `scripts/graphify_update.sh` if graphify-out/ exists.
 3. Push: `git push`.
+
+## `rtk` — est-ce obligatoire ?
+
+`rtk` (Rust Token Killer) réduit le volume de tokens retournés par les commandes shell. C'est un outil **optionnel** qui dépend de l'agent :
+
+| Agent | `rtk` requis ? | Raison |
+|---|---|---|
+| **Claude Code** (Anthropic CLI) | **Oui** | `CLAUDE.md` ligne 6 : « Always prefix commands with `rtk` ». Les skills `.claude/skills/` l'exigent aussi. |
+| **opencode** | Non | Utilise directement `git add`, `git commit`, `git push`. Pas de dépendance rtk. |
+| **Cursor / Codex / Gemini CLI** | Non | Même logique — commandes shell standard. |
+
+> Si `rtk` n'est pas installé, les commandes shell standard fonctionnent pareil. `rtk` est un passe-cache qui filtre la sortie pour économiser des tokens — il ne change pas le comportement.
