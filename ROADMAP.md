@@ -90,7 +90,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | 4.6 | Candidature exposant | `POST /api/exhibitors/apply` | gardé par fenêtre `call_for_exhibitor` (4.11), upload visuels, mêmes workflow/statuts que partenaires | ⬜ Not Started |
 | 4.7 | Contact | `POST /api/contact` | reCAPTCHA v3 obligatoire | ⬜ Not Started |
 | 4.8 | Newsletter | `POST /api/newsletter` | opt-in séparé, pas de doublon | ⬜ Not Started |
-| 4.9 | reCAPTCHA v3 partagé | `app/services/recaptcha.py` | seuil score configurable (0.5 par défaut) | ⬜ Not Started |
+| 4.9 | reCAPTCHA v3 partagé | `app/services/recaptcha.py` | seuil score configurable (0.5 par défaut) | ✅ Test Done — bypass en dev/CI sans clé configurée (documenté) |
 | 4.10 | Upload fichiers → Backblaze B2 | `app/services/storage.py` | renommage UUID+timestamp, jamais le nom original | ⬜ Not Started |
 | 4.11 | Dependency `require_open_campaign(key)` | `app/deps/campaign_windows.py` — vérifie `NOW() BETWEEN start_at AND end_at AND is_active=true` | 403 explicite hors fenêtre, testé fenêtre ouverte/fermée/désactivée | ✅ Test Done |
 | 4.12 | Emails transactionnels (Resend) | accusé réception, confirmation inscription | prod : envoi réel Resend ; dev : backend console `loguru` (email loggé, pas envoyé) — pas de conteneur SMTP de test | ⬜ Not Started |

@@ -25,6 +25,12 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 7
 
+    # Empty by default -- app/services/recaptcha.py treats an empty key as
+    # "not configured" and skips verification (local dev/CI has no real
+    # Google reCAPTCHA credentials). Production must set a real key.
+    recaptcha_secret_key: str = ""
+    recaptcha_min_score: float = 0.5
+
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common

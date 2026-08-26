@@ -753,4 +753,20 @@ pytest tests/test_forms_register.py -v
 
 ---
 
+### 4.9 — reCAPTCHA v3 partagé (`app/services/recaptcha.py`)
+
+> Construit avant 4.7 (Contact) qui en dépend.
+
+```bash
+source .venv/bin/activate
+pytest tests/test_recaptcha.py -v
+```
+→ attendu : `4 passed` — sans `RECAPTCHA_SECRET_KEY` configurée (défaut en dev/CI), la vérification est **sautée** (pas d'appel réseau) ; avec une clé configurée (mockée dans les tests, jamais un vrai appel à Google en CI), score ≥ seuil accepté, score faible ou `success:false` → `400`.
+
+⚠️ Le vrai appel à `https://www.google.com/recaptcha/api/siteverify` n'est testable qu'avec une vraie clé Google reCAPTCHA v3 en production — non disponible ici. Le bypass en dev est intentionnel et documenté (`app/services/recaptcha.py`).
+
+- [x] 4.9 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
