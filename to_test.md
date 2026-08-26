@@ -544,4 +544,19 @@ pytest tests/test_public_pass_types.py -v
 
 ---
 
+### 3.3 — Speakers publics (`GET /api/speakers?theme=&format=`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_public_speakers.py -v
+```
+→ attendu : `2 passed` (filtre `theme`+`format` combiné, un speaker `is_public=false` ne fuite jamais même s'il correspond aux filtres ; cas vide géré).
+
+- [x] 3.3 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

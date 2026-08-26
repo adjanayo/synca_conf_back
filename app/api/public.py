@@ -4,8 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.pagination import Pagination, pagination_params
-from app.models import Day, PassType, Session
-from app.schemas import DayRead, PassTypeRead, SessionRead
+from app.models import Day, PassType, Session, Speaker
+from app.schemas import DayRead, PassTypeRead, SessionRead, SpeakerRead
 
 router = APIRouter(prefix="/api", tags=["public"])
 
@@ -41,3 +41,21 @@ async def list_pass_types(db: AsyncSession = Depends(get_db)) -> list[PassTypeRe
     query = select(PassType).where(PassType.is_active.is_(True)).order_by(PassType.price)
     pass_types = (await db.execute(query)).scalars().all()
     return [PassTypeRead.model_validate(pass_type) for pass_type in pass_types]
+
+
+@router.get("/speakers", response_model=list[SpeakerRead])
+async def list_speakers(
+    theme: str | None = None,
+    format: str | None = None,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+) -> list[SpeakerRead]:
+    query = select(Speaker).where(Speaker.is_public.is_(True))
+    if theme is not None:
+        query = query.where(Speaker.theme == theme)
+    if format is not None:
+        query = query.where(Speaker.intervention_format == format)
+    query = query.order_by(Speaker.last_name).limit(pagination.limit).offset(pagination.offset)
+
+    speakers = (await db.execute(query)).scalars().all()
+    return [SpeakerRead.model_validate(speaker) for speaker in speakers]
