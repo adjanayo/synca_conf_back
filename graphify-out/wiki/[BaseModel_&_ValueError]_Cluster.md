@@ -120,7 +120,7 @@ classDiagram
 
 ## Relationships
 
-- [[[_make_test_app() & test_common_headers_always_present()] Cluster]] (3 shared connections)
+- [[[make_user() & test_delete_me_anonymizes_and_revokes_token()] Cluster]] (3 shared connections)
 
 ## Source Files
 

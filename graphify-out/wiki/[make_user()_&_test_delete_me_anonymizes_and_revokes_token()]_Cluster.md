@@ -15,7 +15,7 @@
 
 ## Relationships
 
-- [[[_make_test_app() & test_common_headers_always_present()] Cluster]] (3 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

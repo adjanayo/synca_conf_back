@@ -28,7 +28,7 @@
 
 ## Relationships
 
-- [[[verify_stripe_signature() & payment_webhook()] Cluster]] (2 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

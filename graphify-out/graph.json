@@ -3348,9 +3348,9 @@
       "granularity": "low",
       "heat": 0.104,
       "owner": "unowned",
-      "id": "user_me_rationale_55",
       "community": 0,
-      "norm_label": "todo.md: ticket download from the web page.      scoped to `ticket.user_id == us"
+      "norm_label": "todo.md: ticket download from the web page.      scoped to `ticket.user_id == us",
+      "id": "user_me_rationale_55"
     },
     {
       "label": "Right to erasure (RGPD) via anonymization, not a physical delete --     tickets/",
@@ -3361,9 +3361,9 @@
       "granularity": "low",
       "heat": 0.104,
       "owner": "unowned",
-      "id": "user_me_rationale_76",
       "community": 0,
-      "norm_label": "right to erasure (rgpd) via anonymization, not a physical delete --     tickets/"
+      "norm_label": "right to erasure (rgpd) via anonymization, not a physical delete --     tickets/",
+      "id": "user_me_rationale_76"
     },
     {
       "label": "rbac.py",
@@ -13991,8 +13991,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_user_me.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "test_user_me_make_ticket_for",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_user_me_make_ticket_for",
       "source": "payments_payment",
       "target": "test_user_me_make_ticket_for"
     },
@@ -14123,8 +14123,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_user_me.py",
       "source_location": "L89",
       "weight": 1.0,
-      "_src": "test_user_me_make_ticket_for",
-      "_tgt": "payments_ticket",
+      "_src": "payments_ticket",
+      "_tgt": "test_user_me_make_ticket_for",
       "source": "payments_ticket",
       "target": "test_user_me_make_ticket_for"
     },
@@ -15779,8 +15779,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_user_me.py",
       "source_location": "L74",
       "weight": 1.0,
-      "_src": "test_user_me_make_ticket_for",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_user_me_make_ticket_for",
       "source": "referentials_passtype",
       "target": "test_user_me_make_ticket_for"
     },
@@ -16846,11 +16846,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/user_me.py",
       "source_location": "L10",
       "weight": 0.8,
-      "_src": "user_me_rationale_55",
-      "_tgt": "tickets_ticketread",
+      "_src": "tickets_ticketread",
+      "_tgt": "user_me_rationale_55",
+      "confidence_score": 0.5,
       "source": "tickets_ticketread",
-      "target": "user_me_rationale_55",
-      "confidence_score": 0.5
+      "target": "user_me_rationale_55"
     },
     {
       "relation": "uses",
@@ -16858,11 +16858,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/user_me.py",
       "source_location": "L10",
       "weight": 0.8,
-      "_src": "user_me_rationale_76",
-      "_tgt": "tickets_ticketread",
+      "_src": "tickets_ticketread",
+      "_tgt": "user_me_rationale_76",
+      "confidence_score": 0.5,
       "source": "tickets_ticketread",
-      "target": "user_me_rationale_76",
-      "confidence_score": 0.5
+      "target": "user_me_rationale_76"
     },
     {
       "relation": "contains",
@@ -17002,11 +17002,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/user_me.py",
       "source_location": "L11",
       "weight": 0.8,
-      "_src": "user_me_rationale_55",
-      "_tgt": "users_userread",
+      "_src": "users_userread",
+      "_tgt": "user_me_rationale_55",
+      "confidence_score": 0.5,
       "source": "users_userread",
-      "target": "user_me_rationale_55",
-      "confidence_score": 0.5
+      "target": "user_me_rationale_55"
     },
     {
       "relation": "uses",
@@ -17014,11 +17014,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/user_me.py",
       "source_location": "L11",
       "weight": 0.8,
-      "_src": "user_me_rationale_76",
-      "_tgt": "users_userread",
+      "_src": "users_userread",
+      "_tgt": "user_me_rationale_76",
+      "confidence_score": 0.5,
       "source": "users_userread",
-      "target": "user_me_rationale_76",
-      "confidence_score": 0.5
+      "target": "user_me_rationale_76"
     },
     {
       "relation": "uses",
