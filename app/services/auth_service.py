@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import get_settings
 from app.core.security import hash_password, verify_password
-from app.models import AdminUser
+from app.models import AdminUser, AuditLog
 
 settings = get_settings()
 
@@ -33,11 +33,14 @@ class AccountLockedError(Exception):
     pass
 
 
-async def authenticate_admin(db: AsyncSession, email: str, password: str) -> AdminUser:
+async def authenticate_admin(
+    db: AsyncSession, email: str, password: str, ip_address: str | None = None
+) -> AdminUser:
     """Verify admin credentials, enforcing the account-lockout policy.
 
     Always takes the same code path (hash a dummy value) when the email
     doesn't exist, so response timing doesn't reveal account existence.
+    Every attempt (success or failure) writes an audit_logs entry.
     """
     admin = (
         await db.execute(select(AdminUser).where(AdminUser.email == email))
@@ -45,6 +48,8 @@ async def authenticate_admin(db: AsyncSession, email: str, password: str) -> Adm
 
     now = datetime.now(UTC)
     if admin and admin.locked_until and admin.locked_until.replace(tzinfo=UTC) > now:
+        db.add(AuditLog(event="login", email=email, ip_address=ip_address, success=False))
+        await db.commit()
         raise AccountLockedError("Compte temporairement verrouillé, réessayez plus tard.")
 
     password_hash = admin.password_hash if admin else _DUMMY_PASSWORD_HASH
@@ -59,12 +64,14 @@ async def authenticate_admin(db: AsyncSession, email: str, password: str) -> Adm
                     LOCKOUT_MAX_MINUTES,
                 )
                 admin.locked_until = now + timedelta(minutes=minutes)
-            await db.commit()
+        db.add(AuditLog(event="login", email=email, ip_address=ip_address, success=False))
+        await db.commit()
         raise InvalidCredentialsError("Email ou mot de passe incorrect.")
 
     admin.failed_login_attempts = 0
     admin.locked_until = None
     admin.last_login = now
+    db.add(AuditLog(event="login", email=email, ip_address=ip_address, success=True))
     await db.commit()
     await db.refresh(admin)
     return admin

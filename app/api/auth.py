@@ -22,8 +22,9 @@ async def login(
     credentials: AdminLoginRequest,
     db: AsyncSession = Depends(get_db),
 ) -> TokenPair:
+    client_ip = request.client.host if request.client else None
     try:
-        admin = await authenticate_admin(db, credentials.email, credentials.password)
+        admin = await authenticate_admin(db, credentials.email, credentials.password, client_ip)
     except (InvalidCredentialsError, AccountLockedError) as exc:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=str(exc)) from exc
 

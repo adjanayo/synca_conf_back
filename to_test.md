@@ -493,4 +493,21 @@ pytest tests/test_admin_rbac.py -v
 
 ---
 
+### 2.6 — Audit log connexions (`audit_logs`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_audit_log.py -v
+```
+→ attendu : `3 passed` — une entrée `audit_logs` créée à chaque tentative de connexion : succès (`success=True`, IP enregistrée), échec (`success=False`), et compte verrouillé (chacune des 5 tentatives + la 6ᵉ bloquée par le verrou = 6 entrées, toutes `success=False`).
+
+Note d'implémentation : journalisation faite directement dans `authenticate_admin()` (qui connaît l'issue métier), pas via un middleware Starlette générique qui ne verrait qu'un statut HTTP sans le détail (compte verrouillé / mauvais mot de passe / email inconnu).
+
+- [x] 2.6 validé — Phase 2 (Auth & RBAC) complète.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
