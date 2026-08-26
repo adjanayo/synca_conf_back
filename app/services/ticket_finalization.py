@@ -3,6 +3,7 @@ from loguru import logger
 from app.core.database import AsyncSessionLocal
 from app.models import PassType, Ticket, User
 from app.services.email_service import send_email
+from app.services.email_templates import ticket_delivered_email
 from app.services.ticket_pdf import generate_and_upload_ticket_pdf
 
 
@@ -40,9 +41,6 @@ async def finalize_ticket(ticket_id: int) -> None:
         await send_email(
             to=user.email,
             subject="Votre billet — SYNCA CONF 2027",
-            body=(
-                f"Bonjour {user.first_name}, voici votre billet "
-                f"({ticket.ticket_number}) : {pdf_url}"
-            ),
+            body=ticket_delivered_email(user.first_name, ticket.ticket_number, pdf_url),
         )
         logger.bind(channel="payment").info(f"Ticket {ticket.ticket_number} finalisé et envoyé")

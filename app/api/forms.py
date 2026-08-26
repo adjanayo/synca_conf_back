@@ -44,6 +44,7 @@ from app.schemas.speaker_apply import SpeakerApplyCreate
 from app.schemas.users import RegisterResponse
 from app.schemas.waitlist import WaitlistCreate
 from app.services.email_service import send_email
+from app.services.email_templates import application_received_email, registration_confirmed_email
 from app.services.promo_service import get_valid_promo_code
 from app.services.recaptcha import verify_recaptcha
 from app.services.storage import MAX_PHOTO_BYTES, UploadRejectedError, upload_file
@@ -139,7 +140,7 @@ async def register(
         send_email,
         to=user.email,
         subject="Confirmation d'inscription — SYNCA CONF 2027",
-        body=f"Bonjour {user.first_name}, votre inscription à SYNCA CONF 2027 est confirmée.",
+        body=registration_confirmed_email(user.first_name),
     )
     return RegisterResponse.model_validate(user)
 
@@ -244,7 +245,7 @@ async def apply_as_speaker(
         send_email,
         to=speaker.email,
         subject="Candidature speaker reçue — SYNCA CONF 2027",
-        body=f"Bonjour {speaker.first_name}, nous avons bien reçu votre candidature.",
+        body=application_received_email(speaker.first_name, "speaker"),
     )
     return SpeakerRead.model_validate(speaker)
 
@@ -291,7 +292,7 @@ async def apply_as_ambassador(
         send_email,
         to=ambassador.email,
         subject="Candidature ambassadeur reçue — SYNCA CONF 2027",
-        body=f"Bonjour {ambassador.first_name}, nous avons bien reçu votre candidature.",
+        body=application_received_email(ambassador.first_name, "ambassadeur"),
     )
     return AmbassadorRead.model_validate(ambassador)
 
@@ -353,7 +354,7 @@ async def apply_as_partner(
         send_email,
         to=partner.contact_email,
         subject="Candidature partenaire reçue — SYNCA CONF 2027",
-        body=f"Bonjour {partner.contact_name}, nous avons bien reçu votre candidature.",
+        body=application_received_email(partner.contact_name, "partenaire"),
     )
     return PartnerRead.model_validate(partner)
 
@@ -400,6 +401,6 @@ async def apply_as_exhibitor(
         send_email,
         to=exhibitor.contact_email,
         subject="Candidature exposant reçue — SYNCA CONF 2027",
-        body=f"Bonjour {exhibitor.contact_name}, nous avons bien reçu votre candidature.",
+        body=application_received_email(exhibitor.contact_name, "exposant"),
     )
     return ExhibitorRead.model_validate(exhibitor)
