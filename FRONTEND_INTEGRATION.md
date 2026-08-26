@@ -6,41 +6,56 @@
 
 ## 1. Lancer le backend avec Docker
 
-Prérequis : Docker + Docker Compose.
+Prérequis : Docker + Docker Compose + Make.
 
 ```bash
 git clone <url-du-repo>
 cd synca_conf_back
 cp .env.example .env
-docker compose up -d --build
+make up        # lance les conteneurs + hot-reload
+make migrate   # applique les migrations (tables + seed)
 ```
+
+> Le repo inclut un **Makefile** avec toutes les commandes utiles. Tapez `make help` pour les voir toutes.
+
+Commandes Make les plus courantes :
+
+| Commande | Rôle |
+|---|---|
+| `make up` | Lancer `docker compose up -d --build` |
+| `make down` | Arrêter les conteneurs (données conservées) |
+| `make nuke` | Arrêter + supprimer le volume MySQL (reset total) |
+| `make migrate` | Appliquer les migrations Alembic |
+| `make create-admin` | Créer un compte superadmin |
+| `make health` | Vérifier que l'API répond |
+| `make swagger` | Ouvrir Swagger dans le navigateur |
+| `make logs` | Logs en temps réel |
+| `make build` | Rebuild l'image sans cache |
+| `make shell` | Shell bash dans le conteneur app |
+| `make db-shell` | Shell MySQL sur la base syncaconf |
+| `make login` | Retourne un token admin (JSON) |
 
 Ça démarre 2 conteneurs : `app` (FastAPI, hot-reload activé) et `db` (MySQL 8.4). Le port hôte de l'API dans `docker-compose.yml` est **8010** (changez `"8010:8000"` dans `docker-compose.yml` si besoin).
-
-Appliquer les migrations (tables + données de seed : rôles/permissions RBAC, fenêtres de campagne) :
-
-```bash
-docker compose exec app alembic upgrade head
-```
 
 Vérifier que tout tourne :
 
 ```bash
-curl http://127.0.0.1:8010/health
-# {"status":"ok"}
+make health
+# { "status": "ok" }
 ```
 
 Documentation interactive (Swagger) tant que `ENVIRONMENT=local` (valeur par défaut de `.env.example`) :
 
-```
-http://127.0.0.1:8010/docs
+```bash
+make swagger
+# ou directement : http://127.0.0.1:8010/docs
 ```
 
 Arrêter :
 
 ```bash
-docker compose down          # garde les données
-docker compose down -v       # supprime aussi le volume MySQL (repart de zéro)
+make down       # garde les données
+make nuke       # supprime aussi le volume MySQL (repart de zéro)
 ```
 
 ---
@@ -62,30 +77,13 @@ Puis redémarrez : `docker compose up -d --build`. Pas de wildcard `*` — seule
 Il n'y a pas encore de compte admin en base après un `alembic upgrade head` frais — seuls les rôles/permissions sont seedés, pas de compte utilisateur. Pour créer un premier compte `superadmin` en local :
 
 ```bash
-docker compose exec app python3 -c "
-import asyncio
-from app.core.database import AsyncSessionLocal
-from app.core.security import hash_password
-from app.models import AdminUser, Role
-from sqlalchemy import select
-
-async def main():
-    async with AsyncSessionLocal() as db:
-        role = (await db.execute(select(Role).where(Role.name == 'superadmin'))).scalar_one()
-        db.add(AdminUser(email='admin@synca.conf', password_hash=hash_password('ChangeMe123!'), role_id=role.id))
-        await db.commit()
-        print('Compte créé : admin@synca.conf / ChangeMe123!')
-
-asyncio.run(main())
-"
+make create-admin
 ```
 
-Puis :
+Puis obtenir un token :
 
 ```bash
-curl -X POST http://127.0.0.1:8010/api/admin/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"admin@synca.conf","password":"ChangeMe123!"}'
+make login
 ```
 
 Réponse :
@@ -905,10 +903,8 @@ Le suivi d'avancement précis est dans `ROADMAP.md` à la racine du repo.
 ## 9. Inspecter la base de données directement
 
 ```bash
-docker compose exec db mysql -uroot -p"$MYSQL_ROOT_PASSWORD" syncaconf
+make db-shell
 ```
-
-(`MYSQL_ROOT_PASSWORD` est dans votre `.env`.)
 
 ---
 
