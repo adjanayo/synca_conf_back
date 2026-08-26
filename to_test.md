@@ -478,4 +478,19 @@ En passant : `tests/test_auth_service.py::test_invalid_signature_rejected` étai
 
 ---
 
+### 2.5 — Endpoints RBAC admin (`PATCH /api/admin/roles/:id`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_rbac.py -v
+```
+→ attendu : `4 passed` — un `superadmin` (permission `roles.manage`, seedée en 1.7) peut remplacer les permissions d'un rôle ; un admin sans cette permission → `403` ; requête non authentifiée → `401` ; code de permission inconnu dans le body → `400`.
+
+- [x] 2.5 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
