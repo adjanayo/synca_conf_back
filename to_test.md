@@ -604,4 +604,19 @@ pytest tests/test_public_faqs.py -v
 
 ---
 
+### 3.7 — Fenêtres de campagne (`GET /api/campaign-windows`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_public_campaign_windows.py -v
+```
+→ attendu : `1 passed` (les 5 fenêtres seedées en 1.8 sont exposées, triées par `start_at`). Rien de sensible dans cette table — pas de filtrage nécessaire.
+
+- [x] 3.7 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

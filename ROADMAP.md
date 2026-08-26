@@ -69,7 +69,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 | 3.4 | Partenaires publics | `GET /api/partners?level=` (filtre `is_public=true`) | ✅ Test Done |
 | 3.5 | Exposants publics | `GET /api/exhibitors?public=true` (filtre `is_public=true`) | ✅ Test Done |
 | 3.6 | FAQ | `GET /api/faqs?category=` | ✅ Test Done |
-| 3.7 | Fenêtres de campagne | `GET /api/campaign-windows` (dates + statut, pour affichage frontend) | ⬜ Not Started |
+| 3.7 | Fenêtres de campagne | `GET /api/campaign-windows` (dates + statut, pour affichage frontend) | ✅ Test Done |
 | 3.8 | Pagination/tri commun | dependency partagée `app/deps/pagination.py` | ⬜ Not Started |
 
 Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune donnée `is_public=false` ne fuite.

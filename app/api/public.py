@@ -4,8 +4,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.pagination import Pagination, pagination_params
-from app.models import Day, Exhibitor, Faq, Partner, PassType, Session, Speaker
+from app.models import CampaignWindow, Day, Exhibitor, Faq, Partner, PassType, Session, Speaker
 from app.schemas import (
+    CampaignWindowRead,
     DayRead,
     ExhibitorRead,
     FaqRead,
@@ -118,3 +119,10 @@ async def list_faqs(
 
     faqs = (await db.execute(query)).scalars().all()
     return [FaqRead.model_validate(faq) for faq in faqs]
+
+
+@router.get("/campaign-windows", response_model=list[CampaignWindowRead])
+async def list_campaign_windows(db: AsyncSession = Depends(get_db)) -> list[CampaignWindowRead]:
+    query = select(CampaignWindow).order_by(CampaignWindow.start_at)
+    windows = (await db.execute(query)).scalars().all()
+    return [CampaignWindowRead.model_validate(window) for window in windows]
