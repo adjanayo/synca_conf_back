@@ -864,4 +864,21 @@ pytest tests/test_forms_speaker_apply.py -v
 
 ---
 
+### 4.4 — Candidature ambassadeur (`POST /api/ambassadors/apply`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_ambassador_apply.py -v
+```
+→ attendu : `5 passed` — fenêtre `call_for_ambassador` fermée → `403` ; candidature réussie (`preferred_channels` liste → chaîne jointe, `social_handles` JSON round-trip) ; `age < 16` → `422` ; `preferred_channels` vide → `422` ; `gdpr_consent=false` → `422`.
+
+Génération automatique d'un `promo_code` à l'acceptation → reportée à la Phase 6 (backoffice), pas cette étape.
+
+- [x] 4.4 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

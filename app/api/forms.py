@@ -9,6 +9,7 @@ from app.core.database import get_db
 from app.core.multipart import parse_multipart_form
 from app.deps.campaign_windows import require_open_campaign
 from app.models import (
+    Ambassador,
     ContactMessage,
     NewsletterSubscriber,
     PassType,
@@ -18,7 +19,8 @@ from app.models import (
     UserProfile,
     Waitlist,
 )
-from app.schemas.applications import SpeakerRead
+from app.schemas.ambassador_apply import AmbassadorApplyCreate
+from app.schemas.applications import AmbassadorRead, SpeakerRead
 from app.schemas.contact import ContactCreate
 from app.schemas.content import ContactMessageRead
 from app.schemas.newsletter import NewsletterCreate, NewsletterSubscriberRead
@@ -210,3 +212,40 @@ async def apply_as_speaker(
     await db.refresh(speaker)
 
     return SpeakerRead.model_validate(speaker)
+
+
+@router.post(
+    "/ambassadors/apply",
+    response_model=AmbassadorRead,
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_open_campaign("call_for_ambassador"))],
+)
+async def apply_as_ambassador(
+    body: AmbassadorApplyCreate, db: AsyncSession = Depends(get_db)
+) -> AmbassadorRead:
+    ambassador = Ambassador(
+        first_name=body.first_name,
+        last_name=body.last_name,
+        age=body.age,
+        country=body.country,
+        city=body.city,
+        email=body.email,
+        phone_whatsapp=body.phone_whatsapp,
+        current_profile=body.current_profile,
+        institution_company=body.institution_company,
+        linkedin_url=body.linkedin_url,
+        social_handles=body.social_handles,
+        followers_range=body.followers_range,
+        motivation=body.motivation,
+        mobilization_plan=body.mobilization_plan,
+        estimated_reach=body.estimated_reach,
+        previous_synca=body.previous_synca,
+        preferred_channels=", ".join(body.preferred_channels),
+        availability_pre=body.availability_pre,
+        gdpr_consent=body.gdpr_consent,
+    )
+    db.add(ambassador)
+    await db.commit()
+    await db.refresh(ambassador)
+
+    return AmbassadorRead.model_validate(ambassador)
