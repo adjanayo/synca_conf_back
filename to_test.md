@@ -461,4 +461,21 @@ curl -X POST http://127.0.0.1:8010/api/admin/login -H "Content-Type: application
 
 ---
 
+### 2.4 — Dependency `require_permission(code)`
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_rbac_deps.py -v
+```
+→ attendu : `5 passed` — `get_current_admin` résout un token valide, rejette (401) un token absent/invalide ; `require_permission(code)` laisse passer si le rôle a la permission (via `role_permissions`), renvoie 403 sinon.
+
+En passant : `tests/test_auth_service.py::test_invalid_signature_rejected` était flaky (le dernier caractère base64url d'une signature JWT ne change pas toujours les octets décodés après un flip) — corrigé pour altérer le caractère du milieu de la signature à la place. Vérifié stable sur 5 runs répétés.
+
+- [x] 2.4 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

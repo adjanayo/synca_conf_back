@@ -46,6 +46,15 @@ def test_expired_token_rejected():
 
 def test_invalid_signature_rejected():
     token = create_access_token(subject="42")
-    tampered = token[:-1] + ("A" if token[-1] != "A" else "B")
+    header, payload, signature = token.split(".")
+    # Flip the middle character of the signature -- unlike the trailing
+    # character, this always changes the decoded signature bytes (a
+    # base64url tail character can map padding bits that don't survive
+    # decoding, which made this test flaky when it tampered the last char).
+    mid = len(signature) // 2
+    flipped = "A" if signature[mid] != "A" else "B"
+    tampered_signature = signature[:mid] + flipped + signature[mid + 1 :]
+    tampered = f"{header}.{payload}.{tampered_signature}"
+
     with pytest.raises(InvalidTokenError):
         decode_token(tampered, expected_type="access")

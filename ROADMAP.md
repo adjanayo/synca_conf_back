@@ -53,7 +53,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 | 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) | `app/core/security.py` | test hash/verify | ✅ Test Done |
 | 2.2 | JWT access + refresh token : `PyJWT` | `app/services/auth_service.py` | test expiration, signature invalide rejetée | ✅ Test Done |
 | 2.3 | `POST /api/admin/login` | rate limit `slowapi` 5/min **par IP** (`slowapi` 0.1.x n'awaite pas un `key_func` async — combiner IP+email exigerait un middleware de cache du body ; email+IP visé initialement devient IP seule pour le rate limit, compensé par le **verrouillage de compte par email** ci-dessous) **+ verrouillage de compte** (`.claude/skills/security-hardening/SKILL.md` : 5 échecs consécutifs → verrou 15 min, doublement à chaque échec suivant, plafonné à 4h — amendements de portée avant implémentation, cf. ligne 5) | test brute-force bloqué (rate limit IP ET verrouillage compte, testés séparément) | ✅ Test Done |
-| 2.4 | Dependency `require_permission(code)` | `app/deps/rbac.py` | test 403 si permission manquante | ⬜ Not Started |
+| 2.4 | Dependency `require_permission(code)` | `app/deps/rbac.py` | test 403 si permission manquante | ✅ Test Done |
 | 2.5 | Endpoints RBAC admin (gestion rôles/permissions) | `PATCH /api/admin/roles/:id` | test superadmin seul autorisé | ⬜ Not Started |
 | 2.6 | Audit log connexions (succès/échec) | table `audit_logs` + middleware | entrée créée à chaque login | ⬜ Not Started |
 
