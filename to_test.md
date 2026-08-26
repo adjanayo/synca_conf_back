@@ -559,4 +559,19 @@ pytest tests/test_public_speakers.py -v
 
 ---
 
+### 3.4 — Partenaires publics (`GET /api/partners?level=`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_public_partners.py -v
+```
+→ attendu : `2 passed` (filtre `level`, exclusion des partenaires `is_public=false`, cas vide).
+
+- [x] 3.4 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

@@ -4,8 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.pagination import Pagination, pagination_params
-from app.models import Day, PassType, Session, Speaker
-from app.schemas import DayRead, PassTypeRead, SessionRead, SpeakerRead
+from app.models import Day, Partner, PassType, Session, Speaker
+from app.schemas import DayRead, PartnerRead, PassTypeRead, SessionRead, SpeakerRead
 
 router = APIRouter(prefix="/api", tags=["public"])
 
@@ -59,3 +59,20 @@ async def list_speakers(
 
     speakers = (await db.execute(query)).scalars().all()
     return [SpeakerRead.model_validate(speaker) for speaker in speakers]
+
+
+@router.get("/partners", response_model=list[PartnerRead])
+async def list_partners(
+    level: int | None = None,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+) -> list[PartnerRead]:
+    query = select(Partner).where(Partner.is_public.is_(True))
+    if level is not None:
+        query = query.where(Partner.level_id == level)
+    query = query.order_by(Partner.organization_name).limit(pagination.limit).offset(
+        pagination.offset
+    )
+
+    partners = (await db.execute(query)).scalars().all()
+    return [PartnerRead.model_validate(partner) for partner in partners]
