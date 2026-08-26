@@ -925,6 +925,8 @@ pytest tests/test_email_service.py tests/test_forms_register.py::test_register_s
 
 Accusé de réception câblé sur `register`, `speakers/apply`, `ambassadors/apply`, `partners/apply`, `exhibitors/apply` — chacun avec un sujet/contenu dédié.
 
+**Amendement (TODO.md)** : le `body` envoyé à `send_email` est maintenant du HTML (`app/services/email_templates.py`, shell inline-CSS partagé, pas de dépendance Jinja2 ajoutée), plus du texte brut. `first_name`/`contact_name` passés par `html.escape()` avant interpolation — ce contenu est rendu par le client mail du destinataire, un nom non échappé serait un vecteur XSS stocké.
+
 ⚠️ Le vrai envoi via Resend n'est testable qu'avec une vraie clé API en production — non disponible ici, même traitement que 4.9 (reCAPTCHA)/4.10 (B2).
 
 - [x] 4.12 validé — **Phase 4 (formulaires publics écriture) complète.**
@@ -1016,7 +1018,8 @@ alembic upgrade head
 pytest tests/test_ticket_finalization.py tests/test_payments_webhook.py -v
 ```
 → attendu : `11 passed`.
-- **5.6 PDF+QR** : `app/services/ticket_pdf.py` génère un PNG QR (`qrcode`) encodant `qr_code_hash`, l'incruste dans un PDF A5 (`reportlab`, via `ImageReader` pour passer les bytes en mémoire) avec numéro de billet, participant, type de pass, puis upload sur B2 (`upload_file`, réutilise 4.10).
+- **5.6 PDF+QR** : `app/services/ticket_pdf.py` génère un PNG QR (`qrcode`) encodant `qr_code_hash`, l'incruste dans un PDF (`reportlab`, via `ImageReader` pour passer les bytes en mémoire) avec numéro de billet, participant, type de pass, lieu, puis upload sur B2 (`upload_file`, réutilise 4.10).
+- **Amendement (TODO.md)** : format retravaillé en bande 210×50mm (pas une page A5 pleine — pensé pour une fenêtre d'enveloppe / imprimante thermique), bandeau d'en-tête coloré + accent (même palette que `email_templates.py`, §4.12), ligne `Lieu : {EVENT_VENUE}` ajoutée (`app/core/config.py`, valeur placeholder par défaut tant que le lieu réel n'est pas confirmé). Rendu de référence : `syncaconf/ticket_template.pdf`.
 - **5.7 email** : `finalize_ticket()` (`app/services/ticket_finalization.py`) envoie l'email avec le lien PDF juste après l'upload réussi.
 - **Pourquoi hors de la transaction 5.5** : `finalize_ticket` tourne en `BackgroundTask`, déclenché juste avant la réponse HTTP du webhook, avec sa **propre session DB** (`AsyncSessionLocal()`, pas celle de la requête déjà fermée). Perdre/relancer un upload PDF est acceptable ; perdre l'enregistrement du ticket ne l'est pas — donc le PDF/email ne doit jamais tenir ouverte la transaction paiement+ticket.
 - **Idempotence** : `finalize_ticket` no-op si le ticket a déjà un `pdf_url` (`test_finalize_ticket_is_idempotent_when_already_finalized`) ou si le ticket a disparu (`test_finalize_ticket_noops_on_missing_ticket`).
@@ -1176,11 +1179,12 @@ export DB_HOST=127.0.0.1
 alembic upgrade head
 pytest tests/test_user_me.py tests/test_forms_register.py -v
 ```
-→ attendu : `14 passed`.
+→ attendu : `16 passed`.
 
 - ⚠️ Amendement : il n'existe aucun login pour les participants (contrairement aux `admin_users`) — impossible d'implémenter `GET`/`DELETE /api/user/me` sans un moyen de les authentifier. Ajout de `users.access_token` (`String(64)`, unique, nullable — migration `e3a07849ada9`), généré via `secrets.token_urlsafe(32)` à `POST /api/register` et retourné **une seule fois** dans la réponse (`RegisterResponse`, qui étend `UserRead`) — pas de flux « mot de passe oublié », même posture anti-énumération que les codes d'accès clients (`security-hardening`).
 - **`GET /api/user/me`** : `Authorization: Bearer <access_token>` → `UserRead` (sans le token). Token invalide/absent → `401` générique (`get_current_participant`, distinct de `get_current_admin`).
 - **`DELETE /api/user/me`** : anonymisation, pas de suppression physique — `first_name`/`last_name`/`email`/`phone_whatsapp`/`gender`/`linkedin_url`/`portfolio_url`/`special_needs`/`heard_from` scrubbés, `email` remplacé par `anonymized-<id>@deleted.synca.conf` (reste unique), `access_token` révoqué (`None`) pour empêcher un rejeu. Les `tickets`/`payments` gardent leur `user_id` intact (conservés pour l'audit financier). Testé : le jeton ne peut plus être réutilisé après une première suppression (`401` sur le second appel).
+- **Amendement (TODO.md) — `GET /api/user/me/tickets`** : liste les billets du participant connecté, filtrés côté serveur sur `Ticket.user_id == user.id`. Aucun `{ticket_id}` en paramètre nulle part dans l'API — pas de surface IDOR par id, et `pdf_url` pointe déjà sur une clé B2 UUID (`storage.py::_generate_key`), donc le lien lui-même n'est pas devinable. Schéma `TicketRead` (`app/schemas/tickets.py`). Testé : un participant ne voit que ses propres billets (`test_get_my_tickets_returns_only_own_tickets`), token invalide → `401`.
 
 - [x] 6.8 validé — **Phase 6 complète.**
 

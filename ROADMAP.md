@@ -106,8 +106,8 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | 5.3 | Webhooks Stripe / Wave / Orange Money | vérification signature obligatoire (HMAC/secret), sinon 401 | ✅ Test Done — Wave/Orange Money assument un schéma HMAC générique, à confirmer contre la doc réelle |
 | 5.4 | Idempotence webhook | ne jamais traiter deux fois le même `transaction_ref` | ✅ Test Done |
 | 5.5 | Transaction atomique paiement + génération ticket | `DB.transaction()` équivalent SQLAlchemy (`async with session.begin()`) | ✅ Test Done |
-| 5.6 | Génération billet PDF + QR code | `qrcode` + `reportlab` (pur Python — pas de `weasyprint`, qui traîne Pango/Cairo/GDK-Pixbuf, trop lourd pour la VPS ciblée), upload B2 → `pdf_url` | ✅ Test Done — `finalize_ticket()` tourne en `BackgroundTask` post-webhook, session DB dédiée (hors transaction atomique 5.5) |
-| 5.7 | Email billet | envoi post-génération | ✅ Test Done — même `finalize_ticket()`, envoyé après l'upload PDF réussi |
+| 5.6 | Génération billet PDF + QR code | `qrcode` + `reportlab` (pur Python — pas de `weasyprint`, qui traîne Pango/Cairo/GDK-Pixbuf, trop lourd pour la VPS ciblée), upload B2 → `pdf_url` | ✅ Test Done — `finalize_ticket()` tourne en `BackgroundTask` post-webhook, session DB dédiée (hors transaction atomique 5.5). Amendement (TODO.md) : format bande 210×50mm colorée + lieu (`EVENT_VENUE`), plus une page A5 pleine — voir `syncaconf/ticket_template.pdf` |
+| 5.7 | Email billet | envoi post-génération | ✅ Test Done — même `finalize_ticket()`, envoyé après l'upload PDF réussi. Amendement (TODO.md) : corps HTML (`app/services/email_templates.py`), sur les 6 emails transactionnels (register + 4 candidatures + billet) |
 | 5.8 | Logs paiement séparés | canal `payment` dédié (succès + échecs), rétention longue | ✅ Test Done — binding `channel=payment/security` fait, sinks/rotation configurés en 8.1 |
 
 Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne génère pas 2 tickets, test signature invalide → 401 + log `security`.
@@ -125,7 +125,7 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 | 6.5 | `GET /api/admin/stats` | dashboard : inscriptions, revenus, taux conversion promo, candidatures par statut | ✅ Test Done — gardé par `require_permission("payments.view")` (chiffre le plus sensible du dashboard, pas de code dédié dans le seed 1.7) |
 | 6.6 | `GET /api/admin/registrations`, `/contacts` | listing filtrable/paginé | ✅ Test Done — `registrations` gardé par `payments.view` (filtre `payment_status`), `contacts` ouvert à tout admin authentifié (même politique que `contact_messages` en 6.1) ; pagination partagée (3.8) sur les deux |
 | 6.7 | Export CSV (inscriptions, paiements) | réservé `superadmin` via `require_permission("export.data")` | ✅ Test Done — `GET /api/admin/export/registrations` et `/payments`, `Content-Disposition: attachment`, non paginé (export complet, pas une vue liste) |
-| 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) | ✅ Test Done — amendement : ajout de `users.access_token` (généré à l'inscription, seul moyen d'authentifier un participant, il n'y a pas de login pour eux) ; retourné une seule fois dans la réponse de `POST /api/register` |
+| 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) | ✅ Test Done — amendement : ajout de `users.access_token` (généré à l'inscription, seul moyen d'authentifier un participant, il n'y a pas de login pour eux) ; retourné une seule fois dans la réponse de `POST /api/register`. Amendement (TODO.md) : `GET /api/user/me/tickets` ajouté — liste scopée à `user_id`, aucun lookup par id de billet nulle part dans l'API (pas de surface IDOR) |
 
 ---
 
