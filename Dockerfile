@@ -16,6 +16,12 @@ RUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements-dev.txt
 
 FROM python:3.12-alpine AS runtime
 
+# The base image tag is a floating snapshot -- apk upgrade pulls whatever
+# OS-package security fixes Alpine has published since that snapshot was
+# built (e.g. openssl CVEs), independent of when this Dockerfile last
+# changed. Keeps the CI Trivy gate (image-scan job) green on its own.
+RUN apk upgrade --no-cache
+
 RUN addgroup -S app && adduser -S -G app -H app
 
 WORKDIR /app
@@ -45,6 +51,8 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 
 FROM python:3.12-alpine AS dev
+
+RUN apk upgrade --no-cache
 
 RUN addgroup -S app && adduser -S -G app -H app
 
