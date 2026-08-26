@@ -699,4 +699,21 @@ pytest tests/test_forms_waitlist.py -v
 
 ---
 
+### 4.11 — Dependency `require_open_campaign(key)`
+
+> Construite avant 4.2-4.6 dans l'ordre d'implémentation car ces endpoints en dépendent (même schéma que la pagination en 3.8).
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_campaign_window_deps.py -v
+```
+→ attendu : `5 passed` — fenêtre ouverte (dans les dates + `is_active=true`) laisse passer ; fenêtre pas encore commencée → `403` ; fenêtre déjà fermée → `403` ; fenêtre désactivée manuellement même si dans les dates → `403` ; clé de fenêtre inexistante → `403`.
+
+- [x] 4.11 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
