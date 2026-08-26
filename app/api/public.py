@@ -4,8 +4,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.pagination import Pagination, pagination_params
-from app.models import Day, Exhibitor, Partner, PassType, Session, Speaker
-from app.schemas import DayRead, ExhibitorRead, PartnerRead, PassTypeRead, SessionRead, SpeakerRead
+from app.models import Day, Exhibitor, Faq, Partner, PassType, Session, Speaker
+from app.schemas import (
+    DayRead,
+    ExhibitorRead,
+    FaqRead,
+    PartnerRead,
+    PassTypeRead,
+    SessionRead,
+    SpeakerRead,
+)
 
 router = APIRouter(prefix="/api", tags=["public"])
 
@@ -95,3 +103,18 @@ async def list_exhibitors(
     )
     exhibitors = (await db.execute(query)).scalars().all()
     return [ExhibitorRead.model_validate(exhibitor) for exhibitor in exhibitors]
+
+
+@router.get("/faqs", response_model=list[FaqRead])
+async def list_faqs(
+    category: int | None = None,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+) -> list[FaqRead]:
+    query = select(Faq)
+    if category is not None:
+        query = query.where(Faq.category_id == category)
+    query = query.order_by(Faq.sort_order).limit(pagination.limit).offset(pagination.offset)
+
+    faqs = (await db.execute(query)).scalars().all()
+    return [FaqRead.model_validate(faq) for faq in faqs]

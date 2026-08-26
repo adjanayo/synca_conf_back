@@ -589,4 +589,19 @@ pytest tests/test_public_exhibitors.py -v
 
 ---
 
+### 3.6 — FAQ (`GET /api/faqs?category=`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_public_faqs.py -v
+```
+→ attendu : `2 passed` (filtre par `category`, tri par `sort_order`, cas vide).
+
+- [x] 3.6 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
