@@ -4,3 +4,7 @@ extend-exclude = ["alembic/versions"]
 
 [lint]
 select = ["E", "F", "I", "UP", "B"]
+# B008: FastAPI's Depends(...)/Query(...) default-argument pattern is the
+# framework's intended idiom, not the mutable-default-argument bug B008
+# targets.
+ignore = ["B008"]

@@ -437,4 +437,28 @@ pytest tests/test_auth_service.py -v
 
 ---
 
+### 2.3 — `POST /api/admin/login` (rate limit IP + verrouillage compte)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_login.py -v
+```
+→ attendu : `5 passed` — connexion réussie renvoie une paire de tokens, mot de passe erroné **et** email inconnu renvoient le **même** `401 "Email ou mot de passe incorrect."` (anti-énumération, hash factice comparé même si le compte n'existe pas), 6ᵉ requête/minute depuis la même IP → `429`, 5 échecs consécutifs sur le même compte → `AccountLockedError` même avec le bon mot de passe ensuite.
+
+⚠️ Amendement de portée (voir ROADMAP.md 2.3) : le rate limit `slowapi` 0.1.x ne peut pas combiner IP+email (son `key_func` n'est pas awaité), donc il est appliqué **par IP seule** ; la protection par compte est assurée séparément par le verrouillage (`app/services/auth_service.py`), qui lui est bien par email.
+
+Vérification via conteneur :
+```bash
+docker compose up -d --build
+curl -X POST http://127.0.0.1:8010/api/admin/login -H "Content-Type: application/json" -d '{"email":"ghost@synca.conf","password":"x"}'
+```
+→ attendu : `{"detail":"Email ou mot de passe incorrect."}`.
+
+- [x] 2.3 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

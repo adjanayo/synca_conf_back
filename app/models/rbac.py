@@ -46,6 +46,8 @@ class AdminUser(Base):
         Integer, ForeignKey("roles.id"), nullable=False, index=True
     )
     last_login: Mapped[datetime | None] = mapped_column(DateTime)
+    failed_login_attempts: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    locked_until: Mapped[datetime | None] = mapped_column(DateTime)
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
     role: Mapped[Role] = relationship()
