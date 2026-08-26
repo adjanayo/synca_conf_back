@@ -66,6 +66,11 @@ class Settings(BaseSettings):
     # Docker volume in production, not baked into the image.
     log_dir: str = "logs"
 
+    # app/services/ticket_pdf.py: printed on every ticket. Placeholder until
+    # the real venue is confirmed -- set EVENT_VENUE in .env, no redeploy
+    # needed since it's read at request time via get_settings().
+    event_venue: str = "Lieu à confirmer"
+
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common

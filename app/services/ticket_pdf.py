@@ -1,18 +1,28 @@
 import io
 
 import qrcode
+from reportlab.lib import colors
 from reportlab.lib.units import mm
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 
+from app.core.config import get_settings
 from app.services.storage import upload_file
 
 # TODO.md: ticket is a wide strip, not a full A4/A5 page -- 210mm x 50mm
 # (fits a standard envelope window / thermal-printer-friendly format).
 _TICKET_WIDTH = 210 * mm
 _TICKET_HEIGHT = 50 * mm
-_QR_SIZE = 38 * mm
+_HEADER_HEIGHT = 12 * mm
+_QR_SIZE = 32 * mm
 _MARGIN = 8 * mm
+
+# Same palette as the HTML email shell (app/services/email_templates.py) --
+# dark header band + amber accent, so a printed ticket and the email that
+# delivered it read as the same brand.
+_COLOR_DARK = colors.HexColor("#111827")
+_COLOR_ACCENT = colors.HexColor("#f59e0b")
+_COLOR_ACCENT_LIGHT = colors.HexColor("#fef3c7")
 
 
 def _render_qr_png(data: str) -> bytes:
@@ -26,29 +36,54 @@ def _render_ticket_pdf(
     ticket_number: str, qr_code_hash: str, attendee_name: str, pass_type_name: str
 ) -> bytes:
     qr_png = _render_qr_png(qr_code_hash)
+    venue = get_settings().event_venue
 
     buffer = io.BytesIO()
     pdf = canvas.Canvas(buffer, pagesize=(_TICKET_WIDTH, _TICKET_HEIGHT))
 
-    # QR block, right-aligned, vertically centered in the strip.
-    qr_x = _TICKET_WIDTH - _MARGIN - _QR_SIZE
-    qr_y = (_TICKET_HEIGHT - _QR_SIZE) / 2
+    # Dark header band with the amber accent rule underneath.
+    pdf.setFillColor(_COLOR_DARK)
+    pdf.rect(0, _TICKET_HEIGHT - _HEADER_HEIGHT, _TICKET_WIDTH, _HEADER_HEIGHT, stroke=0, fill=1)
+    pdf.setFillColor(_COLOR_ACCENT)
+    pdf.rect(
+        0, _TICKET_HEIGHT - _HEADER_HEIGHT - 1.5 * mm, _TICKET_WIDTH, 1.5 * mm, stroke=0, fill=1
+    )
+    pdf.setFillColor(colors.white)
+    pdf.setFont("Helvetica-Bold", 14)
+    pdf.drawString(_MARGIN, _TICKET_HEIGHT - _HEADER_HEIGHT + 3.5 * mm, "SYNCA CONF 2027")
+
+    # QR block, right-aligned, on a light amber tile.
+    tile_size = _QR_SIZE + 4 * mm
+    tile_x = _TICKET_WIDTH - _MARGIN - tile_size
+    tile_y = (_TICKET_HEIGHT - _HEADER_HEIGHT - 1.5 * mm - tile_size) / 2
+    pdf.setFillColor(_COLOR_ACCENT_LIGHT)
+    pdf.roundRect(tile_x, tile_y, tile_size, tile_size, 2 * mm, stroke=0, fill=1)
     pdf.drawImage(
-        ImageReader(io.BytesIO(qr_png)), qr_x, qr_y, width=_QR_SIZE, height=_QR_SIZE
+        ImageReader(io.BytesIO(qr_png)),
+        tile_x + 2 * mm,
+        tile_y + 2 * mm,
+        width=_QR_SIZE,
+        height=_QR_SIZE,
     )
 
     # Dashed perforation line separating the info block from the QR stub.
+    pdf.setStrokeColor(colors.HexColor("#d1d5db"))
     pdf.setDash(2, 2)
-    pdf.line(qr_x - _MARGIN, 0, qr_x - _MARGIN, _TICKET_HEIGHT)
+    pdf.line(tile_x - _MARGIN, 0, tile_x - _MARGIN, _TICKET_HEIGHT - _HEADER_HEIGHT - 1.5 * mm)
     pdf.setDash()
 
-    # Text block, left-aligned within the remaining width.
-    pdf.setFont("Helvetica-Bold", 14)
-    pdf.drawString(_MARGIN, _TICKET_HEIGHT - 14 * mm, "SYNCA CONF 2027")
+    # Text block, left-aligned within the remaining width, below the header.
+    pdf.setFillColor(_COLOR_DARK)
     pdf.setFont("Helvetica", 10)
-    pdf.drawString(_MARGIN, _TICKET_HEIGHT - 23 * mm, f"Billet : {ticket_number}")
-    pdf.drawString(_MARGIN, _TICKET_HEIGHT - 30 * mm, f"Participant : {attendee_name}")
-    pdf.drawString(_MARGIN, _TICKET_HEIGHT - 37 * mm, f"Pass : {pass_type_name}")
+    line_y = _TICKET_HEIGHT - _HEADER_HEIGHT - 1.5 * mm - 7 * mm
+    for label, value in (
+        ("Billet", ticket_number),
+        ("Participant", attendee_name),
+        ("Pass", pass_type_name),
+        ("Lieu", venue),
+    ):
+        pdf.drawString(_MARGIN, line_y, f"{label} : {value}")
+        line_y -= 6.5 * mm
 
     pdf.showPage()
     pdf.save()
