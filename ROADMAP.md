@@ -101,7 +101,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 
 | # | Étape | Détail | Statut |
 |---|---|---|---|
-| 5.1 | `POST /api/payments` | crée `payments.status=pending`, calcule remise promo | ⬜ Not Started |
+| 5.1 | `POST /api/payments` | crée `payments.status=pending`, calcule remise promo (`pass_type_id` ajouté au body — voir `TO_TEST.md` 5.1) | ✅ Test Done |
 | 5.2 | `POST /api/promo/validate` | vérifie actif, non expiré, non épuisé | ✅ Test Done |
 | 5.3 | Webhooks Stripe / Wave / Orange Money | vérification signature obligatoire (HMAC/secret), sinon 401 | ⬜ Not Started |
 | 5.4 | Idempotence webhook | ne jamais traiter deux fois le même `transaction_ref` | ⬜ Not Started |

@@ -966,4 +966,21 @@ pytest tests/test_promo_validate.py tests/test_forms_register.py -v
 
 ---
 
+### 5.1 — `POST /api/payments`
+
+> Amendement de portée : `schema.md` §3B ne liste que `user_id`/`payment_method`/`promo_code_id` comme champs d'entrée, mais `payments.pass_type_id` est `NOT NULL` dans le schéma et `users` n'a pas de colonne `pass_type_id` pour le retrouver — `pass_type_id` est donc ajouté explicitement au body de la requête (déjà connu du frontend depuis l'inscription, §3A).
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_payments_create.py -v
+```
+→ attendu : `5 passed` — paiement créé `status=pending` sans promo (`amount_paid == amount_original`), remise en pourcentage appliquée (15000 → 13500 pour 10%), remise fixe appliquée (15000 → 10000 pour -5000), `user_id` invalide → `400`, `promo_code` invalide → `400`.
+
+- [x] 5.1 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
