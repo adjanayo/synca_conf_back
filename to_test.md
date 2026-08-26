@@ -619,4 +619,21 @@ pytest tests/test_public_campaign_windows.py -v
 
 ---
 
+### 3.8 — Pagination/tri commun (`app/deps/pagination.py`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_pagination.py -v
+```
+→ attendu : `8 passed` — `limit`/`offset` invalides (`limit=0`, `limit=500`, `offset=-1`) rejetés en `422` sur les 5 endpoints qui utilisent la dépendance partagée (`/sessions`, `/speakers`, `/partners`, `/exhibitors`, `/faqs`), défauts (`limit=50`) appliqués sans paramètre, `limit` limite bien le nombre de résultats.
+
+Note de portée : pas de tri client-contrôlé (`?sort=...`) — accepter un nom de colonne arbitraire depuis la requête sans allowlist est un risque inutile pour ce roadmap ; chaque endpoint a un tri par défaut fixe et documenté (ex. `sessions` par `day_id, start_time`, `faqs` par `sort_order`).
+
+- [x] 3.8 validé — **Phase 3 (endpoints publics lecture) complète.**
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
