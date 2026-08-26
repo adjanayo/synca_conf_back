@@ -234,6 +234,34 @@ python3 -c "import yaml; yaml.safe_load(open('.github/workflows/deploy.yml'))"
 
 ---
 
+## Correctif critique — isolation des tests (`tests/conftest.py`)
+
+**Bug trouvé pendant 4.3** : `db_session.commit()` terminait réellement la transaction externe ouverte par le fixture (`connection.begin()`), pas juste un savepoint. Le rollback de fin de test (`if transaction.is_active: rollback()`) ne se déclenchait donc **jamais** après un commit réussi (`transaction.is_active` devenait `False`) — toutes les mutations de tous les tests qui appellent `.commit()` étaient **persistées en permanence** dans la base de dev depuis le tout premier test de la session. Resté invisible tant que les tests inséraient des lignes avec des valeurs uniques (emails différents), mais `tests/test_campaign_window_deps.py` **modifiait** les lignes `campaign_windows` déjà seedées (1.8) → corruption silencieuse des dates de seed en base réelle.
+
+**Correctif** : pattern SAVEPOINT officiel de SQLAlchemy — un savepoint (`connection.begin_nested()`) est relancé automatiquement à chaque fin de transaction de session (`event.listens_for(session, "after_transaction_end")`), de sorte qu'un `commit()` de test ne referme jamais que le savepoint courant, jamais la transaction externe. Le rollback final annule donc bien tout, quel que soit le nombre de `commit()` appelés pendant le test.
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+docker compose exec db mysql -uroot -p"$MYSQL_ROOT_PASSWORD" syncaconf \
+  -e "SELECT \`key\`,start_at,end_at FROM campaign_windows WHERE \`key\`='call_for_partner';"
+pytest tests/test_campaign_window_deps.py -v
+docker compose exec db mysql -uroot -p"$MYSQL_ROOT_PASSWORD" syncaconf \
+  -e "SELECT \`key\`,start_at,end_at FROM campaign_windows WHERE \`key\`='call_for_partner';"
+```
+→ attendu : les deux `SELECT` renvoient exactement les mêmes dates — aucune mutation résiduelle après les tests.
+
+⚠️ Le volume `synca-dev-mysql-data` local peut contenir des données corrompues par ce bug s'il a survécu depuis avant ce correctif. Repartir propre :
+```bash
+docker compose down -v && docker compose up -d db && alembic upgrade head
+```
+
+- [x] validé.
+
+---
+
 ## Phase 1 — Modèle de données
 
 ### 1.1 — Référentiels (`days`, `pass_types`, `partner_levels`, `faq_categories`)
