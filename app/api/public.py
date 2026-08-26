@@ -4,8 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.pagination import Pagination, pagination_params
-from app.models import Day, Session
-from app.schemas import DayRead, SessionRead
+from app.models import Day, PassType, Session
+from app.schemas import DayRead, PassTypeRead, SessionRead
 
 router = APIRouter(prefix="/api", tags=["public"])
 
@@ -34,3 +34,10 @@ async def list_sessions(
 
     sessions = (await db.execute(query)).scalars().all()
     return [SessionRead.model_validate(session) for session in sessions]
+
+
+@router.get("/pass-types", response_model=list[PassTypeRead])
+async def list_pass_types(db: AsyncSession = Depends(get_db)) -> list[PassTypeRead]:
+    query = select(PassType).where(PassType.is_active.is_(True)).order_by(PassType.price)
+    pass_types = (await db.execute(query)).scalars().all()
+    return [PassTypeRead.model_validate(pass_type) for pass_type in pass_types]

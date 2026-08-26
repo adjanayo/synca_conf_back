@@ -529,4 +529,19 @@ Dépendance de pagination partagée (`app/deps/pagination.py`, `limit`/`offset`)
 
 ---
 
+### 3.2 — Pass (`GET /api/pass-types`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_public_pass_types.py -v
+```
+→ attendu : `2 passed` (les pass `is_active=false` ne fuitent jamais, cas vide géré).
+
+- [x] 3.2 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
