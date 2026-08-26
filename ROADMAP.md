@@ -63,7 +63,7 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 
 | # | Étape | Endpoint | Statut |
 |---|---|---|---|
-| 3.1 | Jours & programme | `GET /api/days`, `GET /api/sessions?day=&category=` | ⬜ Not Started |
+| 3.1 | Jours & programme | `GET /api/days`, `GET /api/sessions?day=&category=` | ✅ Test Done |
 | 3.2 | Pass | `GET /api/pass-types` | ⬜ Not Started |
 | 3.3 | Speakers publics | `GET /api/speakers?theme=&format=` (filtre `is_public=true`) | ⬜ Not Started |
 | 3.4 | Partenaires publics | `GET /api/partners?level=` (filtre `is_public=true`) | ⬜ Not Started |

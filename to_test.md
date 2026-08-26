@@ -510,4 +510,23 @@ Note d'implémentation : journalisation faite directement dans `authenticate_adm
 
 ---
 
+## Phase 3 — Endpoints publics (lecture)
+
+### 3.1 — Jours & programme (`GET /api/days`, `GET /api/sessions?day=&category=`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_public_program.py -v
+```
+→ attendu : `4 passed` — `/api/days` trié par date (et cas vide), `/api/sessions` filtré par `day`+`category` **et** ne renvoie jamais une session `is_public=false`, cas vide géré.
+
+Dépendance de pagination partagée (`app/deps/pagination.py`, `limit`/`offset`) introduite ici car `/api/sessions` en a besoin ; réutilisée par tous les endpoints de liste suivants (3.3-3.6) — formalisée/testée isolément en 3.8.
+
+- [x] 3.1 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
