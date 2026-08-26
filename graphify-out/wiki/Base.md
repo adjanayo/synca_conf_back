@@ -23,47 +23,48 @@ sequenceDiagram
     participant P14 as test_promo_validate_exhausted_400()
     participant P15 as test_promo_validate_fixed_discount()
     participant P16 as Payment
-    participant P17 as make_pending_payment()
-    participant P18 as Ticket
+    participant P17 as Ticket
+    participant P18 as make_pending_payment()
     participant P19 as Waitlist
     participant P20 as make_ticket()
     participant P21 as make_payment()
     participant P22 as make_payment()
-    participant P23 as make_user_and_pass()
-    participant P24 as test_register_duplicate_email_conflict()
-    participant P25 as test_register_success()
-    participant P26 as test_register_sends_confirmation_email()
-    participant P27 as test_register_inactive_pass_type_400()
-    participant P28 as test_register_invalid_promo_code_400()
-    participant P29 as make_user_and_pass_type()
-    participant P30 as test_create_payment_success_no_promo()
-    participant P31 as test_create_payment_invalid_promo_400()
-    participant P32 as test_list_pass_types_excludes_inactive()
-    participant P33 as test_pass_type_defaults()
-    participant P34 as test_create_payment_invalid_user_400()
-    participant P35 as test_pass_type_read()
-    participant P36 as User
-    participant P37 as Role
-    participant P38 as AdminUser
-    participant P39 as PartnerLevel
-    participant P40 as RolePermission
-    participant P41 as Permission
-    participant P42 as Speaker
-    participant P43 as Partner
-    participant P44 as FaqCategory
-    participant P45 as Exhibitor
-    participant P46 as ContactMessage
-    participant P47 as Day
-    participant P48 as Session
-    participant P49 as Ambassador
-    participant P50 as Faq
-    participant P51 as UserProfile
-    participant P52 as AuditLog
-    participant P53 as CampaignWindow
-    participant P54 as NewsletterSubscriber
-    participant P55 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P56 as In this scenario we need to create an Engine     and associate a connection with
-    participant P57 as Run migrations in 'online' mode.
+    participant P23 as make_ticket_for()
+    participant P24 as make_user_and_pass()
+    participant P25 as test_register_duplicate_email_conflict()
+    participant P26 as test_register_success()
+    participant P27 as test_register_sends_confirmation_email()
+    participant P28 as test_register_inactive_pass_type_400()
+    participant P29 as test_register_invalid_promo_code_400()
+    participant P30 as make_user_and_pass_type()
+    participant P31 as test_create_payment_success_no_promo()
+    participant P32 as test_create_payment_invalid_promo_400()
+    participant P33 as test_list_pass_types_excludes_inactive()
+    participant P34 as test_pass_type_defaults()
+    participant P35 as test_create_payment_invalid_user_400()
+    participant P36 as test_pass_type_read()
+    participant P37 as User
+    participant P38 as Role
+    participant P39 as AdminUser
+    participant P40 as PartnerLevel
+    participant P41 as RolePermission
+    participant P42 as Permission
+    participant P43 as Speaker
+    participant P44 as Partner
+    participant P45 as FaqCategory
+    participant P46 as Exhibitor
+    participant P47 as ContactMessage
+    participant P48 as Day
+    participant P49 as Session
+    participant P50 as Ambassador
+    participant P51 as Faq
+    participant P52 as UserProfile
+    participant P53 as AuditLog
+    participant P54 as CampaignWindow
+    participant P55 as NewsletterSubscriber
+    participant P56 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P57 as In this scenario we need to create an Engine     and associate a connection with
+    participant P58 as Run migrations in 'online' mode.
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -102,9 +103,9 @@ sequenceDiagram
     P15-->>- P2: return
     P1->>+ P16: uses
     P16-->>- P1: return
-    P1->>+ P17: calls
+    P1->>+ P17: uses
     P17-->>- P1: return
-    P1->>+ P18: uses
+    P1->>+ P18: calls
     P18-->>- P1: return
     P1->>+ P19: uses
     P19-->>- P1: return
@@ -118,10 +119,10 @@ sequenceDiagram
     P4-->>- P1: return
     P1->>+ P23: calls
     P23-->>- P1: return
-    P1->>+ P5: calls
-    P5-->>- P1: return
     P1->>+ P24: calls
     P24-->>- P1: return
+    P1->>+ P5: calls
+    P5-->>- P1: return
     P1->>+ P25: calls
     P25-->>- P1: return
     P1->>+ P26: calls
@@ -132,12 +133,12 @@ sequenceDiagram
     P28-->>- P1: return
     P1->>+ P29: calls
     P29-->>- P1: return
+    P1->>+ P30: calls
+    P30-->>- P1: return
     P1->>+ P8: calls
     P8-->>- P1: return
     P1->>+ P9: calls
     P9-->>- P1: return
-    P1->>+ P30: calls
-    P30-->>- P1: return
     P1->>+ P31: calls
     P31-->>- P1: return
     P1->>+ P32: calls
@@ -148,14 +149,14 @@ sequenceDiagram
     P34-->>- P1: return
     P1->>+ P35: calls
     P35-->>- P1: return
-    P0->>+ P36: uses
-    P36-->>- P0: return
+    P1->>+ P36: calls
+    P36-->>- P1: return
     P0->>+ P37: uses
     P37-->>- P0: return
-    P0->>+ P2: uses
-    P2-->>- P0: return
     P0->>+ P38: uses
     P38-->>- P0: return
+    P0->>+ P2: uses
+    P2-->>- P0: return
     P0->>+ P16: uses
     P16-->>- P0: return
     P0->>+ P39: uses
@@ -168,10 +169,10 @@ sequenceDiagram
     P42-->>- P0: return
     P0->>+ P43: uses
     P43-->>- P0: return
+    P0->>+ P17: uses
+    P17-->>- P0: return
     P0->>+ P44: uses
     P44-->>- P0: return
-    P0->>+ P18: uses
-    P18-->>- P0: return
     P0->>+ P45: uses
     P45-->>- P0: return
     P0->>+ P46: uses
@@ -184,10 +185,10 @@ sequenceDiagram
     P49-->>- P0: return
     P0->>+ P50: uses
     P50-->>- P0: return
-    P0->>+ P19: uses
-    P19-->>- P0: return
     P0->>+ P51: uses
     P51-->>- P0: return
+    P0->>+ P19: uses
+    P19-->>- P0: return
     P0->>+ P52: uses
     P52-->>- P0: return
     P0->>+ P53: uses
@@ -200,6 +201,8 @@ sequenceDiagram
     P56-->>- P0: return
     P0->>+ P57: uses
     P57-->>- P0: return
+    P0->>+ P58: uses
+    P58-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -215,15 +218,15 @@ sequenceDiagram
 - [[User]] `INFERRED`
 - [[Role]] `INFERRED`
 - [[PromoCode]] `INFERRED`
-- [[AdminUser]] `INFERRED`
 - [[Payment]] `INFERRED`
+- [[AdminUser]] `INFERRED`
 - [[PartnerLevel]] `INFERRED`
 - [[RolePermission]] `INFERRED`
 - [[Permission]] `INFERRED`
 - [[Speaker]] `INFERRED`
+- [[Ticket]] `INFERRED`
 - [[Partner]] `INFERRED`
 - [[FaqCategory]] `INFERRED`
-- [[Ticket]] `INFERRED`
 - [[Exhibitor]] `INFERRED`
 - [[ContactMessage]] `INFERRED`
 - [[Day]] `INFERRED`

@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L98) (1 connections)
-- [rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L21) (1 connections)
+- [2026_08_25_2135-5e965f30353e_initial_empty.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L26) (1 connections)
+- [initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py)
 
 ## Audit Trail
 

@@ -4,9 +4,9 @@
 
 ## Key Concepts
 
-- [main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L1) (2 connections)
-- [health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L78) (1 connections)
-- [_log_rate_limit_exceeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L50) (1 connections)
+- [test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L1) (2 connections)
+- [test_cors_preflight_allows_configured_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L8) (1 connections)
+- [test_cors_rejects_unlisted_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L24) (1 connections)
 
 ## Relationships
 
@@ -14,7 +14,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py)
 
 ## Audit Trail
 

@@ -1,11 +1,10 @@
 # Community 46
 
-> 2 nodes · cohesion 1.00
+> 1 nodes · cohesion 1.00
 
 ## Key Concepts
 
-- [list_contacts()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L17) (1 connections)
-- [admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L1) (1 connections)
+- [__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py#L1) (0 connections)
 
 ## Relationships
 
@@ -13,11 +12,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py)
 
 ## Audit Trail
 
-- EXTRACTED: 2 (100%)
+- EXTRACTED: 0 (0%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

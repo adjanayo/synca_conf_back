@@ -1,6 +1,6 @@
 # PassType
 
-> God node · 28 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py#L19)
+> God node · 29 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py#L19)
 
 ## Call Trace Diagram
 
@@ -12,10 +12,10 @@ sequenceDiagram
     participant P3 as make_pending_payment()
     participant P4 as EncryptedString
     participant P5 as make_ticket()
-    participant P6 as make_payment()
+    participant P6 as make_user()
     participant P7 as make_payment()
-    participant P8 as test_webhook_increments_promo_usage_count_on_completion()
-    participant P9 as make_user()
+    participant P8 as make_payment()
+    participant P9 as test_webhook_increments_promo_usage_count_on_completion()
     participant P10 as make_user()
     participant P11 as register()
     participant P12 as make_user_and_pass()
@@ -27,15 +27,15 @@ sequenceDiagram
     participant P18 as test_null_special_needs_stays_null()
     participant P19 as Role
     participant P20 as PromoCode
-    participant P21 as AdminUser
-    participant P22 as Payment
+    participant P21 as Payment
+    participant P22 as AdminUser
     participant P23 as PartnerLevel
     participant P24 as RolePermission
     participant P25 as Permission
     participant P26 as Speaker
-    participant P27 as Partner
-    participant P28 as FaqCategory
-    participant P29 as Ticket
+    participant P27 as Ticket
+    participant P28 as Partner
+    participant P29 as FaqCategory
     participant P30 as Exhibitor
     participant P31 as ContactMessage
     participant P32 as Day
@@ -50,19 +50,20 @@ sequenceDiagram
     participant P41 as Run migrations in 'offline' mode.      This configures the context with just a U
     participant P42 as In this scenario we need to create an Engine     and associate a connection with
     participant P43 as Run migrations in 'online' mode.
-    participant P44 as test_register_valid_promo_code_accepted()
-    participant P45 as test_register_success()
-    participant P46 as test_register_sends_confirmation_email()
-    participant P47 as test_register_inactive_pass_type_400()
-    participant P48 as test_register_invalid_promo_code_400()
-    participant P49 as test_create_payment_applies_percent_discount()
-    participant P50 as test_create_payment_applies_fixed_discount()
-    participant P51 as test_create_payment_success_no_promo()
-    participant P52 as test_create_payment_invalid_promo_400()
-    participant P53 as test_list_pass_types_excludes_inactive()
-    participant P54 as test_pass_type_defaults()
-    participant P55 as test_create_payment_invalid_user_400()
-    participant P56 as test_pass_type_read()
+    participant P44 as make_ticket_for()
+    participant P45 as test_register_valid_promo_code_accepted()
+    participant P46 as test_register_success()
+    participant P47 as test_register_sends_confirmation_email()
+    participant P48 as test_register_inactive_pass_type_400()
+    participant P49 as test_register_invalid_promo_code_400()
+    participant P50 as test_create_payment_applies_percent_discount()
+    participant P51 as test_create_payment_applies_fixed_discount()
+    participant P52 as test_create_payment_success_no_promo()
+    participant P53 as test_create_payment_invalid_promo_400()
+    participant P54 as test_list_pass_types_excludes_inactive()
+    participant P55 as test_pass_type_defaults()
+    participant P56 as test_create_payment_invalid_user_400()
+    participant P57 as test_pass_type_read()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -155,40 +156,40 @@ sequenceDiagram
     P43-->>- P1: return
     P0->>+ P20: uses
     P20-->>- P0: return
-    P0->>+ P22: uses
-    P22-->>- P0: return
+    P0->>+ P21: uses
+    P21-->>- P0: return
+    P0->>+ P27: uses
+    P27-->>- P0: return
     P0->>+ P3: calls
     P3-->>- P0: return
-    P0->>+ P29: uses
-    P29-->>- P0: return
     P0->>+ P36: uses
     P36-->>- P0: return
     P0->>+ P5: calls
     P5-->>- P0: return
-    P0->>+ P6: calls
-    P6-->>- P0: return
     P0->>+ P7: calls
     P7-->>- P0: return
     P0->>+ P8: calls
     P8-->>- P0: return
-    P0->>+ P12: calls
-    P12-->>- P0: return
+    P0->>+ P9: calls
+    P9-->>- P0: return
     P0->>+ P44: calls
     P44-->>- P0: return
-    P0->>+ P13: calls
-    P13-->>- P0: return
+    P0->>+ P12: calls
+    P12-->>- P0: return
     P0->>+ P45: calls
     P45-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
     P0->>+ P46: calls
     P46-->>- P0: return
     P0->>+ P47: calls
     P47-->>- P0: return
     P0->>+ P48: calls
     P48-->>- P0: return
-    P0->>+ P15: calls
-    P15-->>- P0: return
     P0->>+ P49: calls
     P49-->>- P0: return
+    P0->>+ P15: calls
+    P15-->>- P0: return
     P0->>+ P50: calls
     P50-->>- P0: return
     P0->>+ P51: calls
@@ -203,6 +204,8 @@ sequenceDiagram
     P55-->>- P0: return
     P0->>+ P56: calls
     P56-->>- P0: return
+    P0->>+ P57: calls
+    P57-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -213,6 +216,7 @@ sequenceDiagram
 - [[make_payment()]] `INFERRED`
 - [[make_payment()]] `INFERRED`
 - [[test_webhook_increments_promo_usage_count_on_completion()]] `INFERRED`
+- [[make_ticket_for()]] `INFERRED`
 - [[make_user_and_pass()]] `INFERRED`
 - [[test_register_valid_promo_code_accepted()]] `INFERRED`
 - [[test_register_duplicate_email_conflict()]] `INFERRED`
@@ -227,7 +231,6 @@ sequenceDiagram
 - [[test_create_payment_invalid_promo_400()]] `INFERRED`
 - [[test_list_pass_types_excludes_inactive()]] `INFERRED`
 - [[test_pass_type_defaults()]] `INFERRED`
-- [[test_create_payment_invalid_user_400()]] `INFERRED`
 
 ### contains
 - [[referentials.py]] `EXTRACTED`

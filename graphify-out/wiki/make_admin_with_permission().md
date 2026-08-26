@@ -12,15 +12,15 @@ sequenceDiagram
     participant P3 as PassType
     participant P4 as User
     participant P5 as PromoCode
-    participant P6 as AdminUser
-    participant P7 as Payment
+    participant P6 as Payment
+    participant P7 as AdminUser
     participant P8 as PartnerLevel
     participant P9 as RolePermission
     participant P10 as Permission
     participant P11 as Speaker
-    participant P12 as Partner
-    participant P13 as FaqCategory
-    participant P14 as Ticket
+    participant P12 as Ticket
+    participant P13 as Partner
+    participant P14 as FaqCategory
     participant P15 as Exhibitor
     participant P16 as ContactMessage
     participant P17 as Day
@@ -153,8 +153,8 @@ sequenceDiagram
     P42-->>- P1: return
     P1->>+ P43: calls
     P43-->>- P1: return
-    P0->>+ P6: calls
-    P6-->>- P0: return
+    P0->>+ P7: calls
+    P7-->>- P0: return
     P0->>+ P9: calls
     P9-->>- P0: return
     P0->>+ P10: calls

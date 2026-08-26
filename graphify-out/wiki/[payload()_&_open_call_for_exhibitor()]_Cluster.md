@@ -1,26 +1,17 @@
 # [payload() & open_call_for_exhibitor()] Cluster
 
-> 8 nodes · cohesion 0.29
+> 8 nodes · cohesion 0.50
 
 ## Key Concepts
 
-- [test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L1) (5 connections)
-- [pagination_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L12) (3 connections)
-- [Pagination](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L7) (2 connections)
-- [test_pagination_custom_values()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L10) (2 connections)
-- [pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L1) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L17) (1 connections)
-- [test_pagination_defaults_apply_without_query_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L43) (1 connections)
-- [test_pagination_rejects_out_of_range_limit()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L31) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class Pagination {
-        +pagination.py()
-    }
-```
+- [test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L1) (7 connections)
+- [payload()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L35) (5 connections)
+- [open_call_for_exhibitor()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L22) (4 connections)
+- [test_exhibitor_apply_invalid_reps_count_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L94) (3 connections)
+- [test_exhibitor_apply_rules_not_accepted_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L81) (3 connections)
+- [test_exhibitor_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L64) (3 connections)
+- [test_exhibitor_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L56) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L13) (1 connections)
 
 ## Relationships
 
@@ -28,13 +19,12 @@ classDiagram
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py)
 
 ## Audit Trail
 
-- EXTRACTED: 15 (88%)
-- INFERRED: 2 (12%)
+- EXTRACTED: 28 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

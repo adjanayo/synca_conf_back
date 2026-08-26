@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py#L142) (1 connections)
-- [speakers, ambassadors, partners, exhibitors  Revision ID: 7b6712058249 Revises:](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py#L21) (1 connections)
+- [2026_08_25_2222-9dd893772cc0_sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L44) (1 connections)
+- [sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py)
 
 ## Audit Trail
 

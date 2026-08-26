@@ -1,30 +1,30 @@
 # [make_user() & test_delete_me_anonymizes_and_revokes_token()] Cluster
 
-> 8 nodes · cohesion 0.50
+> 8 nodes · cohesion 0.29
 
 ## Key Concepts
 
-- [test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L1) (7 connections)
-- [payload()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L35) (5 connections)
-- [open_call_for_exhibitor()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L22) (4 connections)
-- [test_exhibitor_apply_invalid_reps_count_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L94) (3 connections)
-- [test_exhibitor_apply_rules_not_accepted_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L81) (3 connections)
-- [test_exhibitor_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L64) (3 connections)
-- [test_exhibitor_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L56) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L13) (1 connections)
+- [env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L1) (4 connections)
+- [run_async_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L63) (3 connections)
+- [run_migrations_online()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L81) (3 connections)
+- [Run migrations in 'offline' mode.      This configures the context with just a U](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L33) (2 connections)
+- [In this scenario we need to create an Engine     and associate a connection with](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L64) (2 connections)
+- [Run migrations in 'online' mode.](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L82) (2 connections)
+- [run_migrations_offline()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L32) (2 connections)
+- [do_run_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L56) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[[_make_test_app() & test_common_headers_always_present()] Cluster]] (3 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py)
 
 ## Audit Trail
 
-- EXTRACTED: 28 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 16 (84%)
+- INFERRED: 3 (16%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -7,29 +7,29 @@
     },
     {
       "label": "register()",
-      "risk": 0.491,
+      "risk": 0.49,
       "type": "FUNCTION"
     },
     {
       "label": "apply_as_partner()",
-      "risk": 0.446,
+      "risk": 0.445,
       "type": "FUNCTION"
     },
     {
       "label": "authenticate_admin()",
-      "risk": 0.4,
+      "risk": 0.399,
       "type": "FUNCTION"
     },
     {
       "label": "AdminAuth",
-      "risk": 0.385,
+      "risk": 0.384,
       "type": "CLASS"
     }
   ],
   "blast_radius": {
     "create_access_token()": 45,
     "Base": 29,
-    "PassType": 28,
+    "PassType": 29,
     "User": 19,
     "Role": 19
   }
