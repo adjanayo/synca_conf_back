@@ -173,17 +173,17 @@ Approche retenue (coût zéro, cohérente avec `ENVIRONMENT` déjà prévu dans 
 | 403 / 401 répétés | `security` | `warning` |
 | Upload fichier échoué | `security` | `warning` |
 
-| # | Étape | Outil |
-|---|---|---|
-| 8.2 | Erreurs applicatives | Couvertes par les logs `loguru` (8.1) — pas de Sentry, pas de SDK/service SaaS supplémentaire (voir `syncaconf/planning_fastapi.md` §3) |
-| 8.3 | Monitoring uptime | UptimeRobot (gratuit) sur `/health` — seul service externe conservé, poll externe donc zéro empreinte sur la VPS |
-| 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j — seule donnée d'état réellement sur la VPS (fichiers déjà externalisés sur B2, voir 4.10) |
-| 8.5 | Procédure de restauration testée **sur un hôte différent** | restaurer le dump B2 sur une VPS/conteneur MySQL neuf (pas la même instance) — c'est ça qui prouve que le backup est exploitable, pas juste qu'il existe |
-| 8.6 | Alerting basique | webhook UptimeRobot → email ou canal notif |
-| 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, zéro service superflu (Redis/Celery/Node/Adminer/Mailpit/Sentry) — détail dans `syncaconf/planning_fastapi.md` §3 |
-| 8.8 | Limites mémoire + logs Docker bornés (vérifié : `docker stats` + `du -sh /var/lib/docker/containers/*` sous contrôle) | `mem_limit` par service (app 600M/db 800M/caddy 100M), `json-file` `max-size=10m,max-file=3` |
-| 8.9 | Vérification mémoire sous charge | `docker stats` pendant un test de charge simulant un pic d'ouverture billetterie — pas de swap déclenché |
-| 8.10 | **Dry-run migration vers un nouveau serveur** | provisionner une VPS Hetzner neuve, `git clone` + `docker compose up`, restaurer le dump B2 (8.5), copier `.env` depuis le gestionnaire de secrets (jamais depuis l'ancien serveur en clair), basculer le domaine — chronométré, pour connaître le temps d'indisponibilité réel avant d'en avoir besoin en urgence |
+| # | Étape | Outil | Statut |
+|---|---|---|---|
+| 8.2 | Erreurs applicatives | Couvertes par les logs `loguru` (8.1) — pas de Sentry, pas de SDK/service SaaS supplémentaire (voir `syncaconf/planning_fastapi.md` §3) | ✅ Test Done — rien à ajouter, couvert par 8.1 |
+| 8.3 | Monitoring uptime | UptimeRobot (gratuit) sur `/health` — seul service externe conservé, poll externe donc zéro empreinte sur la VPS | ⏳ Bloqué — nécessite VPS live + compte UptimeRobot |
+| 8.4 | Backup MySQL automatisé | cron `mysqldump` quotidien → Backblaze B2, rétention 30j — seule donnée d'état réellement sur la VPS (fichiers déjà externalisés sur B2, voir 4.10) | 🟡 Script prêt (`scripts/backup_mysql.sh`, dump+upload B2 + règle de lifecycle 30j documentée en commentaire) — cron à installer sur la VPS, non testé en conditions réelles |
+| 8.5 | Procédure de restauration testée **sur un hôte différent** | restaurer le dump B2 sur une VPS/conteneur MySQL neuf (pas la même instance) — c'est ça qui prouve que le backup est exploitable, pas juste qu'il existe | ⏳ Bloqué — nécessite un second hôte/VPS |
+| 8.6 | Alerting basique | webhook UptimeRobot → email ou canal notif | ⏳ Bloqué — dépend du compte UptimeRobot (8.3) |
+| 8.7 | Tuning ressources VPS (2 Go RAM) | Uvicorn 1 worker, MySQL `innodb_buffer_pool_size=256M` + `max_connections=50`, zéro service superflu (Redis/Celery/Node/Adminer/Mailpit/Sentry) — détail dans `syncaconf/planning_fastapi.md` §3 | ✅ Test Done — `docker-compose.prod.yml` (pas de `--workers` sur `uvicorn`/Dockerfile:52, `--innodb-buffer-pool-size=256M --max-connections=50` sur `db`), aucun service superflu dans le stack |
+| 8.8 | Limites mémoire + logs Docker bornés (vérifié : `docker stats` + `du -sh /var/lib/docker/containers/*` sous contrôle) | `mem_limit` par service (app 600M/db 800M/caddy 100M), `json-file` `max-size=10m,max-file=3` | ✅ Test Done — `docker-compose.prod.yml` (`mem_limit`/`x-logging` sur les 3 services) ; vérification `docker stats` en conditions réelles à faire sur la VPS |
+| 8.9 | Vérification mémoire sous charge | `docker stats` pendant un test de charge simulant un pic d'ouverture billetterie — pas de swap déclenché | ⏳ Bloqué — nécessite VPS live pour le test de charge |
+| 8.10 | **Dry-run migration vers un nouveau serveur** | provisionner une VPS Hetzner neuve, `git clone` + `docker compose up`, restaurer le dump B2 (8.5), copier `.env` depuis le gestionnaire de secrets (jamais depuis l'ancien serveur en clair), basculer le domaine — chronométré, pour connaître le temps d'indisponibilité réel avant d'en avoir besoin en urgence | ⏳ Bloqué — dépend de 8.4/8.5 en conditions réelles + accès Hetzner |
 
 ---
 
