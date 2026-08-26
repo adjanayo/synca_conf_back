@@ -18,3 +18,5 @@ python-multipart==0.0.32
 loguru==0.7.3
 qrcode==8.2
 reportlab==5.0.1
+sqladmin==0.31.0
+itsdangerous==2.2.0

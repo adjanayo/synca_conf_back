@@ -116,16 +116,16 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 
 ## Phase 6 — Backoffice admin (SQLAdmin, natif SQLAlchemy — voir `syncaconf/planning_fastapi.md` §2)
 
-| # | Étape | Détail |
-|---|---|---|
-| 6.1 | Intégration SQLAdmin sur les modèles SQLAlchemy existants | vues CRUD auto pour `speakers`, `ambassadors`, `partners`, `exhibitors`, `contact_messages` |
-| 6.2 | Actions custom workflow statut | `PATCH /api/admin/speakers/:id`, `/ambassadors/:id`, `/partners/:id`, `/exhibitors/:id` — protégées par `require_permission` |
-| 6.3 | Génération auto `promo_code` à l'acceptation d'un ambassadeur | déclenché depuis l'action d'acceptation |
-| 6.4 | Gestion des fenêtres de campagne | `GET /api/admin/campaign-windows`, `PATCH /api/admin/campaign-windows/:key` — modifier dates + `is_active`, réservé `superadmin`/`admin` |
-| 6.5 | `GET /api/admin/stats` | dashboard : inscriptions, revenus, taux conversion promo, candidatures par statut |
-| 6.6 | `GET /api/admin/registrations`, `/contacts` | listing filtrable/paginé |
-| 6.7 | Export CSV (inscriptions, paiements) | réservé `superadmin` via `require_permission("export.data")` |
-| 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) |
+| # | Étape | Détail | Statut |
+|---|---|---|---|
+| 6.1 | Intégration SQLAdmin sur les modèles SQLAlchemy existants | vues CRUD auto pour `speakers`, `ambassadors`, `partners`, `exhibitors`, `contact_messages` | ✅ Test Done — login réutilise `authenticate_admin` (2.3), accès par vue gardé par `is_accessible()` (permission RBAC recalculée à chaque requête, `contact_messages` ouvert à tout admin authentifié faute de code dédié) |
+| 6.2 | Actions custom workflow statut | `PATCH /api/admin/speakers/:id`, `/ambassadors/:id`, `/partners/:id`, `/exhibitors/:id` — protégées par `require_permission` | ⬜ Not Started |
+| 6.3 | Génération auto `promo_code` à l'acceptation d'un ambassadeur | déclenché depuis l'action d'acceptation | ⬜ Not Started |
+| 6.4 | Gestion des fenêtres de campagne | `GET /api/admin/campaign-windows`, `PATCH /api/admin/campaign-windows/:key` — modifier dates + `is_active`, réservé `superadmin`/`admin` | ⬜ Not Started |
+| 6.5 | `GET /api/admin/stats` | dashboard : inscriptions, revenus, taux conversion promo, candidatures par statut | ⬜ Not Started |
+| 6.6 | `GET /api/admin/registrations`, `/contacts` | listing filtrable/paginé | ⬜ Not Started |
+| 6.7 | Export CSV (inscriptions, paiements) | réservé `superadmin` via `require_permission("export.data")` | ⬜ Not Started |
+| 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) | ⬜ Not Started |
 
 ---
 

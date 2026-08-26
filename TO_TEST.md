@@ -1027,4 +1027,31 @@ pytest tests/test_ticket_finalization.py tests/test_payments_webhook.py -v
 
 ---
 
+### 6.1 — Backoffice SQLAdmin sur speakers/ambassadors/partners/exhibitors/contact_messages
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_panel.py -v
+```
+→ attendu : `5 passed`.
+
+- **Login** : `app/admin/auth.py::AdminAuth` réutilise `authenticate_admin()` (même Argon2id, même verrouillage 5 échecs/15 min que `POST /api/admin/login`) — pas de deuxième magasin de mots de passe pour le backoffice. Le cookie de session ne contient que le JWT d'accès (signé avec `JWT_SECRET_KEY`, déjà géré/roté ailleurs — pas de deuxième secret à gérer).
+- **Autorisation par vue** : `authenticate()` recalcule les codes de permission du rôle de l'admin à **chaque requête** (une révocation de rôle prend effet immédiatement, pas seulement au prochain login) et les stocke en session ; chaque `ModelView.is_accessible()` vérifie le code correspondant (`speakers.approve`, `ambassadors.approve`, `partners.manage`, `exhibitors.manage`). `contact_messages` n'a pas de code dédié dans le seed RBAC (1.7) — accessible à tout admin authentifié, cohérent avec son rôle purement informationnel (`can_create=False`, `can_delete=False`).
+- **Test manuel navigateur** (optionnel, en plus des tests auto) :
+  ```bash
+  docker compose up -d --build
+  docker compose exec db mysql -uroot -p"$MYSQL_ROOT_PASSWORD" syncaconf \
+    -e "INSERT INTO admin_users (email, password_hash, role_id) VALUES ('test@synca.conf', '<hash>', (SELECT id FROM roles WHERE name='superadmin'));"
+  # ouvrir http://localhost:8010/admin/login (voir docker-compose.yml pour le port exposé)
+  ```
+- ⚠️ Piège de test découvert : `Admin(app, engine=...)` (SQLAdmin) interroge le pool de connexions **global** de `app/core/database.py`, pas la session isolée `db_session` du test. Ses connexions sont liées à la boucle asyncio qui les a créées ; `pytest-asyncio` crée une nouvelle boucle par test, donc une connexion réutilisée d'un test à l'autre lève `RuntimeError: ... attached to a different loop`. Fixé par une fixture `autouse` qui appelle `engine.dispose()` après chaque test (`tests/test_admin_panel.py::_dispose_global_engine`) — l'auth (login/authenticate) elle, est monkeypatchée pour utiliser `db_session` directement (même pattern que `finalize_ticket`, 5.6/5.7).
+- **Impact taille image** : `sqladmin`+`itsdangerous` (+`jinja2`/`wtforms` transitifs) ajoutés → image confirmée à **153 Mo** via `docker image inspect --format='{{.Size}}'`, toujours sous le budget CI de 200 Mo.
+
+- [x] 6.1 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
