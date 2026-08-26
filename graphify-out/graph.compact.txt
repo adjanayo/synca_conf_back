@@ -742,6 +742,7 @@ e config_get_settings crypto_encryptedstring_process_bind_param calls
 e config_get_settings crypto_encryptedstring_process_result_value calls
 e config_get_settings auth_build_admin_auth calls
 e config_get_settings payments_payment_webhook calls
+e config_get_settings ticket_pdf_render_ticket_pdf calls
 e config_get_settings email_service_send_email calls
 e config_get_settings recaptcha_verify_recaptcha calls
 e config_get_settings storage_client calls

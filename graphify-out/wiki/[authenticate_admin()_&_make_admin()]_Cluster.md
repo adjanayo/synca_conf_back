@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [get_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L88) (15 connections)
+- [get_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L93) (16 connections)
 - [verify_recaptcha()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/recaptcha.py#L9) (8 connections)
 - [EncryptedString](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/crypto.py#L8) (7 connections)
 - [test_recaptcha.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py#L1) (5 connections)
@@ -65,8 +65,8 @@ classDiagram
 
 ## Audit Trail
 
-- EXTRACTED: 65 (63%)
-- INFERRED: 38 (37%)
+- EXTRACTED: 65 (62%)
+- INFERRED: 39 (38%)
 - AMBIGUOUS: 0 (0%)
 
 ---

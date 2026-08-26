@@ -1,12 +1,12 @@
 # Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-08-26)
 
 ## Corpus Check
-- 149 files · ~141,677 words
+- 149 files · ~141,603 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 725 nodes · 1242 edges · 57 communities detected
-- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 385 edges (avg confidence: 0.76)
+- 725 nodes · 1243 edges · 57 communities detected
+- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 386 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -76,9 +76,9 @@
 5. `Role` - 19 edges
 6. `make_admin_with_permission()` - 18 edges
 7. `PromoCode` - 17 edges
-8. `Payment` - 16 edges
-9. `AdminUser` - 16 edges
-10. `get_settings()` - 15 edges
+8. `get_settings()` - 16 edges
+9. `Payment` - 16 edges
+10. `AdminUser` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Base` --uses--> `Run migrations in 'offline' mode.      This configures the context with just a U`  [INFERRED]
