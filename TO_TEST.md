@@ -658,6 +658,28 @@ Note de portée : pas de tri client-contrôlé (`?sort=...`) — accepter un nom
 
 ---
 
+## Nommage images/conteneurs (hors roadmap numéroté)
+
+Préfixe `synca-dev-*` en local (`docker-compose.yml`), `synca-prod-*` en production (`docker-compose.prod.yml`) — image, conteneur, réseau et volumes tous préfixés, pour distinguer immédiatement les deux environnements dans `docker ps`/`docker images`.
+
+```bash
+docker compose up -d --build
+docker ps --format "{{.Names}}\t{{.Image}}"
+```
+→ attendu : `synca-dev-app` (image `synca-dev-app`), `synca-dev-db` (image `mysql:8.4.11`, image officielle non renommée — seul le conteneur porte le préfixe).
+
+```bash
+docker compose -f docker-compose.prod.yml config --services
+docker compose -f docker-compose.prod.yml config | grep -E "^name:|container_name:|image: synca"
+```
+→ attendu : `name: synca-prod`, `synca-prod-app`/`synca-prod-db`/`synca-prod-caddy`.
+
+⚠️ Changer le nom d'un volume (`mysql_data` → `synca-dev-mysql-data`/`synca-prod-mysql-data`) crée un **nouveau** volume vide — les anciennes données locales sous l'ancien nom auto-généré (`synca_conf_back_mysql_data`) ne sont pas perdues mais ne sont plus montées ; refaire `alembic upgrade head` après le premier démarrage avec le nouveau nom. En production réelle, ce renommage doit être fait **avant** le tout premier déploiement pour éviter toute confusion de volume.
+
+- [x] validé (dev et prod).
+
+---
+
 ## Intégration frontend (hors roadmap numéroté)
 
 ### CORS (`app/main.py`, `CORS_ORIGINS`)
@@ -713,6 +735,21 @@ pytest tests/test_campaign_window_deps.py -v
 → attendu : `5 passed` — fenêtre ouverte (dans les dates + `is_active=true`) laisse passer ; fenêtre pas encore commencée → `403` ; fenêtre déjà fermée → `403` ; fenêtre désactivée manuellement même si dans les dates → `403` ; clé de fenêtre inexistante → `403`.
 
 - [x] 4.11 validé.
+
+---
+
+### 4.2 — Inscription participant (`POST /api/register`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_register.py -v
+```
+→ attendu : `8 passed` — fenêtre `ticketing` fermée → `403` ; inscription réussie (`201`) ; `gdpr_consent=false` rejeté par Pydantic (`422`, pas même en base) ; `pass_type_id` inexistant ou `is_active=false` → `400` ; code promo inexistant → `400` ; code promo valide accepté ; email en double → `409`.
+
+- [x] 4.2 validé.
 
 ---
 

@@ -1,8 +1,12 @@
+name: synca-dev
+
 services:
   app:
     build:
       context: .
       target: dev
+    image: synca-dev-app
+    container_name: synca-dev-app
     env_file:
       - .env
     environment:
@@ -18,6 +22,7 @@ services:
 
   db:
     image: mysql:8.4.11
+    container_name: synca-dev-db
     env_file:
       - .env
     ports:
@@ -32,3 +37,4 @@ services:
 
 volumes:
   mysql_data:
+    name: synca-dev-mysql-data
