@@ -6,6 +6,7 @@ from slowapi.middleware import SlowAPIMiddleware
 
 from app.api.auth import router as auth_router
 from app.api.forms import router as forms_router
+from app.api.payments import router as payments_router
 from app.api.public import router as public_router
 from app.api.rbac import router as rbac_router
 from app.core.config import get_settings
@@ -38,6 +39,7 @@ app.include_router(auth_router)
 app.include_router(rbac_router)
 app.include_router(public_router)
 app.include_router(forms_router)
+app.include_router(payments_router)
 
 
 @app.get("/health")

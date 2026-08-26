@@ -1,4 +1,3 @@
-import datetime
 
 from fastapi import (
     APIRouter,
@@ -10,7 +9,6 @@ from fastapi import (
     UploadFile,
     status,
 )
-from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -25,7 +23,6 @@ from app.models import (
     Partner,
     PartnerLevel,
     PassType,
-    PromoCode,
     Speaker,
     User,
     UserProfile,
@@ -44,6 +41,7 @@ from app.schemas.speaker_apply import SpeakerApplyCreate
 from app.schemas.users import UserRead
 from app.schemas.waitlist import WaitlistCreate
 from app.services.email_service import send_email
+from app.services.promo_service import get_valid_promo_code
 from app.services.recaptcha import verify_recaptcha
 from app.services.storage import UploadRejectedError, upload_file
 
@@ -51,19 +49,7 @@ router = APIRouter(prefix="/api", tags=["forms"])
 
 
 async def _validate_promo_code(db: AsyncSession, code: str) -> None:
-    promo = (
-        await db.execute(select(PromoCode).where(PromoCode.code == code))
-    ).scalar_one_or_none()
-
-    today = datetime.date.today()
-    is_valid = (
-        promo is not None
-        and promo.is_active
-        and (promo.valid_from is None or promo.valid_from <= today)
-        and (promo.valid_until is None or promo.valid_until >= today)
-        and (promo.usage_limit is None or promo.usage_count < promo.usage_limit)
-    )
-    if not is_valid:
+    if await get_valid_promo_code(db, code) is None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Ce code promo n'est pas valide.",

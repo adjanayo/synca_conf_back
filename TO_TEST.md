@@ -947,4 +947,23 @@ docker stop check && docker rmi synca-app:check
 
 ---
 
+## Phase 5 — Paiement & billetterie
+
+### 5.2 — `POST /api/promo/validate`
+
+> Fait avant 5.1 : `_validate_promo_code` (déjà utilisée par `register`, 4.2) a été extraite dans `app/services/promo_service.py` pour être partagée entre les deux endpoints — pas de duplication de la logique de validation.
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_promo_validate.py tests/test_forms_register.py -v
+```
+→ attendu : `15 passed` — code valide (retourne `discount_pct`/`discount_fixed`), code inexistant/désactivé/expiré/épuisé → `400` dans tous les cas, remise fixe retournée correctement. Aucune régression sur `register` (4.2) après extraction du service partagé.
+
+- [x] 5.2 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
