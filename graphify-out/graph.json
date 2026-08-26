@@ -124,9 +124,9 @@
       "granularity": "low",
       "heat": 0.071,
       "owner": "unowned",
-      "id": "multipart_rationale_19",
       "community": 0,
-      "norm_label": "validate a multipart form's non-file fields against a pydantic model.      works"
+      "norm_label": "validate a multipart form's non-file fields against a pydantic model.      works",
+      "id": "multipart_rationale_19"
     },
     {
       "label": "config.py",
@@ -632,9 +632,9 @@
       "heat": 0.059,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "id": "crypto_rationale_9",
       "community": 3,
-      "norm_label": "application-layer encryption for genuinely sensitive pii (7.8).      not for fie"
+      "norm_label": "application-layer encryption for genuinely sensitive pii (7.8).      not for fie",
+      "id": "crypto_rationale_9"
     },
     {
       "label": "rate_limit.py",
@@ -778,9 +778,9 @@
       "heat": 0.072,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "id": "auth_rationale_19",
       "community": 5,
-      "norm_label": "sqladmin login backed by the same admin_users/argon2id/lockout path     as post"
+      "norm_label": "sqladmin login backed by the same admin_users/argon2id/lockout path     as post",
+      "id": "auth_rationale_19"
     },
     {
       "label": "__init__.py",
@@ -3300,9 +3300,9 @@
       "granularity": "low",
       "heat": 0.088,
       "owner": "unowned",
-      "id": "user_me_rationale_54",
       "community": 1,
-      "norm_label": "right to erasure (rgpd) via anonymization, not a physical delete --     tickets/"
+      "norm_label": "right to erasure (rgpd) via anonymization, not a physical delete --     tickets/",
+      "id": "user_me_rationale_54"
     },
     {
       "label": "rbac.py",
@@ -4071,9 +4071,9 @@
       "heat": 0.084,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "id": "auth_service_rationale_39",
       "community": 5,
-      "norm_label": "verify admin credentials, enforcing the account-lockout policy.      always take"
+      "norm_label": "verify admin credentials, enforcing the account-lockout policy.      always take",
+      "id": "auth_service_rationale_39"
     },
     {
       "label": "ticket_finalization.py",
@@ -4116,9 +4116,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "ticket_finalization_rationale_10",
       "community": 9,
-      "norm_label": "generate the ticket's pdf+qr, upload it, and email it.      runs as a background"
+      "norm_label": "generate the ticket's pdf+qr, upload it, and email it.      runs as a background",
+      "id": "ticket_finalization_rationale_10"
     },
     {
       "label": "ticketing.py",
@@ -4321,9 +4321,9 @@
       "granularity": "low",
       "heat": 0.071,
       "owner": "unowned",
-      "id": "webhook_verification_rationale_13",
       "community": 7,
-      "norm_label": "verify a stripe webhook using stripe's documented scheme.      the `stripe-signa"
+      "norm_label": "verify a stripe webhook using stripe's documented scheme.      the `stripe-signa",
+      "id": "webhook_verification_rationale_13"
     },
     {
       "label": "Generic HMAC-SHA256 hex-digest verification (Wave / Orange Money).      Assumes",
@@ -4334,9 +4334,9 @@
       "granularity": "low",
       "heat": 0.071,
       "owner": "unowned",
-      "id": "webhook_verification_rationale_44",
       "community": 7,
-      "norm_label": "generic hmac-sha256 hex-digest verification (wave / orange money).      assumes"
+      "norm_label": "generic hmac-sha256 hex-digest verification (wave / orange money).      assumes",
+      "id": "webhook_verification_rationale_44"
     },
     {
       "label": "email_service.py",
@@ -4379,9 +4379,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "email_service_rationale_10",
       "community": 9,
-      "norm_label": "send a transactional email, or log it in dev.      without resend_api_key config"
+      "norm_label": "send a transactional email, or log it in dev.      without resend_api_key config",
+      "id": "email_service_rationale_10"
     },
     {
       "label": "recaptcha.py",
@@ -4425,9 +4425,9 @@
       "heat": 0.059,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "id": "recaptcha_rationale_10",
       "community": 6,
-      "norm_label": "verify a recaptcha v3 token, raising 400 on failure.      skipped entirely when"
+      "norm_label": "verify a recaptcha v3 token, raising 400 on failure.      skipped entirely when",
+      "id": "recaptcha_rationale_10"
     },
     {
       "label": "storage.py",
@@ -4534,9 +4534,9 @@
       "granularity": "low",
       "heat": 0.096,
       "owner": "unowned",
-      "id": "storage_rationale_27",
       "community": 3,
-      "norm_label": "reject anything whose bytes aren't actually a decodable image.      a client-sup"
+      "norm_label": "reject anything whose bytes aren't actually a decodable image.      a client-sup",
+      "id": "storage_rationale_27"
     },
     {
       "label": "promo_service.py",
@@ -4611,9 +4611,9 @@
       "granularity": "low",
       "heat": 0.071,
       "owner": "unowned",
-      "id": "promo_service_rationale_37",
       "community": 7,
-      "norm_label": "create and attach a promo code to a newly-accepted ambassador.      no usage_lim"
+      "norm_label": "create and attach a promo code to a newly-accepted ambassador.      no usage_lim",
+      "id": "promo_service_rationale_37"
     },
     {
       "label": "test_rbac_deps.py",
@@ -10677,9 +10677,9 @@
       "granularity": "low",
       "heat": 0.088,
       "owner": "unowned",
-      "id": "env_rationale_33",
       "community": 20,
-      "norm_label": "run migrations in 'offline' mode.      this configures the context with just a u"
+      "norm_label": "run migrations in 'offline' mode.      this configures the context with just a u",
+      "id": "env_rationale_33"
     },
     {
       "label": "In this scenario we need to create an Engine     and associate a connection with",
@@ -10690,9 +10690,9 @@
       "granularity": "low",
       "heat": 0.088,
       "owner": "unowned",
-      "id": "env_rationale_64",
       "community": 20,
-      "norm_label": "in this scenario we need to create an engine     and associate a connection with"
+      "norm_label": "in this scenario we need to create an engine     and associate a connection with",
+      "id": "env_rationale_64"
     },
     {
       "label": "Run migrations in 'online' mode.",
@@ -10703,9 +10703,9 @@
       "granularity": "low",
       "heat": 0.088,
       "owner": "unowned",
-      "id": "env_rationale_82",
       "community": 20,
-      "norm_label": "run migrations in 'online' mode."
+      "norm_label": "run migrations in 'online' mode.",
+      "id": "env_rationale_82"
     },
     {
       "label": "2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py",
@@ -10768,9 +10768,9 @@
       "heat": 0.059,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "id": "2026_08_25_2348_5a30c6996bc8_admin_users_lockout_columns_rationale_1",
       "community": 29,
-      "norm_label": "admin_users lockout columns  revision id: 5a30c6996bc8 revises: 2c2d07493eb5 cre"
+      "norm_label": "admin_users lockout columns  revision id: 5a30c6996bc8 revises: 2c2d07493eb5 cre",
+      "id": "2026_08_25_2348_5a30c6996bc8_admin_users_lockout_columns_rationale_1"
     },
     {
       "label": "2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py",
@@ -10829,9 +10829,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_25_2210_e15b192c81f5_referentials_days_pass_types_partner_rationale_1",
       "community": 30,
-      "norm_label": "referentials (days, pass_types, partner_levels, faq_categories)  revision id: e1"
+      "norm_label": "referentials (days, pass_types, partner_levels, faq_categories)  revision id: e1",
+      "id": "2026_08_25_2210_e15b192c81f5_referentials_days_pass_types_partner_rationale_1"
     },
     {
       "label": "2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py",
@@ -10890,9 +10890,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_26_0339_c375ad4fa2bb_newsletter_subscribers_table_rationale_1",
       "community": 31,
-      "norm_label": "newsletter_subscribers table  revision id: c375ad4fa2bb revises: 866edbae2931 cr"
+      "norm_label": "newsletter_subscribers table  revision id: c375ad4fa2bb revises: 866edbae2931 cr",
+      "id": "2026_08_26_0339_c375ad4fa2bb_newsletter_subscribers_table_rationale_1"
     },
     {
       "label": "2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py",
@@ -10955,9 +10955,9 @@
       "heat": 0.059,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "id": "2026_08_25_2229_a3f8aaae2d58_promo_codes_payments_tickets_waitlist_rationale_1",
       "community": 32,
-      "norm_label": "promo_codes, payments, tickets, waitlist  revision id: a3f8aaae2d58 revises: 9dd"
+      "norm_label": "promo_codes, payments, tickets, waitlist  revision id: a3f8aaae2d58 revises: 9dd",
+      "id": "2026_08_25_2229_a3f8aaae2d58_promo_codes_payments_tickets_waitlist_rationale_1"
     },
     {
       "label": "2026_08_26_1444-d7d5f8910852_encrypt_users_phone_whatsapp_and_.py",
@@ -11016,9 +11016,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_rationale_1",
       "community": 3,
-      "norm_label": "encrypt users phone_whatsapp and special_needs (pii 7.8)  revision id: d7d5f8910"
+      "norm_label": "encrypt users phone_whatsapp and special_needs (pii 7.8)  revision id: d7d5f8910",
+      "id": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_rationale_1"
     },
     {
       "label": "2026_08_25_2218-86b8fb32827d_users_and_user_profiles.py",
@@ -11077,9 +11077,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_25_2218_86b8fb32827d_users_and_user_profiles_rationale_1",
       "community": 33,
-      "norm_label": "users and user_profiles  revision id: 86b8fb32827d revises: e15b192c81f5 create"
+      "norm_label": "users and user_profiles  revision id: 86b8fb32827d revises: e15b192c81f5 create",
+      "id": "2026_08_25_2218_86b8fb32827d_users_and_user_profiles_rationale_1"
     },
     {
       "label": "2026_08_25_2252-2c2d07493eb5_campaign_windows.py",
@@ -11138,9 +11138,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_25_2252_2c2d07493eb5_campaign_windows_rationale_1",
       "community": 34,
-      "norm_label": "campaign_windows  revision id: 2c2d07493eb5 revises: a9e9ba5fc6f7 create date: 2"
+      "norm_label": "campaign_windows  revision id: 2c2d07493eb5 revises: a9e9ba5fc6f7 create date: 2",
+      "id": "2026_08_25_2252_2c2d07493eb5_campaign_windows_rationale_1"
     },
     {
       "label": "2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py",
@@ -11200,9 +11200,9 @@
       "heat": 0.059,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "id": "2026_08_25_2247_a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_rationale_1",
       "community": 35,
-      "norm_label": "rbac (roles, permissions, role_permissions, admin_users)  revision id: a9e9ba5fc"
+      "norm_label": "rbac (roles, permissions, role_permissions, admin_users)  revision id: a9e9ba5fc",
+      "id": "2026_08_25_2247_a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_rationale_1"
     },
     {
       "label": "2026_08_25_2240-3f306df50f16_faqs_contact_messages.py",
@@ -11261,9 +11261,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_25_2240_3f306df50f16_faqs_contact_messages_rationale_1",
       "community": 36,
-      "norm_label": "faqs, contact_messages  revision id: 3f306df50f16 revises: 7b6712058249 create d"
+      "norm_label": "faqs, contact_messages  revision id: 3f306df50f16 revises: 7b6712058249 create d",
+      "id": "2026_08_25_2240_3f306df50f16_faqs_contact_messages_rationale_1"
     },
     {
       "label": "2026_08_25_2135-5e965f30353e_initial_empty.py",
@@ -11322,9 +11322,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_25_2135_5e965f30353e_initial_empty_rationale_1",
       "community": 37,
-      "norm_label": "initial (empty)  revision id: 5e965f30353e revises:  create date: 2026-08-25 21:"
+      "norm_label": "initial (empty)  revision id: 5e965f30353e revises:  create date: 2026-08-25 21:",
+      "id": "2026_08_25_2135_5e965f30353e_initial_empty_rationale_1"
     },
     {
       "label": "2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py",
@@ -11383,9 +11383,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_25_2235_7b6712058249_speakers_ambassadors_partners_exhibitors_rationale_1",
       "community": 38,
-      "norm_label": "speakers, ambassadors, partners, exhibitors  revision id: 7b6712058249 revises:"
+      "norm_label": "speakers, ambassadors, partners, exhibitors  revision id: 7b6712058249 revises:",
+      "id": "2026_08_25_2235_7b6712058249_speakers_ambassadors_partners_exhibitors_rationale_1"
     },
     {
       "label": "2026_08_26_0048-866edbae2931_audit_logs_table.py",
@@ -11444,9 +11444,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_26_0048_866edbae2931_audit_logs_table_rationale_1",
       "community": 39,
-      "norm_label": "audit_logs table  revision id: 866edbae2931 revises: 5a30c6996bc8 create date: 2"
+      "norm_label": "audit_logs table  revision id: 866edbae2931 revises: 5a30c6996bc8 create date: 2",
+      "id": "2026_08_26_0048_866edbae2931_audit_logs_table_rationale_1"
     },
     {
       "label": "2026_08_25_2222-9dd893772cc0_sessions.py",
@@ -11505,9 +11505,9 @@
       "granularity": "low",
       "heat": 0.059,
       "owner": "unowned",
-      "id": "2026_08_25_2222_9dd893772cc0_sessions_rationale_1",
       "community": 40,
-      "norm_label": "sessions  revision id: 9dd893772cc0 revises: 86b8fb32827d create date: 2026-08-2"
+      "norm_label": "sessions  revision id: 9dd893772cc0 revises: 86b8fb32827d create date: 2026-08-2",
+      "id": "2026_08_25_2222_9dd893772cc0_sessions_rationale_1"
     }
   ],
   "links": [
@@ -11590,8 +11590,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L201",
       "weight": 1.0,
-      "_src": "forms_apply_as_speaker",
-      "_tgt": "multipart_parse_multipart_form",
+      "_src": "multipart_parse_multipart_form",
+      "_tgt": "forms_apply_as_speaker",
       "source": "multipart_parse_multipart_form",
       "target": "forms_apply_as_speaker"
     },
@@ -11602,8 +11602,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L312",
       "weight": 1.0,
-      "_src": "forms_apply_as_partner",
-      "_tgt": "multipart_parse_multipart_form",
+      "_src": "multipart_parse_multipart_form",
+      "_tgt": "forms_apply_as_partner",
       "source": "multipart_parse_multipart_form",
       "target": "forms_apply_as_partner"
     },
@@ -11686,8 +11686,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/logging_config.py",
       "source_location": "L26",
       "weight": 1.0,
-      "_src": "logging_config_configure_logging",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "logging_config_configure_logging",
       "source": "config_get_settings",
       "target": "logging_config_configure_logging"
     },
@@ -11698,8 +11698,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/crypto.py",
       "source_location": "L23",
       "weight": 1.0,
-      "_src": "crypto_encryptedstring_process_bind_param",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "crypto_encryptedstring_process_bind_param",
       "source": "config_get_settings",
       "target": "crypto_encryptedstring_process_bind_param"
     },
@@ -11710,8 +11710,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/crypto.py",
       "source_location": "L29",
       "weight": 1.0,
-      "_src": "crypto_encryptedstring_process_result_value",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "crypto_encryptedstring_process_result_value",
       "source": "config_get_settings",
       "target": "crypto_encryptedstring_process_result_value"
     },
@@ -11722,8 +11722,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/auth.py",
       "source_location": "L77",
       "weight": 1.0,
-      "_src": "auth_build_admin_auth",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "auth_build_admin_auth",
       "source": "config_get_settings",
       "target": "auth_build_admin_auth"
     },
@@ -11734,8 +11734,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/payments.py",
       "source_location": "L99",
       "weight": 1.0,
-      "_src": "payments_payment_webhook",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "payments_payment_webhook",
       "source": "config_get_settings",
       "target": "payments_payment_webhook"
     },
@@ -11746,8 +11746,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/email_service.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "email_service_send_email",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "email_service_send_email",
       "source": "config_get_settings",
       "target": "email_service_send_email"
     },
@@ -11758,8 +11758,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/recaptcha.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "recaptcha_verify_recaptcha",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "recaptcha_verify_recaptcha",
       "source": "config_get_settings",
       "target": "recaptcha_verify_recaptcha"
     },
@@ -11770,8 +11770,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py",
       "source_location": "L41",
       "weight": 1.0,
-      "_src": "storage_client",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "storage_client",
       "source": "config_get_settings",
       "target": "storage_client"
     },
@@ -11782,8 +11782,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py",
       "source_location": "L83",
       "weight": 1.0,
-      "_src": "storage_upload_file",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "storage_upload_file",
       "source": "config_get_settings",
       "target": "storage_upload_file"
     },
@@ -11794,8 +11794,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/conftest.py",
       "source_location": "L24",
       "weight": 1.0,
-      "_src": "conftest_db_session",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "conftest_db_session",
       "source": "config_get_settings",
       "target": "conftest_db_session"
     },
@@ -11806,8 +11806,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L34",
       "weight": 1.0,
-      "_src": "test_auth_service_test_expired_token_rejected",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "test_auth_service_test_expired_token_rejected",
       "source": "config_get_settings",
       "target": "test_auth_service_test_expired_token_rejected"
     },
@@ -11818,8 +11818,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_1444-d7d5f8910852_encrypt_users_phone_whatsapp_and_.py",
       "source_location": "L41",
       "weight": 1.0,
-      "_src": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_upgrade",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_upgrade",
       "source": "config_get_settings",
       "target": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_upgrade"
     },
@@ -11830,8 +11830,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_1444-d7d5f8910852_encrypt_users_phone_whatsapp_and_.py",
       "source_location": "L63",
       "weight": 1.0,
-      "_src": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_downgrade",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_downgrade",
       "source": "config_get_settings",
       "target": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_downgrade"
     },
@@ -11890,8 +11890,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_logging_config.py",
       "source_location": "L14",
       "weight": 1.0,
-      "_src": "test_logging_config_test_configure_logging_routes_channels_to_separate_files",
-      "_tgt": "logging_config_configure_logging",
+      "_src": "logging_config_configure_logging",
+      "_tgt": "test_logging_config_test_configure_logging_routes_channels_to_separate_files",
       "source": "logging_config_configure_logging",
       "target": "test_logging_config_test_configure_logging_routes_channels_to_separate_files"
     },
@@ -11985,11 +11985,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/sessions.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "sessions_session",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "sessions_session",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "sessions_session",
-      "confidence_score": 0.5
+      "target": "sessions_session"
     },
     {
       "relation": "uses",
@@ -11997,11 +11997,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py",
       "source_location": "L15",
       "weight": 0.8,
-      "_src": "payments_promocode",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "payments_promocode",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "payments_promocode",
-      "confidence_score": 0.5
+      "target": "payments_promocode"
     },
     {
       "relation": "uses",
@@ -12009,11 +12009,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py",
       "source_location": "L15",
       "weight": 0.8,
-      "_src": "payments_payment",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "payments_payment",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "payments_payment",
-      "confidence_score": 0.5
+      "target": "payments_payment"
     },
     {
       "relation": "uses",
@@ -12021,11 +12021,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py",
       "source_location": "L15",
       "weight": 0.8,
-      "_src": "payments_ticket",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "payments_ticket",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "payments_ticket",
-      "confidence_score": 0.5
+      "target": "payments_ticket"
     },
     {
       "relation": "uses",
@@ -12033,11 +12033,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py",
       "source_location": "L15",
       "weight": 0.8,
-      "_src": "payments_waitlist",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "payments_waitlist",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "payments_waitlist",
-      "confidence_score": 0.5
+      "target": "payments_waitlist"
     },
     {
       "relation": "uses",
@@ -12045,11 +12045,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/audit.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "audit_auditlog",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "audit_auditlog",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "audit_auditlog",
-      "confidence_score": 0.5
+      "target": "audit_auditlog"
     },
     {
       "relation": "uses",
@@ -12057,11 +12057,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py",
       "source_location": "L16",
       "weight": 0.8,
-      "_src": "users_user",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "users_user",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "users_user",
-      "confidence_score": 0.5
+      "target": "users_user"
     },
     {
       "relation": "uses",
@@ -12069,11 +12069,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py",
       "source_location": "L16",
       "weight": 0.8,
-      "_src": "users_userprofile",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "users_userprofile",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "users_userprofile",
-      "confidence_score": 0.5
+      "target": "users_userprofile"
     },
     {
       "relation": "uses",
@@ -12081,11 +12081,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/applications.py",
       "source_location": "L16",
       "weight": 0.8,
-      "_src": "applications_speaker",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "applications_speaker",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "applications_speaker",
-      "confidence_score": 0.5
+      "target": "applications_speaker"
     },
     {
       "relation": "uses",
@@ -12093,11 +12093,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/applications.py",
       "source_location": "L16",
       "weight": 0.8,
-      "_src": "applications_ambassador",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "applications_ambassador",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "applications_ambassador",
-      "confidence_score": 0.5
+      "target": "applications_ambassador"
     },
     {
       "relation": "uses",
@@ -12105,11 +12105,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/applications.py",
       "source_location": "L16",
       "weight": 0.8,
-      "_src": "applications_partner",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "applications_partner",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "applications_partner",
-      "confidence_score": 0.5
+      "target": "applications_partner"
     },
     {
       "relation": "uses",
@@ -12117,11 +12117,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/applications.py",
       "source_location": "L16",
       "weight": 0.8,
-      "_src": "applications_exhibitor",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "applications_exhibitor",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "applications_exhibitor",
-      "confidence_score": 0.5
+      "target": "applications_exhibitor"
     },
     {
       "relation": "uses",
@@ -12129,11 +12129,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "rbac_role",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "rbac_role",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "rbac_role",
-      "confidence_score": 0.5
+      "target": "rbac_role"
     },
     {
       "relation": "uses",
@@ -12141,11 +12141,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "rbac_permission",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "rbac_permission",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "rbac_permission",
-      "confidence_score": 0.5
+      "target": "rbac_permission"
     },
     {
       "relation": "uses",
@@ -12153,11 +12153,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "rbac_rolepermission",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "rbac_rolepermission",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "rbac_rolepermission",
-      "confidence_score": 0.5
+      "target": "rbac_rolepermission"
     },
     {
       "relation": "uses",
@@ -12165,11 +12165,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "rbac_adminuser",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "rbac_adminuser",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "rbac_adminuser",
-      "confidence_score": 0.5
+      "target": "rbac_adminuser"
     },
     {
       "relation": "uses",
@@ -12177,11 +12177,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/campaign.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "campaign_campaignwindow",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "campaign_campaignwindow",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "campaign_campaignwindow",
-      "confidence_score": 0.5
+      "target": "campaign_campaignwindow"
     },
     {
       "relation": "uses",
@@ -12189,11 +12189,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/content.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "content_faq",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "content_faq",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "content_faq",
-      "confidence_score": 0.5
+      "target": "content_faq"
     },
     {
       "relation": "uses",
@@ -12201,11 +12201,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/content.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "content_contactmessage",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "content_contactmessage",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "content_contactmessage",
-      "confidence_score": 0.5
+      "target": "content_contactmessage"
     },
     {
       "relation": "uses",
@@ -12213,11 +12213,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py",
       "source_location": "L7",
       "weight": 0.8,
-      "_src": "referentials_day",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "referentials_day",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "referentials_day",
-      "confidence_score": 0.5
+      "target": "referentials_day"
     },
     {
       "relation": "uses",
@@ -12225,11 +12225,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py",
       "source_location": "L7",
       "weight": 0.8,
-      "_src": "referentials_passtype",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "referentials_passtype",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "referentials_passtype",
-      "confidence_score": 0.5
+      "target": "referentials_passtype"
     },
     {
       "relation": "uses",
@@ -12237,11 +12237,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py",
       "source_location": "L7",
       "weight": 0.8,
-      "_src": "referentials_partnerlevel",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "referentials_partnerlevel",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "referentials_partnerlevel",
-      "confidence_score": 0.5
+      "target": "referentials_partnerlevel"
     },
     {
       "relation": "uses",
@@ -12249,11 +12249,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py",
       "source_location": "L7",
       "weight": 0.8,
-      "_src": "referentials_faqcategory",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "referentials_faqcategory",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "referentials_faqcategory",
-      "confidence_score": 0.5
+      "target": "referentials_faqcategory"
     },
     {
       "relation": "uses",
@@ -12261,11 +12261,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/newsletter.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "newsletter_newslettersubscriber",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "newsletter_newslettersubscriber",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "newsletter_newslettersubscriber",
-      "confidence_score": 0.5
+      "target": "newsletter_newslettersubscriber"
     },
     {
       "relation": "uses",
@@ -12273,11 +12273,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py",
       "source_location": "L11",
       "weight": 0.8,
-      "_src": "env_rationale_33",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "env_rationale_33",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "env_rationale_33",
-      "confidence_score": 0.5
+      "target": "env_rationale_33"
     },
     {
       "relation": "uses",
@@ -12285,11 +12285,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py",
       "source_location": "L11",
       "weight": 0.8,
-      "_src": "env_rationale_64",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "env_rationale_64",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "env_rationale_64",
-      "confidence_score": 0.5
+      "target": "env_rationale_64"
     },
     {
       "relation": "uses",
@@ -12297,11 +12297,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py",
       "source_location": "L11",
       "weight": 0.8,
-      "_src": "env_rationale_82",
-      "_tgt": "database_base",
+      "_src": "database_base",
+      "_tgt": "env_rationale_82",
+      "confidence_score": 0.5,
       "source": "database_base",
-      "target": "env_rationale_82",
-      "confidence_score": 0.5
+      "target": "env_rationale_82"
     },
     {
       "relation": "contains",
@@ -12394,8 +12394,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/register.py",
       "source_location": "L32",
       "weight": 1.0,
-      "_src": "register_gdpr_must_be_true",
-      "_tgt": "valueerror",
+      "_src": "valueerror",
+      "_tgt": "register_gdpr_must_be_true",
       "source": "valueerror",
       "target": "register_gdpr_must_be_true"
     },
@@ -12406,8 +12406,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/partner_apply.py",
       "source_location": "L30",
       "weight": 1.0,
-      "_src": "partner_apply_gdpr_must_be_true",
-      "_tgt": "valueerror",
+      "_src": "valueerror",
+      "_tgt": "partner_apply_gdpr_must_be_true",
       "source": "valueerror",
       "target": "partner_apply_gdpr_must_be_true"
     },
@@ -12418,8 +12418,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py",
       "source_location": "L33",
       "weight": 1.0,
-      "_src": "exhibitor_apply_rules_must_be_accepted",
-      "_tgt": "valueerror",
+      "_src": "valueerror",
+      "_tgt": "exhibitor_apply_rules_must_be_accepted",
       "source": "valueerror",
       "target": "exhibitor_apply_rules_must_be_accepted"
     },
@@ -12430,8 +12430,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py",
       "source_location": "L40",
       "weight": 1.0,
-      "_src": "exhibitor_apply_gdpr_must_be_true",
-      "_tgt": "valueerror",
+      "_src": "valueerror",
+      "_tgt": "exhibitor_apply_gdpr_must_be_true",
       "source": "valueerror",
       "target": "exhibitor_apply_gdpr_must_be_true"
     },
@@ -12442,8 +12442,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/speaker_apply.py",
       "source_location": "L44",
       "weight": 1.0,
-      "_src": "speaker_apply_gdpr_must_be_true",
-      "_tgt": "valueerror",
+      "_src": "valueerror",
+      "_tgt": "speaker_apply_gdpr_must_be_true",
       "source": "valueerror",
       "target": "speaker_apply_gdpr_must_be_true"
     },
@@ -12454,8 +12454,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/ambassador_apply.py",
       "source_location": "L38",
       "weight": 1.0,
-      "_src": "ambassador_apply_gdpr_must_be_true",
-      "_tgt": "valueerror",
+      "_src": "valueerror",
+      "_tgt": "ambassador_apply_gdpr_must_be_true",
       "source": "valueerror",
       "target": "ambassador_apply_gdpr_must_be_true"
     },
@@ -12466,8 +12466,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security.py",
       "source_location": "L34",
       "weight": 1.0,
-      "_src": "test_security_test_validate_password_strength_rejects_weak_passwords",
-      "_tgt": "security_validate_password_strength",
+      "_src": "security_validate_password_strength",
+      "_tgt": "test_security_test_validate_password_strength_rejects_weak_passwords",
       "source": "security_validate_password_strength",
       "target": "test_security_test_validate_password_strength_rejects_weak_passwords"
     },
@@ -12478,8 +12478,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security.py",
       "source_location": "L38",
       "weight": 1.0,
-      "_src": "test_security_test_validate_password_strength_accepts_strong_password",
-      "_tgt": "security_validate_password_strength",
+      "_src": "security_validate_password_strength",
+      "_tgt": "test_security_test_validate_password_strength_accepts_strong_password",
       "source": "security_validate_password_strength",
       "target": "test_security_test_validate_password_strength_accepts_strong_password"
     },
@@ -12490,8 +12490,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security.py",
       "source_location": "L12",
       "weight": 1.0,
-      "_src": "test_security_test_hash_and_verify_roundtrip",
-      "_tgt": "security_hash_password",
+      "_src": "security_hash_password",
+      "_tgt": "test_security_test_hash_and_verify_roundtrip",
       "source": "security_hash_password",
       "target": "test_security_test_hash_and_verify_roundtrip"
     },
@@ -12502,8 +12502,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "test_security_test_verify_wrong_password_fails",
-      "_tgt": "security_hash_password",
+      "_src": "security_hash_password",
+      "_tgt": "test_security_test_verify_wrong_password_fails",
       "source": "security_hash_password",
       "target": "test_security_test_verify_wrong_password_fails"
     },
@@ -12514,8 +12514,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py",
       "source_location": "L25",
       "weight": 1.0,
-      "_src": "test_admin_panel_make_admin",
-      "_tgt": "security_hash_password",
+      "_src": "security_hash_password",
+      "_tgt": "test_admin_panel_make_admin",
       "source": "security_hash_password",
       "target": "test_admin_panel_make_admin"
     },
@@ -12526,8 +12526,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_login.py",
       "source_location": "L28",
       "weight": 1.0,
-      "_src": "test_admin_login_make_admin",
-      "_tgt": "security_hash_password",
+      "_src": "security_hash_password",
+      "_tgt": "test_admin_login_make_admin",
       "source": "security_hash_password",
       "target": "test_admin_login_make_admin"
     },
@@ -12538,8 +12538,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py",
       "source_location": "L56",
       "weight": 1.0,
-      "_src": "auth_service_authenticate_admin",
-      "_tgt": "security_verify_password",
+      "_src": "security_verify_password",
+      "_tgt": "auth_service_authenticate_admin",
       "source": "security_verify_password",
       "target": "auth_service_authenticate_admin"
     },
@@ -12550,8 +12550,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security.py",
       "source_location": "L14",
       "weight": 1.0,
-      "_src": "test_security_test_hash_and_verify_roundtrip",
-      "_tgt": "security_verify_password",
+      "_src": "security_verify_password",
+      "_tgt": "test_security_test_hash_and_verify_roundtrip",
       "source": "security_verify_password",
       "target": "test_security_test_hash_and_verify_roundtrip"
     },
@@ -12562,8 +12562,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security.py",
       "source_location": "L19",
       "weight": 1.0,
-      "_src": "test_security_test_verify_wrong_password_fails",
-      "_tgt": "security_verify_password",
+      "_src": "security_verify_password",
+      "_tgt": "test_security_test_verify_wrong_password_fails",
       "source": "security_verify_password",
       "target": "test_security_test_verify_wrong_password_fails"
     },
@@ -12633,11 +12633,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py",
       "source_location": "L15",
       "weight": 0.8,
-      "_src": "users_user",
-      "_tgt": "crypto_encryptedstring",
+      "_src": "crypto_encryptedstring",
+      "_tgt": "users_user",
+      "confidence_score": 0.5,
       "source": "crypto_encryptedstring",
-      "target": "users_user",
-      "confidence_score": 0.5
+      "target": "users_user"
     },
     {
       "relation": "uses",
@@ -12645,11 +12645,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py",
       "source_location": "L15",
       "weight": 0.8,
-      "_src": "users_userprofile",
-      "_tgt": "crypto_encryptedstring",
+      "_src": "crypto_encryptedstring",
+      "_tgt": "users_userprofile",
+      "confidence_score": 0.5,
       "source": "crypto_encryptedstring",
-      "target": "users_userprofile",
-      "confidence_score": 0.5
+      "target": "users_userprofile"
     },
     {
       "relation": "contains",
@@ -12755,9 +12755,9 @@
       "weight": 0.8,
       "_src": "auth_adminauth",
       "_tgt": "auth_service_accountlockederror",
+      "confidence_score": 0.5,
       "source": "auth_adminauth",
-      "target": "auth_service_accountlockederror",
-      "confidence_score": 0.5
+      "target": "auth_service_accountlockederror"
     },
     {
       "relation": "uses",
@@ -12767,9 +12767,9 @@
       "weight": 0.8,
       "_src": "auth_adminauth",
       "_tgt": "auth_service_invalidcredentialserror",
+      "confidence_score": 0.5,
       "source": "auth_adminauth",
-      "target": "auth_service_invalidcredentialserror",
-      "confidence_score": 0.5
+      "target": "auth_service_invalidcredentialserror"
     },
     {
       "relation": "uses",
@@ -12779,9 +12779,9 @@
       "weight": 0.8,
       "_src": "auth_adminauth",
       "_tgt": "auth_service_invalidtokenerror",
+      "confidence_score": 0.5,
       "source": "auth_adminauth",
-      "target": "auth_service_invalidtokenerror",
-      "confidence_score": 0.5
+      "target": "auth_service_invalidtokenerror"
     },
     {
       "relation": "calls",
@@ -12826,8 +12826,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/setup.py",
       "source_location": "L10",
       "weight": 1.0,
-      "_src": "setup_init_admin",
-      "_tgt": "auth_build_admin_auth",
+      "_src": "auth_build_admin_auth",
+      "_tgt": "setup_init_admin",
       "source": "auth_build_admin_auth",
       "target": "setup_init_admin"
     },
@@ -12839,9 +12839,9 @@
       "weight": 0.8,
       "_src": "auth_rationale_19",
       "_tgt": "auth_service_accountlockederror",
+      "confidence_score": 0.5,
       "source": "auth_rationale_19",
-      "target": "auth_service_accountlockederror",
-      "confidence_score": 0.5
+      "target": "auth_service_accountlockederror"
     },
     {
       "relation": "uses",
@@ -12851,9 +12851,9 @@
       "weight": 0.8,
       "_src": "auth_rationale_19",
       "_tgt": "auth_service_invalidcredentialserror",
+      "confidence_score": 0.5,
       "source": "auth_rationale_19",
-      "target": "auth_service_invalidcredentialserror",
-      "confidence_score": 0.5
+      "target": "auth_service_invalidcredentialserror"
     },
     {
       "relation": "uses",
@@ -12863,9 +12863,9 @@
       "weight": 0.8,
       "_src": "auth_rationale_19",
       "_tgt": "auth_service_invalidtokenerror",
+      "confidence_score": 0.5,
       "source": "auth_rationale_19",
-      "target": "auth_service_invalidtokenerror",
-      "confidence_score": 0.5
+      "target": "auth_service_invalidtokenerror"
     },
     {
       "relation": "contains",
@@ -13151,9 +13151,9 @@
       "weight": 0.8,
       "_src": "sessions_session",
       "_tgt": "applications_speaker",
+      "confidence_score": 0.5,
       "source": "sessions_session",
-      "target": "applications_speaker",
-      "confidence_score": 0.5
+      "target": "applications_speaker"
     },
     {
       "relation": "uses",
@@ -13163,9 +13163,9 @@
       "weight": 0.8,
       "_src": "sessions_session",
       "_tgt": "referentials_day",
+      "confidence_score": 0.5,
       "source": "sessions_session",
-      "target": "referentials_day",
-      "confidence_score": 0.5
+      "target": "referentials_day"
     },
     {
       "relation": "calls",
@@ -13174,8 +13174,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_sessions.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "test_sessions_test_filter_sessions_by_day_and_category",
-      "_tgt": "sessions_session",
+      "_src": "sessions_session",
+      "_tgt": "test_sessions_test_filter_sessions_by_day_and_category",
       "source": "sessions_session",
       "target": "test_sessions_test_filter_sessions_by_day_and_category"
     },
@@ -13186,8 +13186,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_program.py",
       "source_location": "L56",
       "weight": 1.0,
-      "_src": "test_public_program_test_sessions_filter_by_day_and_category_excludes_private",
-      "_tgt": "sessions_session",
+      "_src": "sessions_session",
+      "_tgt": "test_public_program_test_sessions_filter_by_day_and_category_excludes_private",
       "source": "sessions_session",
       "target": "test_public_program_test_sessions_filter_by_day_and_category_excludes_private"
     },
@@ -13198,8 +13198,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L100",
       "weight": 1.0,
-      "_src": "test_schemas_test_session_read",
-      "_tgt": "sessions_session",
+      "_src": "sessions_session",
+      "_tgt": "test_schemas_test_session_read",
       "source": "sessions_session",
       "target": "test_schemas_test_session_read"
     },
@@ -13535,9 +13535,9 @@
       "weight": 0.8,
       "_src": "payments_promocode",
       "_tgt": "referentials_passtype",
+      "confidence_score": 0.5,
       "source": "payments_promocode",
-      "target": "referentials_passtype",
-      "confidence_score": 0.5
+      "target": "referentials_passtype"
     },
     {
       "relation": "calls",
@@ -13546,8 +13546,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/promo_service.py",
       "source_location": "L55",
       "weight": 1.0,
-      "_src": "promo_service_generate_ambassador_promo_code",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "promo_service_generate_ambassador_promo_code",
       "source": "payments_promocode",
       "target": "promo_service_generate_ambassador_promo_code"
     },
@@ -13558,8 +13558,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_webhook.py",
       "source_location": "L258",
       "weight": 1.0,
-      "_src": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
       "source": "payments_promocode",
       "target": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion"
     },
@@ -13570,8 +13570,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_promo_validate.py",
       "source_location": "L23",
       "weight": 1.0,
-      "_src": "test_promo_validate_test_promo_validate_success",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_promo_validate_test_promo_validate_success",
       "source": "payments_promocode",
       "target": "test_promo_validate_test_promo_validate_success"
     },
@@ -13582,8 +13582,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_promo_validate.py",
       "source_location": "L43",
       "weight": 1.0,
-      "_src": "test_promo_validate_test_promo_validate_inactive_400",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_promo_validate_test_promo_validate_inactive_400",
       "source": "payments_promocode",
       "target": "test_promo_validate_test_promo_validate_inactive_400"
     },
@@ -13594,8 +13594,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_promo_validate.py",
       "source_location": "L56",
       "weight": 1.0,
-      "_src": "test_promo_validate_test_promo_validate_expired_400",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_promo_validate_test_promo_validate_expired_400",
       "source": "payments_promocode",
       "target": "test_promo_validate_test_promo_validate_expired_400"
     },
@@ -13606,8 +13606,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_promo_validate.py",
       "source_location": "L69",
       "weight": 1.0,
-      "_src": "test_promo_validate_test_promo_validate_exhausted_400",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_promo_validate_test_promo_validate_exhausted_400",
       "source": "payments_promocode",
       "target": "test_promo_validate_test_promo_validate_exhausted_400"
     },
@@ -13618,8 +13618,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_promo_validate.py",
       "source_location": "L81",
       "weight": 1.0,
-      "_src": "test_promo_validate_test_promo_validate_fixed_discount",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_promo_validate_test_promo_validate_fixed_discount",
       "source": "payments_promocode",
       "target": "test_promo_validate_test_promo_validate_fixed_discount"
     },
@@ -13630,8 +13630,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L95",
       "weight": 1.0,
-      "_src": "test_payments_test_promo_code_and_waitlist_unique",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_payments_test_promo_code_and_waitlist_unique",
       "source": "payments_promocode",
       "target": "test_payments_test_promo_code_and_waitlist_unique"
     },
@@ -13642,8 +13642,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L158",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_valid_promo_code_accepted",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_forms_register_test_register_valid_promo_code_accepted",
       "source": "payments_promocode",
       "target": "test_forms_register_test_register_valid_promo_code_accepted"
     },
@@ -13654,8 +13654,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L92",
       "weight": 1.0,
-      "_src": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
       "source": "payments_promocode",
       "target": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications"
     },
@@ -13666,8 +13666,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L64",
       "weight": 1.0,
-      "_src": "test_payments_create_test_create_payment_applies_percent_discount",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_payments_create_test_create_payment_applies_percent_discount",
       "source": "payments_promocode",
       "target": "test_payments_create_test_create_payment_applies_percent_discount"
     },
@@ -13678,8 +13678,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L90",
       "weight": 1.0,
-      "_src": "test_payments_create_test_create_payment_applies_fixed_discount",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_payments_create_test_create_payment_applies_fixed_discount",
       "source": "payments_promocode",
       "target": "test_payments_create_test_create_payment_applies_fixed_discount"
     },
@@ -13690,8 +13690,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L110",
       "weight": 1.0,
-      "_src": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
-      "_tgt": "payments_promocode",
+      "_src": "payments_promocode",
+      "_tgt": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
       "source": "payments_promocode",
       "target": "test_schemas_test_promo_code_payment_ticket_waitlist_read"
     },
@@ -13703,9 +13703,9 @@
       "weight": 0.8,
       "_src": "payments_payment",
       "_tgt": "referentials_passtype",
+      "confidence_score": 0.5,
       "source": "payments_payment",
-      "target": "referentials_passtype",
-      "confidence_score": 0.5
+      "target": "referentials_passtype"
     },
     {
       "relation": "calls",
@@ -13714,8 +13714,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/payments.py",
       "source_location": "L76",
       "weight": 1.0,
-      "_src": "payments_create_payment",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "payments_create_payment",
       "source": "payments_payment",
       "target": "payments_create_payment"
     },
@@ -13726,8 +13726,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py",
       "source_location": "L24",
       "weight": 1.0,
-      "_src": "test_ticket_finalization_make_ticket",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_ticket_finalization_make_ticket",
       "source": "payments_payment",
       "target": "test_ticket_finalization_make_ticket"
     },
@@ -13738,8 +13738,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_webhook.py",
       "source_location": "L65",
       "weight": 1.0,
-      "_src": "test_payments_webhook_make_pending_payment",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_payments_webhook_make_pending_payment",
       "source": "payments_payment",
       "target": "test_payments_webhook_make_pending_payment"
     },
@@ -13750,8 +13750,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_webhook.py",
       "source_location": "L276",
       "weight": 1.0,
-      "_src": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
       "source": "payments_payment",
       "target": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion"
     },
@@ -13762,8 +13762,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L67",
       "weight": 1.0,
-      "_src": "test_admin_export_make_payment",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_admin_export_make_payment",
       "source": "payments_payment",
       "target": "test_admin_export_make_payment"
     },
@@ -13774,8 +13774,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L26",
       "weight": 1.0,
-      "_src": "test_payments_test_payment_requires_valid_fk",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_payments_test_payment_requires_valid_fk",
       "source": "payments_payment",
       "target": "test_payments_test_payment_requires_valid_fk"
     },
@@ -13786,8 +13786,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L41",
       "weight": 1.0,
-      "_src": "test_payments_test_payment_default_status_pending",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_payments_test_payment_default_status_pending",
       "source": "payments_payment",
       "target": "test_payments_test_payment_default_status_pending"
     },
@@ -13798,8 +13798,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L58",
       "weight": 1.0,
-      "_src": "test_payments_test_ticket_one_per_payment",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_payments_test_ticket_one_per_payment",
       "source": "payments_payment",
       "target": "test_payments_test_ticket_one_per_payment"
     },
@@ -13810,8 +13810,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L97",
       "weight": 1.0,
-      "_src": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
       "source": "payments_payment",
       "target": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications"
     },
@@ -13822,8 +13822,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L116",
       "weight": 1.0,
-      "_src": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
       "source": "payments_payment",
       "target": "test_schemas_test_promo_code_payment_ticket_waitlist_read"
     },
@@ -13834,8 +13834,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L65",
       "weight": 1.0,
-      "_src": "test_admin_registrations_make_payment",
-      "_tgt": "payments_payment",
+      "_src": "payments_payment",
+      "_tgt": "test_admin_registrations_make_payment",
       "source": "payments_payment",
       "target": "test_admin_registrations_make_payment"
     },
@@ -13847,9 +13847,9 @@
       "weight": 0.8,
       "_src": "payments_ticket",
       "_tgt": "referentials_passtype",
+      "confidence_score": 0.5,
       "source": "payments_ticket",
-      "target": "referentials_passtype",
-      "confidence_score": 0.5
+      "target": "referentials_passtype"
     },
     {
       "relation": "calls",
@@ -13858,8 +13858,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/payments.py",
       "source_location": "L176",
       "weight": 1.0,
-      "_src": "payments_payment_webhook",
-      "_tgt": "payments_ticket",
+      "_src": "payments_ticket",
+      "_tgt": "payments_payment_webhook",
       "source": "payments_ticket",
       "target": "payments_payment_webhook"
     },
@@ -13870,8 +13870,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py",
       "source_location": "L35",
       "weight": 1.0,
-      "_src": "test_ticket_finalization_make_ticket",
-      "_tgt": "payments_ticket",
+      "_src": "payments_ticket",
+      "_tgt": "test_ticket_finalization_make_ticket",
       "source": "payments_ticket",
       "target": "test_ticket_finalization_make_ticket"
     },
@@ -13882,8 +13882,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L70",
       "weight": 1.0,
-      "_src": "test_payments_test_ticket_one_per_payment",
-      "_tgt": "payments_ticket",
+      "_src": "payments_ticket",
+      "_tgt": "test_payments_test_ticket_one_per_payment",
       "source": "payments_ticket",
       "target": "test_payments_test_ticket_one_per_payment"
     },
@@ -13894,8 +13894,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L108",
       "weight": 1.0,
-      "_src": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
-      "_tgt": "payments_ticket",
+      "_src": "payments_ticket",
+      "_tgt": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
       "source": "payments_ticket",
       "target": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications"
     },
@@ -13906,8 +13906,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L123",
       "weight": 1.0,
-      "_src": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
-      "_tgt": "payments_ticket",
+      "_src": "payments_ticket",
+      "_tgt": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
       "source": "payments_ticket",
       "target": "test_schemas_test_promo_code_payment_ticket_waitlist_read"
     },
@@ -13919,9 +13919,9 @@
       "weight": 0.8,
       "_src": "payments_waitlist",
       "_tgt": "referentials_passtype",
+      "confidence_score": 0.5,
       "source": "payments_waitlist",
-      "target": "referentials_passtype",
-      "confidence_score": 0.5
+      "target": "referentials_passtype"
     },
     {
       "relation": "calls",
@@ -13930,8 +13930,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L67",
       "weight": 1.0,
-      "_src": "forms_join_waitlist",
-      "_tgt": "payments_waitlist",
+      "_src": "payments_waitlist",
+      "_tgt": "forms_join_waitlist",
       "source": "payments_waitlist",
       "target": "forms_join_waitlist"
     },
@@ -13942,8 +13942,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L96",
       "weight": 1.0,
-      "_src": "test_payments_test_promo_code_and_waitlist_unique",
-      "_tgt": "payments_waitlist",
+      "_src": "payments_waitlist",
+      "_tgt": "test_payments_test_promo_code_and_waitlist_unique",
       "source": "payments_waitlist",
       "target": "test_payments_test_promo_code_and_waitlist_unique"
     },
@@ -13954,8 +13954,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L129",
       "weight": 1.0,
-      "_src": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
-      "_tgt": "payments_waitlist",
+      "_src": "payments_waitlist",
+      "_tgt": "test_schemas_test_promo_code_payment_ticket_waitlist_read",
       "source": "payments_waitlist",
       "target": "test_schemas_test_promo_code_payment_ticket_waitlist_read"
     },
@@ -13978,8 +13978,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "auth_service_authenticate_admin",
-      "_tgt": "audit_auditlog",
+      "_src": "audit_auditlog",
+      "_tgt": "auth_service_authenticate_admin",
       "source": "audit_auditlog",
       "target": "auth_service_authenticate_admin"
     },
@@ -14014,8 +14014,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L105",
       "weight": 1.0,
-      "_src": "forms_register",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "forms_register",
       "source": "users_user",
       "target": "forms_register"
     },
@@ -14026,8 +14026,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_crypto.py",
       "source_location": "L8",
       "weight": 1.0,
-      "_src": "test_crypto_make_user",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_crypto_make_user",
       "source": "users_user",
       "target": "test_crypto_make_user"
     },
@@ -14038,8 +14038,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_crypto.py",
       "source_location": "L52",
       "weight": 1.0,
-      "_src": "test_crypto_test_null_special_needs_stays_null",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_crypto_test_null_special_needs_stays_null",
       "source": "users_user",
       "target": "test_crypto_test_null_special_needs_stays_null"
     },
@@ -14050,8 +14050,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py",
       "source_location": "L10",
       "weight": 1.0,
-      "_src": "test_ticket_finalization_make_ticket",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_ticket_finalization_make_ticket",
       "source": "users_user",
       "target": "test_ticket_finalization_make_ticket"
     },
@@ -14062,8 +14062,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_webhook.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "test_payments_webhook_make_pending_payment",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_payments_webhook_make_pending_payment",
       "source": "users_user",
       "target": "test_payments_webhook_make_pending_payment"
     },
@@ -14074,8 +14074,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_webhook.py",
       "source_location": "L262",
       "weight": 1.0,
-      "_src": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
       "source": "users_user",
       "target": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion"
     },
@@ -14086,8 +14086,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_user_me.py",
       "source_location": "L10",
       "weight": 1.0,
-      "_src": "test_user_me_make_user",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_user_me_make_user",
       "source": "users_user",
       "target": "test_user_me_make_user"
     },
@@ -14098,8 +14098,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L53",
       "weight": 1.0,
-      "_src": "test_admin_export_make_payment",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_admin_export_make_payment",
       "source": "users_user",
       "target": "test_admin_export_make_payment"
     },
@@ -14110,8 +14110,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L8",
       "weight": 1.0,
-      "_src": "test_payments_make_user_and_pass",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_payments_make_user_and_pass",
       "source": "users_user",
       "target": "test_payments_make_user_and_pass"
     },
@@ -14122,8 +14122,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L178",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_duplicate_email_conflict",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_forms_register_test_register_duplicate_email_conflict",
       "source": "users_user",
       "target": "test_forms_register_test_register_duplicate_email_conflict"
     },
@@ -14134,8 +14134,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L62",
       "weight": 1.0,
-      "_src": "test_admin_stats_make_user_and_pass_type",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_admin_stats_make_user_and_pass_type",
       "source": "users_user",
       "target": "test_admin_stats_make_user_and_pass_type"
     },
@@ -14146,8 +14146,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L20",
       "weight": 1.0,
-      "_src": "test_payments_create_make_user",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_payments_create_make_user",
       "source": "users_user",
       "target": "test_payments_create_make_user"
     },
@@ -14158,8 +14158,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_users.py",
       "source_location": "L19",
       "weight": 1.0,
-      "_src": "test_users_make_user",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_users_make_user",
       "source": "users_user",
       "target": "test_users_make_user"
     },
@@ -14170,8 +14170,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L84",
       "weight": 1.0,
-      "_src": "test_schemas_test_user_and_profile_read",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_schemas_test_user_and_profile_read",
       "source": "users_user",
       "target": "test_schemas_test_user_and_profile_read"
     },
@@ -14182,8 +14182,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "test_admin_registrations_make_payment",
-      "_tgt": "users_user",
+      "_src": "users_user",
+      "_tgt": "test_admin_registrations_make_payment",
       "source": "users_user",
       "target": "test_admin_registrations_make_payment"
     },
@@ -14194,8 +14194,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L134",
       "weight": 1.0,
-      "_src": "forms_register",
-      "_tgt": "users_userprofile",
+      "_src": "users_userprofile",
+      "_tgt": "forms_register",
       "source": "users_userprofile",
       "target": "forms_register"
     },
@@ -14206,8 +14206,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_users.py",
       "source_location": "L38",
       "weight": 1.0,
-      "_src": "test_users_test_user_profile_unique_pair",
-      "_tgt": "users_userprofile",
+      "_src": "users_userprofile",
+      "_tgt": "test_users_test_user_profile_unique_pair",
       "source": "users_userprofile",
       "target": "test_users_test_user_profile_unique_pair"
     },
@@ -14218,8 +14218,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L94",
       "weight": 1.0,
-      "_src": "test_schemas_test_user_and_profile_read",
-      "_tgt": "users_userprofile",
+      "_src": "users_userprofile",
+      "_tgt": "test_schemas_test_user_and_profile_read",
       "source": "users_userprofile",
       "target": "test_schemas_test_user_and_profile_read"
     },
@@ -14279,9 +14279,9 @@
       "weight": 0.8,
       "_src": "applications_speaker",
       "_tgt": "referentials_partnerlevel",
+      "confidence_score": 0.5,
       "source": "applications_speaker",
-      "target": "referentials_partnerlevel",
-      "confidence_score": 0.5
+      "target": "referentials_partnerlevel"
     },
     {
       "relation": "calls",
@@ -14290,8 +14290,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L213",
       "weight": 1.0,
-      "_src": "forms_apply_as_speaker",
-      "_tgt": "applications_speaker",
+      "_src": "applications_speaker",
+      "_tgt": "forms_apply_as_speaker",
       "source": "applications_speaker",
       "target": "forms_apply_as_speaker"
     },
@@ -14302,8 +14302,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py",
       "source_location": "L36",
       "weight": 1.0,
-      "_src": "test_public_speakers_make_speaker",
-      "_tgt": "applications_speaker",
+      "_src": "applications_speaker",
+      "_tgt": "test_public_speakers_make_speaker",
       "source": "applications_speaker",
       "target": "test_public_speakers_make_speaker"
     },
@@ -14314,8 +14314,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_applications.py",
       "source_location": "L23",
       "weight": 1.0,
-      "_src": "test_applications_make_speaker",
-      "_tgt": "applications_speaker",
+      "_src": "applications_speaker",
+      "_tgt": "test_applications_make_speaker",
       "source": "applications_speaker",
       "target": "test_applications_make_speaker"
     },
@@ -14326,8 +14326,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L137",
       "weight": 1.0,
-      "_src": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
-      "_tgt": "applications_speaker",
+      "_src": "applications_speaker",
+      "_tgt": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
       "source": "applications_speaker",
       "target": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications"
     },
@@ -14338,8 +14338,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L59",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_speaker",
-      "_tgt": "applications_speaker",
+      "_src": "applications_speaker",
+      "_tgt": "test_admin_applications_make_speaker",
       "source": "applications_speaker",
       "target": "test_admin_applications_make_speaker"
     },
@@ -14350,8 +14350,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L136",
       "weight": 1.0,
-      "_src": "test_schemas_test_applications_read",
-      "_tgt": "applications_speaker",
+      "_src": "applications_speaker",
+      "_tgt": "test_schemas_test_applications_read",
       "source": "applications_speaker",
       "target": "test_schemas_test_applications_read"
     },
@@ -14363,9 +14363,9 @@
       "weight": 0.8,
       "_src": "applications_ambassador",
       "_tgt": "referentials_partnerlevel",
+      "confidence_score": 0.5,
       "source": "applications_ambassador",
-      "target": "referentials_partnerlevel",
-      "confidence_score": 0.5
+      "target": "referentials_partnerlevel"
     },
     {
       "relation": "calls",
@@ -14374,8 +14374,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L265",
       "weight": 1.0,
-      "_src": "forms_apply_as_ambassador",
-      "_tgt": "applications_ambassador",
+      "_src": "applications_ambassador",
+      "_tgt": "forms_apply_as_ambassador",
       "source": "applications_ambassador",
       "target": "forms_apply_as_ambassador"
     },
@@ -14386,8 +14386,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_applications.py",
       "source_location": "L54",
       "weight": 1.0,
-      "_src": "test_applications_test_ambassador_social_handles_json",
-      "_tgt": "applications_ambassador",
+      "_src": "applications_ambassador",
+      "_tgt": "test_applications_test_ambassador_social_handles_json",
       "source": "applications_ambassador",
       "target": "test_applications_test_ambassador_social_handles_json"
     },
@@ -14398,8 +14398,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_ambassador",
-      "_tgt": "applications_ambassador",
+      "_src": "applications_ambassador",
+      "_tgt": "test_admin_applications_make_ambassador",
       "source": "applications_ambassador",
       "target": "test_admin_applications_make_ambassador"
     },
@@ -14410,8 +14410,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L147",
       "weight": 1.0,
-      "_src": "test_schemas_test_applications_read",
-      "_tgt": "applications_ambassador",
+      "_src": "applications_ambassador",
+      "_tgt": "test_schemas_test_applications_read",
       "source": "applications_ambassador",
       "target": "test_schemas_test_applications_read"
     },
@@ -14423,9 +14423,9 @@
       "weight": 0.8,
       "_src": "applications_partner",
       "_tgt": "referentials_partnerlevel",
+      "confidence_score": 0.5,
       "source": "applications_partner",
-      "target": "referentials_partnerlevel",
-      "confidence_score": 0.5
+      "target": "referentials_partnerlevel"
     },
     {
       "relation": "calls",
@@ -14434,8 +14434,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L329",
       "weight": 1.0,
-      "_src": "forms_apply_as_partner",
-      "_tgt": "applications_partner",
+      "_src": "applications_partner",
+      "_tgt": "forms_apply_as_partner",
       "source": "applications_partner",
       "target": "forms_apply_as_partner"
     },
@@ -14446,8 +14446,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_applications.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "test_applications_test_partner_requires_valid_level_fk",
-      "_tgt": "applications_partner",
+      "_src": "applications_partner",
+      "_tgt": "test_applications_test_partner_requires_valid_level_fk",
       "source": "applications_partner",
       "target": "test_applications_test_partner_requires_valid_level_fk"
     },
@@ -14458,8 +14458,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_applications.py",
       "source_location": "L102",
       "weight": 1.0,
-      "_src": "test_applications_test_partner_negotiation_workflow",
-      "_tgt": "applications_partner",
+      "_src": "applications_partner",
+      "_tgt": "test_applications_test_partner_negotiation_workflow",
       "source": "applications_partner",
       "target": "test_applications_test_partner_negotiation_workflow"
     },
@@ -14470,8 +14470,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L100",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_partner",
-      "_tgt": "applications_partner",
+      "_src": "applications_partner",
+      "_tgt": "test_admin_applications_make_partner",
       "source": "applications_partner",
       "target": "test_admin_applications_make_partner"
     },
@@ -14482,8 +14482,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L157",
       "weight": 1.0,
-      "_src": "test_schemas_test_applications_read",
-      "_tgt": "applications_partner",
+      "_src": "applications_partner",
+      "_tgt": "test_schemas_test_applications_read",
       "source": "applications_partner",
       "target": "test_schemas_test_applications_read"
     },
@@ -14494,8 +14494,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_partners.py",
       "source_location": "L35",
       "weight": 1.0,
-      "_src": "test_public_partners_make_partner",
-      "_tgt": "applications_partner",
+      "_src": "applications_partner",
+      "_tgt": "test_public_partners_make_partner",
       "source": "applications_partner",
       "target": "test_public_partners_make_partner"
     },
@@ -14507,9 +14507,9 @@
       "weight": 0.8,
       "_src": "applications_exhibitor",
       "_tgt": "referentials_partnerlevel",
+      "confidence_score": 0.5,
       "source": "applications_exhibitor",
-      "target": "referentials_partnerlevel",
-      "confidence_score": 0.5
+      "target": "referentials_partnerlevel"
     },
     {
       "relation": "calls",
@@ -14518,8 +14518,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L374",
       "weight": 1.0,
-      "_src": "forms_apply_as_exhibitor",
-      "_tgt": "applications_exhibitor",
+      "_src": "applications_exhibitor",
+      "_tgt": "forms_apply_as_exhibitor",
       "source": "applications_exhibitor",
       "target": "forms_apply_as_exhibitor"
     },
@@ -14530,8 +14530,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_applications.py",
       "source_location": "L128",
       "weight": 1.0,
-      "_src": "test_applications_test_exhibitor_default_status_and_public",
-      "_tgt": "applications_exhibitor",
+      "_src": "applications_exhibitor",
+      "_tgt": "test_applications_test_exhibitor_default_status_and_public",
       "source": "applications_exhibitor",
       "target": "test_applications_test_exhibitor_default_status_and_public"
     },
@@ -14542,8 +14542,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_exhibitors.py",
       "source_location": "L37",
       "weight": 1.0,
-      "_src": "test_public_exhibitors_make_exhibitor",
-      "_tgt": "applications_exhibitor",
+      "_src": "applications_exhibitor",
+      "_tgt": "test_public_exhibitors_make_exhibitor",
       "source": "applications_exhibitor",
       "target": "test_public_exhibitors_make_exhibitor"
     },
@@ -14554,8 +14554,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L118",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_exhibitor",
-      "_tgt": "applications_exhibitor",
+      "_src": "applications_exhibitor",
+      "_tgt": "test_admin_applications_make_exhibitor",
       "source": "applications_exhibitor",
       "target": "test_admin_applications_make_exhibitor"
     },
@@ -14566,8 +14566,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L166",
       "weight": 1.0,
-      "_src": "test_schemas_test_applications_read",
-      "_tgt": "applications_exhibitor",
+      "_src": "applications_exhibitor",
+      "_tgt": "test_schemas_test_applications_read",
       "source": "applications_exhibitor",
       "target": "test_schemas_test_applications_read"
     },
@@ -14626,8 +14626,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L15",
       "weight": 1.0,
-      "_src": "test_rbac_deps_make_admin_with_role",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_rbac_deps_make_admin_with_role",
       "source": "rbac_role",
       "target": "test_rbac_deps_make_admin_with_role"
     },
@@ -14638,8 +14638,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rate_limiting.py",
       "source_location": "L44",
       "weight": 1.0,
-      "_src": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
       "source": "rbac_role",
       "target": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute"
     },
@@ -14650,8 +14650,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_make_admin_with_permission",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_campaign_windows_make_admin_with_permission",
       "source": "rbac_role",
       "target": "test_admin_campaign_windows_make_admin_with_permission"
     },
@@ -14662,8 +14662,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L20",
       "weight": 1.0,
-      "_src": "test_admin_export_make_admin_with_permission",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_export_make_admin_with_permission",
       "source": "rbac_role",
       "target": "test_admin_export_make_admin_with_permission"
     },
@@ -14674,8 +14674,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_contacts.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "test_admin_contacts_make_admin",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_contacts_make_admin",
       "source": "rbac_role",
       "target": "test_admin_contacts_make_admin"
     },
@@ -14686,8 +14686,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L29",
       "weight": 1.0,
-      "_src": "test_admin_stats_make_admin_with_permission",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_stats_make_admin_with_permission",
       "source": "rbac_role",
       "target": "test_admin_stats_make_admin_with_permission"
     },
@@ -14698,8 +14698,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "test_admin_rbac_make_admin_with_role",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_rbac_make_admin_with_role",
       "source": "rbac_role",
       "target": "test_admin_rbac_make_admin_with_role"
     },
@@ -14710,8 +14710,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L39",
       "weight": 1.0,
-      "_src": "test_admin_rbac_test_superadmin_can_update_role_permissions",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_rbac_test_superadmin_can_update_role_permissions",
       "source": "rbac_role",
       "target": "test_admin_rbac_test_superadmin_can_update_role_permissions"
     },
@@ -14722,8 +14722,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L61",
       "weight": 1.0,
-      "_src": "test_admin_rbac_test_non_superadmin_forbidden",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_rbac_test_non_superadmin_forbidden",
       "source": "rbac_role",
       "target": "test_admin_rbac_test_non_superadmin_forbidden"
     },
@@ -14734,8 +14734,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L79",
       "weight": 1.0,
-      "_src": "test_admin_rbac_test_unauthenticated_rejected",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_rbac_test_unauthenticated_rejected",
       "source": "rbac_role",
       "target": "test_admin_rbac_test_unauthenticated_rejected"
     },
@@ -14746,8 +14746,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L95",
       "weight": 1.0,
-      "_src": "test_admin_rbac_test_unknown_permission_code_rejected",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_rbac_test_unknown_permission_code_rejected",
       "source": "rbac_role",
       "target": "test_admin_rbac_test_unknown_permission_code_rejected"
     },
@@ -14758,8 +14758,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L27",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_admin_with_permission",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_applications_make_admin_with_permission",
       "source": "rbac_role",
       "target": "test_admin_applications_make_admin_with_permission"
     },
@@ -14770,8 +14770,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L189",
       "weight": 1.0,
-      "_src": "test_schemas_test_rbac_read",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_schemas_test_rbac_read",
       "source": "rbac_role",
       "target": "test_schemas_test_rbac_read"
     },
@@ -14782,8 +14782,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py",
       "source_location": "L21",
       "weight": 1.0,
-      "_src": "test_admin_panel_make_admin",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_panel_make_admin",
       "source": "rbac_role",
       "target": "test_admin_panel_make_admin"
     },
@@ -14794,8 +14794,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "test_admin_registrations_make_admin_with_permission",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_registrations_make_admin_with_permission",
       "source": "rbac_role",
       "target": "test_admin_registrations_make_admin_with_permission"
     },
@@ -14806,8 +14806,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_login.py",
       "source_location": "L24",
       "weight": 1.0,
-      "_src": "test_admin_login_make_admin",
-      "_tgt": "rbac_role",
+      "_src": "rbac_role",
+      "_tgt": "test_admin_login_make_admin",
       "source": "rbac_role",
       "target": "test_admin_login_make_admin"
     },
@@ -14818,8 +14818,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_require_permission_granted",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_rbac_deps_test_require_permission_granted",
       "source": "rbac_permission",
       "target": "test_rbac_deps_test_require_permission_granted"
     },
@@ -14830,8 +14830,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rate_limiting.py",
       "source_location": "L54",
       "weight": 1.0,
-      "_src": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
       "source": "rbac_permission",
       "target": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute"
     },
@@ -14842,8 +14842,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L25",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_make_admin_with_permission",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_admin_campaign_windows_make_admin_with_permission",
       "source": "rbac_permission",
       "target": "test_admin_campaign_windows_make_admin_with_permission"
     },
@@ -14854,8 +14854,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L29",
       "weight": 1.0,
-      "_src": "test_admin_export_make_admin_with_permission",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_admin_export_make_admin_with_permission",
       "source": "rbac_permission",
       "target": "test_admin_export_make_admin_with_permission"
     },
@@ -14866,8 +14866,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L38",
       "weight": 1.0,
-      "_src": "test_admin_stats_make_admin_with_permission",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_admin_stats_make_admin_with_permission",
       "source": "rbac_permission",
       "target": "test_admin_stats_make_admin_with_permission"
     },
@@ -14878,8 +14878,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L36",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_admin_with_permission",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_admin_applications_make_admin_with_permission",
       "source": "rbac_permission",
       "target": "test_admin_applications_make_admin_with_permission"
     },
@@ -14890,8 +14890,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L192",
       "weight": 1.0,
-      "_src": "test_schemas_test_rbac_read",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_schemas_test_rbac_read",
       "source": "rbac_permission",
       "target": "test_schemas_test_rbac_read"
     },
@@ -14902,8 +14902,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py",
       "source_location": "L39",
       "weight": 1.0,
-      "_src": "test_admin_panel_grant_permission",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_admin_panel_grant_permission",
       "source": "rbac_permission",
       "target": "test_admin_panel_grant_permission"
     },
@@ -14914,8 +14914,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L27",
       "weight": 1.0,
-      "_src": "test_admin_registrations_make_admin_with_permission",
-      "_tgt": "rbac_permission",
+      "_src": "rbac_permission",
+      "_tgt": "test_admin_registrations_make_admin_with_permission",
       "source": "rbac_permission",
       "target": "test_admin_registrations_make_admin_with_permission"
     },
@@ -14926,8 +14926,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "rbac_update_role_permissions",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "rbac_update_role_permissions",
       "source": "rbac_rolepermission",
       "target": "rbac_update_role_permissions"
     },
@@ -14938,8 +14938,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L54",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_require_permission_granted",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_rbac_deps_test_require_permission_granted",
       "source": "rbac_rolepermission",
       "target": "test_rbac_deps_test_require_permission_granted"
     },
@@ -14950,8 +14950,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rate_limiting.py",
       "source_location": "L66",
       "weight": 1.0,
-      "_src": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
       "source": "rbac_rolepermission",
       "target": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute"
     },
@@ -14962,8 +14962,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L38",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_make_admin_with_permission",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_admin_campaign_windows_make_admin_with_permission",
       "source": "rbac_rolepermission",
       "target": "test_admin_campaign_windows_make_admin_with_permission"
     },
@@ -14974,8 +14974,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L42",
       "weight": 1.0,
-      "_src": "test_admin_export_make_admin_with_permission",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_admin_export_make_admin_with_permission",
       "source": "rbac_rolepermission",
       "target": "test_admin_export_make_admin_with_permission"
     },
@@ -14986,8 +14986,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "test_admin_stats_make_admin_with_permission",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_admin_stats_make_admin_with_permission",
       "source": "rbac_rolepermission",
       "target": "test_admin_stats_make_admin_with_permission"
     },
@@ -14998,8 +14998,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L49",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_admin_with_permission",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_admin_applications_make_admin_with_permission",
       "source": "rbac_rolepermission",
       "target": "test_admin_applications_make_admin_with_permission"
     },
@@ -15010,8 +15010,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L195",
       "weight": 1.0,
-      "_src": "test_schemas_test_rbac_read",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_schemas_test_rbac_read",
       "source": "rbac_rolepermission",
       "target": "test_schemas_test_rbac_read"
     },
@@ -15022,8 +15022,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "test_admin_panel_grant_permission",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_admin_panel_grant_permission",
       "source": "rbac_rolepermission",
       "target": "test_admin_panel_grant_permission"
     },
@@ -15034,8 +15034,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L40",
       "weight": 1.0,
-      "_src": "test_admin_registrations_make_admin_with_permission",
-      "_tgt": "rbac_rolepermission",
+      "_src": "rbac_rolepermission",
+      "_tgt": "test_admin_registrations_make_admin_with_permission",
       "source": "rbac_rolepermission",
       "target": "test_admin_registrations_make_admin_with_permission"
     },
@@ -15046,8 +15046,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L19",
       "weight": 1.0,
-      "_src": "test_rbac_deps_make_admin_with_role",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_rbac_deps_make_admin_with_role",
       "source": "rbac_adminuser",
       "target": "test_rbac_deps_make_admin_with_role"
     },
@@ -15058,8 +15058,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rate_limiting.py",
       "source_location": "L68",
       "weight": 1.0,
-      "_src": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
       "source": "rbac_adminuser",
       "target": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute"
     },
@@ -15070,8 +15070,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L41",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_make_admin_with_permission",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_campaign_windows_make_admin_with_permission",
       "source": "rbac_adminuser",
       "target": "test_admin_campaign_windows_make_admin_with_permission"
     },
@@ -15082,8 +15082,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac.py",
       "source_location": "L32",
       "weight": 1.0,
-      "_src": "test_rbac_test_admin_user_requires_permission_only_superadmin",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_rbac_test_admin_user_requires_permission_only_superadmin",
       "source": "rbac_adminuser",
       "target": "test_rbac_test_admin_user_requires_permission_only_superadmin"
     },
@@ -15094,8 +15094,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L45",
       "weight": 1.0,
-      "_src": "test_admin_export_make_admin_with_permission",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_export_make_admin_with_permission",
       "source": "rbac_adminuser",
       "target": "test_admin_export_make_admin_with_permission"
     },
@@ -15106,8 +15106,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_contacts.py",
       "source_location": "L20",
       "weight": 1.0,
-      "_src": "test_admin_contacts_make_admin",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_contacts_make_admin",
       "source": "rbac_adminuser",
       "target": "test_admin_contacts_make_admin"
     },
@@ -15118,8 +15118,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L54",
       "weight": 1.0,
-      "_src": "test_admin_stats_make_admin_with_permission",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_stats_make_admin_with_permission",
       "source": "rbac_adminuser",
       "target": "test_admin_stats_make_admin_with_permission"
     },
@@ -15130,8 +15130,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L20",
       "weight": 1.0,
-      "_src": "test_admin_rbac_make_admin_with_role",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_rbac_make_admin_with_role",
       "source": "rbac_adminuser",
       "target": "test_admin_rbac_make_admin_with_role"
     },
@@ -15142,8 +15142,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L52",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_admin_with_permission",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_applications_make_admin_with_permission",
       "source": "rbac_adminuser",
       "target": "test_admin_applications_make_admin_with_permission"
     },
@@ -15154,8 +15154,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L198",
       "weight": 1.0,
-      "_src": "test_schemas_test_rbac_read",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_schemas_test_rbac_read",
       "source": "rbac_adminuser",
       "target": "test_schemas_test_rbac_read"
     },
@@ -15166,8 +15166,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py",
       "source_location": "L25",
       "weight": 1.0,
-      "_src": "test_admin_panel_make_admin",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_panel_make_admin",
       "source": "rbac_adminuser",
       "target": "test_admin_panel_make_admin"
     },
@@ -15178,8 +15178,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L43",
       "weight": 1.0,
-      "_src": "test_admin_registrations_make_admin_with_permission",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_registrations_make_admin_with_permission",
       "source": "rbac_adminuser",
       "target": "test_admin_registrations_make_admin_with_permission"
     },
@@ -15190,8 +15190,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_login.py",
       "source_location": "L28",
       "weight": 1.0,
-      "_src": "test_admin_login_make_admin",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "test_admin_login_make_admin",
       "source": "rbac_adminuser",
       "target": "test_admin_login_make_admin"
     },
@@ -15214,8 +15214,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L208",
       "weight": 1.0,
-      "_src": "test_schemas_test_campaign_window_read",
-      "_tgt": "campaign_campaignwindow",
+      "_src": "campaign_campaignwindow",
+      "_tgt": "test_schemas_test_campaign_window_read",
       "source": "campaign_campaignwindow",
       "target": "test_schemas_test_campaign_window_read"
     },
@@ -15251,9 +15251,9 @@
       "weight": 0.8,
       "_src": "content_faq",
       "_tgt": "referentials_faqcategory",
+      "confidence_score": 0.5,
       "source": "content_faq",
-      "target": "referentials_faqcategory",
-      "confidence_score": 0.5
+      "target": "referentials_faqcategory"
     },
     {
       "relation": "calls",
@@ -15262,8 +15262,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py",
       "source_location": "L59",
       "weight": 1.0,
-      "_src": "test_pagination_test_pagination_limit_actually_limits_results",
-      "_tgt": "content_faq",
+      "_src": "content_faq",
+      "_tgt": "test_pagination_test_pagination_limit_actually_limits_results",
       "source": "content_faq",
       "target": "test_pagination_test_pagination_limit_actually_limits_results"
     },
@@ -15274,8 +15274,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_faqs.py",
       "source_location": "L28",
       "weight": 1.0,
-      "_src": "test_public_faqs_test_faqs_filter_by_category",
-      "_tgt": "content_faq",
+      "_src": "content_faq",
+      "_tgt": "test_public_faqs_test_faqs_filter_by_category",
       "source": "content_faq",
       "target": "test_public_faqs_test_faqs_filter_by_category"
     },
@@ -15286,8 +15286,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_content.py",
       "source_location": "L13",
       "weight": 1.0,
-      "_src": "test_content_test_faq_crud_basic",
-      "_tgt": "content_faq",
+      "_src": "content_faq",
+      "_tgt": "test_content_test_faq_crud_basic",
       "source": "content_faq",
       "target": "test_content_test_faq_crud_basic"
     },
@@ -15298,8 +15298,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L178",
       "weight": 1.0,
-      "_src": "test_schemas_test_content_read",
-      "_tgt": "content_faq",
+      "_src": "content_faq",
+      "_tgt": "test_schemas_test_content_read",
       "source": "content_faq",
       "target": "test_schemas_test_content_read"
     },
@@ -15311,9 +15311,9 @@
       "weight": 0.8,
       "_src": "content_contactmessage",
       "_tgt": "referentials_faqcategory",
+      "confidence_score": 0.5,
       "source": "content_contactmessage",
-      "target": "referentials_faqcategory",
-      "confidence_score": 0.5
+      "target": "referentials_faqcategory"
     },
     {
       "relation": "calls",
@@ -15322,8 +15322,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L156",
       "weight": 1.0,
-      "_src": "forms_contact",
-      "_tgt": "content_contactmessage",
+      "_src": "content_contactmessage",
+      "_tgt": "forms_contact",
       "source": "content_contactmessage",
       "target": "forms_contact"
     },
@@ -15334,8 +15334,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_contacts.py",
       "source_location": "L39",
       "weight": 1.0,
-      "_src": "test_admin_contacts_test_any_authenticated_admin_can_list_contacts",
-      "_tgt": "content_contactmessage",
+      "_src": "content_contactmessage",
+      "_tgt": "test_admin_contacts_test_any_authenticated_admin_can_list_contacts",
       "source": "content_contactmessage",
       "target": "test_admin_contacts_test_any_authenticated_admin_can_list_contacts"
     },
@@ -15346,8 +15346,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_contacts.py",
       "source_location": "L57",
       "weight": 1.0,
-      "_src": "test_admin_contacts_test_list_contacts_filters_by_is_read",
-      "_tgt": "content_contactmessage",
+      "_src": "content_contactmessage",
+      "_tgt": "test_admin_contacts_test_list_contacts_filters_by_is_read",
       "source": "content_contactmessage",
       "target": "test_admin_contacts_test_list_contacts_filters_by_is_read"
     },
@@ -15358,8 +15358,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_content.py",
       "source_location": "L33",
       "weight": 1.0,
-      "_src": "test_content_test_contact_message_default_unread",
-      "_tgt": "content_contactmessage",
+      "_src": "content_contactmessage",
+      "_tgt": "test_content_test_contact_message_default_unread",
       "source": "content_contactmessage",
       "target": "test_content_test_contact_message_default_unread"
     },
@@ -15370,8 +15370,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L181",
       "weight": 1.0,
-      "_src": "test_schemas_test_content_read",
-      "_tgt": "content_contactmessage",
+      "_src": "content_contactmessage",
+      "_tgt": "test_schemas_test_content_read",
       "source": "content_contactmessage",
       "target": "test_schemas_test_content_read"
     },
@@ -15430,8 +15430,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_sessions.py",
       "source_location": "L11",
       "weight": 1.0,
-      "_src": "test_sessions_test_filter_sessions_by_day_and_category",
-      "_tgt": "referentials_day",
+      "_src": "referentials_day",
+      "_tgt": "test_sessions_test_filter_sessions_by_day_and_category",
       "source": "referentials_day",
       "target": "test_sessions_test_filter_sessions_by_day_and_category"
     },
@@ -15442,8 +15442,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_program.py",
       "source_location": "L25",
       "weight": 1.0,
-      "_src": "test_public_program_test_list_days_ordered",
-      "_tgt": "referentials_day",
+      "_src": "referentials_day",
+      "_tgt": "test_public_program_test_list_days_ordered",
       "source": "referentials_day",
       "target": "test_public_program_test_list_days_ordered"
     },
@@ -15454,8 +15454,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_program.py",
       "source_location": "L50",
       "weight": 1.0,
-      "_src": "test_public_program_test_sessions_filter_by_day_and_category_excludes_private",
-      "_tgt": "referentials_day",
+      "_src": "referentials_day",
+      "_tgt": "test_public_program_test_sessions_filter_by_day_and_category_excludes_private",
       "source": "referentials_day",
       "target": "test_public_program_test_sessions_filter_by_day_and_category_excludes_private"
     },
@@ -15466,8 +15466,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py",
       "source_location": "L11",
       "weight": 1.0,
-      "_src": "test_referentials_test_day_unique_date",
-      "_tgt": "referentials_day",
+      "_src": "referentials_day",
+      "_tgt": "test_referentials_test_day_unique_date",
       "source": "referentials_day",
       "target": "test_referentials_test_day_unique_date"
     },
@@ -15478,8 +15478,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L57",
       "weight": 1.0,
-      "_src": "test_schemas_test_day_read",
-      "_tgt": "referentials_day",
+      "_src": "referentials_day",
+      "_tgt": "test_schemas_test_day_read",
       "source": "referentials_day",
       "target": "test_schemas_test_day_read"
     },
@@ -15490,8 +15490,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py",
       "source_location": "L20",
       "weight": 1.0,
-      "_src": "test_ticket_finalization_make_ticket",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_ticket_finalization_make_ticket",
       "source": "referentials_passtype",
       "target": "test_ticket_finalization_make_ticket"
     },
@@ -15502,8 +15502,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_webhook.py",
       "source_location": "L61",
       "weight": 1.0,
-      "_src": "test_payments_webhook_make_pending_payment",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_webhook_make_pending_payment",
       "source": "referentials_passtype",
       "target": "test_payments_webhook_make_pending_payment"
     },
@@ -15514,8 +15514,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_webhook.py",
       "source_location": "L272",
       "weight": 1.0,
-      "_src": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
       "source": "referentials_passtype",
       "target": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion"
     },
@@ -15526,8 +15526,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L63",
       "weight": 1.0,
-      "_src": "test_admin_export_make_payment",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_admin_export_make_payment",
       "source": "referentials_passtype",
       "target": "test_admin_export_make_payment"
     },
@@ -15538,8 +15538,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "test_payments_make_user_and_pass",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_make_user_and_pass",
       "source": "referentials_passtype",
       "target": "test_payments_make_user_and_pass"
     },
@@ -15550,8 +15550,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L60",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_success",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_forms_register_test_register_success",
       "source": "referentials_passtype",
       "target": "test_forms_register_test_register_success"
     },
@@ -15562,8 +15562,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_sends_confirmation_email",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_forms_register_test_register_sends_confirmation_email",
       "source": "referentials_passtype",
       "target": "test_forms_register_test_register_sends_confirmation_email"
     },
@@ -15574,8 +15574,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L126",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_inactive_pass_type_400",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_forms_register_test_register_inactive_pass_type_400",
       "source": "referentials_passtype",
       "target": "test_forms_register_test_register_inactive_pass_type_400"
     },
@@ -15586,8 +15586,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L141",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_invalid_promo_code_400",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_forms_register_test_register_invalid_promo_code_400",
       "source": "referentials_passtype",
       "target": "test_forms_register_test_register_invalid_promo_code_400"
     },
@@ -15598,8 +15598,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L157",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_valid_promo_code_accepted",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_forms_register_test_register_valid_promo_code_accepted",
       "source": "referentials_passtype",
       "target": "test_forms_register_test_register_valid_promo_code_accepted"
     },
@@ -15610,8 +15610,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_register.py",
       "source_location": "L174",
       "weight": 1.0,
-      "_src": "test_forms_register_test_register_duplicate_email_conflict",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_forms_register_test_register_duplicate_email_conflict",
       "source": "referentials_passtype",
       "target": "test_forms_register_test_register_duplicate_email_conflict"
     },
@@ -15622,8 +15622,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_pass_types.py",
       "source_location": "L23",
       "weight": 1.0,
-      "_src": "test_public_pass_types_test_list_pass_types_excludes_inactive",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_public_pass_types_test_list_pass_types_excludes_inactive",
       "source": "referentials_passtype",
       "target": "test_public_pass_types_test_list_pass_types_excludes_inactive"
     },
@@ -15634,8 +15634,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py",
       "source_location": "L21",
       "weight": 1.0,
-      "_src": "test_referentials_test_pass_type_defaults",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_referentials_test_pass_type_defaults",
       "source": "referentials_passtype",
       "target": "test_referentials_test_pass_type_defaults"
     },
@@ -15646,8 +15646,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L72",
       "weight": 1.0,
-      "_src": "test_admin_stats_make_user_and_pass_type",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_admin_stats_make_user_and_pass_type",
       "source": "referentials_passtype",
       "target": "test_admin_stats_make_user_and_pass_type"
     },
@@ -15658,8 +15658,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L38",
       "weight": 1.0,
-      "_src": "test_payments_create_test_create_payment_success_no_promo",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_create_test_create_payment_success_no_promo",
       "source": "referentials_passtype",
       "target": "test_payments_create_test_create_payment_success_no_promo"
     },
@@ -15670,8 +15670,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L63",
       "weight": 1.0,
-      "_src": "test_payments_create_test_create_payment_applies_percent_discount",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_create_test_create_payment_applies_percent_discount",
       "source": "referentials_passtype",
       "target": "test_payments_create_test_create_payment_applies_percent_discount"
     },
@@ -15682,8 +15682,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L89",
       "weight": 1.0,
-      "_src": "test_payments_create_test_create_payment_applies_fixed_discount",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_create_test_create_payment_applies_fixed_discount",
       "source": "referentials_passtype",
       "target": "test_payments_create_test_create_payment_applies_fixed_discount"
     },
@@ -15694,8 +15694,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L111",
       "weight": 1.0,
-      "_src": "test_payments_create_test_create_payment_invalid_user_400",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_create_test_create_payment_invalid_user_400",
       "source": "referentials_passtype",
       "target": "test_payments_create_test_create_payment_invalid_user_400"
     },
@@ -15706,8 +15706,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_payments_create.py",
       "source_location": "L127",
       "weight": 1.0,
-      "_src": "test_payments_create_test_create_payment_invalid_promo_400",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_payments_create_test_create_payment_invalid_promo_400",
       "source": "referentials_passtype",
       "target": "test_payments_create_test_create_payment_invalid_promo_400"
     },
@@ -15718,8 +15718,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L63",
       "weight": 1.0,
-      "_src": "test_schemas_test_pass_type_read",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_schemas_test_pass_type_read",
       "source": "referentials_passtype",
       "target": "test_schemas_test_pass_type_read"
     },
@@ -15730,8 +15730,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L61",
       "weight": 1.0,
-      "_src": "test_admin_registrations_make_payment",
-      "_tgt": "referentials_passtype",
+      "_src": "referentials_passtype",
+      "_tgt": "test_admin_registrations_make_payment",
       "source": "referentials_passtype",
       "target": "test_admin_registrations_make_payment"
     },
@@ -15742,8 +15742,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_partner_apply.py",
       "source_location": "L73",
       "weight": 1.0,
-      "_src": "test_forms_partner_apply_test_partner_apply_success_without_logo",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_forms_partner_apply_test_partner_apply_success_without_logo",
       "source": "referentials_partnerlevel",
       "target": "test_forms_partner_apply_test_partner_apply_success_without_logo"
     },
@@ -15754,8 +15754,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_partner_apply.py",
       "source_location": "L90",
       "weight": 1.0,
-      "_src": "test_forms_partner_apply_test_partner_apply_success_with_logo",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_forms_partner_apply_test_partner_apply_success_with_logo",
       "source": "referentials_partnerlevel",
       "target": "test_forms_partner_apply_test_partner_apply_success_with_logo"
     },
@@ -15766,8 +15766,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_partner_apply.py",
       "source_location": "L119",
       "weight": 1.0,
-      "_src": "test_forms_partner_apply_test_partner_apply_fake_logo_rejected_400",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_forms_partner_apply_test_partner_apply_fake_logo_rejected_400",
       "source": "referentials_partnerlevel",
       "target": "test_forms_partner_apply_test_partner_apply_fake_logo_rejected_400"
     },
@@ -15778,8 +15778,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py",
       "source_location": "L31",
       "weight": 1.0,
-      "_src": "test_referentials_test_partner_level_and_faq_category",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_referentials_test_partner_level_and_faq_category",
       "source": "referentials_partnerlevel",
       "target": "test_referentials_test_partner_level_and_faq_category"
     },
@@ -15790,8 +15790,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_applications.py",
       "source_location": "L98",
       "weight": 1.0,
-      "_src": "test_applications_test_partner_negotiation_workflow",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_applications_test_partner_negotiation_workflow",
       "source": "referentials_partnerlevel",
       "target": "test_applications_test_partner_negotiation_workflow"
     },
@@ -15802,8 +15802,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L96",
       "weight": 1.0,
-      "_src": "test_admin_applications_make_partner",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_admin_applications_make_partner",
       "source": "referentials_partnerlevel",
       "target": "test_admin_applications_make_partner"
     },
@@ -15814,8 +15814,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L72",
       "weight": 1.0,
-      "_src": "test_schemas_test_partner_level_read",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_schemas_test_partner_level_read",
       "source": "referentials_partnerlevel",
       "target": "test_schemas_test_partner_level_read"
     },
@@ -15826,8 +15826,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_partners.py",
       "source_location": "L40",
       "weight": 1.0,
-      "_src": "test_public_partners_test_partners_filter_by_level_excludes_private",
-      "_tgt": "referentials_partnerlevel",
+      "_src": "referentials_partnerlevel",
+      "_tgt": "test_public_partners_test_partners_filter_by_level_excludes_private",
       "source": "referentials_partnerlevel",
       "target": "test_public_partners_test_partners_filter_by_level_excludes_private"
     },
@@ -15838,8 +15838,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py",
       "source_location": "L53",
       "weight": 1.0,
-      "_src": "test_pagination_test_pagination_limit_actually_limits_results",
-      "_tgt": "referentials_faqcategory",
+      "_src": "referentials_faqcategory",
+      "_tgt": "test_pagination_test_pagination_limit_actually_limits_results",
       "source": "referentials_faqcategory",
       "target": "test_pagination_test_pagination_limit_actually_limits_results"
     },
@@ -15850,8 +15850,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_faqs.py",
       "source_location": "L21",
       "weight": 1.0,
-      "_src": "test_public_faqs_test_faqs_filter_by_category",
-      "_tgt": "referentials_faqcategory",
+      "_src": "referentials_faqcategory",
+      "_tgt": "test_public_faqs_test_faqs_filter_by_category",
       "source": "referentials_faqcategory",
       "target": "test_public_faqs_test_faqs_filter_by_category"
     },
@@ -15862,8 +15862,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py",
       "source_location": "L32",
       "weight": 1.0,
-      "_src": "test_referentials_test_partner_level_and_faq_category",
-      "_tgt": "referentials_faqcategory",
+      "_src": "referentials_faqcategory",
+      "_tgt": "test_referentials_test_partner_level_and_faq_category",
       "source": "referentials_faqcategory",
       "target": "test_referentials_test_partner_level_and_faq_category"
     },
@@ -15874,8 +15874,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_content.py",
       "source_location": "L9",
       "weight": 1.0,
-      "_src": "test_content_test_faq_crud_basic",
-      "_tgt": "referentials_faqcategory",
+      "_src": "referentials_faqcategory",
+      "_tgt": "test_content_test_faq_crud_basic",
       "source": "referentials_faqcategory",
       "target": "test_content_test_faq_crud_basic"
     },
@@ -15886,8 +15886,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "test_schemas_test_faq_category_read",
-      "_tgt": "referentials_faqcategory",
+      "_src": "referentials_faqcategory",
+      "_tgt": "test_schemas_test_faq_category_read",
       "source": "referentials_faqcategory",
       "target": "test_schemas_test_faq_category_read"
     },
@@ -15910,8 +15910,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py",
       "source_location": "L173",
       "weight": 1.0,
-      "_src": "forms_subscribe_newsletter",
-      "_tgt": "newsletter_newslettersubscriber",
+      "_src": "newsletter_newslettersubscriber",
+      "_tgt": "forms_subscribe_newsletter",
       "source": "newsletter_newslettersubscriber",
       "target": "forms_subscribe_newsletter"
     },
@@ -16510,8 +16510,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py",
       "source_location": "L37",
       "weight": 1.0,
-      "_src": "auth_login",
-      "_tgt": "auth_tokenpair",
+      "_src": "auth_tokenpair",
+      "_tgt": "auth_login",
       "source": "auth_tokenpair",
       "target": "auth_login"
     },
@@ -16546,8 +16546,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/payments.py",
       "source_location": "L41",
       "weight": 1.0,
-      "_src": "payments_validate_promo",
-      "_tgt": "promo_promovalidateresponse",
+      "_src": "promo_promovalidateresponse",
+      "_tgt": "payments_validate_promo",
       "source": "promo_promovalidateresponse",
       "target": "payments_validate_promo"
     },
@@ -16689,11 +16689,11 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/user_me.py",
       "source_location": "L10",
       "weight": 0.8,
-      "_src": "user_me_rationale_54",
-      "_tgt": "users_userread",
+      "_src": "users_userread",
+      "_tgt": "user_me_rationale_54",
+      "confidence_score": 0.5,
       "source": "users_userread",
-      "target": "user_me_rationale_54",
-      "confidence_score": 0.5
+      "target": "user_me_rationale_54"
     },
     {
       "relation": "contains",
@@ -16894,8 +16894,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py",
       "source_location": "L58",
       "weight": 1.0,
-      "_src": "rbac_update_role_permissions",
-      "_tgt": "rbac_rolewithpermissionsread",
+      "_src": "rbac_rolewithpermissionsread",
+      "_tgt": "rbac_update_role_permissions",
       "source": "rbac_rolewithpermissionsread",
       "target": "rbac_update_role_permissions"
     },
@@ -17026,8 +17026,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_registrations.py",
       "source_location": "L41",
       "weight": 1.0,
-      "_src": "admin_registrations_list_registrations",
-      "_tgt": "admin_registrations_registrationread",
+      "_src": "admin_registrations_registrationread",
+      "_tgt": "admin_registrations_list_registrations",
       "source": "admin_registrations_registrationread",
       "target": "admin_registrations_list_registrations"
     },
@@ -17170,8 +17170,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_stats.py",
       "source_location": "L63",
       "weight": 1.0,
-      "_src": "admin_stats_get_admin_stats",
-      "_tgt": "admin_stats_adminstatsread",
+      "_src": "admin_stats_adminstatsread",
+      "_tgt": "admin_stats_get_admin_stats",
       "source": "admin_stats_adminstatsread",
       "target": "admin_stats_get_admin_stats"
     },
@@ -17926,8 +17926,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L30",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_get_current_admin_valid_token",
-      "_tgt": "rbac_get_current_admin",
+      "_src": "rbac_get_current_admin",
+      "_tgt": "test_rbac_deps_test_get_current_admin_valid_token",
       "source": "rbac_get_current_admin",
       "target": "test_rbac_deps_test_get_current_admin_valid_token"
     },
@@ -17938,8 +17938,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L37",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_get_current_admin_missing_token_raises_401",
-      "_tgt": "rbac_get_current_admin",
+      "_src": "rbac_get_current_admin",
+      "_tgt": "test_rbac_deps_test_get_current_admin_missing_token_raises_401",
       "source": "rbac_get_current_admin",
       "target": "test_rbac_deps_test_get_current_admin_missing_token_raises_401"
     },
@@ -17950,8 +17950,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L44",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_get_current_admin_invalid_token_raises_401",
-      "_tgt": "rbac_get_current_admin",
+      "_src": "rbac_get_current_admin",
+      "_tgt": "test_rbac_deps_test_get_current_admin_invalid_token_raises_401",
       "source": "rbac_get_current_admin",
       "target": "test_rbac_deps_test_get_current_admin_invalid_token_raises_401"
     },
@@ -17962,8 +17962,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L57",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_require_permission_granted",
-      "_tgt": "rbac_require_permission",
+      "_src": "rbac_require_permission",
+      "_tgt": "test_rbac_deps_test_require_permission_granted",
       "source": "rbac_require_permission",
       "target": "test_rbac_deps_test_require_permission_granted"
     },
@@ -17974,8 +17974,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L66",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_require_permission_denied_returns_403",
-      "_tgt": "rbac_require_permission",
+      "_src": "rbac_require_permission",
+      "_tgt": "test_rbac_deps_test_require_permission_denied_returns_403",
       "source": "rbac_require_permission",
       "target": "test_rbac_deps_test_require_permission_denied_returns_403"
     },
@@ -17998,8 +17998,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py",
       "source_location": "L34",
       "weight": 1.0,
-      "_src": "test_campaign_window_deps_test_open_window_allows",
-      "_tgt": "campaign_windows_require_open_campaign",
+      "_src": "campaign_windows_require_open_campaign",
+      "_tgt": "test_campaign_window_deps_test_open_window_allows",
       "source": "campaign_windows_require_open_campaign",
       "target": "test_campaign_window_deps_test_open_window_allows"
     },
@@ -18010,8 +18010,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py",
       "source_location": "L49",
       "weight": 1.0,
-      "_src": "test_campaign_window_deps_test_window_not_yet_started_forbidden",
-      "_tgt": "campaign_windows_require_open_campaign",
+      "_src": "campaign_windows_require_open_campaign",
+      "_tgt": "test_campaign_window_deps_test_window_not_yet_started_forbidden",
       "source": "campaign_windows_require_open_campaign",
       "target": "test_campaign_window_deps_test_window_not_yet_started_forbidden"
     },
@@ -18022,8 +18022,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py",
       "source_location": "L66",
       "weight": 1.0,
-      "_src": "test_campaign_window_deps_test_window_already_closed_forbidden",
-      "_tgt": "campaign_windows_require_open_campaign",
+      "_src": "campaign_windows_require_open_campaign",
+      "_tgt": "test_campaign_window_deps_test_window_already_closed_forbidden",
       "source": "campaign_windows_require_open_campaign",
       "target": "test_campaign_window_deps_test_window_already_closed_forbidden"
     },
@@ -18034,8 +18034,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py",
       "source_location": "L83",
       "weight": 1.0,
-      "_src": "test_campaign_window_deps_test_window_deactivated_forbidden_even_within_dates",
-      "_tgt": "campaign_windows_require_open_campaign",
+      "_src": "campaign_windows_require_open_campaign",
+      "_tgt": "test_campaign_window_deps_test_window_deactivated_forbidden_even_within_dates",
       "source": "campaign_windows_require_open_campaign",
       "target": "test_campaign_window_deps_test_window_deactivated_forbidden_even_within_dates"
     },
@@ -18046,8 +18046,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py",
       "source_location": "L96",
       "weight": 1.0,
-      "_src": "test_campaign_window_deps_test_missing_window_forbidden",
-      "_tgt": "campaign_windows_require_open_campaign",
+      "_src": "campaign_windows_require_open_campaign",
+      "_tgt": "test_campaign_window_deps_test_missing_window_forbidden",
       "source": "campaign_windows_require_open_campaign",
       "target": "test_campaign_window_deps_test_missing_window_forbidden"
     },
@@ -18094,8 +18094,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py",
       "source_location": "L11",
       "weight": 1.0,
-      "_src": "test_pagination_test_pagination_custom_values",
-      "_tgt": "pagination_pagination_params",
+      "_src": "pagination_pagination_params",
+      "_tgt": "test_pagination_test_pagination_custom_values",
       "source": "pagination_pagination_params",
       "target": "test_pagination_test_pagination_custom_values"
     },
@@ -18298,8 +18298,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_audit_log.py",
       "source_location": "L17",
       "weight": 1.0,
-      "_src": "test_audit_log_test_successful_login_writes_audit_entry",
-      "_tgt": "auth_service_authenticate_admin",
+      "_src": "auth_service_authenticate_admin",
+      "_tgt": "test_audit_log_test_successful_login_writes_audit_entry",
       "source": "auth_service_authenticate_admin",
       "target": "test_audit_log_test_successful_login_writes_audit_entry"
     },
@@ -18310,8 +18310,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_audit_log.py",
       "source_location": "L32",
       "weight": 1.0,
-      "_src": "test_audit_log_test_failed_login_writes_audit_entry",
-      "_tgt": "auth_service_authenticate_admin",
+      "_src": "auth_service_authenticate_admin",
+      "_tgt": "test_audit_log_test_failed_login_writes_audit_entry",
       "source": "auth_service_authenticate_admin",
       "target": "test_audit_log_test_failed_login_writes_audit_entry"
     },
@@ -18322,8 +18322,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_audit_log.py",
       "source_location": "L48",
       "weight": 1.0,
-      "_src": "test_audit_log_test_locked_account_attempt_writes_audit_entry",
-      "_tgt": "auth_service_authenticate_admin",
+      "_src": "auth_service_authenticate_admin",
+      "_tgt": "test_audit_log_test_locked_account_attempt_writes_audit_entry",
       "source": "auth_service_authenticate_admin",
       "target": "test_audit_log_test_locked_account_attempt_writes_audit_entry"
     },
@@ -18334,8 +18334,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_login.py",
       "source_location": "L109",
       "weight": 1.0,
-      "_src": "test_admin_login_test_account_locks_after_five_failed_attempts",
-      "_tgt": "auth_service_authenticate_admin",
+      "_src": "auth_service_authenticate_admin",
+      "_tgt": "test_admin_login_test_account_locks_after_five_failed_attempts",
       "source": "auth_service_authenticate_admin",
       "target": "test_admin_login_test_account_locks_after_five_failed_attempts"
     },
@@ -18370,8 +18370,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py",
       "source_location": "L28",
       "weight": 1.0,
-      "_src": "test_rbac_deps_test_get_current_admin_valid_token",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_rbac_deps_test_get_current_admin_valid_token",
       "source": "auth_service_create_access_token",
       "target": "test_rbac_deps_test_get_current_admin_valid_token"
     },
@@ -18382,8 +18382,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rate_limiting.py",
       "source_location": "L72",
       "weight": 1.0,
-      "_src": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute",
       "source": "auth_service_create_access_token",
       "target": "test_rate_limiting_test_admin_endpoint_limited_to_30_per_minute"
     },
@@ -18394,8 +18394,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L62",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_test_list_campaign_windows_admin",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_campaign_windows_test_list_campaign_windows_admin",
       "source": "auth_service_create_access_token",
       "target": "test_admin_campaign_windows_test_list_campaign_windows_admin"
     },
@@ -18406,8 +18406,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L76",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_test_list_campaign_windows_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_campaign_windows_test_list_campaign_windows_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_campaign_windows_test_list_campaign_windows_forbidden_without_permission"
     },
@@ -18418,8 +18418,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L91",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_test_update_campaign_window_dates_and_is_active",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_campaign_windows_test_update_campaign_window_dates_and_is_active",
       "source": "auth_service_create_access_token",
       "target": "test_admin_campaign_windows_test_update_campaign_window_dates_and_is_active"
     },
@@ -18430,8 +18430,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L116",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_test_update_campaign_window_rejects_end_before_start",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_campaign_windows_test_update_campaign_window_rejects_end_before_start",
       "source": "auth_service_create_access_token",
       "target": "test_admin_campaign_windows_test_update_campaign_window_rejects_end_before_start"
     },
@@ -18442,8 +18442,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L143",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_test_update_campaign_window_unknown_key_404",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_campaign_windows_test_update_campaign_window_unknown_key_404",
       "source": "auth_service_create_access_token",
       "target": "test_admin_campaign_windows_test_update_campaign_window_unknown_key_404"
     },
@@ -18454,8 +18454,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_campaign_windows.py",
       "source_location": "L158",
       "weight": 1.0,
-      "_src": "test_admin_campaign_windows_test_update_campaign_window_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_campaign_windows_test_update_campaign_window_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_campaign_windows_test_update_campaign_window_forbidden_without_permission"
     },
@@ -18466,8 +18466,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L94",
       "weight": 1.0,
-      "_src": "test_admin_export_test_export_registrations_csv",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_export_test_export_registrations_csv",
       "source": "auth_service_create_access_token",
       "target": "test_admin_export_test_export_registrations_csv"
     },
@@ -18478,8 +18478,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L123",
       "weight": 1.0,
-      "_src": "test_admin_export_test_export_registrations_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_export_test_export_registrations_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_export_test_export_registrations_forbidden_without_permission"
     },
@@ -18490,8 +18490,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L137",
       "weight": 1.0,
-      "_src": "test_admin_export_test_export_payments_csv",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_export_test_export_payments_csv",
       "source": "auth_service_create_access_token",
       "target": "test_admin_export_test_export_payments_csv"
     },
@@ -18502,8 +18502,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L154",
       "weight": 1.0,
-      "_src": "test_admin_export_test_export_payments_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_export_test_export_payments_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_export_test_export_payments_forbidden_without_permission"
     },
@@ -18514,8 +18514,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_export.py",
       "source_location": "L172",
       "weight": 1.0,
-      "_src": "test_admin_export_test_export_registrations_neutralizes_csv_formula_injection",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_export_test_export_registrations_neutralizes_csv_formula_injection",
       "source": "auth_service_create_access_token",
       "target": "test_admin_export_test_export_registrations_neutralizes_csv_formula_injection"
     },
@@ -18526,8 +18526,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_contacts.py",
       "source_location": "L41",
       "weight": 1.0,
-      "_src": "test_admin_contacts_test_any_authenticated_admin_can_list_contacts",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_contacts_test_any_authenticated_admin_can_list_contacts",
       "source": "auth_service_create_access_token",
       "target": "test_admin_contacts_test_any_authenticated_admin_can_list_contacts"
     },
@@ -18538,8 +18538,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_contacts.py",
       "source_location": "L62",
       "weight": 1.0,
-      "_src": "test_admin_contacts_test_list_contacts_filters_by_is_read",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_contacts_test_list_contacts_filters_by_is_read",
       "source": "auth_service_create_access_token",
       "target": "test_admin_contacts_test_list_contacts_filters_by_is_read"
     },
@@ -18550,8 +18550,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L154",
       "weight": 1.0,
-      "_src": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications",
       "source": "auth_service_create_access_token",
       "target": "test_admin_stats_test_stats_computed_from_payments_tickets_and_applications"
     },
@@ -18562,8 +18562,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L174",
       "weight": 1.0,
-      "_src": "test_admin_stats_test_stats_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_stats_test_stats_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_stats_test_stats_forbidden_without_permission"
     },
@@ -18574,8 +18574,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_stats.py",
       "source_location": "L187",
       "weight": 1.0,
-      "_src": "test_admin_stats_test_stats_handles_no_completed_payments",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_stats_test_stats_handles_no_completed_payments",
       "source": "auth_service_create_access_token",
       "target": "test_admin_stats_test_stats_handles_no_completed_payments"
     },
@@ -18586,8 +18586,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L43",
       "weight": 1.0,
-      "_src": "test_admin_rbac_test_superadmin_can_update_role_permissions",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_rbac_test_superadmin_can_update_role_permissions",
       "source": "auth_service_create_access_token",
       "target": "test_admin_rbac_test_superadmin_can_update_role_permissions"
     },
@@ -18598,8 +18598,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L65",
       "weight": 1.0,
-      "_src": "test_admin_rbac_test_non_superadmin_forbidden",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_rbac_test_non_superadmin_forbidden",
       "source": "auth_service_create_access_token",
       "target": "test_admin_rbac_test_non_superadmin_forbidden"
     },
@@ -18610,8 +18610,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_rbac.py",
       "source_location": "L99",
       "weight": 1.0,
-      "_src": "test_admin_rbac_test_unknown_permission_code_rejected",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_rbac_test_unknown_permission_code_rejected",
       "source": "auth_service_create_access_token",
       "target": "test_admin_rbac_test_unknown_permission_code_rejected"
     },
@@ -18622,8 +18622,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L150",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_speaker_accepted_publishes_it",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_speaker_accepted_publishes_it",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_speaker_accepted_publishes_it"
     },
@@ -18634,8 +18634,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L169",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_speaker_rejected_stays_unpublished",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_speaker_rejected_stays_unpublished",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_speaker_rejected_stays_unpublished"
     },
@@ -18646,8 +18646,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L188",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_speaker_update_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_speaker_update_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_speaker_update_forbidden_without_permission"
     },
@@ -18658,8 +18658,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L203",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_speaker_update_404_for_unknown_id",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_speaker_update_404_for_unknown_id",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_speaker_update_404_for_unknown_id"
     },
@@ -18670,8 +18670,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L219",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_speaker_update_rejects_invalid_status",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_speaker_update_rejects_invalid_status",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_speaker_update_rejects_invalid_status"
     },
@@ -18682,8 +18682,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L237",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_ambassador_accepted",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_ambassador_accepted",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_ambassador_accepted"
     },
@@ -18694,8 +18694,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L263",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_ambassador_accepted_twice_does_not_regenerate_promo_code",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_ambassador_accepted_twice_does_not_regenerate_promo_code",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_ambassador_accepted_twice_does_not_regenerate_promo_code"
     },
@@ -18706,8 +18706,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L291",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_ambassador_update_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_ambassador_update_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_ambassador_update_forbidden_without_permission"
     },
@@ -18718,8 +18718,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L307",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_partner_confirmed_publishes_it",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_partner_confirmed_publishes_it",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_partner_confirmed_publishes_it"
     },
@@ -18730,8 +18730,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L326",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_partner_negotiating_stays_unpublished",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_partner_negotiating_stays_unpublished",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_partner_negotiating_stays_unpublished"
     },
@@ -18742,8 +18742,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L345",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_partner_update_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_partner_update_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_partner_update_forbidden_without_permission"
     },
@@ -18754,8 +18754,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L361",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_exhibitor_confirmed_publishes_it",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_exhibitor_confirmed_publishes_it",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_exhibitor_confirmed_publishes_it"
     },
@@ -18766,8 +18766,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_applications.py",
       "source_location": "L380",
       "weight": 1.0,
-      "_src": "test_admin_applications_test_exhibitor_update_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_applications_test_exhibitor_update_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_applications_test_exhibitor_update_forbidden_without_permission"
     },
@@ -18778,8 +18778,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "test_auth_service_test_access_token_round_trip",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_auth_service_test_access_token_round_trip",
       "source": "auth_service_create_access_token",
       "target": "test_auth_service_test_access_token_round_trip"
     },
@@ -18790,8 +18790,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L28",
       "weight": 1.0,
-      "_src": "test_auth_service_test_wrong_token_type_rejected",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_auth_service_test_wrong_token_type_rejected",
       "source": "auth_service_create_access_token",
       "target": "test_auth_service_test_wrong_token_type_rejected"
     },
@@ -18802,8 +18802,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L48",
       "weight": 1.0,
-      "_src": "test_auth_service_test_invalid_signature_rejected",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_auth_service_test_invalid_signature_rejected",
       "source": "auth_service_create_access_token",
       "target": "test_auth_service_test_invalid_signature_rejected"
     },
@@ -18814,8 +18814,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L93",
       "weight": 1.0,
-      "_src": "test_admin_registrations_test_list_registrations_returns_all_by_default",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_registrations_test_list_registrations_returns_all_by_default",
       "source": "auth_service_create_access_token",
       "target": "test_admin_registrations_test_list_registrations_returns_all_by_default"
     },
@@ -18826,8 +18826,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L109",
       "weight": 1.0,
-      "_src": "test_admin_registrations_test_list_registrations_filters_by_status",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_registrations_test_list_registrations_filters_by_status",
       "source": "auth_service_create_access_token",
       "target": "test_admin_registrations_test_list_registrations_filters_by_status"
     },
@@ -18838,8 +18838,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L128",
       "weight": 1.0,
-      "_src": "test_admin_registrations_test_list_registrations_respects_pagination_limit",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_registrations_test_list_registrations_respects_pagination_limit",
       "source": "auth_service_create_access_token",
       "target": "test_admin_registrations_test_list_registrations_respects_pagination_limit"
     },
@@ -18850,8 +18850,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_registrations.py",
       "source_location": "L142",
       "weight": 1.0,
-      "_src": "test_admin_registrations_test_list_registrations_forbidden_without_permission",
-      "_tgt": "auth_service_create_access_token",
+      "_src": "auth_service_create_access_token",
+      "_tgt": "test_admin_registrations_test_list_registrations_forbidden_without_permission",
       "source": "auth_service_create_access_token",
       "target": "test_admin_registrations_test_list_registrations_forbidden_without_permission"
     },
@@ -18862,8 +18862,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L22",
       "weight": 1.0,
-      "_src": "test_auth_service_test_refresh_token_round_trip",
-      "_tgt": "auth_service_create_refresh_token",
+      "_src": "auth_service_create_refresh_token",
+      "_tgt": "test_auth_service_test_refresh_token_round_trip",
       "source": "auth_service_create_refresh_token",
       "target": "test_auth_service_test_refresh_token_round_trip"
     },
@@ -18874,8 +18874,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L17",
       "weight": 1.0,
-      "_src": "test_auth_service_test_access_token_round_trip",
-      "_tgt": "auth_service_decode_token",
+      "_src": "auth_service_decode_token",
+      "_tgt": "test_auth_service_test_access_token_round_trip",
       "source": "auth_service_decode_token",
       "target": "test_auth_service_test_access_token_round_trip"
     },
@@ -18886,8 +18886,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L23",
       "weight": 1.0,
-      "_src": "test_auth_service_test_refresh_token_round_trip",
-      "_tgt": "auth_service_decode_token",
+      "_src": "auth_service_decode_token",
+      "_tgt": "test_auth_service_test_refresh_token_round_trip",
       "source": "auth_service_decode_token",
       "target": "test_auth_service_test_refresh_token_round_trip"
     },
@@ -18898,8 +18898,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L30",
       "weight": 1.0,
-      "_src": "test_auth_service_test_wrong_token_type_rejected",
-      "_tgt": "auth_service_decode_token",
+      "_src": "auth_service_decode_token",
+      "_tgt": "test_auth_service_test_wrong_token_type_rejected",
       "source": "auth_service_decode_token",
       "target": "test_auth_service_test_wrong_token_type_rejected"
     },
@@ -18910,8 +18910,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L44",
       "weight": 1.0,
-      "_src": "test_auth_service_test_expired_token_rejected",
-      "_tgt": "auth_service_decode_token",
+      "_src": "auth_service_decode_token",
+      "_tgt": "test_auth_service_test_expired_token_rejected",
       "source": "auth_service_decode_token",
       "target": "test_auth_service_test_expired_token_rejected"
     },
@@ -18922,8 +18922,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_auth_service.py",
       "source_location": "L60",
       "weight": 1.0,
-      "_src": "test_auth_service_test_invalid_signature_rejected",
-      "_tgt": "auth_service_decode_token",
+      "_src": "auth_service_decode_token",
+      "_tgt": "test_auth_service_test_invalid_signature_rejected",
       "source": "auth_service_decode_token",
       "target": "test_auth_service_test_invalid_signature_rejected"
     },
@@ -18982,8 +18982,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py",
       "source_location": "L82",
       "weight": 1.0,
-      "_src": "test_ticket_finalization_test_finalize_ticket_sets_pdf_url_and_sends_email",
-      "_tgt": "ticket_finalization_finalize_ticket",
+      "_src": "ticket_finalization_finalize_ticket",
+      "_tgt": "test_ticket_finalization_test_finalize_ticket_sets_pdf_url_and_sends_email",
       "source": "ticket_finalization_finalize_ticket",
       "target": "test_ticket_finalization_test_finalize_ticket_sets_pdf_url_and_sends_email"
     },
@@ -18994,8 +18994,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py",
       "source_location": "L111",
       "weight": 1.0,
-      "_src": "test_ticket_finalization_test_finalize_ticket_is_idempotent_when_already_finalized",
-      "_tgt": "ticket_finalization_finalize_ticket",
+      "_src": "ticket_finalization_finalize_ticket",
+      "_tgt": "test_ticket_finalization_test_finalize_ticket_is_idempotent_when_already_finalized",
       "source": "ticket_finalization_finalize_ticket",
       "target": "test_ticket_finalization_test_finalize_ticket_is_idempotent_when_already_finalized"
     },
@@ -19006,8 +19006,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py",
       "source_location": "L128",
       "weight": 1.0,
-      "_src": "test_ticket_finalization_test_finalize_ticket_noops_on_missing_ticket",
-      "_tgt": "ticket_finalization_finalize_ticket",
+      "_src": "ticket_finalization_finalize_ticket",
+      "_tgt": "test_ticket_finalization_test_finalize_ticket_noops_on_missing_ticket",
       "source": "ticket_finalization_finalize_ticket",
       "target": "test_ticket_finalization_test_finalize_ticket_noops_on_missing_ticket"
     },
@@ -19186,8 +19186,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L33",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_stripe_signature_accepts_valid",
-      "_tgt": "webhook_verification_verify_stripe_signature",
+      "_src": "webhook_verification_verify_stripe_signature",
+      "_tgt": "test_webhook_verification_test_verify_stripe_signature_accepts_valid",
       "source": "webhook_verification_verify_stripe_signature",
       "target": "test_webhook_verification_test_verify_stripe_signature_accepts_valid"
     },
@@ -19198,8 +19198,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L40",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_stripe_signature_rejects_bad_signature",
-      "_tgt": "webhook_verification_verify_stripe_signature",
+      "_src": "webhook_verification_verify_stripe_signature",
+      "_tgt": "test_webhook_verification_test_verify_stripe_signature_rejects_bad_signature",
       "source": "webhook_verification_verify_stripe_signature",
       "target": "test_webhook_verification_test_verify_stripe_signature_rejects_bad_signature"
     },
@@ -19210,8 +19210,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_stripe_signature_rejects_expired_timestamp",
-      "_tgt": "webhook_verification_verify_stripe_signature",
+      "_src": "webhook_verification_verify_stripe_signature",
+      "_tgt": "test_webhook_verification_test_verify_stripe_signature_rejects_expired_timestamp",
       "source": "webhook_verification_verify_stripe_signature",
       "target": "test_webhook_verification_test_verify_stripe_signature_rejects_expired_timestamp"
     },
@@ -19222,8 +19222,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L56",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_stripe_signature_rejects_malformed_header",
-      "_tgt": "webhook_verification_verify_stripe_signature",
+      "_src": "webhook_verification_verify_stripe_signature",
+      "_tgt": "test_webhook_verification_test_verify_stripe_signature_rejects_malformed_header",
       "source": "webhook_verification_verify_stripe_signature",
       "target": "test_webhook_verification_test_verify_stripe_signature_rejects_malformed_header"
     },
@@ -19234,8 +19234,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L74",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_stripe_signature_rejects_empty_secret_even_with_matching_forged_signature",
-      "_tgt": "webhook_verification_verify_stripe_signature",
+      "_src": "webhook_verification_verify_stripe_signature",
+      "_tgt": "test_webhook_verification_test_verify_stripe_signature_rejects_empty_secret_even_with_matching_forged_signature",
       "source": "webhook_verification_verify_stripe_signature",
       "target": "test_webhook_verification_test_verify_stripe_signature_rejects_empty_secret_even_with_matching_forged_signature"
     },
@@ -19258,8 +19258,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_hmac_signature_accepts_valid",
-      "_tgt": "webhook_verification_verify_hmac_signature",
+      "_src": "webhook_verification_verify_hmac_signature",
+      "_tgt": "test_webhook_verification_test_verify_hmac_signature_accepts_valid",
       "source": "webhook_verification_verify_hmac_signature",
       "target": "test_webhook_verification_test_verify_hmac_signature_accepts_valid"
     },
@@ -19270,8 +19270,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L23",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_hmac_signature_rejects_invalid",
-      "_tgt": "webhook_verification_verify_hmac_signature",
+      "_src": "webhook_verification_verify_hmac_signature",
+      "_tgt": "test_webhook_verification_test_verify_hmac_signature_rejects_invalid",
       "source": "webhook_verification_verify_hmac_signature",
       "target": "test_webhook_verification_test_verify_hmac_signature_rejects_invalid"
     },
@@ -19282,8 +19282,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_webhook_verification.py",
       "source_location": "L65",
       "weight": 1.0,
-      "_src": "test_webhook_verification_test_verify_hmac_signature_rejects_empty_secret_even_with_matching_forged_signature",
-      "_tgt": "webhook_verification_verify_hmac_signature",
+      "_src": "webhook_verification_verify_hmac_signature",
+      "_tgt": "test_webhook_verification_test_verify_hmac_signature_rejects_empty_secret_even_with_matching_forged_signature",
       "source": "webhook_verification_verify_hmac_signature",
       "target": "test_webhook_verification_test_verify_hmac_signature_rejects_empty_secret_even_with_matching_forged_signature"
     },
@@ -19318,8 +19318,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_email_service.py",
       "source_location": "L12",
       "weight": 1.0,
-      "_src": "test_email_service_test_send_email_logs_in_dev_without_key",
-      "_tgt": "email_service_send_email",
+      "_src": "email_service_send_email",
+      "_tgt": "test_email_service_test_send_email_logs_in_dev_without_key",
       "source": "email_service_send_email",
       "target": "test_email_service_test_send_email_logs_in_dev_without_key"
     },
@@ -19330,8 +19330,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_email_service.py",
       "source_location": "L30",
       "weight": 1.0,
-      "_src": "test_email_service_test_send_email_calls_resend_when_key_configured",
-      "_tgt": "email_service_send_email",
+      "_src": "email_service_send_email",
+      "_tgt": "test_email_service_test_send_email_calls_resend_when_key_configured",
       "source": "email_service_send_email",
       "target": "test_email_service_test_send_email_calls_resend_when_key_configured"
     },
@@ -19342,8 +19342,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_email_service.py",
       "source_location": "L50",
       "weight": 1.0,
-      "_src": "test_email_service_test_send_email_raises_on_resend_error",
-      "_tgt": "email_service_send_email",
+      "_src": "email_service_send_email",
+      "_tgt": "test_email_service_test_send_email_raises_on_resend_error",
       "source": "email_service_send_email",
       "target": "test_email_service_test_send_email_raises_on_resend_error"
     },
@@ -19378,8 +19378,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py",
       "source_location": "L14",
       "weight": 1.0,
-      "_src": "test_recaptcha_test_verify_recaptcha_skips_when_no_secret_configured",
-      "_tgt": "recaptcha_verify_recaptcha",
+      "_src": "recaptcha_verify_recaptcha",
+      "_tgt": "test_recaptcha_test_verify_recaptcha_skips_when_no_secret_configured",
       "source": "recaptcha_verify_recaptcha",
       "target": "test_recaptcha_test_verify_recaptcha_skips_when_no_secret_configured"
     },
@@ -19390,8 +19390,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py",
       "source_location": "L34",
       "weight": 1.0,
-      "_src": "test_recaptcha_test_verify_recaptcha_accepts_good_score",
-      "_tgt": "recaptcha_verify_recaptcha",
+      "_src": "recaptcha_verify_recaptcha",
+      "_tgt": "test_recaptcha_test_verify_recaptcha_accepts_good_score",
       "source": "recaptcha_verify_recaptcha",
       "target": "test_recaptcha_test_verify_recaptcha_accepts_good_score"
     },
@@ -19402,8 +19402,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py",
       "source_location": "L50",
       "weight": 1.0,
-      "_src": "test_recaptcha_test_verify_recaptcha_rejects_low_score",
-      "_tgt": "recaptcha_verify_recaptcha",
+      "_src": "recaptcha_verify_recaptcha",
+      "_tgt": "test_recaptcha_test_verify_recaptcha_rejects_low_score",
       "source": "recaptcha_verify_recaptcha",
       "target": "test_recaptcha_test_verify_recaptcha_rejects_low_score"
     },
@@ -19414,8 +19414,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py",
       "source_location": "L67",
       "weight": 1.0,
-      "_src": "test_recaptcha_test_verify_recaptcha_rejects_unsuccessful_response",
-      "_tgt": "recaptcha_verify_recaptcha",
+      "_src": "recaptcha_verify_recaptcha",
+      "_tgt": "test_recaptcha_test_verify_recaptcha_rejects_unsuccessful_response",
       "source": "recaptcha_verify_recaptcha",
       "target": "test_recaptcha_test_verify_recaptcha_rejects_unsuccessful_response"
     },
@@ -19534,8 +19534,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L23",
       "weight": 1.0,
-      "_src": "test_storage_test_validate_is_real_image_accepts_real_image",
-      "_tgt": "storage_validate_is_real_image",
+      "_src": "storage_validate_is_real_image",
+      "_tgt": "test_storage_test_validate_is_real_image_accepts_real_image",
       "source": "storage_validate_is_real_image",
       "target": "test_storage_test_validate_is_real_image_accepts_real_image"
     },
@@ -19546,8 +19546,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L28",
       "weight": 1.0,
-      "_src": "test_storage_test_validate_is_real_image_rejects_fake_image",
-      "_tgt": "storage_validate_is_real_image",
+      "_src": "storage_validate_is_real_image",
+      "_tgt": "test_storage_test_validate_is_real_image_rejects_fake_image",
       "source": "storage_validate_is_real_image",
       "target": "test_storage_test_validate_is_real_image_rejects_fake_image"
     },
@@ -19582,8 +19582,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L37",
       "weight": 1.0,
-      "_src": "test_storage_test_upload_file_rejects_disallowed_content_type",
-      "_tgt": "storage_upload_file",
+      "_src": "storage_upload_file",
+      "_tgt": "test_storage_test_upload_file_rejects_disallowed_content_type",
       "source": "storage_upload_file",
       "target": "test_storage_test_upload_file_rejects_disallowed_content_type"
     },
@@ -19594,8 +19594,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L44",
       "weight": 1.0,
-      "_src": "test_storage_test_upload_file_rejects_oversized_file",
-      "_tgt": "storage_upload_file",
+      "_src": "storage_upload_file",
+      "_tgt": "test_storage_test_upload_file_rejects_oversized_file",
       "source": "storage_upload_file",
       "target": "test_storage_test_upload_file_rejects_oversized_file"
     },
@@ -19606,8 +19606,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L50",
       "weight": 1.0,
-      "_src": "test_storage_test_upload_file_rejects_fake_image_bytes",
-      "_tgt": "storage_upload_file",
+      "_src": "storage_upload_file",
+      "_tgt": "test_storage_test_upload_file_rejects_fake_image_bytes",
       "source": "storage_upload_file",
       "target": "test_storage_test_upload_file_rejects_fake_image_bytes"
     },
@@ -19618,8 +19618,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L64",
       "weight": 1.0,
-      "_src": "test_storage_test_upload_file_success_never_uses_original_filename",
-      "_tgt": "storage_upload_file",
+      "_src": "storage_upload_file",
+      "_tgt": "test_storage_test_upload_file_success_never_uses_original_filename",
       "source": "storage_upload_file",
       "target": "test_storage_test_upload_file_success_never_uses_original_filename"
     },
@@ -19630,8 +19630,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L89",
       "weight": 1.0,
-      "_src": "test_storage_test_upload_file_pdf_skips_image_validation",
-      "_tgt": "storage_upload_file",
+      "_src": "storage_upload_file",
+      "_tgt": "test_storage_test_upload_file_pdf_skips_image_validation",
       "source": "storage_upload_file",
       "target": "test_storage_test_upload_file_pdf_skips_image_validation"
     },
@@ -19642,8 +19642,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py",
       "source_location": "L100",
       "weight": 1.0,
-      "_src": "test_storage_test_upload_file_respects_custom_max_bytes",
-      "_tgt": "storage_upload_file",
+      "_src": "storage_upload_file",
+      "_tgt": "test_storage_test_upload_file_respects_custom_max_bytes",
       "source": "storage_upload_file",
       "target": "test_storage_test_upload_file_respects_custom_max_bytes"
     },

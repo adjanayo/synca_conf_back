@@ -1,7 +1,7 @@
 # Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-08-26)
 
 ## Corpus Check
-- 147 files · ~47,891 words
+- 147 files · ~135,231 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -82,16 +82,16 @@
 10. `Payment` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Run migrations in 'offline' mode.      This configures the context with just a U` --uses--> `Base`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py
-- `In this scenario we need to create an Engine     and associate a connection with` --uses--> `Base`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py
-- `Run migrations in 'online' mode.` --uses--> `Base`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py
-- `join_waitlist()` --calls--> `Waitlist`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py
-- `test_pass_type_defaults()` --calls--> `PassType`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py
+- `Base` --uses--> `Run migrations in 'offline' mode.      This configures the context with just a U`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py
+- `Base` --uses--> `In this scenario we need to create an Engine     and associate a connection with`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py
+- `Base` --uses--> `Run migrations in 'online' mode.`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py
+- `Waitlist` --calls--> `join_waitlist()`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py
+- `PassType` --calls--> `test_pass_type_defaults()`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py
 
 ## Communities
 
