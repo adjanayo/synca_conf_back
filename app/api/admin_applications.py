@@ -16,6 +16,7 @@ from app.schemas.applications import (
     PartnerRead,
     SpeakerRead,
 )
+from app.services.promo_service import generate_ambassador_promo_code
 
 router = APIRouter(prefix="/api/admin", tags=["admin-applications"])
 
@@ -54,7 +55,8 @@ async def update_ambassador_status(
         )
 
     ambassador.status = body.status
-    # Promo code generation on acceptance is 6.3's job, not this endpoint's.
+    if body.status == "accepted" and ambassador.promo_code_id is None:
+        await generate_ambassador_promo_code(db, ambassador)
     await db.commit()
     await db.refresh(ambassador)
     return AmbassadorRead.model_validate(ambassador)

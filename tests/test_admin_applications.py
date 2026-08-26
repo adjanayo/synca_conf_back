@@ -11,6 +11,7 @@ from app.models import (
     Partner,
     PartnerLevel,
     Permission,
+    PromoCode,
     Role,
     RolePermission,
     Speaker,
@@ -243,7 +244,44 @@ async def test_ambassador_accepted(db_session, client):
         )
 
     assert response.status_code == 200
-    assert response.json()["status"] == "accepted"
+    body = response.json()
+    assert body["status"] == "accepted"
+    assert body["promo_code_id"] is not None
+
+    promo = await db_session.get(PromoCode, body["promo_code_id"])
+    assert promo.discount_pct == 10
+    assert promo.is_active is True
+    assert promo.code.startswith("AMB-")
+
+
+@pytest.mark.asyncio
+async def test_ambassador_accepted_twice_does_not_regenerate_promo_code(db_session, client):
+    admin = await make_admin_with_permission(
+        db_session, "ambassador-approver2", "ambassadors.approve"
+    )
+    ambassador = await make_ambassador(db_session)
+    token = create_access_token(subject=str(admin.id))
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        first = await http.patch(
+            f"/api/admin/ambassadors/{ambassador.id}",
+            json={"status": "accepted"},
+            headers={"Authorization": f"Bearer {token}"},
+        )
+        second = await http.patch(
+            f"/api/admin/ambassadors/{ambassador.id}",
+            json={"status": "accepted"},
+            headers={"Authorization": f"Bearer {token}"},
+        )
+
+    assert first.json()["promo_code_id"] == second.json()["promo_code_id"]
+
+    promo_count = (
+        await db_session.execute(
+            select(PromoCode).where(PromoCode.id == first.json()["promo_code_id"])
+        )
+    ).scalars().all()
+    assert len(promo_count) == 1
 
 
 @pytest.mark.asyncio

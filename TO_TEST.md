@@ -1074,4 +1074,23 @@ pytest tests/test_admin_applications.py -v
 
 ---
 
+### 6.3 — Génération auto du promo_code à l'acceptation d'un ambassadeur
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_applications.py -v
+```
+→ attendu : `13 passed` (2 nouveaux : génération + idempotence).
+
+- `generate_ambassador_promo_code()` (`app/services/promo_service.py`) tourne dans le PATCH 6.2 quand `status` passe à `"accepted"` **et** que `ambassador.promo_code_id` est encore `None` — la même requête `db.commit()` couvre le statut et le nouveau `PromoCode`, pas de transaction séparée.
+- Code au format `AMB-<NOM-DE-FAMILLE>-<4 hex>` (unique, retry jusqu'à 5 fois en cas de collision), **10% de remise**, `is_active=true`, **pas de `usage_limit`** — un code d'ambassadeur est fait pour être partagé largement, pas plafonné comme une remise ponctuelle (`schema.md` §"un code promo peut être créé ... ou généré automatiquement pour un ambassadeur accepté").
+- **Idempotence** : ré-accepter un ambassadeur déjà accepté ne régénère pas un second code (`ambassador.promo_code_id is None` gate) — testé en PATCHant deux fois de suite et en vérifiant qu'un seul `PromoCode` existe.
+
+- [x] 6.3 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
