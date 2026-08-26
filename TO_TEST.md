@@ -671,4 +671,21 @@ curl -X OPTIONS http://127.0.0.1:8010/api/days \
 
 ---
 
+## Phase 4 — Formulaires publics (écriture)
+
+### 4.1 — Waitlist (`POST /api/waitlist`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_waitlist.py -v
+```
+→ attendu : `3 passed` — inscription réussie (`201`), email en double rejeté (`409`), email invalide rejeté (`422`).
+
+- [x] 4.1 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

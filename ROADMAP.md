@@ -80,20 +80,20 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 
 ## Phase 4 — Formulaires publics (écriture)
 
-| # | Étape | Endpoint | Points d'attention |
-|---|---|---|---|
-| 4.1 | Waitlist | `POST /api/waitlist` | email unique, toujours ouvert (pas de fenêtre de campagne) |
-| 4.2 | Inscription participant | `POST /api/register` | gardé par fenêtre `ticketing` (4.11), valide `pass_type_id` actif, `promo_code` si fourni, `gdpr_consent=true` obligatoire |
-| 4.3 | Candidature speaker | `POST /api/speakers/apply` | gardé par fenêtre `call_for_speaker` (4.11), upload photo (MIME réel + `Pillow` pour vérifier que c'est une vraie image), `status=pending` |
-| 4.4 | Candidature ambassadeur | `POST /api/ambassadors/apply` | gardé par fenêtre `call_for_ambassador` (4.11), si accepté plus tard → génération `promo_code` unique (Phase 6) |
-| 4.5 | Candidature partenaire | `POST /api/partners/apply` | gardé par fenêtre `call_for_partner` (4.11), upload logo, workflow `pending→contacted→negotiating→confirmed|rejected` |
-| 4.6 | Candidature exposant | `POST /api/exhibitors/apply` | gardé par fenêtre `call_for_exhibitor` (4.11), upload visuels, mêmes workflow/statuts que partenaires |
-| 4.7 | Contact | `POST /api/contact` | reCAPTCHA v3 obligatoire |
-| 4.8 | Newsletter | `POST /api/newsletter` | opt-in séparé, pas de doublon |
-| 4.9 | reCAPTCHA v3 partagé | `app/services/recaptcha.py` | seuil score configurable (0.5 par défaut) |
-| 4.10 | Upload fichiers → Backblaze B2 | `app/services/storage.py` | renommage UUID+timestamp, jamais le nom original |
-| 4.11 | Dependency `require_open_campaign(key)` | `app/deps/campaign_windows.py` — vérifie `NOW() BETWEEN start_at AND end_at AND is_active=true` | 403 explicite hors fenêtre, testé fenêtre ouverte/fermée/désactivée |
-| 4.12 | Emails transactionnels (Resend) | accusé réception, confirmation inscription | prod : envoi réel Resend ; dev : backend console `loguru` (email loggé, pas envoyé) — pas de conteneur SMTP de test |
+| # | Étape | Endpoint | Points d'attention | Statut |
+|---|---|---|---|---|
+| 4.1 | Waitlist | `POST /api/waitlist` | email unique, toujours ouvert (pas de fenêtre de campagne) | ✅ Test Done |
+| 4.2 | Inscription participant | `POST /api/register` | gardé par fenêtre `ticketing` (4.11), valide `pass_type_id` actif, `promo_code` si fourni, `gdpr_consent=true` obligatoire | ⬜ Not Started |
+| 4.3 | Candidature speaker | `POST /api/speakers/apply` | gardé par fenêtre `call_for_speaker` (4.11), upload photo (MIME réel + `Pillow` pour vérifier que c'est une vraie image), `status=pending` | ⬜ Not Started |
+| 4.4 | Candidature ambassadeur | `POST /api/ambassadors/apply` | gardé par fenêtre `call_for_ambassador` (4.11), si accepté plus tard → génération `promo_code` unique (Phase 6) | ⬜ Not Started |
+| 4.5 | Candidature partenaire | `POST /api/partners/apply` | gardé par fenêtre `call_for_partner` (4.11), upload logo, workflow `pending→contacted→negotiating→confirmed|rejected` | ⬜ Not Started |
+| 4.6 | Candidature exposant | `POST /api/exhibitors/apply` | gardé par fenêtre `call_for_exhibitor` (4.11), upload visuels, mêmes workflow/statuts que partenaires | ⬜ Not Started |
+| 4.7 | Contact | `POST /api/contact` | reCAPTCHA v3 obligatoire | ⬜ Not Started |
+| 4.8 | Newsletter | `POST /api/newsletter` | opt-in séparé, pas de doublon | ⬜ Not Started |
+| 4.9 | reCAPTCHA v3 partagé | `app/services/recaptcha.py` | seuil score configurable (0.5 par défaut) | ⬜ Not Started |
+| 4.10 | Upload fichiers → Backblaze B2 | `app/services/storage.py` | renommage UUID+timestamp, jamais le nom original | ⬜ Not Started |
+| 4.11 | Dependency `require_open_campaign(key)` | `app/deps/campaign_windows.py` — vérifie `NOW() BETWEEN start_at AND end_at AND is_active=true` | 403 explicite hors fenêtre, testé fenêtre ouverte/fermée/désactivée | ⬜ Not Started |
+| 4.12 | Emails transactionnels (Resend) | accusé réception, confirmation inscription | prod : envoi réel Resend ; dev : backend console `loguru` (email loggé, pas envoyé) — pas de conteneur SMTP de test | ⬜ Not Started |
 
 ---
 
