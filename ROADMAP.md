@@ -83,7 +83,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | # | Étape | Endpoint | Points d'attention | Statut |
 |---|---|---|---|---|
 | 4.1 | Waitlist | `POST /api/waitlist` | email unique, toujours ouvert (pas de fenêtre de campagne) | ✅ Test Done |
-| 4.2 | Inscription participant | `POST /api/register` | gardé par fenêtre `ticketing` (4.11), valide `pass_type_id` actif, `promo_code` si fourni, `gdpr_consent=true` obligatoire | ⬜ Not Started |
+| 4.2 | Inscription participant | `POST /api/register` | gardé par fenêtre `ticketing` (4.11), valide `pass_type_id` actif, `promo_code` si fourni, `gdpr_consent=true` obligatoire | ✅ Test Done |
 | 4.3 | Candidature speaker | `POST /api/speakers/apply` | gardé par fenêtre `call_for_speaker` (4.11), upload photo (MIME réel + `Pillow` pour vérifier que c'est une vraie image), `status=pending` | ⬜ Not Started |
 | 4.4 | Candidature ambassadeur | `POST /api/ambassadors/apply` | gardé par fenêtre `call_for_ambassador` (4.11), si accepté plus tard → génération `promo_code` unique (Phase 6) | ⬜ Not Started |
 | 4.5 | Candidature partenaire | `POST /api/partners/apply` | gardé par fenêtre `call_for_partner` (4.11), upload logo, workflow `pending→contacted→negotiating→confirmed|rejected` | ⬜ Not Started |
