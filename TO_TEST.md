@@ -1130,4 +1130,22 @@ pytest tests/test_admin_stats.py -v
 
 ---
 
+### 6.6 — `GET /api/admin/registrations`, `/contacts`
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_registrations.py tests/test_admin_contacts.py -v
+```
+→ attendu : `7 passed`.
+
+- **`/registrations`** : jointure `Payment` + `User` + `PassType` + `Ticket` (outer join — un paiement `pending` n'a pas encore de ticket), filtre optionnel `?payment_status=`, pagination partagée (3.8). Gardé par `require_permission("payments.view")`.
+- **`/contacts`** : filtre optionnel `?is_read=`, pagination partagée. Ouvert à tout admin authentifié (`get_current_admin` seul, pas de `require_permission`) — même politique que `contact_messages` dans SQLAdmin (6.1), faute de code RBAC dédié pour ce qui reste informationnel.
+
+- [x] 6.6 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

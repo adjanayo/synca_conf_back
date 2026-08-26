@@ -123,7 +123,7 @@ Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne
 | 6.3 | Génération auto `promo_code` à l'acceptation d'un ambassadeur | déclenché depuis l'action d'acceptation | ✅ Test Done — code `AMB-<NOM>-<hex4>` unique, 10% de remise, pas de `usage_limit` (partagé largement), idempotent (ré-accepter ne régénère pas un second code) |
 | 6.4 | Gestion des fenêtres de campagne | `GET /api/admin/campaign-windows`, `PATCH /api/admin/campaign-windows/:key` — modifier dates + `is_active`, réservé `superadmin`/`admin` | ✅ Test Done — gardé par `require_permission("campaign_windows.manage")`, de facto superadmin-only tant qu'aucun autre rôle n'a ce code (seed 1.7) ; `end_at > start_at` validé en 400 avant d'atteindre la contrainte CHECK MySQL |
 | 6.5 | `GET /api/admin/stats` | dashboard : inscriptions, revenus, taux conversion promo, candidatures par statut | ✅ Test Done — gardé par `require_permission("payments.view")` (chiffre le plus sensible du dashboard, pas de code dédié dans le seed 1.7) |
-| 6.6 | `GET /api/admin/registrations`, `/contacts` | listing filtrable/paginé | ⬜ Not Started |
+| 6.6 | `GET /api/admin/registrations`, `/contacts` | listing filtrable/paginé | ✅ Test Done — `registrations` gardé par `payments.view` (filtre `payment_status`), `contacts` ouvert à tout admin authentifié (même politique que `contact_messages` en 6.1) ; pagination partagée (3.8) sur les deux |
 | 6.7 | Export CSV (inscriptions, paiements) | réservé `superadmin` via `require_permission("export.data")` | ⬜ Not Started |
 | 6.8 | Droit d'accès RGPD | `GET /api/user/me`, `DELETE /api/user/me` (anonymisation, pas suppression physique — conserve les tickets pour audit) | ⬜ Not Started |
 
