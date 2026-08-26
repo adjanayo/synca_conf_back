@@ -31,6 +31,15 @@ class Settings(BaseSettings):
     recaptcha_secret_key: str = ""
     recaptcha_min_score: float = 0.5
 
+    # Backblaze B2 (S3-compatible) -- see app/services/storage.py. Empty
+    # defaults are fine for local dev/CI, which never call upload_file for
+    # real; production must set all three.
+    b2_endpoint_url: str = ""
+    b2_key_id: str = ""
+    b2_application_key: str = ""
+    b2_bucket_name: str = ""
+    b2_public_url: str = ""
+
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common

@@ -801,4 +801,22 @@ pytest tests/test_forms_newsletter.py -v
 
 ---
 
+### 4.10 — Upload fichiers → Backblaze B2 (`app/services/storage.py`)
+
+> Construit avant 4.3/4.5/4.6 qui en dépendent.
+
+```bash
+source .venv/bin/activate
+pytest tests/test_storage.py -v
+```
+→ attendu : `6 passed` — vraie image acceptée par `validate_is_real_image` (Pillow), faux fichier (texte brut) rejeté ; `upload_file` rejette un type MIME non autorisé, un fichier > 10 Mo, et des octets qui ne sont pas une vraie image (même avec un `Content-Type: image/png` mentí) ; upload réussi (client B2 mocké) confirme que la clé générée **ne contient jamais** le nom de fichier original (UUID + timestamp uniquement).
+
+⚠️ Le vrai appel à Backblaze B2 n'est testable qu'avec de vraies clés B2 en production — non disponible ici, même traitement que 0.8 (cert HTTPS)/0.9 (déploiement VPS).
+
+**Impact taille d'image** : `boto3`+`Pillow` ajoutent du poids réel (`botocore` embarque par défaut les specs de *tous* les services AWS, ~18 Mo, dont on n'utilise que S3 ~280 Ko) — le `Dockerfile` (stage `runtime`) supprime maintenant tous les répertoires `botocore/data/*` sauf `s3` après l'installation. Mesure locale arm64 : 308 Mo (indicatif, historiquement peu représentatif — voir 0.3/0.7). **La mesure bloquante reste la CI amd64** (job `image-scan`).
+
+- [x] 4.10 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

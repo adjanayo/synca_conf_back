@@ -25,7 +25,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --no-index --find-links=/wheels -r requirements.txt \
     && rm -rf /wheels requirements.txt \
     && find /usr/local/lib/python3.12 -type d -name "__pycache__" -prune -exec rm -rf {} \; \
-    && python -m pip uninstall -y pip setuptools
+    && python -m pip uninstall -y pip setuptools \
+    && BOTOCORE_DATA=$(python -c "import botocore, os; print(os.path.join(botocore.__path__[0], 'data'))") \
+    && find "$BOTOCORE_DATA" -mindepth 1 -maxdepth 1 -type d ! -name s3 -exec rm -rf {} +
 
 COPY app/ app/
 
