@@ -1,6 +1,15 @@
 import datetime
 
-from fastapi import APIRouter, Depends, File, HTTPException, Request, UploadFile, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    File,
+    HTTPException,
+    Request,
+    UploadFile,
+    status,
+)
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -34,6 +43,7 @@ from app.schemas.register import RegisterCreate
 from app.schemas.speaker_apply import SpeakerApplyCreate
 from app.schemas.users import UserRead
 from app.schemas.waitlist import WaitlistCreate
+from app.services.email_service import send_email
 from app.services.recaptcha import verify_recaptcha
 from app.services.storage import UploadRejectedError, upload_file
 
@@ -85,7 +95,9 @@ async def join_waitlist(
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(require_open_campaign("ticketing"))],
 )
-async def register(body: RegisterCreate, db: AsyncSession = Depends(get_db)) -> UserRead:
+async def register(
+    body: RegisterCreate, background_tasks: BackgroundTasks, db: AsyncSession = Depends(get_db)
+) -> UserRead:
     pass_type = await db.get(PassType, body.pass_type_id)
     if pass_type is None or not pass_type.is_active:
         raise HTTPException(
@@ -128,6 +140,12 @@ async def register(body: RegisterCreate, db: AsyncSession = Depends(get_db)) -> 
     await db.commit()
     await db.refresh(user)
 
+    background_tasks.add_task(
+        send_email,
+        to=user.email,
+        subject="Confirmation d'inscription — SYNCA CONF 2027",
+        body=f"Bonjour {user.first_name}, votre inscription à SYNCA CONF 2027 est confirmée.",
+    )
     return UserRead.model_validate(user)
 
 
@@ -176,6 +194,7 @@ async def subscribe_newsletter(
 )
 async def apply_as_speaker(
     request: Request,
+    background_tasks: BackgroundTasks,
     photo: UploadFile = File(...),
     db: AsyncSession = Depends(get_db),
 ) -> SpeakerRead:
@@ -216,6 +235,12 @@ async def apply_as_speaker(
     await db.commit()
     await db.refresh(speaker)
 
+    background_tasks.add_task(
+        send_email,
+        to=speaker.email,
+        subject="Candidature speaker reçue — SYNCA CONF 2027",
+        body=f"Bonjour {speaker.first_name}, nous avons bien reçu votre candidature.",
+    )
     return SpeakerRead.model_validate(speaker)
 
 
@@ -226,7 +251,9 @@ async def apply_as_speaker(
     dependencies=[Depends(require_open_campaign("call_for_ambassador"))],
 )
 async def apply_as_ambassador(
-    body: AmbassadorApplyCreate, db: AsyncSession = Depends(get_db)
+    body: AmbassadorApplyCreate,
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_db),
 ) -> AmbassadorRead:
     ambassador = Ambassador(
         first_name=body.first_name,
@@ -253,6 +280,12 @@ async def apply_as_ambassador(
     await db.commit()
     await db.refresh(ambassador)
 
+    background_tasks.add_task(
+        send_email,
+        to=ambassador.email,
+        subject="Candidature ambassadeur reçue — SYNCA CONF 2027",
+        body=f"Bonjour {ambassador.first_name}, nous avons bien reçu votre candidature.",
+    )
     return AmbassadorRead.model_validate(ambassador)
 
 
@@ -264,6 +297,7 @@ async def apply_as_ambassador(
 )
 async def apply_as_partner(
     request: Request,
+    background_tasks: BackgroundTasks,
     logo: UploadFile | None = File(default=None),
     db: AsyncSession = Depends(get_db),
 ) -> PartnerRead:
@@ -307,6 +341,12 @@ async def apply_as_partner(
     await db.commit()
     await db.refresh(partner)
 
+    background_tasks.add_task(
+        send_email,
+        to=partner.contact_email,
+        subject="Candidature partenaire reçue — SYNCA CONF 2027",
+        body=f"Bonjour {partner.contact_name}, nous avons bien reçu votre candidature.",
+    )
     return PartnerRead.model_validate(partner)
 
 
@@ -317,7 +357,9 @@ async def apply_as_partner(
     dependencies=[Depends(require_open_campaign("call_for_exhibitor"))],
 )
 async def apply_as_exhibitor(
-    body: ExhibitorApplyCreate, db: AsyncSession = Depends(get_db)
+    body: ExhibitorApplyCreate,
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_db),
 ) -> ExhibitorRead:
     exhibitor = Exhibitor(
         organization_name=body.organization_name,
@@ -344,4 +386,10 @@ async def apply_as_exhibitor(
     await db.commit()
     await db.refresh(exhibitor)
 
+    background_tasks.add_task(
+        send_email,
+        to=exhibitor.contact_email,
+        subject="Candidature exposant reçue — SYNCA CONF 2027",
+        body=f"Bonjour {exhibitor.contact_name}, nous avons bien reçu votre candidature.",
+    )
     return ExhibitorRead.model_validate(exhibitor)

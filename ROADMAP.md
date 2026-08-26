@@ -93,7 +93,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | 4.9 | reCAPTCHA v3 partagé | `app/services/recaptcha.py` | seuil score configurable (0.5 par défaut) | ✅ Test Done — bypass en dev/CI sans clé configurée (documenté) |
 | 4.10 | Upload fichiers → Backblaze B2 | `app/services/storage.py` | renommage UUID+timestamp, jamais le nom original | ✅ Test Done — image 197 Mo en CI amd64 (⚠️ marge restante ~3 Mo avant la limite 200 Mo, à surveiller sur les prochains ajouts de dépendances) |
 | 4.11 | Dependency `require_open_campaign(key)` | `app/deps/campaign_windows.py` — vérifie `NOW() BETWEEN start_at AND end_at AND is_active=true` | 403 explicite hors fenêtre, testé fenêtre ouverte/fermée/désactivée | ✅ Test Done |
-| 4.12 | Emails transactionnels (Resend) | accusé réception, confirmation inscription | prod : envoi réel Resend ; dev : backend console `loguru` (email loggé, pas envoyé) — pas de conteneur SMTP de test | ⬜ Not Started |
+| 4.12 | Emails transactionnels (Resend) | accusé réception, confirmation inscription | prod : envoi réel Resend ; dev : backend console `loguru` (email loggé, pas envoyé) — pas de conteneur SMTP de test | ✅ Test Done |
 
 ---
 

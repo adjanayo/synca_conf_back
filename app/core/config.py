@@ -40,6 +40,12 @@ class Settings(BaseSettings):
     b2_bucket_name: str = ""
     b2_public_url: str = ""
 
+    # Resend (app/services/email_service.py) -- empty key means dev mode:
+    # emails are logged via loguru, never actually sent (planning_fastapi.md
+    # §1: no SMTP test container).
+    resend_api_key: str = ""
+    resend_from_email: str = "no-reply@synca.conf"
+
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common

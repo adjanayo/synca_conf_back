@@ -915,4 +915,20 @@ pytest tests/test_forms_exhibitor_apply.py -v
 
 ---
 
+### 4.12 — Emails transactionnels (`app/services/email_service.py`)
+
+```bash
+source .venv/bin/activate
+pytest tests/test_email_service.py tests/test_forms_register.py::test_register_sends_confirmation_email -v
+```
+→ attendu : `4 passed` — sans `RESEND_API_KEY` (dev/CI), l'email est **loggé** via `loguru`, jamais envoyé ; avec une clé configurée (mockée), l'appel à l'API Resend a le bon `to`/`subject`, une réponse HTTP non-2xx lève ; `POST /api/register` déclenche bien l'email de confirmation via `BackgroundTasks` (vérifié avec `ASGITransport` — les tâches de fond s'exécutent avant que la réponse ne soit retournée au client de test, donc l'assertion est fiable sans sleep/polling).
+
+Accusé de réception câblé sur `register`, `speakers/apply`, `ambassadors/apply`, `partners/apply`, `exhibitors/apply` — chacun avec un sujet/contenu dédié.
+
+⚠️ Le vrai envoi via Resend n'est testable qu'avec une vraie clé API en production — non disponible ici, même traitement que 4.9 (reCAPTCHA)/4.10 (B2).
+
+- [x] 4.12 validé — **Phase 4 (formulaires publics écriture) complète.**
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

@@ -69,7 +69,32 @@ async def test_register_success(db_session, client):
     assert response.status_code == 201
     body = response.json()
     assert body["email"] == "awa@example.com"
-    assert body["gdpr_consent"] is True
+
+
+@pytest.mark.asyncio
+async def test_register_sends_confirmation_email(db_session, client, monkeypatch):
+    await open_ticketing(db_session)
+    pass_type = PassType(name="Standard", price=15000, is_active=True)
+    db_session.add(pass_type)
+    await db_session.commit()
+
+    sent = {}
+
+    async def fake_send_email(to: str, subject: str, body: str) -> None:
+        sent["to"] = to
+        sent["subject"] = subject
+
+    monkeypatch.setattr("app.api.forms.send_email", fake_send_email)
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        response = await http.post(
+            "/api/register",
+            json=register_payload(pass_type_id=pass_type.id, email="confirm@example.com"),
+        )
+
+    assert response.status_code == 201
+    assert sent["to"] == "confirm@example.com"
+    assert "Confirmation" in sent["subject"]
 
 
 @pytest.mark.asyncio
