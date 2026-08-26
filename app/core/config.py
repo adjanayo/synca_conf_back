@@ -20,6 +20,16 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 7
 
+    # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
+    # Wildcard-free by design (see security-hardening: CORS restricted to the
+    # real frontend domain, not "*") -- dev defaults cover the two most common
+    # local dev-server ports.
+    cors_origins: str = "http://localhost:3000,http://localhost:5173"
+
+    @property
+    def cors_origin_list(self) -> list[str]:
+        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+
     @property
     def database_url(self) -> str:
         return (

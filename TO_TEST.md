@@ -411,7 +411,7 @@ pytest tests/ -v
 
 ## Phase 2 — Auth & RBAC
 
-### 2.1 — Hash mots de passe (Argon2id via `argon2-cffi`)
+### 2.1 — Hash mots de passe + politique de complexité (Argon2id via `argon2-cffi`)
 
 ```bash
 source .venv/bin/activate
@@ -419,7 +419,18 @@ pip install -r requirements-dev.txt
 pytest tests/test_security.py -v
 docker compose build app
 ```
-→ attendu : `2 passed` (hash différent du mot de passe en clair, vérification correcte accepte/rejette), build Docker toujours vert avec `argon2-cffi` (extension C compilée dans le stage `builder` alpine).
+→ attendu : `8 passed` :
+- hash différent du mot de passe en clair, vérification correcte accepte/rejette ;
+- `validate_password_strength()` rejette : trop court (< 12), sans majuscule, sans minuscule, sans chiffre, sans symbole ;
+- accepte un mot de passe conforme (ex. `Correct-Horse-Battery-9`).
+
+Build Docker toujours vert avec `argon2-cffi` (extension C compilée dans le stage `builder` alpine).
+
+**Politique complète (admin_users)** — voir aussi la note en tête de Phase 2 dans `ROADMAP.md` :
+1. Hash Argon2id (jamais bcrypt, jamais un hash brut).
+2. Complexité min. 12 caractères + majuscule + minuscule + chiffre + symbole, appliquée à la création/réinitialisation (Phase 6 — pas encore d'endpoint qui l'appelle, la fonction est prête).
+3. Pas de rotation forcée périodique (recommandation NIST — pousse vers des mots de passe faibles).
+4. **Verrouillage de compte : 5 échecs consécutifs → 15 min ; chaque échec supplémentaire double la durée (30 min, 60, 120, 240...) jusqu'à un plafond de 4h** — déjà implémenté et testé en 2.3 (`tests/test_admin_login.py::test_account_locks_after_five_failed_attempts`, `tests/test_audit_log.py::test_locked_account_attempt_writes_audit_entry`).
 
 - [x] 2.1 validé.
 
@@ -633,6 +644,30 @@ pytest tests/test_pagination.py -v
 Note de portée : pas de tri client-contrôlé (`?sort=...`) — accepter un nom de colonne arbitraire depuis la requête sans allowlist est un risque inutile pour ce roadmap ; chaque endpoint a un tri par défaut fixe et documenté (ex. `sessions` par `day_id, start_time`, `faqs` par `sort_order`).
 
 - [x] 3.8 validé — **Phase 3 (endpoints publics lecture) complète.**
+
+---
+
+## Intégration frontend (hors roadmap numéroté)
+
+### CORS (`app/main.py`, `CORS_ORIGINS`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+pytest tests/test_cors.py -v
+```
+→ attendu : `2 passed` (origine listée dans `CORS_ORIGINS` acceptée, origine non listée rejetée — pas de wildcard `*`).
+
+Vérification via conteneur réel :
+```bash
+docker compose up -d --build
+curl -X OPTIONS http://127.0.0.1:8010/api/days \
+  -H "Origin: http://localhost:3000" -H "Access-Control-Request-Method: GET" -i
+```
+→ attendu : `200`, header `access-control-allow-origin: http://localhost:3000`.
+
+- [x] validé. Voir `FRONTEND_INTEGRATION.md` à la racine pour le guide complet (lancement Docker, auth, endpoints disponibles, ce qui manque encore).
 
 ---
 

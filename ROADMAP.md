@@ -21,7 +21,7 @@
 | 0.7 | CI GitHub Actions (lint + tests + scan image Trivy) | `.github/workflows/ci.yml` | pipeline vert sur push, 0 vulnérabilité `HIGH`/`CRITICAL` non traitée sur l'image buildée | ✅ Test Done — image 144 Mo, 0 CVE HIGH/CRITICAL |
 | 0.8 | Caddyfile (domaine, HTTPS auto, headers sécurité de base, reverse proxy vers `app`) | `Caddyfile` | `docker compose -f docker-compose.prod.yml up` sert en HTTPS avec cert valide | 🚧 In Progress — headers/reverse proxy/syntaxe validés ; cert HTTPS réel nécessite un domaine public + VPS (voir Phase 10) |
 | 0.9 | CD GitHub Actions : déploiement sur push `main` (SSH vers la VPS, `docker compose pull && up -d`) | `.github/workflows/deploy.yml` | déploiement effectif observé sur la VPS après un push | 🚧 In Progress — workflow écrit et YAML validé ; déploiement réel à confirmer une fois la VPS provisionnée |
-| 0.10 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap | ✅ Fait via `to_test.md` |
+| 0.10 | `TESTING.md` créé (statuts par étape, source de vérité pour `change-control`) | fichier racine | référencé par ce roadmap | ✅ Fait via `TO_TEST.md` |
 
 \* 0.3 : non-root confirmé, multi-stage confirmé (compilateurs présents uniquement dans le stage `builder`, jamais copiés dans `runtime`). Taille mesurée localement sur build natif arm64 (Mac dev) = 289 Mo, au-dessus de la cible car `python:3.12-slim` lui-même pèse ~205 Mo sur arm64. La cible de production est amd64 (Hetzner) où l'image officielle est nettement plus légère : la mesure définitive et bloquante se fait dans la CI (0.7), qui build pour `linux/amd64` et vérifie le seuil réel.
 
@@ -48,14 +48,16 @@ Traduction de `syncaconf/schema.md` (écrit pour PostgreSQL) vers SQLAlchemy 2.0
 
 ## Phase 2 — Auth & RBAC
 
+> **Politique de mots de passe (admin_users)** — complète depuis 2.1+2.3 : hash Argon2id, complexité min. 12 caractères + majuscule + minuscule + chiffre + symbole (appliquée à la création/réinitialisation, pas rétroactivement sur les comptes existants), pas de rotation forcée, **verrouillage de compte après 5 échecs consécutifs pendant 15 min, doublement à chaque échec suivant tant que le compte reste verrouillé, plafonné à 4h** (`app/services/auth_service.py::authenticate_admin`).
+
 | # | Étape | Détail | Vérification | Statut |
 |---|---|---|---|---|
-| 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) | `app/core/security.py` | test hash/verify | ✅ Test Done |
+| 2.1 | Hash mots de passe : `argon2-cffi` (Argon2id) **+ politique de complexité** (min 12 caractères, majuscule+minuscule+chiffre+symbole — `validate_password_strength()`, appliquée à la création/réinitialisation en Phase 6, pas à chaque login ; pas de rotation forcée périodique, cf. `.claude/skills/security-hardening/SKILL.md`) | `app/core/security.py` | test hash/verify + test rejet mot de passe faible | ✅ Test Done |
 | 2.2 | JWT access + refresh token : `PyJWT` | `app/services/auth_service.py` | test expiration, signature invalide rejetée | ✅ Test Done |
 | 2.3 | `POST /api/admin/login` | rate limit `slowapi` 5/min **par IP** (`slowapi` 0.1.x n'awaite pas un `key_func` async — combiner IP+email exigerait un middleware de cache du body ; email+IP visé initialement devient IP seule pour le rate limit, compensé par le **verrouillage de compte par email** ci-dessous) **+ verrouillage de compte** (`.claude/skills/security-hardening/SKILL.md` : 5 échecs consécutifs → verrou 15 min, doublement à chaque échec suivant, plafonné à 4h — amendements de portée avant implémentation, cf. ligne 5) | test brute-force bloqué (rate limit IP ET verrouillage compte, testés séparément) | ✅ Test Done |
 | 2.4 | Dependency `require_permission(code)` | `app/deps/rbac.py` | test 403 si permission manquante | ✅ Test Done |
 | 2.5 | Endpoints RBAC admin (gestion rôles/permissions) | `PATCH /api/admin/roles/:id` | test superadmin seul autorisé | ✅ Test Done |
-| 2.6 | Audit log connexions (succès/échec) | table `audit_logs`, journalisation intégrée à `authenticate_admin()` (pas un middleware générique — voir `to_test.md` 2.6) | entrée créée à chaque login | ✅ Test Done |
+| 2.6 | Audit log connexions (succès/échec) | table `audit_logs`, journalisation intégrée à `authenticate_admin()` (pas un middleware générique — voir `TO_TEST.md` 2.6) | entrée créée à chaque login | ✅ Test Done |
 
 ---
 
