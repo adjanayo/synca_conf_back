@@ -8,6 +8,7 @@ from app.admin.setup import init_admin
 from app.api.admin_applications import router as admin_applications_router
 from app.api.admin_campaign_windows import router as admin_campaign_windows_router
 from app.api.admin_contacts import router as admin_contacts_router
+from app.api.admin_export import router as admin_export_router
 from app.api.admin_registrations import router as admin_registrations_router
 from app.api.admin_stats import router as admin_stats_router
 from app.api.auth import router as auth_router
@@ -51,6 +52,7 @@ app.include_router(admin_campaign_windows_router)
 app.include_router(admin_stats_router)
 app.include_router(admin_registrations_router)
 app.include_router(admin_contacts_router)
+app.include_router(admin_export_router)
 
 init_admin(app)
 

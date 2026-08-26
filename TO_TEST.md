@@ -1148,4 +1148,23 @@ pytest tests/test_admin_registrations.py tests/test_admin_contacts.py -v
 
 ---
 
+### 6.7 — Export CSV (inscriptions, paiements)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_export.py -v
+```
+→ attendu : `4 passed`.
+
+- `GET /api/admin/export/registrations` (même jointure que 6.6) et `GET /api/admin/export/payments` (colonnes brutes de `payments`), tous deux `text/csv` avec `Content-Disposition: attachment`, générés en mémoire (`csv.writer` + `io.StringIO` — volumes attendus pour un événement mono-tenant, pas besoin de streaming).
+- **Volontairement non paginé** : contrairement à 6.6 (vue liste), un export est censé tout contenir.
+- **Sécurité** : gardé par `require_permission("export.data")`, de facto superadmin-only (seed 1.7).
+
+- [x] 6.7 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
