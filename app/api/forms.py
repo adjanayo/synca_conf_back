@@ -1,29 +1,34 @@
 import datetime
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, File, HTTPException, Request, UploadFile, status
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.multipart import parse_multipart_form
 from app.deps.campaign_windows import require_open_campaign
 from app.models import (
     ContactMessage,
     NewsletterSubscriber,
     PassType,
     PromoCode,
+    Speaker,
     User,
     UserProfile,
     Waitlist,
 )
+from app.schemas.applications import SpeakerRead
 from app.schemas.contact import ContactCreate
 from app.schemas.content import ContactMessageRead
 from app.schemas.newsletter import NewsletterCreate, NewsletterSubscriberRead
 from app.schemas.payments import WaitlistRead
 from app.schemas.register import RegisterCreate
+from app.schemas.speaker_apply import SpeakerApplyCreate
 from app.schemas.users import UserRead
 from app.schemas.waitlist import WaitlistCreate
 from app.services.recaptcha import verify_recaptcha
+from app.services.storage import UploadRejectedError, upload_file
 
 router = APIRouter(prefix="/api", tags=["forms"])
 
@@ -154,3 +159,54 @@ async def subscribe_newsletter(
 
     await db.refresh(subscriber)
     return NewsletterSubscriberRead.model_validate(subscriber)
+
+
+@router.post(
+    "/speakers/apply",
+    response_model=SpeakerRead,
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_open_campaign("call_for_speaker"))],
+)
+async def apply_as_speaker(
+    request: Request,
+    photo: UploadFile = File(...),
+    db: AsyncSession = Depends(get_db),
+) -> SpeakerRead:
+    body = await parse_multipart_form(request, SpeakerApplyCreate)
+    content = await photo.read()
+    try:
+        photo_url = await upload_file(content, photo.filename or "photo", photo.content_type or "")
+    except UploadRejectedError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
+    speaker = Speaker(
+        first_name=body.first_name,
+        last_name=body.last_name,
+        title_role=body.title_role,
+        company=body.company,
+        country=body.country,
+        email=body.email,
+        phone_whatsapp=body.phone_whatsapp,
+        linkedin_url=body.linkedin_url,
+        website_url=body.website_url,
+        photo_url=photo_url,
+        intervention_format=body.intervention_format,
+        intervention_title=body.intervention_title,
+        theme=body.theme,
+        summary=body.summary,
+        audience_level=body.audience_level,
+        language=body.language,
+        past_experience=body.past_experience,
+        video_link=body.video_link,
+        availability=body.availability,
+        departure_city=body.departure_city,
+        needs_accommodation=body.needs_accommodation,
+        motivation=body.motivation,
+        video_consent=body.video_consent,
+        gdpr_consent=body.gdpr_consent,
+    )
+    db.add(speaker)
+    await db.commit()
+    await db.refresh(speaker)
+
+    return SpeakerRead.model_validate(speaker)

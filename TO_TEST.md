@@ -847,4 +847,21 @@ pytest tests/test_storage.py -v
 
 ---
 
+### 4.3 — Candidature speaker (`POST /api/speakers/apply`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_speaker_apply.py -v
+```
+→ attendu : `4 passed` — fenêtre `call_for_speaker` fermée → `403` ; candidature réussie (`201`, `status=pending`, `is_public=false`, `photo_url` ne contient jamais le nom de fichier original) ; faux fichier image → `400` (Pillow) ; `gdpr_consent=false` → `422`.
+
+⚠️ Découverte technique : FastAPI 0.141.1 casse le flattening des champs quand `Annotated[Model, Form()]` est combiné à un paramètre `File(...)` dans la même route (tous les champs finissent nichés sous une clé littérale `"body"` au lieu de leurs noms). Contournement : `app/core/multipart.py::parse_multipart_form()` parse `request.form()` manuellement et valide avec le modèle Pydantic — même forme de réponse `422` que FastAPI par défaut. Réutilisé par 4.5/4.6.
+
+- [x] 4.3 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
