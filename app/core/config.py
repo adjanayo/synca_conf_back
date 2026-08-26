@@ -46,6 +46,15 @@ class Settings(BaseSettings):
     resend_api_key: str = ""
     resend_from_email: str = "no-reply@synca.conf"
 
+    # Payment webhook signing secrets (app/services/webhook_verification.py).
+    # Wave/Orange Money's exact signature scheme isn't published anywhere
+    # this project has access to -- verify_hmac_signature() assumes the
+    # common HMAC-SHA256-over-raw-body pattern; confirm against their real
+    # docs before accepting live traffic.
+    stripe_webhook_secret: str = ""
+    wave_webhook_secret: str = ""
+    orange_money_webhook_secret: str = ""
+
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common

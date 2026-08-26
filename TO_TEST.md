@@ -983,4 +983,27 @@ pytest tests/test_payments_create.py -v
 
 ---
 
+### 5.3 + 5.4 + 5.5 + 5.8 — Webhook paiement : signature, idempotence, transaction atomique, log dédié
+
+> Regroupées : c'est un seul endpoint (`POST /api/payments/webhook/{provider}`), impossible de tester la signature isolément de l'idempotence sans construire tout le pipeline.
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_payments_webhook.py tests/test_webhook_verification.py -v
+```
+→ attendu : `12 passed` :
+- **5.3 signature** : Stripe (`t=..,v1=..`, HMAC-SHA256 sur `{timestamp}.{body}`, tolérance 300s) et Wave/Orange Money (HMAC-SHA256 générique sur le corps brut) — signature invalide → `401`, horodatage Stripe expiré → rejeté, en-tête malformé → rejeté.
+- **5.4 idempotence** : rejouer le même webhook (même `payment_id`, `status=completed`) deux fois ne crée **qu'un seul** ticket (`test_webhook_replay_is_idempotent`).
+- **5.5 atomicité** : `payment.status`, `transaction_ref`, `paid_at` et la création du `Ticket` sont commités ensemble en un seul `db.commit()`.
+- **5.8 log dédié** : chaque issue (signature invalide, échec, succès) est loggée via `logger.bind(channel="security"|"payment")` — canaux séparés, sinks/rotation à configurer en Phase 8.1.
+
+⚠️ Amendement documenté (`app/services/webhook_verification.py`) : le schéma exact de signature Wave/Orange Money n'est publié nulle part accessible à ce projet — HMAC-SHA256 générique sur le corps brut assumé (pattern le plus courant), **à confirmer contre la vraie documentation avant tout trafic de production**. Stripe suit son schéma officiel documenté, testé fidèlement.
+
+- [x] 5.3, 5.4, 5.5, 5.8 validés.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

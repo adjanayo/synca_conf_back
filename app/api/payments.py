@@ -1,12 +1,24 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from datetime import UTC, datetime
+from typing import Literal
+
+from fastapi import APIRouter, Depends, HTTPException, Request, status
+from loguru import logger
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.config import get_settings
 from app.core.database import get_db
-from app.models import PassType, Payment, User
+from app.models import PassType, Payment, Ticket, User
 from app.schemas.payment_create import PaymentCreate
+from app.schemas.payment_webhook import PaymentWebhookPayload
 from app.schemas.payments import PaymentRead
 from app.schemas.promo import PromoValidateRequest, PromoValidateResponse
 from app.services.promo_service import compute_discounted_amount, get_valid_promo_code
+from app.services.ticketing import generate_qr_code_hash, generate_ticket_number
+from app.services.webhook_verification import (
+    InvalidWebhookSignatureError,
+    verify_hmac_signature,
+    verify_stripe_signature,
+)
 
 router = APIRouter(prefix="/api", tags=["payments"])
 
@@ -69,3 +81,76 @@ async def create_payment(
     await db.refresh(payment)
 
     return PaymentRead.model_validate(payment)
+
+
+@router.post("/payments/webhook/{provider}")
+async def payment_webhook(
+    provider: Literal["stripe", "wave", "orange_money"],
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+) -> dict[str, bool]:
+    settings = get_settings()
+    raw_body = await request.body()
+
+    try:
+        if provider == "stripe":
+            verify_stripe_signature(
+                raw_body,
+                request.headers.get("Stripe-Signature", ""),
+                settings.stripe_webhook_secret,
+            )
+        else:
+            secret = (
+                settings.wave_webhook_secret
+                if provider == "wave"
+                else settings.orange_money_webhook_secret
+            )
+            verify_hmac_signature(
+                raw_body, request.headers.get("X-Webhook-Signature", ""), secret
+            )
+    except InvalidWebhookSignatureError as exc:
+        logger.bind(channel="security").warning(
+            f"Signature webhook invalide (provider={provider})"
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Signature invalide."
+        ) from exc
+
+    payload = PaymentWebhookPayload.model_validate_json(raw_body)
+
+    payment = await db.get(Payment, payload.payment_id)
+    if payment is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Paiement introuvable.")
+
+    # Idempotence (5.4): a replayed webhook for an already-completed payment
+    # must not flip status again or create a second ticket.
+    if payment.status == "completed":
+        return {"received": True}
+
+    if payload.status == "failed":
+        payment.status = "failed"
+        await db.commit()
+        logger.bind(channel="payment").warning(f"Paiement {payment.id} échoué")
+        return {"received": True}
+
+    # Atomic (5.5): payment status + ticket creation commit together, or not
+    # at all -- a single db.commit() after both mutations is enough since
+    # nothing else has touched this session in between.
+    payment.status = "completed"
+    payment.transaction_ref = payload.transaction_ref
+    payment.paid_at = datetime.now(UTC)
+
+    ticket = Ticket(
+        user_id=payment.user_id,
+        payment_id=payment.id,
+        pass_type_id=payment.pass_type_id,
+        ticket_number=generate_ticket_number(payment.id),
+        qr_code_hash=generate_qr_code_hash(),
+    )
+    db.add(ticket)
+    await db.commit()
+
+    logger.bind(channel="payment").info(
+        f"Paiement {payment.id} complété, ticket {ticket.ticket_number} généré"
+    )
+    return {"received": True}

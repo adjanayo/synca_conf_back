@@ -103,12 +103,12 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 |---|---|---|---|
 | 5.1 | `POST /api/payments` | crée `payments.status=pending`, calcule remise promo (`pass_type_id` ajouté au body — voir `TO_TEST.md` 5.1) | ✅ Test Done |
 | 5.2 | `POST /api/promo/validate` | vérifie actif, non expiré, non épuisé | ✅ Test Done |
-| 5.3 | Webhooks Stripe / Wave / Orange Money | vérification signature obligatoire (HMAC/secret), sinon 401 | ⬜ Not Started |
-| 5.4 | Idempotence webhook | ne jamais traiter deux fois le même `transaction_ref` | ⬜ Not Started |
-| 5.5 | Transaction atomique paiement + génération ticket | `DB.transaction()` équivalent SQLAlchemy (`async with session.begin()`) | ⬜ Not Started |
+| 5.3 | Webhooks Stripe / Wave / Orange Money | vérification signature obligatoire (HMAC/secret), sinon 401 | ✅ Test Done — Wave/Orange Money assument un schéma HMAC générique, à confirmer contre la doc réelle |
+| 5.4 | Idempotence webhook | ne jamais traiter deux fois le même `transaction_ref` | ✅ Test Done |
+| 5.5 | Transaction atomique paiement + génération ticket | `DB.transaction()` équivalent SQLAlchemy (`async with session.begin()`) | ✅ Test Done |
 | 5.6 | Génération billet PDF + QR code | `qrcode` + `reportlab` (pur Python — pas de `weasyprint`, qui traîne Pango/Cairo/GDK-Pixbuf, trop lourd pour la VPS ciblée), upload B2 → `pdf_url` | ⬜ Not Started |
 | 5.7 | Email billet | envoi post-génération | ⬜ Not Started |
-| 5.8 | Logs paiement séparés | canal `payment` dédié (succès + échecs), rétention longue | ⬜ Not Started |
+| 5.8 | Logs paiement séparés | canal `payment` dédié (succès + échecs), rétention longue | ✅ Test Done — binding `channel=payment/security` fait, sinks/rotation en Phase 8.1 |
 
 Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne génère pas 2 tickets, test signature invalide → 401 + log `security`.
 
