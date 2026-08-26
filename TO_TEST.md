@@ -784,4 +784,21 @@ pytest tests/test_forms_contact.py -v
 
 ---
 
+### 4.8 — Newsletter (`POST /api/newsletter`)
+
+Nouvelle table `newsletter_subscribers` (id, email unique, created_at) — `schema.md` laissait le choix entre `users.newsletter_consent` et une table dédiée ; une table dédiée est nécessaire pour permettre un opt-in newsletter **sans** passer par l'inscription complète (`POST /api/register`), conformément à « opt-in séparé » dans le ROADMAP.
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_newsletter.py -v
+```
+→ attendu : `3 passed` (inscription réussie, email en double → `409`, email invalide → `422`).
+
+- [x] 4.8 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

@@ -2,6 +2,7 @@ from app.models.applications import Ambassador, Exhibitor, Partner, Speaker
 from app.models.audit import AuditLog
 from app.models.campaign import CampaignWindow
 from app.models.content import ContactMessage, Faq
+from app.models.newsletter import NewsletterSubscriber
 from app.models.payments import Payment, PromoCode, Ticket, Waitlist
 from app.models.rbac import AdminUser, Permission, Role, RolePermission
 from app.models.referentials import Day, FaqCategory, PartnerLevel, PassType
@@ -18,6 +19,7 @@ __all__ = [
     "Exhibitor",
     "Faq",
     "FaqCategory",
+    "NewsletterSubscriber",
     "Partner",
     "PartnerLevel",
     "Payment",

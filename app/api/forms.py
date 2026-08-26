@@ -7,9 +7,18 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.campaign_windows import require_open_campaign
-from app.models import ContactMessage, PassType, PromoCode, User, UserProfile, Waitlist
+from app.models import (
+    ContactMessage,
+    NewsletterSubscriber,
+    PassType,
+    PromoCode,
+    User,
+    UserProfile,
+    Waitlist,
+)
 from app.schemas.contact import ContactCreate
 from app.schemas.content import ContactMessageRead
+from app.schemas.newsletter import NewsletterCreate, NewsletterSubscriberRead
 from app.schemas.payments import WaitlistRead
 from app.schemas.register import RegisterCreate
 from app.schemas.users import UserRead
@@ -124,3 +133,24 @@ async def contact(body: ContactCreate, db: AsyncSession = Depends(get_db)) -> Co
     await db.refresh(message)
 
     return ContactMessageRead.model_validate(message)
+
+
+@router.post(
+    "/newsletter", response_model=NewsletterSubscriberRead, status_code=status.HTTP_201_CREATED
+)
+async def subscribe_newsletter(
+    body: NewsletterCreate, db: AsyncSession = Depends(get_db)
+) -> NewsletterSubscriberRead:
+    subscriber = NewsletterSubscriber(email=body.email)
+    db.add(subscriber)
+    try:
+        await db.commit()
+    except IntegrityError as exc:
+        await db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Cet email est déjà inscrit à la newsletter.",
+        ) from exc
+
+    await db.refresh(subscriber)
+    return NewsletterSubscriberRead.model_validate(subscriber)
