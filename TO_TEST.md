@@ -769,4 +769,19 @@ pytest tests/test_recaptcha.py -v
 
 ---
 
+### 4.7 — Contact (`POST /api/contact`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_forms_contact.py -v
+```
+→ attendu : `3 passed` — envoi réussi (reCAPTCHA sauté en dev, pas de clé configurée), `message` manquant → `422`, échec reCAPTCHA (stub direct de `verify_recaptcha`, pas de mock `httpx` — mocker `httpx.AsyncClient.post` intercepterait aussi le client de test lui-même puisqu'il utilise la même classe) → `400`.
+
+- [x] 4.7 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

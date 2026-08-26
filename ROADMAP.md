@@ -88,7 +88,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | 4.4 | Candidature ambassadeur | `POST /api/ambassadors/apply` | gardé par fenêtre `call_for_ambassador` (4.11), si accepté plus tard → génération `promo_code` unique (Phase 6) | ⬜ Not Started |
 | 4.5 | Candidature partenaire | `POST /api/partners/apply` | gardé par fenêtre `call_for_partner` (4.11), upload logo, workflow `pending→contacted→negotiating→confirmed|rejected` | ⬜ Not Started |
 | 4.6 | Candidature exposant | `POST /api/exhibitors/apply` | gardé par fenêtre `call_for_exhibitor` (4.11), upload visuels, mêmes workflow/statuts que partenaires | ⬜ Not Started |
-| 4.7 | Contact | `POST /api/contact` | reCAPTCHA v3 obligatoire | ⬜ Not Started |
+| 4.7 | Contact | `POST /api/contact` | reCAPTCHA v3 obligatoire | ✅ Test Done |
 | 4.8 | Newsletter | `POST /api/newsletter` | opt-in séparé, pas de doublon | ⬜ Not Started |
 | 4.9 | reCAPTCHA v3 partagé | `app/services/recaptcha.py` | seuil score configurable (0.5 par défaut) | ✅ Test Done — bypass en dev/CI sans clé configurée (documenté) |
 | 4.10 | Upload fichiers → Backblaze B2 | `app/services/storage.py` | renommage UUID+timestamp, jamais le nom original | ⬜ Not Started |

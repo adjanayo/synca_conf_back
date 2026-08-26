@@ -7,11 +7,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.campaign_windows import require_open_campaign
-from app.models import PassType, PromoCode, User, UserProfile, Waitlist
+from app.models import ContactMessage, PassType, PromoCode, User, UserProfile, Waitlist
+from app.schemas.contact import ContactCreate
+from app.schemas.content import ContactMessageRead
 from app.schemas.payments import WaitlistRead
 from app.schemas.register import RegisterCreate
 from app.schemas.users import UserRead
 from app.schemas.waitlist import WaitlistCreate
+from app.services.recaptcha import verify_recaptcha
 
 router = APIRouter(prefix="/api", tags=["forms"])
 
@@ -105,3 +108,19 @@ async def register(body: RegisterCreate, db: AsyncSession = Depends(get_db)) -> 
     await db.refresh(user)
 
     return UserRead.model_validate(user)
+
+
+@router.post(
+    "/contact", response_model=ContactMessageRead, status_code=status.HTTP_201_CREATED
+)
+async def contact(body: ContactCreate, db: AsyncSession = Depends(get_db)) -> ContactMessageRead:
+    await verify_recaptcha(body.captcha)
+
+    message = ContactMessage(
+        name=body.name, email=body.email, subject=body.subject, message=body.message
+    )
+    db.add(message)
+    await db.commit()
+    await db.refresh(message)
+
+    return ContactMessageRead.model_validate(message)
