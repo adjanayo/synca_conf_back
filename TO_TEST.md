@@ -1093,4 +1093,23 @@ pytest tests/test_admin_applications.py -v
 
 ---
 
+### 6.4 — Gestion admin des fenêtres de campagne
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_admin_campaign_windows.py -v
+```
+→ attendu : `6 passed`.
+
+- **`GET /api/admin/campaign-windows`** : liste les 5 fenêtres seedées (1.8), gardé par `require_permission("campaign_windows.manage")`.
+- **`PATCH /api/admin/campaign-windows/:key`** : mise à jour partielle (`start_at`/`end_at`/`is_active`, tous optionnels). `end_at > start_at` est validé **en amont**, avec les valeurs déjà en base pour tout champ omis — pas laissé à la contrainte CHECK MySQL (`ck_campaign_window_dates`), qui remonte un `OperationalError` opaque plutôt qu'un 400 propre (piège déjà noté en 1.8). Clé inconnue (hors `CAMPAIGN_WINDOW_KEY_VALUES`) → `404`.
+- **Sécurité** : de facto réservé au `superadmin` tant qu'aucun autre rôle ne reçoit `campaign_windows.manage` (seed 1.7) — même schéma que `roles.manage` (2.5).
+
+- [x] 6.4 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*
