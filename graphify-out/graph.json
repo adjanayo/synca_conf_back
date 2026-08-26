@@ -11975,8 +11975,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py",
       "source_location": "L39",
       "weight": 1.0,
-      "_src": "ticket_pdf_render_ticket_pdf",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "ticket_pdf_render_ticket_pdf",
       "source": "config_get_settings",
       "target": "ticket_pdf_render_ticket_pdf"
     },
