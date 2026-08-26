@@ -943,7 +943,7 @@ docker stop check && docker rmi synca-app:check
 ```
 → attendu : tous les imports OK, `/health` répond `{"status":"ok"}`. Taille locale arm64 : 349 Mo → 281 Mo (indicatif). **Mesure bloquante en CI amd64** — voir prochain commit.
 
-- [x] validé (fonctionnel local + suite complète 143 tests). Confirmation CI amd64 au prochain push.
+- [x] validé — CI amd64 confirme **177 Mo** (regagné ~21 Mo de marge, 198→177 Mo).
 
 ---
 
