@@ -574,4 +574,19 @@ pytest tests/test_public_partners.py -v
 
 ---
 
+### 3.5 — Exposants publics (`GET /api/exhibitors`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_public_exhibitors.py -v
+```
+→ attendu : `2 passed` (exclusion des exposants `is_public=false`, cas vide). `is_public=true` est appliqué sans condition — pas de mode "afficher les privés" sur un endpoint public.
+
+- [x] 3.5 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

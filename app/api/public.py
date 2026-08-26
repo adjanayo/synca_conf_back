@@ -4,8 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.deps.pagination import Pagination, pagination_params
-from app.models import Day, Partner, PassType, Session, Speaker
-from app.schemas import DayRead, PartnerRead, PassTypeRead, SessionRead, SpeakerRead
+from app.models import Day, Exhibitor, Partner, PassType, Session, Speaker
+from app.schemas import DayRead, ExhibitorRead, PartnerRead, PassTypeRead, SessionRead, SpeakerRead
 
 router = APIRouter(prefix="/api", tags=["public"])
 
@@ -76,3 +76,22 @@ async def list_partners(
 
     partners = (await db.execute(query)).scalars().all()
     return [PartnerRead.model_validate(partner) for partner in partners]
+
+
+@router.get("/exhibitors", response_model=list[ExhibitorRead])
+async def list_exhibitors(
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+) -> list[ExhibitorRead]:
+    # `public=true` per schema.md's endpoint recap is the only mode this
+    # endpoint supports -- is_public=true is enforced unconditionally,
+    # there's no "show private exhibitors" toggle on a public endpoint.
+    query = (
+        select(Exhibitor)
+        .where(Exhibitor.is_public.is_(True))
+        .order_by(Exhibitor.organization_name)
+        .limit(pagination.limit)
+        .offset(pagination.offset)
+    )
+    exhibitors = (await db.execute(query)).scalars().all()
+    return [ExhibitorRead.model_validate(exhibitor) for exhibitor in exhibitors]
