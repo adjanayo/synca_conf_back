@@ -1,7 +1,7 @@
 # Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-08-26)
 
 ## Corpus Check
-- 148 files · ~138,825 words
+- 148 files · ~139,930 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

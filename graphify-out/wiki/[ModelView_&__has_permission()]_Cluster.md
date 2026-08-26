@@ -36,7 +36,7 @@ classDiagram
 
 ## Relationships
 
-- [[[verify_stripe_signature() & payment_webhook()] Cluster]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

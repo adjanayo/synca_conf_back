@@ -15,7 +15,7 @@
 
 ## Relationships
 
-- [[[run_async_migrations() & run_migrations_online()] Cluster]] (3 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

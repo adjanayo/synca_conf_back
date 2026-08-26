@@ -120,7 +120,7 @@ classDiagram
 
 ## Relationships
 
-- [[[run_async_migrations() & run_migrations_online()] Cluster]] (3 shared connections)
+- [[[_make_test_app() & test_common_headers_always_present()] Cluster]] (3 shared connections)
 
 ## Source Files
 
