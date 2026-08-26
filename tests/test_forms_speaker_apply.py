@@ -107,6 +107,25 @@ async def test_speaker_apply_rejects_fake_image(db_session, client):
 
 
 @pytest.mark.asyncio
+async def test_speaker_apply_oversized_photo_rejected_400(db_session, client, monkeypatch):
+    await open_call_for_speaker(db_session)
+    # 7.6: speaker photos get the tighter 5 Mo cap, not the shared 10 Mo
+    # upload ceiling -- shrink the threshold instead of generating a real
+    # multi-megabyte PNG just to cross it.
+    monkeypatch.setattr("app.api.forms.MAX_PHOTO_BYTES", 10)
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        response = await http.post(
+            "/api/speakers/apply",
+            data=form_fields(email="oversized@example.com"),
+            files={"photo": ("photo.png", make_png_bytes(), "image/png")},
+        )
+
+    assert response.status_code == 400
+    assert "volumineux" in response.json()["detail"]
+
+
+@pytest.mark.asyncio
 async def test_speaker_apply_missing_gdpr_consent_422(db_session, client):
     await open_call_for_speaker(db_session)
 

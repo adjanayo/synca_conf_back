@@ -46,7 +46,7 @@ from app.schemas.waitlist import WaitlistCreate
 from app.services.email_service import send_email
 from app.services.promo_service import get_valid_promo_code
 from app.services.recaptcha import verify_recaptcha
-from app.services.storage import UploadRejectedError, upload_file
+from app.services.storage import MAX_PHOTO_BYTES, UploadRejectedError, upload_file
 
 router = APIRouter(prefix="/api", tags=["forms"])
 
@@ -201,7 +201,12 @@ async def apply_as_speaker(
     body = await parse_multipart_form(request, SpeakerApplyCreate)
     content = await photo.read()
     try:
-        photo_url = await upload_file(content, photo.filename or "photo", photo.content_type or "")
+        photo_url = await upload_file(
+            content,
+            photo.filename or "photo",
+            photo.content_type or "",
+            max_bytes=MAX_PHOTO_BYTES,
+        )
     except UploadRejectedError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 

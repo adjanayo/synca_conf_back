@@ -1239,4 +1239,22 @@ pytest tests/test_rate_limiting.py -v
 
 ---
 
+### 7.6 — Taille max d'upload différenciée par type
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_storage.py tests/test_forms_speaker_apply.py -v
+```
+→ attendu : `14 passed`.
+
+- `upload_file()` (`app/services/storage.py`) prend un `max_bytes` optionnel (mot-clé), par défaut `MAX_UPLOAD_BYTES` (10 Mo, inchangé pour les logos partenaires et les billets PDF, 4.10/5.6). La photo speaker (`apply_as_speaker`) passe explicitement `MAX_PHOTO_BYTES` (5 Mo).
+- Testé en réduisant temporairement le seuil via `monkeypatch` (`app.api.forms.MAX_PHOTO_BYTES = 10`) plutôt qu'en générant une vraie image de plusieurs Mo juste pour dépasser la limite.
+
+- [x] 7.6 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

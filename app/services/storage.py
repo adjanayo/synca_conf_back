@@ -11,7 +11,11 @@ from app.core.config import get_settings
 
 ALLOWED_IMAGE_CONTENT_TYPES = {"image/jpeg", "image/png"}
 ALLOWED_CONTENT_TYPES = ALLOWED_IMAGE_CONTENT_TYPES | {"application/pdf"}
-MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 Mo, cap shared by photo/logo uploads (4.10)
+# 7.6: differentiated caps -- a headshot photo has no reason to approach the
+# logo/ticket-PDF ceiling. MAX_UPLOAD_BYTES stays the default for callers
+# that don't pass max_bytes explicitly (partner logos, ticket PDFs, 4.10).
+MAX_PHOTO_BYTES = 5 * 1024 * 1024  # 5 Mo
+MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 Mo
 
 
 class UploadRejectedError(ValueError):
@@ -49,11 +53,17 @@ def _generate_key(original_filename: str) -> str:
     return f"{timestamp}-{uuid.uuid4().hex}{suffix}"
 
 
-async def upload_file(content: bytes, original_filename: str, content_type: str) -> str:
+async def upload_file(
+    content: bytes,
+    original_filename: str,
+    content_type: str,
+    *,
+    max_bytes: int = MAX_UPLOAD_BYTES,
+) -> str:
     if content_type not in ALLOWED_CONTENT_TYPES:
         raise UploadRejectedError(f"Type de fichier non autorisé : {content_type}.")
-    if len(content) > MAX_UPLOAD_BYTES:
-        raise UploadRejectedError("Fichier trop volumineux (max 10 Mo).")
+    if len(content) > max_bytes:
+        raise UploadRejectedError(f"Fichier trop volumineux (max {max_bytes // (1024 * 1024)} Mo).")
     if content_type in ALLOWED_IMAGE_CONTENT_TYPES:
         validate_is_real_image(content)
 

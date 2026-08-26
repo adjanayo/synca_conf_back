@@ -5,6 +5,7 @@ import pytest
 from PIL import Image
 
 from app.services.storage import (
+    MAX_PHOTO_BYTES,
     MAX_UPLOAD_BYTES,
     UploadRejectedError,
     upload_file,
@@ -89,3 +90,15 @@ async def test_upload_file_pdf_skips_image_validation(monkeypatch):
 
     mock_client.put_object.assert_called_once()
     assert url.endswith(".pdf")
+
+
+@pytest.mark.asyncio
+async def test_upload_file_respects_custom_max_bytes():
+    # 7.6: callers can tighten the cap below the shared 10 Mo default (used
+    # for speaker photos, capped at MAX_PHOTO_BYTES = 5 Mo).
+    with pytest.raises(UploadRejectedError, match="volumineux"):
+        await upload_file(make_png_bytes(), "photo.png", "image/png", max_bytes=10)
+
+
+def test_max_photo_bytes_is_tighter_than_shared_upload_cap():
+    assert MAX_PHOTO_BYTES < MAX_UPLOAD_BYTES
