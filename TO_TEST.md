@@ -1006,4 +1006,25 @@ pytest tests/test_payments_webhook.py tests/test_webhook_verification.py -v
 
 ---
 
+### 5.6 + 5.7 — Billet PDF + QR code, email post-génération
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_ticket_finalization.py tests/test_payments_webhook.py -v
+```
+→ attendu : `11 passed`.
+- **5.6 PDF+QR** : `app/services/ticket_pdf.py` génère un PNG QR (`qrcode`) encodant `qr_code_hash`, l'incruste dans un PDF A5 (`reportlab`, via `ImageReader` pour passer les bytes en mémoire) avec numéro de billet, participant, type de pass, puis upload sur B2 (`upload_file`, réutilise 4.10).
+- **5.7 email** : `finalize_ticket()` (`app/services/ticket_finalization.py`) envoie l'email avec le lien PDF juste après l'upload réussi.
+- **Pourquoi hors de la transaction 5.5** : `finalize_ticket` tourne en `BackgroundTask`, déclenché juste avant la réponse HTTP du webhook, avec sa **propre session DB** (`AsyncSessionLocal()`, pas celle de la requête déjà fermée). Perdre/relancer un upload PDF est acceptable ; perdre l'enregistrement du ticket ne l'est pas — donc le PDF/email ne doit jamais tenir ouverte la transaction paiement+ticket.
+- **Idempotence** : `finalize_ticket` no-op si le ticket a déjà un `pdf_url` (`test_finalize_ticket_is_idempotent_when_already_finalized`) ou si le ticket a disparu (`test_finalize_ticket_noops_on_missing_ticket`).
+- **Test de câblage** : `test_webhook_completes_payment_and_creates_ticket` stub `finalize_ticket` et vérifie qu'il est bien planifié avec le bon `ticket.id` — les autres tests webhook stubbent aussi `finalize_ticket` (session DB séparée, invisible depuis le `db_session` isolé du test) pour ne pas fausser l'assertion sur la transaction atomique.
+- **Impact taille image** : `qrcode`+`reportlab` ajoutés → image confirmée à **150 Mo** via `docker image inspect --format='{{.Size}}'` (mesure fiable, single-plateforme — `docker images` seul gonfle le chiffre avec l'attestation multi-plateforme buildx), largement sous le budget CI de 200 Mo.
+
+- [x] 5.6, 5.7 validés — Phase 5 (5.1 à 5.8) complète.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

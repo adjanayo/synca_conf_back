@@ -16,6 +16,12 @@ def verify_stripe_signature(payload: bytes, sig_header: str, secret: str) -> Non
     The signed value is `"{timestamp}.{raw body}"`, HMAC-SHA256'd with the
     webhook's signing secret.
     """
+    if not secret:
+        # An unset secret must fail closed, not verify against "" -- an
+        # empty string is itself a trivially known HMAC key, so this isn't
+        # "skip verification", it's "accept a forged signature from anyone".
+        raise InvalidWebhookSignatureError("Secret webhook non configuré.")
+
     parts = dict(item.split("=", 1) for item in sig_header.split(",") if "=" in item)
     timestamp = parts.get("t")
     signature = parts.get("v1")
@@ -42,6 +48,9 @@ def verify_hmac_signature(payload: bytes, signature: str, secret: str) -> None:
     credentials or docs -- confirm the exact scheme against their live API
     reference before accepting production traffic.
     """
+    if not secret:
+        raise InvalidWebhookSignatureError("Secret webhook non configuré.")
+
     expected = hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
     if not hmac.compare_digest(expected, signature):
         raise InvalidWebhookSignatureError("Signature invalide.")

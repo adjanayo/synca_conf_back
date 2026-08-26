@@ -9,7 +9,8 @@ from PIL import Image, UnidentifiedImageError
 
 from app.core.config import get_settings
 
-ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png"}
+ALLOWED_IMAGE_CONTENT_TYPES = {"image/jpeg", "image/png"}
+ALLOWED_CONTENT_TYPES = ALLOWED_IMAGE_CONTENT_TYPES | {"application/pdf"}
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 Mo, cap shared by photo/logo uploads (4.10)
 
 
@@ -53,7 +54,8 @@ async def upload_file(content: bytes, original_filename: str, content_type: str)
         raise UploadRejectedError(f"Type de fichier non autorisé : {content_type}.")
     if len(content) > MAX_UPLOAD_BYTES:
         raise UploadRejectedError("Fichier trop volumineux (max 10 Mo).")
-    validate_is_real_image(content)
+    if content_type in ALLOWED_IMAGE_CONTENT_TYPES:
+        validate_is_real_image(content)
 
     settings = get_settings()
     key = _generate_key(original_filename)

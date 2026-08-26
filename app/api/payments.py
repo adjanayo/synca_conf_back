@@ -1,18 +1,20 @@
 from datetime import UTC, datetime
 from typing import Literal
 
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
 from loguru import logger
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import get_settings
 from app.core.database import get_db
-from app.models import PassType, Payment, Ticket, User
+from app.models import PassType, Payment, PromoCode, Ticket, User
 from app.schemas.payment_create import PaymentCreate
 from app.schemas.payment_webhook import PaymentWebhookPayload
 from app.schemas.payments import PaymentRead
 from app.schemas.promo import PromoValidateRequest, PromoValidateResponse
 from app.services.promo_service import compute_discounted_amount, get_valid_promo_code
+from app.services.ticket_finalization import finalize_ticket
 from app.services.ticketing import generate_qr_code_hash, generate_ticket_number
 from app.services.webhook_verification import (
     InvalidWebhookSignatureError,
@@ -87,6 +89,7 @@ async def create_payment(
 async def payment_webhook(
     provider: Literal["stripe", "wave", "orange_money"],
     request: Request,
+    background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
 ) -> dict[str, bool]:
     settings = get_settings()
@@ -133,12 +136,38 @@ async def payment_webhook(
         logger.bind(channel="payment").warning(f"Paiement {payment.id} échoué")
         return {"received": True}
 
+    # Insufficient-validation fix: a transaction_ref must not be attachable
+    # to more than one payment -- without this check, replaying the same
+    # ref against a *different* payment_id would complete it and mint a
+    # second ticket for a transaction that only ever paid once.
+    conflicting = (
+        await db.execute(
+            select(Payment.id).where(
+                Payment.transaction_ref == payload.transaction_ref, Payment.id != payment.id
+            )
+        )
+    ).scalar_one_or_none()
+    if conflicting is not None:
+        logger.bind(channel="security").warning(
+            f"transaction_ref {payload.transaction_ref!r} déjà utilisé par le paiement "
+            f"{conflicting}, refusé pour le paiement {payment.id}"
+        )
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Cette référence de transaction est déjà utilisée.",
+        )
+
     # Atomic (5.5): payment status + ticket creation commit together, or not
     # at all -- a single db.commit() after both mutations is enough since
     # nothing else has touched this session in between.
     payment.status = "completed"
     payment.transaction_ref = payload.transaction_ref
     payment.paid_at = datetime.now(UTC)
+
+    if payment.promo_code_id is not None:
+        promo = await db.get(PromoCode, payment.promo_code_id)
+        if promo is not None:
+            promo.usage_count += 1
 
     ticket = Ticket(
         user_id=payment.user_id,
@@ -149,8 +178,13 @@ async def payment_webhook(
     )
     db.add(ticket)
     await db.commit()
+    await db.refresh(ticket)
 
     logger.bind(channel="payment").info(
         f"Paiement {payment.id} complété, ticket {ticket.ticket_number} généré"
     )
+    # 5.6/5.7: PDF+QR generation and the ticket email happen after the
+    # response, via their own DB session -- see finalize_ticket's docstring
+    # for why this is deliberately outside the atomic transaction above.
+    background_tasks.add_task(finalize_ticket, ticket.id)
     return {"received": True}

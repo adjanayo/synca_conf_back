@@ -16,3 +16,5 @@ boto3==1.43.80
 Pillow==12.3.0
 python-multipart==0.0.32
 loguru==0.7.3
+qrcode==8.2
+reportlab==5.0.1

@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import time
+import uuid
 from unittest.mock import patch
 
 import pytest
@@ -9,7 +10,7 @@ from sqlalchemy import func, select
 
 from app.core.database import get_db
 from app.main import app
-from app.models import PassType, Payment, Ticket, User
+from app.models import PassType, Payment, PromoCode, Ticket, User
 
 WAVE_SECRET = "wave-test-secret"
 STRIPE_SECRET = "stripe-test-secret"
@@ -34,18 +35,30 @@ def _webhook_secrets():
         yield
 
 
+@pytest.fixture(autouse=True)
+def _stub_finalize_ticket():
+    # finalize_ticket (5.6/5.7) opens its own DB session via
+    # AsyncSessionLocal, a different connection from this test's isolated
+    # db_session -- it would see no data and silently no-op. Stubbed here so
+    # webhook tests only assert on the atomic payment+ticket transaction;
+    # finalize_ticket itself is unit-tested separately.
+    with patch("app.api.payments.finalize_ticket") as mock_finalize:
+        yield mock_finalize
+
+
 async def make_pending_payment(db_session) -> Payment:
+    unique = uuid.uuid4().hex[:8]
     user = User(
         first_name="Awa",
         last_name="Diop",
-        email="webhook@example.com",
+        email=f"webhook-{unique}@example.com",
         phone_whatsapp="+221771234567",
         country="Sénégal",
         city="Dakar",
         gdpr_consent=True,
         newsletter_consent=False,
     )
-    pass_type = PassType(name="Standard", price=15000, is_active=True)
+    pass_type = PassType(name=f"Standard-{unique}", price=15000, is_active=True)
     db_session.add_all([user, pass_type])
     await db_session.flush()
 
@@ -90,7 +103,9 @@ async def test_webhook_invalid_signature_401(db_session, client):
 
 
 @pytest.mark.asyncio
-async def test_webhook_completes_payment_and_creates_ticket(db_session, client):
+async def test_webhook_completes_payment_and_creates_ticket(
+    db_session, client, _stub_finalize_ticket
+):
     payment = await make_pending_payment(db_session)
     body = (
         f'{{"payment_id": {payment.id}, "transaction_ref": "ref-success", "status": "completed"}}'
@@ -113,6 +128,10 @@ async def test_webhook_completes_payment_and_creates_ticket(db_session, client):
         await db_session.execute(select(Ticket).where(Ticket.payment_id == payment.id))
     ).scalar_one()
     assert ticket.ticket_number == f"SYNCA-{payment.id:06d}"
+
+    # 5.6/5.7 wiring: finalize_ticket (PDF+QR+email) is scheduled as a
+    # background task for this exact ticket, outside the atomic transaction.
+    _stub_finalize_ticket.assert_called_once_with(ticket.id)
 
 
 @pytest.mark.asyncio
@@ -193,3 +212,90 @@ async def test_webhook_stripe_valid_signature_accepted(db_session, client):
         )
 
     assert response.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_webhook_rejects_transaction_ref_reused_on_other_payment(db_session, client):
+    payment_a = await make_pending_payment(db_session)
+    payment_b = await make_pending_payment(db_session)
+
+    body_a = (
+        f'{{"payment_id": {payment_a.id}, "transaction_ref": "shared-ref", '
+        '"status": "completed"}'
+    ).encode()
+    body_b = (
+        f'{{"payment_id": {payment_b.id}, "transaction_ref": "shared-ref", '
+        '"status": "completed"}'
+    ).encode()
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        first = await http.post(
+            "/api/payments/webhook/wave",
+            content=body_a,
+            headers={"X-Webhook-Signature": wave_signature(body_a)},
+        )
+        second = await http.post(
+            "/api/payments/webhook/wave",
+            content=body_b,
+            headers={"X-Webhook-Signature": wave_signature(body_b)},
+        )
+
+    assert first.status_code == 200
+    assert second.status_code == 409
+
+    await db_session.refresh(payment_b)
+    assert payment_b.status == "pending"
+    ticket_count = (
+        await db_session.execute(
+            select(func.count(Ticket.id)).where(Ticket.payment_id == payment_b.id)
+        )
+    ).scalar_one()
+    assert ticket_count == 0
+
+
+@pytest.mark.asyncio
+async def test_webhook_increments_promo_usage_count_on_completion(db_session, client):
+    promo = PromoCode(code="LIMITED1", discount_pct=10, is_active=True, usage_limit=1)
+    db_session.add(promo)
+    await db_session.flush()
+
+    user = User(
+        first_name="Awa",
+        last_name="Diop",
+        email="promo-webhook@example.com",
+        phone_whatsapp="+221771234567",
+        country="Sénégal",
+        city="Dakar",
+        gdpr_consent=True,
+        newsletter_consent=False,
+    )
+    pass_type = PassType(name="Standard", price=15000, is_active=True)
+    db_session.add_all([user, pass_type])
+    await db_session.flush()
+
+    payment = Payment(
+        user_id=user.id,
+        pass_type_id=pass_type.id,
+        promo_code_id=promo.id,
+        amount_original=15000,
+        amount_paid=13500,
+        payment_method="wave",
+    )
+    db_session.add(payment)
+    await db_session.commit()
+
+    body = (
+        f'{{"payment_id": {payment.id}, "transaction_ref": "promo-ref", '
+        '"status": "completed"}'
+    ).encode()
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        response = await http.post(
+            "/api/payments/webhook/wave",
+            content=body,
+            headers={"X-Webhook-Signature": wave_signature(body)},
+        )
+
+    assert response.status_code == 200
+    await db_session.refresh(promo)
+    assert promo.usage_count == 1

@@ -54,3 +54,21 @@ def test_verify_stripe_signature_rejects_expired_timestamp():
 def test_verify_stripe_signature_rejects_malformed_header():
     with pytest.raises(InvalidWebhookSignatureError):
         verify_stripe_signature(b"{}", "garbage-header", "secret")
+
+
+def test_verify_hmac_signature_rejects_empty_secret_even_with_matching_forged_signature():
+    # An empty secret must fail closed, not "verify successfully against an
+    # empty key" -- anyone can compute HMAC(key=b"", body) themselves.
+    body = b'{"a": 1}'
+    forged_signature = hmac.new(b"", body, hashlib.sha256).hexdigest()
+    with pytest.raises(InvalidWebhookSignatureError):
+        verify_hmac_signature(body, forged_signature, "")
+
+
+def test_verify_stripe_signature_rejects_empty_secret_even_with_matching_forged_signature():
+    body = b'{"a": 1}'
+    timestamp = str(int(time.time()))
+    forged_sig = hmac.new(b"", f"{timestamp}.".encode() + body, hashlib.sha256).hexdigest()
+    header = f"t={timestamp},v1={forged_sig}"
+    with pytest.raises(InvalidWebhookSignatureError):
+        verify_stripe_signature(body, header, "")
