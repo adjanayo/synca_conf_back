@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from loguru import logger
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -23,12 +24,14 @@ async def get_current_participant(
         headers={"WWW-Authenticate": "Bearer"},
     )
     if credentials is None:
+        logger.bind(channel="security").warning("Accès /api/user/me refusé : aucun jeton fourni")
         raise invalid
 
     user = (
         await db.execute(select(User).where(User.access_token == credentials.credentials))
     ).scalar_one_or_none()
     if user is None:
+        logger.bind(channel="security").warning("Accès /api/user/me refusé : jeton inconnu")
         raise invalid
     return user
 

@@ -20,6 +20,8 @@ services:
     restart: unless-stopped
     mem_limit: 600m
     logging: *default-logging
+    volumes:
+      - app_logs:/app/logs
     depends_on:
       db:
         condition: service_healthy
@@ -68,3 +70,5 @@ volumes:
     name: synca-prod-caddy-data
   caddy_config:
     name: synca-prod-caddy-config
+  app_logs:
+    name: synca-prod-app-logs

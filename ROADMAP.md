@@ -108,7 +108,7 @@ Vérification : tests pour chaque filtre + cas vide, et confirmation qu'aucune d
 | 5.5 | Transaction atomique paiement + génération ticket | `DB.transaction()` équivalent SQLAlchemy (`async with session.begin()`) | ✅ Test Done |
 | 5.6 | Génération billet PDF + QR code | `qrcode` + `reportlab` (pur Python — pas de `weasyprint`, qui traîne Pango/Cairo/GDK-Pixbuf, trop lourd pour la VPS ciblée), upload B2 → `pdf_url` | ✅ Test Done — `finalize_ticket()` tourne en `BackgroundTask` post-webhook, session DB dédiée (hors transaction atomique 5.5) |
 | 5.7 | Email billet | envoi post-génération | ✅ Test Done — même `finalize_ticket()`, envoyé après l'upload PDF réussi |
-| 5.8 | Logs paiement séparés | canal `payment` dédié (succès + échecs), rétention longue | ✅ Test Done — binding `channel=payment/security` fait, sinks/rotation en Phase 8.1 |
+| 5.8 | Logs paiement séparés | canal `payment` dédié (succès + échecs), rétention longue | ✅ Test Done — binding `channel=payment/security` fait, sinks/rotation configurés en 8.1 |
 
 Vérification critique : test qu'un webhook rejoué (même `transaction_ref`) ne génère pas 2 tickets, test signature invalide → 401 + log `security`.
 
@@ -157,9 +157,9 @@ Approche retenue (coût zéro, cohérente avec `ENVIRONMENT` déjà prévu dans 
 
 ## Phase 8 — Observabilité & exploitation
 
-| # | Étape | Outil |
-|---|---|---|
-| 8.1 | Logs structurés séparés (`security`, `payment`, `app`) | `loguru` uniquement, rotation quotidienne (90j `security`, 365j `payment`) |
+| # | Étape | Outil | Statut |
+|---|---|---|---|
+| 8.1 | Logs structurés séparés (`security`, `payment`, `app`) | `loguru`, sinks fichiers + rotation quotidienne (`app.core.logging_config`) | ✅ Test Done — `app.log` 30j (housekeeping, non spécifié dans la table de rétention), `security.log` 90j, `payment.log` 365j ; volume Docker `app_logs:/app/logs` en prod. Événements couverts : login admin succès/échec, modification permissions de rôle (pas de endpoint de création de compte admin — seed uniquement), webhook signature invalide (5.8), rate limit déclenché, 401/403 admin + participant (loggés à chaque occurrence, pas de compteur de répétition dédié — pas de Redis sur ce projet), upload rejeté |
 
 **Événements à logguer (8.1)** — table de référence pour l'implémentation :
 

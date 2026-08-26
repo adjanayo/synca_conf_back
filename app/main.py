@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from loguru import logger
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
@@ -18,10 +19,12 @@ from app.api.public import router as public_router
 from app.api.rbac import router as rbac_router
 from app.api.user_me import router as user_me_router
 from app.core.config import get_settings
+from app.core.logging_config import configure_logging
 from app.core.rate_limit import limiter
 from app.core.security_headers import SecurityHeadersMiddleware
 
 settings = get_settings()
+configure_logging()
 
 docs_enabled = settings.environment != "production"
 
@@ -42,7 +45,17 @@ app.add_middleware(
 app.add_middleware(SecurityHeadersMiddleware, hsts_enabled=settings.environment == "production")
 
 app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+
+def _log_rate_limit_exceeded(request: Request, exc: RateLimitExceeded):
+    client_ip = request.client.host if request.client else "?"
+    logger.bind(channel="security").warning(
+        f"Rate limit dépassé : {client_ip} sur {request.url.path}"
+    )
+    return _rate_limit_exceeded_handler(request, exc)
+
+
+app.add_exception_handler(RateLimitExceeded, _log_rate_limit_exceeded)
 app.add_middleware(SlowAPIMiddleware)
 
 app.include_router(auth_router)

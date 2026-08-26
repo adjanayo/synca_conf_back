@@ -82,6 +82,9 @@ ACCOUNTS.md
 
 # Sauvegardes locales
 /backups/
+
+# Logs applicatifs (ROADMAP 8.1) -- volume monté en prod, jamais commité
+/logs/
 .venv
 env/
 venv/

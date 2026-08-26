@@ -40,6 +40,8 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels -r requirements.t
 
 COPY app/ app/
 
+RUN mkdir -p /app/logs && chown app:app /app/logs
+
 USER app
 
 EXPOSE 8000
@@ -62,6 +64,8 @@ COPY --from=builder-dev /wheels /wheels
 COPY requirements.txt requirements-dev.txt ./
 RUN pip install --no-cache-dir --no-index --find-links=/wheels -r requirements-dev.txt \
     && rm -rf /wheels
+
+RUN mkdir -p /app/logs && chown app:app /app/logs
 
 USER app
 

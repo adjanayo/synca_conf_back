@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 from pathlib import PurePosixPath
 
 import boto3
+from loguru import logger
 from PIL import Image, UnidentifiedImageError
 
 from app.core.config import get_settings
@@ -61,11 +62,23 @@ async def upload_file(
     max_bytes: int = MAX_UPLOAD_BYTES,
 ) -> str:
     if content_type not in ALLOWED_CONTENT_TYPES:
+        logger.bind(channel="security").warning(
+            f"Upload rejeté : type de fichier non autorisé ({content_type})"
+        )
         raise UploadRejectedError(f"Type de fichier non autorisé : {content_type}.")
     if len(content) > max_bytes:
+        logger.bind(channel="security").warning(
+            f"Upload rejeté : fichier trop volumineux ({len(content)} octets, max {max_bytes})"
+        )
         raise UploadRejectedError(f"Fichier trop volumineux (max {max_bytes // (1024 * 1024)} Mo).")
     if content_type in ALLOWED_IMAGE_CONTENT_TYPES:
-        validate_is_real_image(content)
+        try:
+            validate_is_real_image(content)
+        except UploadRejectedError:
+            logger.bind(channel="security").warning(
+                "Upload rejeté : contenu non identifiable comme image valide"
+            )
+            raise
 
     settings = get_settings()
     key = _generate_key(original_filename)

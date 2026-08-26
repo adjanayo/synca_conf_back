@@ -61,6 +61,11 @@ class Settings(BaseSettings):
     wave_webhook_secret: str = ""
     orange_money_webhook_secret: str = ""
 
+    # app/core/logging_config.py (8.1): directory for the 3 rotating loguru
+    # sinks (security/payment/app). Relative path is fine -- mounted as a
+    # Docker volume in production, not baked into the image.
+    log_dir: str = "logs"
+
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common

@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, status
+from loguru import logger
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -26,8 +27,12 @@ async def login(
     try:
         admin = await authenticate_admin(db, credentials.email, credentials.password, client_ip)
     except (InvalidCredentialsError, AccountLockedError) as exc:
+        logger.bind(channel="security").warning(
+            f"Connexion admin échouée : {credentials.email} depuis {client_ip}"
+        )
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=str(exc)) from exc
 
+    logger.bind(channel="security").info(f"Connexion admin réussie : {admin.email}")
     subject = str(admin.id)
     return TokenPair(
         access_token=create_access_token(subject),

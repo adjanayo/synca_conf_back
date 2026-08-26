@@ -1299,4 +1299,36 @@ Revue `security-review` passée sur l'ensemble du diff Phase 6 (backoffice SQLAd
 
 ---
 
+### 8.1 — Logs structurés séparés (`security`, `payment`, `app`)
+
+```bash
+docker compose up -d db
+source .venv/bin/activate
+export DB_HOST=127.0.0.1
+alembic upgrade head
+pytest tests/test_logging_config.py -v
+```
+→ attendu : `1 passed`.
+
+```bash
+# Full suite (regression check -- rate limit exception handler is now sync)
+pytest -q
+```
+→ attendu : `232 passed`.
+
+- **`app/core/logging_config.py::configure_logging()`** : 3 sinks fichiers `loguru` (`app.log`, `security.log`, `payment.log` dans `settings.log_dir`, défaut `"logs"`), chacun filtré sur `record["extra"]["channel"]` (`security`/`payment` liés, `app` = tout message non lié à un canal). `rotation="00:00"` (quotidien), `retention` = 90j `security` / 365j `payment` (imposé par la table 8.1) / 30j `app` (non spécifié dans la table, choix de housekeeping documenté en commentaire). Appelé une fois au chargement de `app/main.py`, avant la construction de l'app FastAPI.
+- **Événements ajoutés** (les bindings `channel=payment` du webhook/finalisation de ticket existaient déjà depuis 5.8) :
+  - `app/api/auth.py::login` — `security` `info` sur succès, `warning` sur échec (en plus de l'`AuditLog` DB déjà existant, qui sert un autre usage : verrouillage de compte).
+  - `app/deps/rbac.py::get_current_admin`/`require_permission` — `security` `warning` sur chaque 401 (pas de jeton / jeton invalide / sujet inconnu) et chaque 403 (permission manquante). La table roadmap parle de « 401/403 **répétés** » — pas de compteur de répétition dédié implémenté (pas de Redis sur ce projet), chaque occurrence est loggée individuellement ; la détection de motifs répétés se fait par lecture du fichier `security.log`.
+  - `app/api/user_me.py::get_current_participant` — même traitement côté participant (jeton bearer `users.access_token`), pour cohérence même si absent de la table roadmap (qui ne couvrait que le côté admin).
+  - `app/api/rbac.py::update_role_permissions` — `security` `info` à chaque modification de permissions d'un rôle (le projet n'a pas d'endpoint de création de compte admin, seedé en base uniquement — pas de point de log possible pour « création »).
+  - `app/services/storage.py::upload_file` — `security` `warning` sur les 3 causes de rejet (type non autorisé, taille excessive, contenu non identifiable comme image).
+  - `app/main.py` — le handler `RateLimitExceeded` (déjà présent depuis 7.3) loggue désormais en `security` `warning` avant de déléguer à `_rate_limit_exceeded_handler` de `slowapi` (qui est **synchrone**, pas `await`-able — piège rencontré en test : `TypeError: object JSONResponse can't be used in 'await' expression`).
+- **Docker** : `app/logs` créé + `chown app:app` dans les 2 stades (`runtime`, `dev`) avant le `USER app` — sans ça, le process non-root ne peut pas créer le dossier au premier démarrage. `docker-compose.prod.yml` monte un volume nommé `app_logs:/app/logs` pour que les fichiers (et donc la fenêtre de rétention) survivent aux recréations de conteneur. `.gitignore`/`.dockerignore` excluent `logs/`.
+- **Test** : `tests/test_logging_config.py` reconfigure les sinks vers un `tmp_path` (via `LOG_DIR` + `get_settings.cache_clear()`), émet un message sur chaque canal, vérifie qu'il atterrit dans le bon fichier et dans aucun autre — puis restaure la config par défaut pour ne pas polluer les tests suivants.
+
+- [x] 8.1 validé.
+
+---
+
 *(Les étapes suivantes seront ajoutées ici au fur et à mesure de leur implémentation.)*

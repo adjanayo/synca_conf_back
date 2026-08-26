@@ -1,5 +1,6 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
+from loguru import logger
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -20,15 +21,20 @@ async def get_current_admin(
         headers={"WWW-Authenticate": "Bearer"},
     )
     if token is None:
+        logger.bind(channel="security").warning("Accès admin refusé : aucun jeton fourni")
         raise credentials_error
 
     try:
         payload = decode_token(token, expected_type="access")
     except InvalidTokenError as exc:
+        logger.bind(channel="security").warning("Accès admin refusé : jeton invalide ou expiré")
         raise credentials_error from exc
 
     admin = await db.get(AdminUser, int(payload["sub"]))
     if admin is None:
+        logger.bind(channel="security").warning(
+            f"Accès admin refusé : sujet de jeton inconnu ({payload['sub']})"
+        )
         raise credentials_error
     return admin
 
@@ -47,6 +53,9 @@ def require_permission(code: str):
         ).scalar_one_or_none()
 
         if has_permission is None:
+            logger.bind(channel="security").warning(
+                f"Accès admin refusé : {admin.email} sans permission {code}"
+            )
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail=f"Permission manquante : {code}.",

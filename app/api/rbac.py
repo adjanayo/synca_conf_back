@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, status
+from loguru import logger
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,7 +19,7 @@ async def update_role_permissions(
     role_id: int,
     body: RoleUpdate,
     db: AsyncSession = Depends(get_db),
-    _admin: AdminUser = Depends(require_permission("roles.manage")),
+    admin: AdminUser = Depends(require_permission("roles.manage")),
 ) -> RoleWithPermissionsRead:
     role = await db.get(Role, role_id)
     if role is None:
@@ -49,6 +50,10 @@ async def update_role_permissions(
     for permission in permissions:
         db.add(RolePermission(role_id=role_id, permission_id=permission.id))
     await db.commit()
+
+    logger.bind(channel="security").info(
+        f"Rôle {role.name} modifié par {admin.email} : permissions = {sorted(found_codes)}"
+    )
 
     return RoleWithPermissionsRead(
         id=role.id, name=role.name, permission_codes=sorted(found_codes)
