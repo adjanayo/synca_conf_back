@@ -1,12 +1,12 @@
 # Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-08-30)
 
 ## Corpus Check
-- 150 files · ~142,028 words
+- 150 files · ~143,130 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 727 nodes · 1247 edges · 58 communities detected
-- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 389 edges (avg confidence: 0.76)
+- 727 nodes · 1248 edges · 58 communities detected
+- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 390 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -103,7 +103,7 @@ Nodes (64): AmbassadorStatusUpdate, ExhibitorStatusUpdate, PartnerStatusUpdate, 
 ### Community 1 - "Community 1"
 
 Cohesion: 0.04
-Nodes (45): Speaker, AuditLog, Base, CampaignWindow, ContactMessage, Faq, Base, DeclarativeBase (+37 more)
+Nodes (55): Speaker, AuditLog, Base, CampaignWindow, ContactMessage, Faq, Base, DeclarativeBase (+47 more)
 
 ### Community 2 - "Community 2"
 
@@ -142,18 +142,18 @@ Nodes (23): update_ambassador_status(), create_payment(), payment_webhook(), val
 
 ### Community 9 - "Community 9"
 
-Cohesion: 0.13
-Nodes (21): make_user(), test_null_special_needs_stays_null(), test_orm_read_returns_plaintext(), test_raw_db_row_is_not_plaintext(), make_pending_payment(), stripe_signature(), test_webhook_completes_payment_and_creates_ticket(), test_webhook_failed_status_marks_payment_failed() (+13 more)
+Cohesion: 0.14
+Nodes (15): main(), hash_password(), validate_password_strength(), verify_password(), WeakPasswordError, grant_permission(), make_admin(), test_any_authenticated_admin_can_read_contact_messages() (+7 more)
 
 ### Community 10 - "Community 10"
 
 Cohesion: 0.14
-Nodes (15): main(), hash_password(), validate_password_strength(), verify_password(), WeakPasswordError, grant_permission(), make_admin(), test_any_authenticated_admin_can_read_contact_messages() (+7 more)
+Nodes (15): Send a transactional email, or log it in dev.      Without RESEND_API_KEY config, send_email(), _mock_response(), test_send_email_calls_resend_when_key_configured(), test_send_email_logs_in_dev_without_key(), test_send_email_raises_on_resend_error(), make_ticket(), test_finalize_ticket_is_idempotent_when_already_finalized() (+7 more)
 
 ### Community 11 - "Community 11"
 
-Cohesion: 0.14
-Nodes (15): Send a transactional email, or log it in dev.      Without RESEND_API_KEY config, send_email(), _mock_response(), test_send_email_calls_resend_when_key_configured(), test_send_email_logs_in_dev_without_key(), test_send_email_raises_on_resend_error(), make_ticket(), test_finalize_ticket_is_idempotent_when_already_finalized() (+7 more)
+Cohesion: 0.26
+Nodes (11): make_pending_payment(), stripe_signature(), test_webhook_completes_payment_and_creates_ticket(), test_webhook_failed_status_marks_payment_failed(), test_webhook_increments_promo_usage_count_on_completion(), test_webhook_invalid_signature_401(), test_webhook_rejects_transaction_ref_reused_on_other_payment(), test_webhook_replay_is_idempotent() (+3 more)
 
 ### Community 12 - "Community 12"
 

@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

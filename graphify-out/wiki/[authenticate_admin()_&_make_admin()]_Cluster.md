@@ -42,7 +42,7 @@ classDiagram
 
 ## Relationships
 
-- [[[PassType & register_payload()] Cluster]] (3 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

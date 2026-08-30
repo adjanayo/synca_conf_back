@@ -441,7 +441,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_core_security_py",
-      "community": 10,
+      "community": 9,
       "norm_label": "security.py"
     },
     {
@@ -458,7 +458,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "security_weakpassworderror",
-      "community": 10,
+      "community": 9,
       "norm_label": "weakpassworderror"
     },
     {
@@ -484,11 +484,11 @@
       "loc": 15,
       "level": 1,
       "granularity": "low",
-      "heat": 0.347,
+      "heat": 0.351,
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "security_validate_password_strength",
-      "community": 10,
+      "community": 9,
       "norm_label": "validate_password_strength()"
     },
     {
@@ -505,7 +505,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "security_hash_password",
-      "community": 10,
+      "community": 9,
       "norm_label": "hash_password()"
     },
     {
@@ -522,7 +522,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "security_verify_password",
-      "community": 10,
+      "community": 9,
       "norm_label": "verify_password()"
     },
     {
@@ -1225,7 +1225,7 @@
       "heat": 0.088,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_models_users_py",
-      "community": 9,
+      "community": 1,
       "norm_label": "users.py"
     },
     {
@@ -1241,7 +1241,7 @@
       "heat": 0.232,
       "owner": "unowned",
       "id": "users_user",
-      "community": 9,
+      "community": 1,
       "norm_label": "user"
     },
     {
@@ -1257,7 +1257,7 @@
       "heat": 0.129,
       "owner": "unowned",
       "id": "users_userprofile",
-      "community": 9,
+      "community": 1,
       "norm_label": "userprofile"
     },
     {
@@ -1639,11 +1639,11 @@
       "loc": 1,
       "level": 3,
       "granularity": "low",
-      "heat": 0.058,
+      "heat": 0.071,
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_cli_create_admin_py",
-      "community": 10,
+      "community": 9,
       "norm_label": "create_admin.py"
     },
     {
@@ -1651,16 +1651,16 @@
       "file_type": "code",
       "type": "FUNCTION",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/cli/create_admin.py",
-      "source_location": "L12",
-      "complexity": 2,
-      "loc": 25,
+      "source_location": "L16",
+      "complexity": 3,
+      "loc": 30,
       "level": 0,
       "granularity": "low",
-      "heat": 0.152,
+      "heat": 0.217,
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "create_admin_main",
-      "community": 10,
+      "community": 9,
       "norm_label": "main()"
     },
     {
@@ -4183,7 +4183,7 @@
       "heat": 0.071,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_ticket_finalization_py",
-      "community": 11,
+      "community": 10,
       "norm_label": "ticket_finalization.py"
     },
     {
@@ -4199,7 +4199,7 @@
       "heat": 0.241,
       "owner": "unowned",
       "id": "ticket_finalization_finalize_ticket",
-      "community": 11,
+      "community": 10,
       "norm_label": "finalize_ticket()"
     },
     {
@@ -4211,7 +4211,7 @@
       "granularity": "low",
       "heat": 0.071,
       "owner": "unowned",
-      "community": 11,
+      "community": 10,
       "norm_label": "generate the ticket's pdf+qr, upload it, and email it.      runs as a background",
       "id": "ticket_finalization_rationale_11"
     },
@@ -4276,7 +4276,7 @@
       "heat": 0.092,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_ticket_pdf_py",
-      "community": 11,
+      "community": 10,
       "norm_label": "ticket_pdf.py"
     },
     {
@@ -4292,7 +4292,7 @@
       "heat": 0.094,
       "owner": "unowned",
       "id": "ticket_pdf_render_qr_png",
-      "community": 11,
+      "community": 10,
       "norm_label": "_render_qr_png()"
     },
     {
@@ -4308,7 +4308,7 @@
       "heat": 0.229,
       "owner": "unowned",
       "id": "ticket_pdf_render_ticket_pdf",
-      "community": 11,
+      "community": 10,
       "norm_label": "_render_ticket_pdf()"
     },
     {
@@ -4324,7 +4324,7 @@
       "heat": 0.103,
       "owner": "unowned",
       "id": "ticket_pdf_generate_and_upload_ticket_pdf",
-      "community": 11,
+      "community": 10,
       "norm_label": "generate_and_upload_ticket_pdf()"
     },
     {
@@ -4446,7 +4446,7 @@
       "heat": 0.058,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_email_service_py",
-      "community": 11,
+      "community": 10,
       "norm_label": "email_service.py"
     },
     {
@@ -4462,7 +4462,7 @@
       "heat": 0.163,
       "owner": "unowned",
       "id": "email_service_send_email",
-      "community": 11,
+      "community": 10,
       "norm_label": "send_email()"
     },
     {
@@ -4474,7 +4474,7 @@
       "granularity": "low",
       "heat": 0.058,
       "owner": "unowned",
-      "community": 11,
+      "community": 10,
       "norm_label": "send a transactional email, or log it in dev.      without resend_api_key config",
       "id": "email_service_rationale_10"
     },
@@ -5110,7 +5110,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_crypto_py",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_crypto.py"
     },
     {
@@ -5127,7 +5127,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_crypto_make_user",
-      "community": 9,
+      "community": 1,
       "norm_label": "make_user()"
     },
     {
@@ -5144,7 +5144,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_crypto_test_orm_read_returns_plaintext",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_orm_read_returns_plaintext()"
     },
     {
@@ -5161,7 +5161,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_crypto_test_raw_db_row_is_not_plaintext",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_raw_db_row_is_not_plaintext()"
     },
     {
@@ -5178,7 +5178,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_crypto_test_null_special_needs_stays_null",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_null_special_needs_stays_null()"
     },
     {
@@ -5194,7 +5194,7 @@
       "heat": 0.075,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_ticket_finalization_py",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_ticket_finalization.py"
     },
     {
@@ -5210,7 +5210,7 @@
       "heat": 0.144,
       "owner": "unowned",
       "id": "test_ticket_finalization_make_ticket",
-      "community": 11,
+      "community": 10,
       "norm_label": "make_ticket()"
     },
     {
@@ -5226,7 +5226,7 @@
       "heat": 0.074,
       "owner": "unowned",
       "id": "test_ticket_finalization_use_test_session",
-      "community": 11,
+      "community": 10,
       "norm_label": "_use_test_session()"
     },
     {
@@ -5242,7 +5242,7 @@
       "heat": 0.111,
       "owner": "unowned",
       "id": "test_ticket_finalization_test_finalize_ticket_sets_pdf_url_and_sends_email",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_finalize_ticket_sets_pdf_url_and_sends_email()"
     },
     {
@@ -5258,7 +5258,7 @@
       "heat": 0.102,
       "owner": "unowned",
       "id": "test_ticket_finalization_test_finalize_ticket_is_idempotent_when_already_finalized",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_finalize_ticket_is_idempotent_when_already_finalized()"
     },
     {
@@ -5274,7 +5274,7 @@
       "heat": 0.085,
       "owner": "unowned",
       "id": "test_ticket_finalization_test_finalize_ticket_noops_on_missing_ticket",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_finalize_ticket_noops_on_missing_ticket()"
     },
     {
@@ -5444,7 +5444,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_security_py",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_security.py"
     },
     {
@@ -5461,7 +5461,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_security_test_hash_and_verify_roundtrip",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_hash_and_verify_roundtrip()"
     },
     {
@@ -5478,7 +5478,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_security_test_verify_wrong_password_fails",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_verify_wrong_password_fails()"
     },
     {
@@ -5495,7 +5495,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_security_test_validate_password_strength_rejects_weak_passwords",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_validate_password_strength_rejects_weak_passwords()"
     },
     {
@@ -5512,7 +5512,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_security_test_validate_password_strength_accepts_strong_password",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_validate_password_strength_accepts_strong_password()"
     },
     {
@@ -6251,7 +6251,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_payments_webhook_py",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_payments_webhook.py"
     },
     {
@@ -6268,7 +6268,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_client",
-      "community": 9,
+      "community": 11,
       "norm_label": "client()"
     },
     {
@@ -6285,7 +6285,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_webhook_secrets",
-      "community": 9,
+      "community": 11,
       "norm_label": "_webhook_secrets()"
     },
     {
@@ -6302,7 +6302,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_stub_finalize_ticket",
-      "community": 9,
+      "community": 11,
       "norm_label": "_stub_finalize_ticket()"
     },
     {
@@ -6319,7 +6319,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_make_pending_payment",
-      "community": 9,
+      "community": 11,
       "norm_label": "make_pending_payment()"
     },
     {
@@ -6336,7 +6336,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_wave_signature",
-      "community": 9,
+      "community": 11,
       "norm_label": "wave_signature()"
     },
     {
@@ -6353,7 +6353,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_stripe_signature",
-      "community": 9,
+      "community": 11,
       "norm_label": "stripe_signature()"
     },
     {
@@ -6370,7 +6370,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_invalid_signature_401",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_invalid_signature_401()"
     },
     {
@@ -6387,7 +6387,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_completes_payment_and_creates_ticket",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_completes_payment_and_creates_ticket()"
     },
     {
@@ -6404,7 +6404,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_replay_is_idempotent",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_replay_is_idempotent()"
     },
     {
@@ -6421,7 +6421,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_failed_status_marks_payment_failed",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_failed_status_marks_payment_failed()"
     },
     {
@@ -6438,7 +6438,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_unknown_payment_404",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_unknown_payment_404()"
     },
     {
@@ -6455,7 +6455,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_stripe_valid_signature_accepted",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_stripe_valid_signature_accepted()"
     },
     {
@@ -6472,7 +6472,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_rejects_transaction_ref_reused_on_other_payment",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_rejects_transaction_ref_reused_on_other_payment()"
     },
     {
@@ -6489,7 +6489,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_payments_webhook_test_webhook_increments_promo_usage_count_on_completion",
-      "community": 9,
+      "community": 11,
       "norm_label": "test_webhook_increments_promo_usage_count_on_completion()"
     },
     {
@@ -9413,7 +9413,7 @@
       "heat": 0.071,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_email_service_py",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_email_service.py"
     },
     {
@@ -9429,7 +9429,7 @@
       "heat": 0.066,
       "owner": "unowned",
       "id": "test_email_service_test_send_email_logs_in_dev_without_key",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_send_email_logs_in_dev_without_key()"
     },
     {
@@ -9445,7 +9445,7 @@
       "heat": 0.069,
       "owner": "unowned",
       "id": "test_email_service_mock_response",
-      "community": 11,
+      "community": 10,
       "norm_label": "_mock_response()"
     },
     {
@@ -9461,7 +9461,7 @@
       "heat": 0.092,
       "owner": "unowned",
       "id": "test_email_service_test_send_email_calls_resend_when_key_configured",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_send_email_calls_resend_when_key_configured()"
     },
     {
@@ -9477,7 +9477,7 @@
       "heat": 0.085,
       "owner": "unowned",
       "id": "test_email_service_test_send_email_raises_on_resend_error",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_send_email_raises_on_resend_error()"
     },
     {
@@ -9541,7 +9541,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_users_py",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_users.py"
     },
     {
@@ -9557,7 +9557,7 @@
       "heat": 0.091,
       "owner": "unowned",
       "id": "test_users_make_user",
-      "community": 9,
+      "community": 1,
       "norm_label": "make_user()"
     },
     {
@@ -9573,7 +9573,7 @@
       "heat": 0.073,
       "owner": "unowned",
       "id": "test_users_test_user_email_unique",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_user_email_unique()"
     },
     {
@@ -9589,7 +9589,7 @@
       "heat": 0.084,
       "owner": "unowned",
       "id": "test_users_test_user_profile_unique_pair",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_user_profile_unique_pair()"
     },
     {
@@ -9760,12 +9760,12 @@
       "source_location": "L83",
       "complexity": 1,
       "loc": 14,
-      "level": 1,
+      "level": 2,
       "granularity": "low",
       "heat": 0.089,
       "owner": "unowned",
       "id": "test_schemas_test_user_and_profile_read",
-      "community": 9,
+      "community": 1,
       "norm_label": "test_user_and_profile_read()"
     },
     {
@@ -10365,7 +10365,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_admin_panel_py",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_admin_panel.py"
     },
     {
@@ -10382,7 +10382,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_make_admin",
-      "community": 10,
+      "community": 9,
       "norm_label": "make_admin()"
     },
     {
@@ -10399,7 +10399,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_grant_permission",
-      "community": 10,
+      "community": 9,
       "norm_label": "grant_permission()"
     },
     {
@@ -10416,7 +10416,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_dispose_global_engine",
-      "community": 10,
+      "community": 9,
       "norm_label": "_dispose_global_engine()"
     },
     {
@@ -10433,7 +10433,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_client",
-      "community": 10,
+      "community": 9,
       "norm_label": "client()"
     },
     {
@@ -10450,7 +10450,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_login_success_grants_access_to_a_permitted_view",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_login_success_grants_access_to_a_permitted_view()"
     },
     {
@@ -10467,7 +10467,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_login_wrong_password_is_rejected",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_login_wrong_password_is_rejected()"
     },
     {
@@ -10484,7 +10484,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_role_without_permission_gets_403_on_gated_view",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_role_without_permission_gets_403_on_gated_view()"
     },
     {
@@ -10501,7 +10501,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_any_authenticated_admin_can_read_contact_messages",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_any_authenticated_admin_can_read_contact_messages()"
     },
     {
@@ -10518,7 +10518,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_unauthenticated_request_redirects_to_login",
-      "community": 10,
+      "community": 9,
       "norm_label": "test_unauthenticated_request_redirects_to_login()"
     },
     {
@@ -11997,8 +11997,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/cli/create_admin.py",
       "source_location": "L13",
       "weight": 1.0,
-      "_src": "create_admin_main",
-      "_tgt": "config_get_settings",
+      "_src": "config_get_settings",
+      "_tgt": "create_admin_main",
       "source": "config_get_settings",
       "target": "create_admin_main"
     },
@@ -12750,6 +12750,18 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/cli/create_admin.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "create_admin_main",
+      "_tgt": "security_validate_password_strength",
+      "source": "security_validate_password_strength",
+      "target": "create_admin_main"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security.py",
       "source_location": "L34",
       "weight": 1.0,
@@ -12777,8 +12789,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/cli/create_admin.py",
       "source_location": "L31",
       "weight": 1.0,
-      "_src": "create_admin_main",
-      "_tgt": "security_hash_password",
+      "_src": "security_hash_password",
+      "_tgt": "create_admin_main",
       "source": "security_hash_password",
       "target": "create_admin_main"
     },
@@ -15369,8 +15381,8 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/cli/create_admin.py",
       "source_location": "L29",
       "weight": 1.0,
-      "_src": "create_admin_main",
-      "_tgt": "rbac_adminuser",
+      "_src": "rbac_adminuser",
+      "_tgt": "create_admin_main",
       "source": "rbac_adminuser",
       "target": "create_admin_main"
     },
@@ -16266,7 +16278,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/cli/create_admin.py",
-      "source_location": "L12",
+      "source_location": "L16",
       "weight": 1.0,
       "_src": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_cli_create_admin_py",
       "_tgt": "create_admin_main",

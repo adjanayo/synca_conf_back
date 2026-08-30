@@ -66,9 +66,9 @@ sequenceDiagram
     participant P57 as make_admin_with_role()
     participant P58 as test_admin_endpoint_limited_to_30_per_minute()
     participant P59 as make_admin_with_role()
-    participant P60 as make_admin()
-    participant P61 as test_rbac_read()
-    participant P62 as main()
+    participant P60 as main()
+    participant P61 as make_admin()
+    participant P62 as test_rbac_read()
     participant P63 as test_admin_user_requires_permission_only_superadmin()
     P0->>+ P1: uses
     P1-->>- P0: return
@@ -223,9 +223,9 @@ sequenceDiagram
 - [[make_admin_with_role()]] `INFERRED`
 - [[test_admin_endpoint_limited_to_30_per_minute()]] `INFERRED`
 - [[make_admin_with_role()]] `INFERRED`
+- [[main()]] `INFERRED`
 - [[make_admin()]] `INFERRED`
 - [[test_rbac_read()]] `INFERRED`
-- [[main()]] `INFERRED`
 - [[test_admin_user_requires_permission_only_superadmin()]] `INFERRED`
 
 ### contains

@@ -47,7 +47,7 @@ classDiagram
 
 ## Relationships
 
-- [[[authenticate_admin() & make_admin()] Cluster]] (3 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

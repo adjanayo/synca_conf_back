@@ -29,9 +29,9 @@ sequenceDiagram
     participant P20 as verify_recaptcha()
     participant P21 as payment_webhook()
     participant P22 as send_email()
-    participant P23 as configure_logging()
-    participant P24 as build_admin_auth()
-    participant P25 as main()
+    participant P23 as main()
+    participant P24 as configure_logging()
+    participant P25 as build_admin_auth()
     participant P26 as _render_ticket_pdf()
     participant P27 as Settings
     participant P28 as _client()
@@ -132,9 +132,9 @@ sequenceDiagram
 - [[verify_recaptcha()]] `INFERRED`
 - [[payment_webhook()]] `INFERRED`
 - [[send_email()]] `INFERRED`
+- [[main()]] `INFERRED`
 - [[configure_logging()]] `INFERRED`
 - [[build_admin_auth()]] `INFERRED`
-- [[main()]] `INFERRED`
 - [[_render_ticket_pdf()]] `INFERRED`
 - [[Settings]] `EXTRACTED`
 - [[_client()]] `INFERRED`
