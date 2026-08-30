@@ -31,6 +31,14 @@ class Settings(BaseSettings):
     # `python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"`.
     fernet_key: str
 
+    # Initial superadmin bootstrap (app/cli/create_admin.py). No defaults on
+    # purpose -- same rationale as JWT_SECRET_KEY/FERNET_KEY: a hardcoded
+    # fallback would let any deployment forget to set these and silently get a
+    # known admin credential. Dev/CI set ADMIN_EMAIL/ADMIN_PASSWORD in .env;
+    # production must set real credentials.
+    admin_email: str = ""
+    admin_password: str = ""
+
     # Empty by default -- app/services/recaptcha.py treats an empty key as
     # "not configured" and skips verification (local dev/CI has no real
     # Google reCAPTCHA credentials). Production must set a real key.

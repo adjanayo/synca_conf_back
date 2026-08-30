@@ -38,19 +38,7 @@ db-shell: ## Ouvrir un shell MySQL sur la base syncaconf
 # ── Admin ──────────────────────────────────────────────────
 
 create-admin: ## Créer un compte superadmin (admin@synca.conf / ChangeMe123!)
-	$(APP) python3 -c "\
-import asyncio; \
-from app.core.database import AsyncSessionLocal; \
-from app.core.security import hash_password; \
-from app.models import AdminUser, Role; \
-from sqlalchemy import select; \
-async def main(): \
-    async with AsyncSessionLocal() as db: \
-        role = (await db.execute(select(Role).where(Role.name == 'superadmin'))).scalar_one(); \
-        db.add(AdminUser(email='admin@synca.conf', password_hash=hash_password('ChangeMe123!'), role_id=role.id)); \
-        await db.commit(); \
-        print('Compte créé : admin@synca.conf / ChangeMe123!'); \
-asyncio.run(main())"
+	$(APP) python3 -m app.cli.create_admin
 
 login: ## Retourne un token admin (pour usage dans d'autres commandes)
 	@curl -s -X POST $(API)/api/admin/login \
