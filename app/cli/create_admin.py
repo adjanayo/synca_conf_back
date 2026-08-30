@@ -5,7 +5,11 @@ from sqlalchemy import select
 
 from app.core.config import get_settings
 from app.core.database import AsyncSessionLocal
-from app.core.security import hash_password
+from app.core.security import (
+    WeakPasswordError,
+    hash_password,
+    validate_password_strength,
+)
 from app.models import AdminUser, Role
 
 
@@ -19,6 +23,11 @@ async def main() -> None:
             "(via .env ou l'environnement).",
             file=sys.stderr,
         )
+        raise SystemExit(1)
+    try:
+        validate_password_strength(password)
+    except WeakPasswordError as exc:
+        print(f"Erreur : ADMIN_PASSWORD invalide — {exc}", file=sys.stderr)
         raise SystemExit(1)
 
     async with AsyncSessionLocal() as db:

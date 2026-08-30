@@ -9,8 +9,10 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 tests/
+tests_e2e/
 docs/
 *.md
+app/cli/
 .env
 .env.*
 !.env.example
