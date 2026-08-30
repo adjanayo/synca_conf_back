@@ -8,8 +8,10 @@ from starlette.responses import Response
 # fully locked-down CSP.
 _UI_PATH_PREFIXES = ("/admin", "/docs", "/redoc", "/openapi.json")
 _UI_CSP = (
-    "default-src 'self'; script-src 'self' 'unsafe-inline'; "
-    "style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
+    "default-src 'self'; "
+    "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+    "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+    "img-src 'self' data: https://fastapi.tiangolo.com; "
     "font-src 'self' data:; frame-ancestors 'none'"
 )
 _API_CSP = "default-src 'none'; frame-ancestors 'none'"
