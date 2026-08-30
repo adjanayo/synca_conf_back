@@ -157,10 +157,10 @@ sequenceDiagram
     P38-->>- P0: return
     P0->>+ P2: uses
     P2-->>- P0: return
-    P0->>+ P16: uses
-    P16-->>- P0: return
     P0->>+ P39: uses
     P39-->>- P0: return
+    P0->>+ P16: uses
+    P16-->>- P0: return
     P0->>+ P40: uses
     P40-->>- P0: return
     P0->>+ P41: uses
@@ -218,8 +218,8 @@ sequenceDiagram
 - [[User]] `INFERRED`
 - [[Role]] `INFERRED`
 - [[PromoCode]] `INFERRED`
-- [[Payment]] `INFERRED`
 - [[AdminUser]] `INFERRED`
+- [[Payment]] `INFERRED`
 - [[PartnerLevel]] `INFERRED`
 - [[RolePermission]] `INFERRED`
 - [[Permission]] `INFERRED`

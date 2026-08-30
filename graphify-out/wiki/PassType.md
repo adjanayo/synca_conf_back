@@ -27,8 +27,8 @@ sequenceDiagram
     participant P18 as test_null_special_needs_stays_null()
     participant P19 as Role
     participant P20 as PromoCode
-    participant P21 as Payment
-    participant P22 as AdminUser
+    participant P21 as AdminUser
+    participant P22 as Payment
     participant P23 as PartnerLevel
     participant P24 as RolePermission
     participant P25 as Permission
@@ -156,8 +156,8 @@ sequenceDiagram
     P43-->>- P1: return
     P0->>+ P20: uses
     P20-->>- P0: return
-    P0->>+ P21: uses
-    P21-->>- P0: return
+    P0->>+ P22: uses
+    P22-->>- P0: return
     P0->>+ P27: uses
     P27-->>- P0: return
     P0->>+ P3: calls

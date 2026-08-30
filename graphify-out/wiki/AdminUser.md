@@ -1,6 +1,6 @@
 # AdminUser
 
-> God node · 16 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py#L39)
+> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py#L39)
 
 ## Call Trace Diagram
 
@@ -68,7 +68,8 @@ sequenceDiagram
     participant P59 as make_admin_with_role()
     participant P60 as make_admin()
     participant P61 as test_rbac_read()
-    participant P62 as test_admin_user_requires_permission_only_superadmin()
+    participant P62 as main()
+    participant P63 as test_admin_user_requires_permission_only_superadmin()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -133,10 +134,10 @@ sequenceDiagram
     P30-->>- P1: return
     P1->>+ P3: uses
     P3-->>- P1: return
-    P1->>+ P4: uses
-    P4-->>- P1: return
     P1->>+ P0: uses
     P0-->>- P1: return
+    P1->>+ P4: uses
+    P4-->>- P1: return
     P1->>+ P31: uses
     P31-->>- P1: return
     P1->>+ P32: uses
@@ -205,6 +206,8 @@ sequenceDiagram
     P61-->>- P0: return
     P0->>+ P62: calls
     P62-->>- P0: return
+    P0->>+ P63: calls
+    P63-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -222,6 +225,7 @@ sequenceDiagram
 - [[make_admin_with_role()]] `INFERRED`
 - [[make_admin()]] `INFERRED`
 - [[test_rbac_read()]] `INFERRED`
+- [[main()]] `INFERRED`
 - [[test_admin_user_requires_permission_only_superadmin()]] `INFERRED`
 
 ### contains

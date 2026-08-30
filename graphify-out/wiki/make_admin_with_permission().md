@@ -12,8 +12,8 @@ sequenceDiagram
     participant P3 as PassType
     participant P4 as User
     participant P5 as PromoCode
-    participant P6 as Payment
-    participant P7 as AdminUser
+    participant P6 as AdminUser
+    participant P7 as Payment
     participant P8 as PartnerLevel
     participant P9 as RolePermission
     participant P10 as Permission
@@ -153,8 +153,8 @@ sequenceDiagram
     P42-->>- P1: return
     P1->>+ P43: calls
     P43-->>- P1: return
-    P0->>+ P7: calls
-    P7-->>- P0: return
+    P0->>+ P6: calls
+    P6-->>- P0: return
     P0->>+ P9: calls
     P9-->>- P0: return
     P0->>+ P10: calls

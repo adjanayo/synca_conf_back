@@ -1,6 +1,6 @@
 # get_settings()
 
-> God node · 16 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L93)
+> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L101)
 
 ## Call Trace Diagram
 
@@ -31,15 +31,16 @@ sequenceDiagram
     participant P22 as send_email()
     participant P23 as configure_logging()
     participant P24 as build_admin_auth()
-    participant P25 as _render_ticket_pdf()
-    participant P26 as Settings
-    participant P27 as _client()
-    participant P28 as test_expired_token_rejected()
-    participant P29 as .process_bind_param()
-    participant P30 as .process_result_value()
-    participant P31 as db_session()
-    participant P32 as upgrade()
-    participant P33 as downgrade()
+    participant P25 as main()
+    participant P26 as _render_ticket_pdf()
+    participant P27 as Settings
+    participant P28 as _client()
+    participant P29 as test_expired_token_rejected()
+    participant P30 as .process_bind_param()
+    participant P31 as .process_result_value()
+    participant P32 as db_session()
+    participant P33 as upgrade()
+    participant P34 as downgrade()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P0: calls
@@ -120,6 +121,8 @@ sequenceDiagram
     P32-->>- P0: return
     P0->>+ P33: calls
     P33-->>- P0: return
+    P0->>+ P34: calls
+    P34-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -131,6 +134,7 @@ sequenceDiagram
 - [[send_email()]] `INFERRED`
 - [[configure_logging()]] `INFERRED`
 - [[build_admin_auth()]] `INFERRED`
+- [[main()]] `INFERRED`
 - [[_render_ticket_pdf()]] `INFERRED`
 - [[Settings]] `EXTRACTED`
 - [[_client()]] `INFERRED`
