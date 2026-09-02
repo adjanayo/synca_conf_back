@@ -6,7 +6,7 @@ from app.models.newsletter import NewsletterSubscriber
 from app.models.otp import OtpCode
 from app.models.payments import Payment, PromoCode, Ticket, Waitlist
 from app.models.rbac import AdminUser, Permission, Role, RolePermission
-from app.models.referentials import Day, FaqCategory, PartnerLevel, PassType
+from app.models.referentials import Day, EventSettings, FaqCategory, PartnerLevel, PassType
 from app.models.sessions import Session
 from app.models.users import User, UserProfile
 
@@ -17,6 +17,7 @@ __all__ = [
     "CampaignWindow",
     "ContactMessage",
     "Day",
+    "EventSettings",
     "Exhibitor",
     "Faq",
     "FaqCategory",
