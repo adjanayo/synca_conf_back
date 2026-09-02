@@ -62,8 +62,8 @@ sequenceDiagram
     participant P53 as Faq
     participant P54 as UserProfile
     participant P55 as OtpCode
-    participant P56 as AuditLog
-    participant P57 as CampaignWindow
+    participant P56 as CampaignWindow
+    participant P57 as AuditLog
     participant P58 as NewsletterSubscriber
     participant P59 as EventSettings
     participant P60 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa

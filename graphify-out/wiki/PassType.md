@@ -46,8 +46,8 @@ sequenceDiagram
     participant P37 as Waitlist
     participant P38 as UserProfile
     participant P39 as OtpCode
-    participant P40 as AuditLog
-    participant P41 as CampaignWindow
+    participant P40 as CampaignWindow
+    participant P41 as AuditLog
     participant P42 as NewsletterSubscriber
     participant P43 as EventSettings
     participant P44 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa

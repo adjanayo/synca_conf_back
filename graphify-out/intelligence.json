@@ -1,13 +1,13 @@
 {
   "hotspots": [
     {
-      "label": "payment_webhook()",
+      "label": "update_session()",
       "risk": 0.504,
       "type": "FUNCTION"
     },
     {
-      "label": "update_session()",
-      "risk": 0.504,
+      "label": "payment_webhook()",
+      "risk": 0.502,
       "type": "FUNCTION"
     },
     {
@@ -17,12 +17,12 @@
     },
     {
       "label": "register()",
-      "risk": 0.369,
+      "risk": 0.363,
       "type": "FUNCTION"
     },
     {
       "label": "authenticate_admin()",
-      "risk": 0.348,
+      "risk": 0.346,
       "type": "FUNCTION"
     }
   ],

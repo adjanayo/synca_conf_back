@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L38) (1 connections)
-- [otp_codes table (participant OTP login)  Revision ID: 75418b933d4f Revises: d7d5](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L21) (1 connections)
+- [2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L62) (1 connections)
+- [admin_users.status column + admin_users.manage permission  Revision ID: 9c1e2f4a](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L25) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[users and user_profiles  Revision ID: 86b8fb32827d Revises: e15b192c81f5 Create]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py)
 
 ## Audit Trail
 

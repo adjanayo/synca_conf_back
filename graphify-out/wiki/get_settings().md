@@ -1,6 +1,6 @@
 # get_settings()
 
-> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L106)
+> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L114)
 
 ## Call Trace Diagram
 

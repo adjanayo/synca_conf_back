@@ -1,18 +1,19 @@
 # [require_open_campaign() & set_window()] Cluster
 
-> 9 nodes · cohesion 0.47
+> 10 nodes · cohesion 0.36
 
 ## Key Concepts
 
-- [test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L1) (8 connections)
-- [payload()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L35) (6 connections)
-- [open_call_for_ambassador()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L22) (5 connections)
-- [test_ambassador_apply_empty_channels_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L89) (3 connections)
-- [test_ambassador_apply_missing_gdpr_consent_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L102) (3 connections)
-- [test_ambassador_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L63) (3 connections)
-- [test_ambassador_apply_under_age_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L77) (3 connections)
-- [test_ambassador_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L55) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L13) (1 connections)
+- [make_admin_with_role()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L10) (6 connections)
+- [test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L1) (6 connections)
+- [get_current_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L14) (5 connections)
+- [test_require_permission_granted()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L49) (5 connections)
+- [test_get_current_admin_valid_token()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L26) (4 connections)
+- [require_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L47) (3 connections)
+- [test_require_permission_denied_returns_403()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L63) (3 connections)
+- [test_get_current_admin_invalid_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L42) (2 connections)
+- [test_get_current_admin_missing_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L35) (2 connections)
+- [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L1) (2 connections)
 
 ## Relationships
 
@@ -20,12 +21,13 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py)
 
 ## Audit Trail
 
-- EXTRACTED: 34 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 22 (58%)
+- INFERRED: 16 (42%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -30,8 +30,8 @@ sequenceDiagram
     participant P21 as Waitlist
     participant P22 as UserProfile
     participant P23 as OtpCode
-    participant P24 as AuditLog
-    participant P25 as CampaignWindow
+    participant P24 as CampaignWindow
+    participant P25 as AuditLog
     participant P26 as NewsletterSubscriber
     participant P27 as EventSettings
     participant P28 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
