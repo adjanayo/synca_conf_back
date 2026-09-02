@@ -18,6 +18,25 @@ class PromoCodeRead(BaseModel):
     created_at: datetime.datetime
 
 
+class PromoCodeCreate(BaseModel):
+    code: str
+    discount_pct: int = 0
+    discount_fixed: int | None = None
+    usage_limit: int | None = None
+    valid_from: datetime.date | None = None
+    valid_until: datetime.date | None = None
+    is_active: bool = True
+
+
+class PromoCodeUpdate(BaseModel):
+    discount_pct: int | None = None
+    discount_fixed: int | None = None
+    usage_limit: int | None = None
+    valid_from: datetime.date | None = None
+    valid_until: datetime.date | None = None
+    is_active: bool | None = None
+
+
 class PaymentRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
