@@ -1,6 +1,6 @@
 # Base
 
-> God node · 31 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
+> God node · 32 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
 
 ## Call Trace Diagram
 
@@ -39,34 +39,36 @@ sequenceDiagram
     participant P30 as make_user_and_pass_type()
     participant P31 as test_create_payment_success_no_promo()
     participant P32 as test_create_payment_invalid_promo_400()
-    participant P33 as test_list_pass_types_excludes_inactive()
-    participant P34 as test_pass_type_defaults()
-    participant P35 as test_create_payment_invalid_user_400()
-    participant P36 as test_pass_type_read()
-    participant P37 as User
-    participant P38 as Role
-    participant P39 as AdminUser
-    participant P40 as PartnerLevel
-    participant P41 as RolePermission
-    participant P42 as Permission
-    participant P43 as Speaker
-    participant P44 as Partner
-    participant P45 as FaqCategory
-    participant P46 as Exhibitor
-    participant P47 as ContactMessage
-    participant P48 as Day
-    participant P49 as Session
-    participant P50 as Ambassador
-    participant P51 as Faq
-    participant P52 as UserProfile
-    participant P53 as OtpCode
-    participant P54 as AuditLog
-    participant P55 as CampaignWindow
-    participant P56 as NewsletterSubscriber
-    participant P57 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P58 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P59 as In this scenario we need to create an Engine     and associate a connection with
-    participant P60 as Run migrations in 'online' mode.
+    participant P33 as create_pass_type()
+    participant P34 as test_list_pass_types_excludes_inactive()
+    participant P35 as test_pass_type_defaults()
+    participant P36 as test_create_payment_invalid_user_400()
+    participant P37 as test_pass_type_read()
+    participant P38 as User
+    participant P39 as Role
+    participant P40 as AdminUser
+    participant P41 as PartnerLevel
+    participant P42 as RolePermission
+    participant P43 as Permission
+    participant P44 as Speaker
+    participant P45 as Partner
+    participant P46 as Day
+    participant P47 as FaqCategory
+    participant P48 as Session
+    participant P49 as Exhibitor
+    participant P50 as ContactMessage
+    participant P51 as Ambassador
+    participant P52 as Faq
+    participant P53 as UserProfile
+    participant P54 as OtpCode
+    participant P55 as AuditLog
+    participant P56 as CampaignWindow
+    participant P57 as NewsletterSubscriber
+    participant P58 as EventSettings
+    participant P59 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P60 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P61 as In this scenario we need to create an Engine     and associate a connection with
+    participant P62 as Run migrations in 'online' mode.
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -153,28 +155,28 @@ sequenceDiagram
     P35-->>- P1: return
     P1->>+ P36: calls
     P36-->>- P1: return
-    P0->>+ P37: uses
-    P37-->>- P0: return
+    P1->>+ P37: calls
+    P37-->>- P1: return
     P0->>+ P38: uses
     P38-->>- P0: return
     P0->>+ P39: uses
     P39-->>- P0: return
+    P0->>+ P40: uses
+    P40-->>- P0: return
     P0->>+ P2: uses
     P2-->>- P0: return
     P0->>+ P16: uses
     P16-->>- P0: return
-    P0->>+ P40: uses
-    P40-->>- P0: return
     P0->>+ P41: uses
     P41-->>- P0: return
     P0->>+ P42: uses
     P42-->>- P0: return
     P0->>+ P43: uses
     P43-->>- P0: return
-    P0->>+ P17: uses
-    P17-->>- P0: return
     P0->>+ P44: uses
     P44-->>- P0: return
+    P0->>+ P17: uses
+    P17-->>- P0: return
     P0->>+ P45: uses
     P45-->>- P0: return
     P0->>+ P46: uses
@@ -189,10 +191,10 @@ sequenceDiagram
     P50-->>- P0: return
     P0->>+ P51: uses
     P51-->>- P0: return
-    P0->>+ P19: uses
-    P19-->>- P0: return
     P0->>+ P52: uses
     P52-->>- P0: return
+    P0->>+ P19: uses
+    P19-->>- P0: return
     P0->>+ P53: uses
     P53-->>- P0: return
     P0->>+ P54: uses
@@ -209,6 +211,10 @@ sequenceDiagram
     P59-->>- P0: return
     P0->>+ P60: uses
     P60-->>- P0: return
+    P0->>+ P61: uses
+    P61-->>- P0: return
+    P0->>+ P62: uses
+    P62-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -232,11 +238,11 @@ sequenceDiagram
 - [[Speaker]] `INFERRED`
 - [[Ticket]] `INFERRED`
 - [[Partner]] `INFERRED`
+- [[Day]] `INFERRED`
 - [[FaqCategory]] `INFERRED`
+- [[Session]] `INFERRED`
 - [[Exhibitor]] `INFERRED`
 - [[ContactMessage]] `INFERRED`
-- [[Day]] `INFERRED`
-- [[Session]] `INFERRED`
 - [[Ambassador]] `INFERRED`
 - [[Faq]] `INFERRED`
 - [[Waitlist]] `INFERRED`

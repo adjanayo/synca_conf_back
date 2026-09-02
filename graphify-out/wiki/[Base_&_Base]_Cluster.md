@@ -1,35 +1,35 @@
 # [Base & Base] Cluster
 
-> 89 nodes · cohesion 0.03
+> 99 nodes · cohesion 0.03
 
 ## Key Concepts
 
-- **BaseModel** (53 connections)
+- **BaseModel** (61 connections)
+- [referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/referentials.py#L1) (10 connections)
 - **ValueError** (8 connections)
 - [auth.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L1) (6 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L1) (6 connections)
+- [login()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py#L24) (5 connections)
 - [RoleWithPermissionsRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L17) (4 connections)
 - [admin_applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L1) (4 connections)
 - [applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L1) (4 connections)
 - [payments.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/payments.py#L1) (4 connections)
-- [referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/referentials.py#L1) (4 connections)
 - [RegistrationRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_registrations.py#L6) (3 connections)
 - [AdminStatsRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_stats.py#L4) (3 connections)
 - [AdminMeOut](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L29) (3 connections)
+- [TokenPair](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L9) (3 connections)
 - [PromoValidateResponse](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/promo.py#L8) (3 connections)
 - [update_role_permissions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L58) (3 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L1) (3 connections)
 - [content.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/content.py#L1) (3 connections)
 - [exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py#L1) (3 connections)
+- [sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/sessions.py#L1) (3 connections)
 - [AmbassadorStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L12) (2 connections)
 - [ExhibitorStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L20) (2 connections)
 - [PartnerStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L16) (2 connections)
 - [SpeakerStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L8) (2 connections)
 - [list_registrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_registrations.py#L20) (2 connections)
-- [get_admin_stats()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_stats.py#L23) (2 connections)
-- [AmbassadorApplyCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/ambassador_apply.py#L13) (2 connections)
-- [gdpr_must_be_true()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/ambassador_apply.py#L36) (2 connections)
-- *... and 64 more nodes in this community*
+- *... and 74 more nodes in this community*
 
 ## Class Diagram
 
@@ -81,6 +81,9 @@ classDiagram
         +auth.py()
     }
     class OtpVerifyIn {
+        +auth.py()
+    }
+    class TokenPair {
         +auth.py()
     }
     class CampaignWindowRead {
@@ -155,7 +158,19 @@ classDiagram
     class RoleWithPermissionsRead {
         +rbac.py()
     }
+    class DayCreate {
+        +referentials.py()
+    }
     class DayRead {
+        +referentials.py()
+    }
+    class DayUpdate {
+        +referentials.py()
+    }
+    class EventSettingsRead {
+        +referentials.py()
+    }
+    class EventSettingsUpdate {
         +referentials.py()
     }
     class FaqCategoryRead {
@@ -164,13 +179,25 @@ classDiagram
     class PartnerLevelRead {
         +referentials.py()
     }
+    class PassTypeCreate {
+        +referentials.py()
+    }
     class PassTypeRead {
+        +referentials.py()
+    }
+    class PassTypeUpdate {
         +referentials.py()
     }
     class RegisterCreate {
         +register.py()
     }
+    class SessionCreate {
+        +sessions.py()
+    }
     class SessionRead {
+        +sessions.py()
+    }
+    class SessionUpdate {
         +sessions.py()
     }
     class SpeakerApplyCreate {
@@ -210,8 +237,8 @@ classDiagram
 
 ## Audit Trail
 
-- EXTRACTED: 226 (90%)
-- INFERRED: 24 (10%)
+- EXTRACTED: 261 (90%)
+- INFERRED: 29 (10%)
 - AMBIGUOUS: 0 (0%)
 
 ---

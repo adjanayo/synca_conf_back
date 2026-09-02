@@ -1,10 +1,11 @@
 # Community 50
 
-> 1 nodes · cohesion 1.00
+> 2 nodes · cohesion 1.00
 
 ## Key Concepts
 
-- [__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/__init__.py#L1) (0 connections)
+- [test_health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L8) (1 connections)
+- [test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L1) (1 connections)
 
 ## Relationships
 
@@ -12,11 +13,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/__init__.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py)
 
 ## Audit Trail
 
-- EXTRACTED: 0 (0%)
+- EXTRACTED: 2 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

@@ -1,61 +1,49 @@
 # [ModelView & _has_permission()] Cluster
 
-> 13 nodes · cohesion 0.26
+> 17 nodes · cohesion 0.23
 
 ## Key Concepts
 
-- [views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L1) (6 connections)
-- **ModelView** (5 connections)
-- [_has_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L7) (5 connections)
-- [AmbassadorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L31) (3 connections)
-- [ContactMessageAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L89) (3 connections)
-- [ExhibitorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L70) (3 connections)
-- [PartnerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L50) (3 connections)
-- [SpeakerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L11) (3 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L46) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L85) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L66) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L27) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L109) (1 connections)
+- [upload_file()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L57) (14 connections)
+- [test_storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L1) (10 connections)
+- [validate_is_real_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L26) (6 connections)
+- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L16) (5 connections)
+- [storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L1) (5 connections)
+- [UploadRejectedError](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L22) (4 connections)
+- [test_upload_file_rejects_disallowed_content_type()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L32) (3 connections)
+- [test_upload_file_respects_custom_max_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L96) (3 connections)
+- [test_upload_file_success_never_uses_original_filename()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L54) (3 connections)
+- [test_validate_is_real_image_accepts_real_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L22) (3 connections)
+- [_generate_key()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L50) (2 connections)
+- [test_upload_file_pdf_skips_image_validation()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L76) (2 connections)
+- [test_upload_file_rejects_fake_image_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L48) (2 connections)
+- [test_upload_file_rejects_oversized_file()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L41) (2 connections)
+- [test_validate_is_real_image_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L26) (2 connections)
+- [Reject anything whose bytes aren't actually a decodable image.      A client-sup](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L27) (1 connections)
+- [test_max_photo_bytes_is_tighter_than_shared_upload_cap()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L103) (1 connections)
 
 ## Class Diagram
 
 ```mermaid
 classDiagram
-    class AmbassadorAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class ContactMessageAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class ExhibitorAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class PartnerAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class SpeakerAdmin {
-        +views.py()
-        +.is_accessible()
+    class UploadRejectedError {
+        +storage.py()
     }
 ```
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[[make_admin() & hash_password()] Cluster]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py)
 
 ## Audit Trail
 
-- EXTRACTED: 40 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 48 (71%)
+- INFERRED: 20 (29%)
 - AMBIGUOUS: 0 (0%)
 
 ---

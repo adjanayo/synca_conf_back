@@ -1,6 +1,6 @@
 # PassType
 
-> God node · 29 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py#L19)
+> God node · 30 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py#L19)
 
 ## Call Trace Diagram
 
@@ -36,11 +36,11 @@ sequenceDiagram
     participant P27 as Speaker
     participant P28 as Ticket
     participant P29 as Partner
-    participant P30 as FaqCategory
-    participant P31 as Exhibitor
-    participant P32 as ContactMessage
-    participant P33 as Day
-    participant P34 as Session
+    participant P30 as Day
+    participant P31 as FaqCategory
+    participant P32 as Session
+    participant P33 as Exhibitor
+    participant P34 as ContactMessage
     participant P35 as Ambassador
     participant P36 as Faq
     participant P37 as Waitlist
@@ -49,24 +49,26 @@ sequenceDiagram
     participant P40 as AuditLog
     participant P41 as CampaignWindow
     participant P42 as NewsletterSubscriber
-    participant P43 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P44 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P45 as In this scenario we need to create an Engine     and associate a connection with
-    participant P46 as Run migrations in 'online' mode.
-    participant P47 as make_ticket_for()
-    participant P48 as test_register_valid_promo_code_accepted()
-    participant P49 as test_register_success()
-    participant P50 as test_register_sends_confirmation_email()
-    participant P51 as test_register_inactive_pass_type_400()
-    participant P52 as test_register_invalid_promo_code_400()
-    participant P53 as test_create_payment_applies_percent_discount()
-    participant P54 as test_create_payment_applies_fixed_discount()
-    participant P55 as test_create_payment_success_no_promo()
-    participant P56 as test_create_payment_invalid_promo_400()
-    participant P57 as test_list_pass_types_excludes_inactive()
-    participant P58 as test_pass_type_defaults()
-    participant P59 as test_create_payment_invalid_user_400()
-    participant P60 as test_pass_type_read()
+    participant P43 as EventSettings
+    participant P44 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P45 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P46 as In this scenario we need to create an Engine     and associate a connection with
+    participant P47 as Run migrations in 'online' mode.
+    participant P48 as make_ticket_for()
+    participant P49 as test_register_valid_promo_code_accepted()
+    participant P50 as test_register_success()
+    participant P51 as test_register_sends_confirmation_email()
+    participant P52 as test_register_inactive_pass_type_400()
+    participant P53 as test_register_invalid_promo_code_400()
+    participant P54 as test_create_payment_applies_percent_discount()
+    participant P55 as test_create_payment_applies_fixed_discount()
+    participant P56 as test_create_payment_success_no_promo()
+    participant P57 as test_create_payment_invalid_promo_400()
+    participant P58 as create_pass_type()
+    participant P59 as test_list_pass_types_excludes_inactive()
+    participant P60 as test_pass_type_defaults()
+    participant P61 as test_create_payment_invalid_user_400()
+    participant P62 as test_pass_type_read()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -163,6 +165,8 @@ sequenceDiagram
     P45-->>- P1: return
     P1->>+ P46: uses
     P46-->>- P1: return
+    P1->>+ P47: uses
+    P47-->>- P1: return
     P0->>+ P22: uses
     P22-->>- P0: return
     P0->>+ P23: uses
@@ -181,26 +185,24 @@ sequenceDiagram
     P9-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
-    P0->>+ P47: calls
-    P47-->>- P0: return
-    P0->>+ P13: calls
-    P13-->>- P0: return
     P0->>+ P48: calls
     P48-->>- P0: return
-    P0->>+ P14: calls
-    P14-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
     P0->>+ P49: calls
     P49-->>- P0: return
+    P0->>+ P14: calls
+    P14-->>- P0: return
     P0->>+ P50: calls
     P50-->>- P0: return
     P0->>+ P51: calls
     P51-->>- P0: return
     P0->>+ P52: calls
     P52-->>- P0: return
-    P0->>+ P16: calls
-    P16-->>- P0: return
     P0->>+ P53: calls
     P53-->>- P0: return
+    P0->>+ P16: calls
+    P16-->>- P0: return
     P0->>+ P54: calls
     P54-->>- P0: return
     P0->>+ P55: calls
@@ -215,6 +217,10 @@ sequenceDiagram
     P59-->>- P0: return
     P0->>+ P60: calls
     P60-->>- P0: return
+    P0->>+ P61: calls
+    P61-->>- P0: return
+    P0->>+ P62: calls
+    P62-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -238,8 +244,8 @@ sequenceDiagram
 - [[test_create_payment_applies_fixed_discount()]] `INFERRED`
 - [[test_create_payment_success_no_promo()]] `INFERRED`
 - [[test_create_payment_invalid_promo_400()]] `INFERRED`
+- [[create_pass_type()]] `INFERRED`
 - [[test_list_pass_types_excludes_inactive()]] `INFERRED`
-- [[test_pass_type_defaults()]] `INFERRED`
 
 ### contains
 - [[referentials.py]] `EXTRACTED`

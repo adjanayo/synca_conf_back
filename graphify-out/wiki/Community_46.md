@@ -4,9 +4,9 @@
 
 ## Key Concepts
 
-- [test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L1) (2 connections)
-- [test_end_at_must_be_after_start_at()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L26) (1 connections)
-- [test_six_campaign_windows_seeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L11) (1 connections)
+- [test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L1) (2 connections)
+- [test_cors_preflight_allows_configured_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L8) (1 connections)
+- [test_cors_rejects_unlisted_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L24) (1 connections)
 
 ## Relationships
 
@@ -14,7 +14,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py)
 
 ## Audit Trail
 

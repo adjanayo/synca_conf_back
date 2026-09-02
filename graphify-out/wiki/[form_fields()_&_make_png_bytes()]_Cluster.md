@@ -1,19 +1,19 @@
 # [form_fields() & make_png_bytes()] Cluster
 
-> 10 nodes · cohesion 0.31
+> 10 nodes · cohesion 0.49
 
 ## Key Concepts
 
-- [test_admin_panel.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L1) (9 connections)
-- [make_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L16) (8 connections)
-- [grant_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L31) (4 connections)
-- [test_login_success_grants_access_to_a_permitted_view()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L88) (3 connections)
-- [test_any_authenticated_admin_can_read_contact_messages()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L138) (2 connections)
-- [test_login_wrong_password_is_rejected()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L105) (2 connections)
-- [test_role_without_permission_gets_403_on_gated_view()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L122) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L68) (1 connections)
-- [_dispose_global_engine()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L56) (1 connections)
-- [test_unauthenticated_request_redirects_to_login()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L154) (1 connections)
+- [test_forms_speaker_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L1) (9 connections)
+- [form_fields()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L44) (6 connections)
+- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L38) (5 connections)
+- [open_call_for_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L25) (5 connections)
+- [test_speaker_apply_missing_gdpr_consent_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L129) (4 connections)
+- [test_speaker_apply_oversized_photo_rejected_400()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L110) (4 connections)
+- [test_speaker_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L76) (4 connections)
+- [test_speaker_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L64) (3 connections)
+- [test_speaker_apply_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L96) (3 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L16) (1 connections)
 
 ## Relationships
 
@@ -21,12 +21,12 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py)
 
 ## Audit Trail
 
-- EXTRACTED: 28 (85%)
-- INFERRED: 5 (15%)
+- EXTRACTED: 44 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

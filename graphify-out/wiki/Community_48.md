@@ -1,11 +1,12 @@
 # Community 48
 
-> 2 nodes · cohesion 1.00
+> 3 nodes · cohesion 0.67
 
 ## Key Concepts
 
-- [test_health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L8) (1 connections)
-- [test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L1) (1 connections)
+- [test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L1) (2 connections)
+- [test_end_at_must_be_after_start_at()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L26) (1 connections)
+- [test_six_campaign_windows_seeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L11) (1 connections)
 
 ## Relationships
 
@@ -13,11 +14,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py)
 
 ## Audit Trail
 
-- EXTRACTED: 2 (100%)
+- EXTRACTED: 4 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

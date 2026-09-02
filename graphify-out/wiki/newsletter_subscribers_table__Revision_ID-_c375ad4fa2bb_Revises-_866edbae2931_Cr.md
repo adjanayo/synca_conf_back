@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L59) (1 connections)
-- [campaign_window_event_key  Revision ID: b1c2d3e4f5a6 Revises: 75418b933d4f Creat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L21) (1 connections)
+- [2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L91) (1 connections)
+- [promo_codes, payments, tickets, waitlist  Revision ID: a3f8aaae2d58 Revises: 9dd](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py)
 
 ## Audit Trail
 

@@ -5,8 +5,8 @@
 
 ## Core Abstractions (God Nodes)
 1. `create_access_token()` (46 edges)
-2. `Base` (31 edges)
-3. `PassType` (29 edges)
+2. `Base` (32 edges)
+3. `PassType` (30 edges)
 4. `User` (20 edges)
 5. `Role` (20 edges)
 6. `AdminUser` (18 edges)
