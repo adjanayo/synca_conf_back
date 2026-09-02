@@ -24,3 +24,10 @@ class OtpVerifyIn(BaseModel):
 class ParticipantTokenOut(BaseModel):
     access_token: str
     token_type: str = "bearer"
+
+
+class AdminMeOut(BaseModel):
+    id: int
+    email: EmailStr
+    role: str
+    permission_codes: list[str]
