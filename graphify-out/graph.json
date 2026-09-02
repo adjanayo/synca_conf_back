@@ -16,7 +16,7 @@
       "heat": 0.053,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_init_py",
-      "community": 48,
+      "community": 49,
       "norm_label": "__init__.py"
     },
     {
@@ -32,7 +32,7 @@
       "heat": 0.249,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_main_py",
-      "community": 40,
+      "community": 41,
       "norm_label": "main.py"
     },
     {
@@ -48,7 +48,7 @@
       "heat": 0.294,
       "owner": "unowned",
       "id": "main_log_rate_limit_exceeded",
-      "community": 40,
+      "community": 41,
       "norm_label": "_log_rate_limit_exceeded()"
     },
     {
@@ -64,7 +64,7 @@
       "heat": 0.247,
       "owner": "unowned",
       "id": "main_health",
-      "community": 40,
+      "community": 41,
       "norm_label": "health()"
     },
     {
@@ -80,7 +80,7 @@
       "heat": 0.071,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_core_multipart_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "multipart.py"
     },
     {
@@ -96,7 +96,7 @@
       "heat": 0.162,
       "owner": "unowned",
       "id": "multipart_is_list_annotation",
-      "community": 3,
+      "community": 4,
       "norm_label": "_is_list_annotation()"
     },
     {
@@ -112,7 +112,7 @@
       "heat": 0.345,
       "owner": "unowned",
       "id": "multipart_parse_multipart_form",
-      "community": 3,
+      "community": 4,
       "norm_label": "parse_multipart_form()"
     },
     {
@@ -124,7 +124,7 @@
       "granularity": "low",
       "heat": 0.068,
       "owner": "unowned",
-      "community": 3,
+      "community": 4,
       "norm_label": "validate a multipart form's non-file fields against a pydantic model.      works",
       "id": "multipart_rationale_19"
     },
@@ -538,7 +538,7 @@
       "heat": 0.053,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_core_init_py",
-      "community": 49,
+      "community": 50,
       "norm_label": "__init__.py"
     },
     {
@@ -649,7 +649,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_core_rate_limit_py",
-      "community": 50,
+      "community": 51,
       "norm_label": "rate_limit.py"
     },
     {
@@ -666,7 +666,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_admin_auth_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "auth.py"
     },
     {
@@ -683,7 +683,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_adminauth",
-      "community": 4,
+      "community": 3,
       "norm_label": "adminauth"
     },
     {
@@ -697,7 +697,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "authenticationbackend",
-      "community": 4,
+      "community": 3,
       "norm_label": "authenticationbackend"
     },
     {
@@ -714,7 +714,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_adminauth_login",
-      "community": 4,
+      "community": 3,
       "norm_label": ".login()"
     },
     {
@@ -731,7 +731,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_adminauth_logout",
-      "community": 4,
+      "community": 3,
       "norm_label": ".logout()"
     },
     {
@@ -748,7 +748,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_adminauth_authenticate",
-      "community": 4,
+      "community": 3,
       "norm_label": ".authenticate()"
     },
     {
@@ -765,7 +765,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_build_admin_auth",
-      "community": 4,
+      "community": 3,
       "norm_label": "build_admin_auth()"
     },
     {
@@ -778,7 +778,7 @@
       "heat": 0.068,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "community": 4,
+      "community": 3,
       "norm_label": "sqladmin login backed by the same admin_users/argon2id/lockout path     as post",
       "id": "auth_rationale_19"
     },
@@ -796,7 +796,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_admin_init_py",
-      "community": 51,
+      "community": 52,
       "norm_label": "__init__.py"
     },
     {
@@ -813,7 +813,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_admin_setup_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "setup.py"
     },
     {
@@ -830,7 +830,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "setup_init_admin",
-      "community": 4,
+      "community": 3,
       "norm_label": "init_admin()"
     },
     {
@@ -1319,7 +1319,7 @@
       "heat": 0.068,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_models_applications_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "applications.py"
     },
     {
@@ -1335,7 +1335,7 @@
       "heat": 0.17,
       "owner": "unowned",
       "id": "applications_speaker",
-      "community": 3,
+      "community": 4,
       "norm_label": "speaker"
     },
     {
@@ -1351,7 +1351,7 @@
       "heat": 0.15,
       "owner": "unowned",
       "id": "applications_ambassador",
-      "community": 3,
+      "community": 4,
       "norm_label": "ambassador"
     },
     {
@@ -1367,7 +1367,7 @@
       "heat": 0.154,
       "owner": "unowned",
       "id": "applications_partner",
-      "community": 3,
+      "community": 4,
       "norm_label": "partner"
     },
     {
@@ -1383,7 +1383,7 @@
       "heat": 0.151,
       "owner": "unowned",
       "id": "applications_exhibitor",
-      "community": 3,
+      "community": 4,
       "norm_label": "exhibitor"
     },
     {
@@ -1480,7 +1480,7 @@
       "heat": 0.175,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_models_init_py",
-      "community": 52,
+      "community": 53,
       "norm_label": "__init__.py"
     },
     {
@@ -1504,7 +1504,7 @@
       "file_type": "code",
       "type": "CLASS",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/campaign.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "complexity": 1,
       "loc": 15,
       "level": 1,
@@ -1624,7 +1624,7 @@
       "heat": 0.123,
       "owner": "unowned",
       "id": "referentials_partnerlevel",
-      "community": 3,
+      "community": 4,
       "norm_label": "partnerlevel"
     },
     {
@@ -1802,7 +1802,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_tokenpair",
-      "community": 4,
+      "community": 3,
       "norm_label": "tokenpair"
     },
     {
@@ -1934,7 +1934,7 @@
       "heat": 0.057,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_schemas_tickets_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "tickets.py"
     },
     {
@@ -1950,7 +1950,7 @@
       "heat": 0.091,
       "owner": "unowned",
       "id": "tickets_ticketread",
-      "community": 4,
+      "community": 3,
       "norm_label": "ticketread"
     },
     {
@@ -2163,7 +2163,7 @@
       "heat": 0.075,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_schemas_users_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "users.py"
     },
     {
@@ -2179,7 +2179,7 @@
       "heat": 0.078,
       "owner": "unowned",
       "id": "users_userprofileread",
-      "community": 4,
+      "community": 3,
       "norm_label": "userprofileread"
     },
     {
@@ -2195,7 +2195,7 @@
       "heat": 0.133,
       "owner": "unowned",
       "id": "users_userread",
-      "community": 4,
+      "community": 3,
       "norm_label": "userread"
     },
     {
@@ -2211,7 +2211,7 @@
       "heat": 0.08,
       "owner": "unowned",
       "id": "users_registerresponse",
-      "community": 4,
+      "community": 3,
       "norm_label": "registerresponse"
     },
     {
@@ -2553,7 +2553,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_schemas_init_py",
-      "community": 53,
+      "community": 54,
       "norm_label": "__init__.py"
     },
     {
@@ -3155,7 +3155,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_login",
-      "community": 4,
+      "community": 3,
       "norm_label": "login()"
     },
     {
@@ -3553,7 +3553,7 @@
       "heat": 0.112,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_api_user_me_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "user_me.py"
     },
     {
@@ -3569,7 +3569,7 @@
       "heat": 0.376,
       "owner": "unowned",
       "id": "user_me_get_current_participant",
-      "community": 4,
+      "community": 3,
       "norm_label": "get_current_participant()"
     },
     {
@@ -3585,7 +3585,7 @@
       "heat": 0.106,
       "owner": "unowned",
       "id": "user_me_get_me",
-      "community": 4,
+      "community": 3,
       "norm_label": "get_me()"
     },
     {
@@ -3601,7 +3601,7 @@
       "heat": 0.132,
       "owner": "unowned",
       "id": "user_me_get_my_tickets",
-      "community": 4,
+      "community": 3,
       "norm_label": "get_my_tickets()"
     },
     {
@@ -3617,7 +3617,7 @@
       "heat": 0.143,
       "owner": "unowned",
       "id": "user_me_delete_me",
-      "community": 4,
+      "community": 3,
       "norm_label": "delete_me()"
     },
     {
@@ -3630,7 +3630,7 @@
       "heat": 0.112,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "community": 4,
+      "community": 3,
       "norm_label": "accepts either credential: the legacy one-time `access_token` handed     out at",
       "id": "user_me_rationale_23"
     },
@@ -3643,7 +3643,7 @@
       "granularity": "low",
       "heat": 0.112,
       "owner": "unowned",
-      "community": 4,
+      "community": 3,
       "norm_label": "todo.md: ticket download from the web page.      scoped to `ticket.user_id == us",
       "id": "user_me_rationale_77"
     },
@@ -3656,7 +3656,7 @@
       "granularity": "low",
       "heat": 0.112,
       "owner": "unowned",
-      "community": 4,
+      "community": 3,
       "norm_label": "right to erasure (rgpd) via anonymization, not a physical delete --     tickets/",
       "id": "user_me_rationale_98"
     },
@@ -3674,7 +3674,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_api_admin_audit_py",
-      "community": 46,
+      "community": 47,
       "norm_label": "admin_audit.py"
     },
     {
@@ -3691,7 +3691,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "admin_audit_list_audit_logs",
-      "community": 46,
+      "community": 47,
       "norm_label": "list_audit_logs()"
     },
     {
@@ -3771,7 +3771,7 @@
       "heat": 0.053,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_api_init_py",
-      "community": 54,
+      "community": 55,
       "norm_label": "__init__.py"
     },
     {
@@ -3787,7 +3787,7 @@
       "heat": 0.231,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_api_forms_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "forms.py"
     },
     {
@@ -3803,7 +3803,7 @@
       "heat": 0.257,
       "owner": "unowned",
       "id": "forms_validate_promo_code",
-      "community": 3,
+      "community": 4,
       "norm_label": "_validate_promo_code()"
     },
     {
@@ -3835,7 +3835,7 @@
       "heat": 0.469,
       "owner": "unowned",
       "id": "forms_register",
-      "community": 3,
+      "community": 4,
       "norm_label": "register()"
     },
     {
@@ -3851,7 +3851,7 @@
       "heat": 0.229,
       "owner": "unowned",
       "id": "forms_contact",
-      "community": 14,
+      "community": 13,
       "norm_label": "contact()"
     },
     {
@@ -3883,7 +3883,7 @@
       "heat": 0.347,
       "owner": "unowned",
       "id": "forms_apply_as_speaker",
-      "community": 3,
+      "community": 4,
       "norm_label": "apply_as_speaker()"
     },
     {
@@ -3899,7 +3899,7 @@
       "heat": 0.271,
       "owner": "unowned",
       "id": "forms_apply_as_ambassador",
-      "community": 3,
+      "community": 4,
       "norm_label": "apply_as_ambassador()"
     },
     {
@@ -3915,7 +3915,7 @@
       "heat": 0.423,
       "owner": "unowned",
       "id": "forms_apply_as_partner",
-      "community": 3,
+      "community": 4,
       "norm_label": "apply_as_partner()"
     },
     {
@@ -3931,7 +3931,7 @@
       "heat": 0.351,
       "owner": "unowned",
       "id": "forms_apply_as_exhibitor",
-      "community": 3,
+      "community": 4,
       "norm_label": "apply_as_exhibitor()"
     },
     {
@@ -3999,7 +3999,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_api_admin_campaign_windows_py",
-      "community": 41,
+      "community": 42,
       "norm_label": "admin_campaign_windows.py"
     },
     {
@@ -4016,7 +4016,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "admin_campaign_windows_list_campaign_windows_admin",
-      "community": 41,
+      "community": 42,
       "norm_label": "list_campaign_windows_admin()"
     },
     {
@@ -4033,7 +4033,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "admin_campaign_windows_update_campaign_window",
-      "community": 41,
+      "community": 42,
       "norm_label": "update_campaign_window()"
     },
     {
@@ -4084,7 +4084,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_api_admin_contacts_py",
-      "community": 42,
+      "community": 43,
       "norm_label": "admin_contacts.py"
     },
     {
@@ -4101,7 +4101,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "admin_contacts_list_contacts",
-      "community": 42,
+      "community": 43,
       "norm_label": "list_contacts()"
     },
     {
@@ -4118,7 +4118,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "admin_contacts_update_contact_read_status",
-      "community": 42,
+      "community": 43,
       "norm_label": "update_contact_read_status()"
     },
     {
@@ -4302,7 +4302,7 @@
       "heat": 0.053,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_deps_init_py",
-      "community": 55,
+      "community": 56,
       "norm_label": "__init__.py"
     },
     {
@@ -4399,7 +4399,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_auth_service_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "auth_service.py"
     },
     {
@@ -4416,7 +4416,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_invalidtokenerror",
-      "community": 4,
+      "community": 3,
       "norm_label": "invalidtokenerror"
     },
     {
@@ -4429,7 +4429,7 @@
       "heat": 0.061,
       "owner": "unowned",
       "id": "exception",
-      "community": 4,
+      "community": 3,
       "norm_label": "exception"
     },
     {
@@ -4446,7 +4446,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_invalidcredentialserror",
-      "community": 4,
+      "community": 3,
       "norm_label": "invalidcredentialserror"
     },
     {
@@ -4463,7 +4463,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_accountlockederror",
-      "community": 4,
+      "community": 3,
       "norm_label": "accountlockederror"
     },
     {
@@ -4480,7 +4480,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_authenticate_admin",
-      "community": 4,
+      "community": 3,
       "norm_label": "authenticate_admin()"
     },
     {
@@ -4497,7 +4497,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_create_token",
-      "community": 4,
+      "community": 3,
       "norm_label": "_create_token()"
     },
     {
@@ -4531,7 +4531,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_create_refresh_token",
-      "community": 4,
+      "community": 3,
       "norm_label": "create_refresh_token()"
     },
     {
@@ -4548,7 +4548,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_create_participant_token",
-      "community": 4,
+      "community": 3,
       "norm_label": "create_participant_token()"
     },
     {
@@ -4565,7 +4565,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "auth_service_decode_token",
-      "community": 4,
+      "community": 3,
       "norm_label": "decode_token()"
     },
     {
@@ -4578,7 +4578,7 @@
       "heat": 0.09,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "community": 4,
+      "community": 3,
       "norm_label": "verify admin credentials, enforcing the account-lockout policy.      always take",
       "id": "auth_service_rationale_39"
     },
@@ -4592,7 +4592,7 @@
       "heat": 0.09,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "community": 4,
+      "community": 3,
       "norm_label": "issued after a successful otp verify (app/api/participant_auth.py).      distinc",
       "id": "auth_service_rationale_106"
     },
@@ -4609,7 +4609,7 @@
       "heat": 0.068,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_ticket_finalization_py",
-      "community": 10,
+      "community": 6,
       "norm_label": "ticket_finalization.py"
     },
     {
@@ -4625,7 +4625,7 @@
       "heat": 0.235,
       "owner": "unowned",
       "id": "ticket_finalization_finalize_ticket",
-      "community": 10,
+      "community": 6,
       "norm_label": "finalize_ticket()"
     },
     {
@@ -4637,7 +4637,7 @@
       "granularity": "low",
       "heat": 0.068,
       "owner": "unowned",
-      "community": 10,
+      "community": 6,
       "norm_label": "generate the ticket's pdf+qr, upload it, and email it.      runs as a background",
       "id": "ticket_finalization_rationale_11"
     },
@@ -4808,7 +4808,7 @@
       "heat": 0.086,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_ticket_pdf_py",
-      "community": 10,
+      "community": 6,
       "norm_label": "ticket_pdf.py"
     },
     {
@@ -4824,7 +4824,7 @@
       "heat": 0.089,
       "owner": "unowned",
       "id": "ticket_pdf_render_qr_png",
-      "community": 10,
+      "community": 6,
       "norm_label": "_render_qr_png()"
     },
     {
@@ -4840,7 +4840,7 @@
       "heat": 0.223,
       "owner": "unowned",
       "id": "ticket_pdf_render_ticket_pdf",
-      "community": 10,
+      "community": 6,
       "norm_label": "_render_ticket_pdf()"
     },
     {
@@ -4856,7 +4856,7 @@
       "heat": 0.097,
       "owner": "unowned",
       "id": "ticket_pdf_generate_and_upload_ticket_pdf",
-      "community": 10,
+      "community": 6,
       "norm_label": "generate_and_upload_ticket_pdf()"
     },
     {
@@ -4872,7 +4872,7 @@
       "heat": 0.053,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_init_py",
-      "community": 56,
+      "community": 57,
       "norm_label": "__init__.py"
     },
     {
@@ -4978,7 +4978,7 @@
       "heat": 0.057,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_email_service_py",
-      "community": 10,
+      "community": 6,
       "norm_label": "email_service.py"
     },
     {
@@ -4994,7 +4994,7 @@
       "heat": 0.162,
       "owner": "unowned",
       "id": "email_service_send_email",
-      "community": 10,
+      "community": 6,
       "norm_label": "send_email()"
     },
     {
@@ -5006,7 +5006,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 10,
+      "community": 6,
       "norm_label": "send a transactional email, or log it in dev.      without resend_api_key config",
       "id": "email_service_rationale_10"
     },
@@ -5023,7 +5023,7 @@
       "heat": 0.057,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_recaptcha_py",
-      "community": 14,
+      "community": 13,
       "norm_label": "recaptcha.py"
     },
     {
@@ -5039,7 +5039,7 @@
       "heat": 0.2,
       "owner": "unowned",
       "id": "recaptcha_verify_recaptcha",
-      "community": 14,
+      "community": 13,
       "norm_label": "verify_recaptcha()"
     },
     {
@@ -5052,7 +5052,7 @@
       "heat": 0.057,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "community": 14,
+      "community": 13,
       "norm_label": "verify a recaptcha v3 token, raising 400 on failure.      skipped entirely when",
       "id": "recaptcha_rationale_10"
     },
@@ -5069,7 +5069,7 @@
       "heat": 0.105,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_storage_py",
-      "community": 6,
+      "community": 10,
       "norm_label": "storage.py"
     },
     {
@@ -5085,7 +5085,7 @@
       "heat": 0.103,
       "owner": "unowned",
       "id": "storage_uploadrejectederror",
-      "community": 6,
+      "community": 10,
       "norm_label": "uploadrejectederror"
     },
     {
@@ -5101,7 +5101,7 @@
       "heat": 0.167,
       "owner": "unowned",
       "id": "storage_validate_is_real_image",
-      "community": 6,
+      "community": 10,
       "norm_label": "validate_is_real_image()"
     },
     {
@@ -5133,7 +5133,7 @@
       "heat": 0.1,
       "owner": "unowned",
       "id": "storage_generate_key",
-      "community": 6,
+      "community": 10,
       "norm_label": "_generate_key()"
     },
     {
@@ -5149,7 +5149,7 @@
       "heat": 0.358,
       "owner": "unowned",
       "id": "storage_upload_file",
-      "community": 6,
+      "community": 10,
       "norm_label": "upload_file()"
     },
     {
@@ -5161,7 +5161,7 @@
       "granularity": "low",
       "heat": 0.09,
       "owner": "unowned",
-      "community": 6,
+      "community": 10,
       "norm_label": "reject anything whose bytes aren't actually a decodable image.      a client-sup",
       "id": "storage_rationale_27"
     },
@@ -5178,7 +5178,7 @@
       "heat": 0.087,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_services_email_templates_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "email_templates.py"
     },
     {
@@ -5194,7 +5194,7 @@
       "heat": 0.084,
       "owner": "unowned",
       "id": "email_templates_render",
-      "community": 3,
+      "community": 4,
       "norm_label": "_render()"
     },
     {
@@ -5210,7 +5210,7 @@
       "heat": 0.084,
       "owner": "unowned",
       "id": "email_templates_registration_confirmed_email",
-      "community": 3,
+      "community": 4,
       "norm_label": "registration_confirmed_email()"
     },
     {
@@ -5226,7 +5226,7 @@
       "heat": 0.097,
       "owner": "unowned",
       "id": "email_templates_application_received_email",
-      "community": 3,
+      "community": 4,
       "norm_label": "application_received_email()"
     },
     {
@@ -5242,7 +5242,7 @@
       "heat": 0.087,
       "owner": "unowned",
       "id": "email_templates_otp_login_email",
-      "community": 3,
+      "community": 4,
       "norm_label": "otp_login_email()"
     },
     {
@@ -5258,7 +5258,7 @@
       "heat": 0.092,
       "owner": "unowned",
       "id": "email_templates_ticket_delivered_email",
-      "community": 3,
+      "community": 4,
       "norm_label": "ticket_delivered_email()"
     },
     {
@@ -5270,7 +5270,7 @@
       "granularity": "low",
       "heat": 0.068,
       "owner": "unowned",
-      "community": 3,
+      "community": 4,
       "norm_label": "todo.md: html email templates.  table-based, inline-css layout (the only markup",
       "id": "email_templates_rationale_1"
     },
@@ -5480,7 +5480,7 @@
       "heat": 0.06,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_cors_py",
-      "community": 43,
+      "community": 44,
       "norm_label": "test_cors.py"
     },
     {
@@ -5496,7 +5496,7 @@
       "heat": 0.077,
       "owner": "unowned",
       "id": "test_cors_test_cors_preflight_allows_configured_origin",
-      "community": 43,
+      "community": 44,
       "norm_label": "test_cors_preflight_allows_configured_origin()"
     },
     {
@@ -5512,7 +5512,7 @@
       "heat": 0.075,
       "owner": "unowned",
       "id": "test_cors_test_cors_rejects_unlisted_origin",
-      "community": 43,
+      "community": 44,
       "norm_label": "test_cors_rejects_unlisted_origin()"
     },
     {
@@ -5528,7 +5528,7 @@
       "heat": 0.06,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_public_campaign_windows_py",
-      "community": 44,
+      "community": 45,
       "norm_label": "test_public_campaign_windows.py"
     },
     {
@@ -5544,7 +5544,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_public_campaign_windows_client",
-      "community": 44,
+      "community": 45,
       "norm_label": "client()"
     },
     {
@@ -5554,13 +5554,13 @@
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py",
       "source_location": "L19",
       "complexity": 1,
-      "loc": 13,
+      "loc": 14,
       "level": 3,
       "granularity": "low",
-      "heat": 0.077,
+      "heat": 0.078,
       "owner": "unowned",
       "id": "test_public_campaign_windows_test_list_campaign_windows_returns_seeded_windows",
-      "community": 44,
+      "community": 45,
       "norm_label": "test_list_campaign_windows_returns_seeded_windows()"
     },
     {
@@ -5827,7 +5827,7 @@
       "heat": 0.072,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_ticket_finalization_py",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_ticket_finalization.py"
     },
     {
@@ -5843,7 +5843,7 @@
       "heat": 0.14,
       "owner": "unowned",
       "id": "test_ticket_finalization_make_ticket",
-      "community": 10,
+      "community": 6,
       "norm_label": "make_ticket()"
     },
     {
@@ -5859,7 +5859,7 @@
       "heat": 0.072,
       "owner": "unowned",
       "id": "test_ticket_finalization_use_test_session",
-      "community": 10,
+      "community": 6,
       "norm_label": "_use_test_session()"
     },
     {
@@ -5875,7 +5875,7 @@
       "heat": 0.108,
       "owner": "unowned",
       "id": "test_ticket_finalization_test_finalize_ticket_sets_pdf_url_and_sends_email",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_finalize_ticket_sets_pdf_url_and_sends_email()"
     },
     {
@@ -5891,7 +5891,7 @@
       "heat": 0.099,
       "owner": "unowned",
       "id": "test_ticket_finalization_test_finalize_ticket_is_idempotent_when_already_finalized",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_finalize_ticket_is_idempotent_when_already_finalized()"
     },
     {
@@ -5907,7 +5907,7 @@
       "heat": 0.082,
       "owner": "unowned",
       "id": "test_ticket_finalization_test_finalize_ticket_noops_on_missing_ticket",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_finalize_ticket_noops_on_missing_ticket()"
     },
     {
@@ -6305,7 +6305,7 @@
       "heat": 0.072,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_recaptcha_py",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_recaptcha.py"
     },
     {
@@ -6321,7 +6321,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "test_recaptcha_test_verify_recaptcha_skips_when_no_secret_configured",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_verify_recaptcha_skips_when_no_secret_configured()"
     },
     {
@@ -6337,7 +6337,7 @@
       "heat": 0.071,
       "owner": "unowned",
       "id": "test_recaptcha_mock_response",
-      "community": 14,
+      "community": 13,
       "norm_label": "_mock_response()"
     },
     {
@@ -6353,7 +6353,7 @@
       "heat": 0.083,
       "owner": "unowned",
       "id": "test_recaptcha_test_verify_recaptcha_accepts_good_score",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_verify_recaptcha_accepts_good_score()"
     },
     {
@@ -6369,7 +6369,7 @@
       "heat": 0.086,
       "owner": "unowned",
       "id": "test_recaptcha_test_verify_recaptcha_rejects_low_score",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_verify_recaptcha_rejects_low_score()"
     },
     {
@@ -6385,7 +6385,7 @@
       "heat": 0.086,
       "owner": "unowned",
       "id": "test_recaptcha_test_verify_recaptcha_rejects_unsuccessful_response",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_verify_recaptcha_rejects_unsuccessful_response()"
     },
     {
@@ -7299,7 +7299,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_audit_log_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_audit_log.py"
     },
     {
@@ -7315,7 +7315,7 @@
       "heat": 0.081,
       "owner": "unowned",
       "id": "test_audit_log_test_successful_login_writes_audit_entry",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_successful_login_writes_audit_entry()"
     },
     {
@@ -7331,7 +7331,7 @@
       "heat": 0.083,
       "owner": "unowned",
       "id": "test_audit_log_test_failed_login_writes_audit_entry",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_failed_login_writes_audit_entry()"
     },
     {
@@ -7347,7 +7347,7 @@
       "heat": 0.128,
       "owner": "unowned",
       "id": "test_audit_log_test_locked_account_attempt_writes_audit_entry",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_locked_account_attempt_writes_audit_entry()"
     },
     {
@@ -7443,7 +7443,7 @@
       "heat": 0.102,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_user_me_py",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_user_me.py"
     },
     {
@@ -7459,7 +7459,7 @@
       "heat": 0.117,
       "owner": "unowned",
       "id": "test_user_me_make_user",
-      "community": 13,
+      "community": 12,
       "norm_label": "make_user()"
     },
     {
@@ -7475,7 +7475,7 @@
       "heat": 0.078,
       "owner": "unowned",
       "id": "test_user_me_client",
-      "community": 13,
+      "community": 12,
       "norm_label": "client()"
     },
     {
@@ -7491,7 +7491,7 @@
       "heat": 0.09,
       "owner": "unowned",
       "id": "test_user_me_test_get_me_returns_own_data",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_get_me_returns_own_data()"
     },
     {
@@ -7508,7 +7508,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_user_me_test_get_me_rejects_invalid_token",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_get_me_rejects_invalid_token()"
     },
     {
@@ -7525,7 +7525,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_user_me_test_get_me_requires_authorization_header",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_get_me_requires_authorization_header()"
     },
     {
@@ -7541,7 +7541,7 @@
       "heat": 0.126,
       "owner": "unowned",
       "id": "test_user_me_make_ticket_for",
-      "community": 13,
+      "community": 12,
       "norm_label": "make_ticket_for()"
     },
     {
@@ -7557,7 +7557,7 @@
       "heat": 0.1,
       "owner": "unowned",
       "id": "test_user_me_test_get_my_tickets_returns_only_own_tickets",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_get_my_tickets_returns_only_own_tickets()"
     },
     {
@@ -7574,7 +7574,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_user_me_test_get_my_tickets_rejects_invalid_token",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_get_my_tickets_rejects_invalid_token()"
     },
     {
@@ -7591,7 +7591,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_user_me_test_delete_me_anonymizes_and_revokes_token",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_delete_me_anonymizes_and_revokes_token()"
     },
     {
@@ -7608,7 +7608,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_user_me_test_delete_me_token_cannot_be_reused",
-      "community": 13,
+      "community": 12,
       "norm_label": "test_delete_me_token_cannot_be_reused()"
     },
     {
@@ -7752,7 +7752,7 @@
       "heat": 0.094,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_participant_otp_py",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_participant_otp.py"
     },
     {
@@ -7768,7 +7768,7 @@
       "heat": 0.11,
       "owner": "unowned",
       "id": "test_participant_otp_make_verified_user",
-      "community": 12,
+      "community": 8,
       "norm_label": "make_verified_user()"
     },
     {
@@ -7784,7 +7784,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_participant_otp_client",
-      "community": 12,
+      "community": 8,
       "norm_label": "client()"
     },
     {
@@ -7800,7 +7800,7 @@
       "heat": 0.06,
       "owner": "unowned",
       "id": "test_participant_otp_fixed_code",
-      "community": 12,
+      "community": 8,
       "norm_label": "fixed_code()"
     },
     {
@@ -7816,7 +7816,7 @@
       "heat": 0.079,
       "owner": "unowned",
       "id": "test_participant_otp_test_request_otp_same_generic_response_known_and_unknown_email",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_request_otp_same_generic_response_known_and_unknown_email()"
     },
     {
@@ -7832,7 +7832,7 @@
       "heat": 0.077,
       "owner": "unowned",
       "id": "test_participant_otp_test_request_otp_only_creates_row_for_known_verified_email",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_request_otp_only_creates_row_for_known_verified_email()"
     },
     {
@@ -7848,7 +7848,7 @@
       "heat": 0.084,
       "owner": "unowned",
       "id": "test_participant_otp_test_verify_otp_success_grants_access_to_user_me",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_verify_otp_success_grants_access_to_user_me()"
     },
     {
@@ -7864,7 +7864,7 @@
       "heat": 0.075,
       "owner": "unowned",
       "id": "test_participant_otp_test_verify_otp_wrong_code_returns_401",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_verify_otp_wrong_code_returns_401()"
     },
     {
@@ -7880,7 +7880,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_participant_otp_test_verify_otp_unknown_email_same_generic_401",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_verify_otp_unknown_email_same_generic_401()"
     },
     {
@@ -7896,7 +7896,7 @@
       "heat": 0.095,
       "owner": "unowned",
       "id": "test_participant_otp_test_verify_otp_expired_code_returns_401",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_verify_otp_expired_code_returns_401()"
     },
     {
@@ -7912,7 +7912,7 @@
       "heat": 0.082,
       "owner": "unowned",
       "id": "test_participant_otp_test_verify_otp_cannot_be_reused",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_verify_otp_cannot_be_reused()"
     },
     {
@@ -7928,7 +7928,7 @@
       "heat": 0.124,
       "owner": "unowned",
       "id": "test_participant_otp_test_request_otp_rate_limited_after_three_per_15_minutes",
-      "community": 12,
+      "community": 8,
       "norm_label": "test_request_otp_rate_limited_after_three_per_15_minutes()"
     },
     {
@@ -8097,7 +8097,7 @@
       "heat": 0.087,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_forms_partner_apply_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_forms_partner_apply.py"
     },
     {
@@ -8113,7 +8113,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_forms_partner_apply_client",
-      "community": 3,
+      "community": 4,
       "norm_label": "client()"
     },
     {
@@ -8129,7 +8129,7 @@
       "heat": 0.088,
       "owner": "unowned",
       "id": "test_forms_partner_apply_open_call_for_partner",
-      "community": 3,
+      "community": 4,
       "norm_label": "open_call_for_partner()"
     },
     {
@@ -8145,7 +8145,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "test_forms_partner_apply_make_png_bytes",
-      "community": 3,
+      "community": 4,
       "norm_label": "make_png_bytes()"
     },
     {
@@ -8161,7 +8161,7 @@
       "heat": 0.101,
       "owner": "unowned",
       "id": "test_forms_partner_apply_form_fields",
-      "community": 3,
+      "community": 4,
       "norm_label": "form_fields()"
     },
     {
@@ -8177,7 +8177,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_forms_partner_apply_test_partner_apply_closed_window_forbidden",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partner_apply_closed_window_forbidden()"
     },
     {
@@ -8193,7 +8193,7 @@
       "heat": 0.09,
       "owner": "unowned",
       "id": "test_forms_partner_apply_test_partner_apply_success_without_logo",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partner_apply_success_without_logo()"
     },
     {
@@ -8209,7 +8209,7 @@
       "heat": 0.097,
       "owner": "unowned",
       "id": "test_forms_partner_apply_test_partner_apply_success_with_logo",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partner_apply_success_with_logo()"
     },
     {
@@ -8225,7 +8225,7 @@
       "heat": 0.074,
       "owner": "unowned",
       "id": "test_forms_partner_apply_test_partner_apply_invalid_level_400",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partner_apply_invalid_level_400()"
     },
     {
@@ -8241,7 +8241,7 @@
       "heat": 0.09,
       "owner": "unowned",
       "id": "test_forms_partner_apply_test_partner_apply_fake_logo_rejected_400",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partner_apply_fake_logo_rejected_400()"
     },
     {
@@ -8257,7 +8257,7 @@
       "heat": 0.053,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_init_py",
-      "community": 57,
+      "community": 58,
       "norm_label": "__init__.py"
     },
     {
@@ -8369,31 +8369,31 @@
       "heat": 0.06,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_campaign_windows_py",
-      "community": 45,
+      "community": 46,
       "norm_label": "test_campaign_windows.py"
     },
     {
-      "label": "test_five_campaign_windows_seeded()",
+      "label": "test_six_campaign_windows_seeded()",
       "file_type": "code",
       "type": "FUNCTION",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py",
       "source_location": "L11",
       "complexity": 1,
-      "loc": 11,
+      "loc": 12,
       "level": 3,
       "granularity": "low",
-      "heat": 0.073,
+      "heat": 0.075,
       "owner": "unowned",
-      "id": "test_campaign_windows_test_five_campaign_windows_seeded",
-      "community": 45,
-      "norm_label": "test_five_campaign_windows_seeded()"
+      "id": "test_campaign_windows_test_six_campaign_windows_seeded",
+      "community": 46,
+      "norm_label": "test_six_campaign_windows_seeded()"
     },
     {
       "label": "test_end_at_must_be_after_start_at()",
       "file_type": "code",
       "type": "FUNCTION",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py",
-      "source_location": "L25",
+      "source_location": "L26",
       "complexity": 1,
       "loc": 10,
       "level": 3,
@@ -8401,7 +8401,7 @@
       "heat": 0.072,
       "owner": "unowned",
       "id": "test_campaign_windows_test_end_at_must_be_after_start_at",
-      "community": 45,
+      "community": 46,
       "norm_label": "test_end_at_must_be_after_start_at()"
     },
     {
@@ -8519,7 +8519,7 @@
       "heat": 0.068,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_public_speakers_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_public_speakers.py"
     },
     {
@@ -8535,7 +8535,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_public_speakers_client",
-      "community": 3,
+      "community": 4,
       "norm_label": "client()"
     },
     {
@@ -8551,7 +8551,7 @@
       "heat": 0.093,
       "owner": "unowned",
       "id": "test_public_speakers_make_speaker",
-      "community": 3,
+      "community": 4,
       "norm_label": "make_speaker()"
     },
     {
@@ -8567,7 +8567,7 @@
       "heat": 0.096,
       "owner": "unowned",
       "id": "test_public_speakers_test_speakers_filter_by_theme_and_format_excludes_private",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_speakers_filter_by_theme_and_format_excludes_private()"
     },
     {
@@ -8583,7 +8583,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "test_public_speakers_test_speakers_empty_result",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_speakers_empty_result()"
     },
     {
@@ -9140,7 +9140,7 @@
       "heat": 0.079,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_applications_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_applications.py"
     },
     {
@@ -9156,7 +9156,7 @@
       "heat": 0.095,
       "owner": "unowned",
       "id": "test_applications_make_speaker",
-      "community": 3,
+      "community": 4,
       "norm_label": "make_speaker()"
     },
     {
@@ -9172,7 +9172,7 @@
       "heat": 0.072,
       "owner": "unowned",
       "id": "test_applications_test_speaker_default_status_pending_and_not_public",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_speaker_default_status_pending_and_not_public()"
     },
     {
@@ -9188,7 +9188,7 @@
       "heat": 0.079,
       "owner": "unowned",
       "id": "test_applications_test_speaker_status_workflow_transition",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_speaker_status_workflow_transition()"
     },
     {
@@ -9204,7 +9204,7 @@
       "heat": 0.094,
       "owner": "unowned",
       "id": "test_applications_test_ambassador_social_handles_json",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_ambassador_social_handles_json()"
     },
     {
@@ -9220,7 +9220,7 @@
       "heat": 0.087,
       "owner": "unowned",
       "id": "test_applications_test_partner_requires_valid_level_fk",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partner_requires_valid_level_fk()"
     },
     {
@@ -9236,7 +9236,7 @@
       "heat": 0.148,
       "owner": "unowned",
       "id": "test_applications_test_partner_negotiation_workflow",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partner_negotiation_workflow()"
     },
     {
@@ -9252,7 +9252,7 @@
       "heat": 0.096,
       "owner": "unowned",
       "id": "test_applications_test_exhibitor_default_status_and_public",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_exhibitor_default_status_and_public()"
     },
     {
@@ -9268,7 +9268,7 @@
       "heat": 0.113,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_storage_py",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_storage.py"
     },
     {
@@ -9284,7 +9284,7 @@
       "heat": 0.099,
       "owner": "unowned",
       "id": "test_storage_make_png_bytes",
-      "community": 6,
+      "community": 10,
       "norm_label": "make_png_bytes()"
     },
     {
@@ -9300,7 +9300,7 @@
       "heat": 0.088,
       "owner": "unowned",
       "id": "test_storage_test_validate_is_real_image_accepts_real_image",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_validate_is_real_image_accepts_real_image()"
     },
     {
@@ -9316,7 +9316,7 @@
       "heat": 0.086,
       "owner": "unowned",
       "id": "test_storage_test_validate_is_real_image_rejects_fake_image",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_validate_is_real_image_rejects_fake_image()"
     },
     {
@@ -9332,7 +9332,7 @@
       "heat": 0.095,
       "owner": "unowned",
       "id": "test_storage_test_upload_file_rejects_disallowed_content_type",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_upload_file_rejects_disallowed_content_type()"
     },
     {
@@ -9348,7 +9348,7 @@
       "heat": 0.088,
       "owner": "unowned",
       "id": "test_storage_test_upload_file_rejects_oversized_file",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_upload_file_rejects_oversized_file()"
     },
     {
@@ -9364,7 +9364,7 @@
       "heat": 0.086,
       "owner": "unowned",
       "id": "test_storage_test_upload_file_rejects_fake_image_bytes",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_upload_file_rejects_fake_image_bytes()"
     },
     {
@@ -9380,7 +9380,7 @@
       "heat": 0.117,
       "owner": "unowned",
       "id": "test_storage_test_upload_file_success_never_uses_original_filename",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_upload_file_success_never_uses_original_filename()"
     },
     {
@@ -9396,7 +9396,7 @@
       "heat": 0.109,
       "owner": "unowned",
       "id": "test_storage_test_upload_file_pdf_skips_image_validation",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_upload_file_pdf_skips_image_validation()"
     },
     {
@@ -9412,7 +9412,7 @@
       "heat": 0.093,
       "owner": "unowned",
       "id": "test_storage_test_upload_file_respects_custom_max_bytes",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_upload_file_respects_custom_max_bytes()"
     },
     {
@@ -9428,7 +9428,7 @@
       "heat": 0.08,
       "owner": "unowned",
       "id": "test_storage_test_max_photo_bytes_is_tighter_than_shared_upload_cap",
-      "community": 6,
+      "community": 10,
       "norm_label": "test_max_photo_bytes_is_tighter_than_shared_upload_cap()"
     },
     {
@@ -9563,7 +9563,7 @@
       "heat": 0.068,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_public_exhibitors_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_public_exhibitors.py"
     },
     {
@@ -9579,7 +9579,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_public_exhibitors_client",
-      "community": 3,
+      "community": 4,
       "norm_label": "client()"
     },
     {
@@ -9595,7 +9595,7 @@
       "heat": 0.094,
       "owner": "unowned",
       "id": "test_public_exhibitors_make_exhibitor",
-      "community": 3,
+      "community": 4,
       "norm_label": "make_exhibitor()"
     },
     {
@@ -9611,7 +9611,7 @@
       "heat": 0.087,
       "owner": "unowned",
       "id": "test_public_exhibitors_test_exhibitors_excludes_private",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_exhibitors_excludes_private()"
     },
     {
@@ -9627,7 +9627,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "test_public_exhibitors_test_exhibitors_empty_result",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_exhibitors_empty_result()"
     },
     {
@@ -10238,7 +10238,7 @@
       "heat": 0.068,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_email_service_py",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_email_service.py"
     },
     {
@@ -10254,7 +10254,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "test_email_service_test_send_email_logs_in_dev_without_key",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_send_email_logs_in_dev_without_key()"
     },
     {
@@ -10270,7 +10270,7 @@
       "heat": 0.066,
       "owner": "unowned",
       "id": "test_email_service_mock_response",
-      "community": 10,
+      "community": 6,
       "norm_label": "_mock_response()"
     },
     {
@@ -10286,7 +10286,7 @@
       "heat": 0.089,
       "owner": "unowned",
       "id": "test_email_service_test_send_email_calls_resend_when_key_configured",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_send_email_calls_resend_when_key_configured()"
     },
     {
@@ -10302,7 +10302,7 @@
       "heat": 0.083,
       "owner": "unowned",
       "id": "test_email_service_test_send_email_raises_on_resend_error",
-      "community": 10,
+      "community": 6,
       "norm_label": "test_send_email_raises_on_resend_error()"
     },
     {
@@ -10639,7 +10639,7 @@
       "heat": 0.137,
       "owner": "unowned",
       "id": "test_schemas_test_applications_read",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_applications_read()"
     },
     {
@@ -10703,7 +10703,7 @@
       "heat": 0.057,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_health_py",
-      "community": 47,
+      "community": 48,
       "norm_label": "test_health.py"
     },
     {
@@ -10719,7 +10719,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "test_health_test_health",
-      "community": 47,
+      "community": 48,
       "norm_label": "test_health()"
     },
     {
@@ -10736,7 +10736,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_auth_service_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_auth_service.py"
     },
     {
@@ -10753,7 +10753,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_auth_service_test_access_token_round_trip",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_access_token_round_trip()"
     },
     {
@@ -10770,7 +10770,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_auth_service_test_refresh_token_round_trip",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_refresh_token_round_trip()"
     },
     {
@@ -10787,7 +10787,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_auth_service_test_wrong_token_type_rejected",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_wrong_token_type_rejected()"
     },
     {
@@ -10804,7 +10804,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_auth_service_test_expired_token_rejected",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_expired_token_rejected()"
     },
     {
@@ -10821,7 +10821,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_auth_service_test_invalid_signature_rejected",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_invalid_signature_rejected()"
     },
     {
@@ -10949,7 +10949,7 @@
       "heat": 0.068,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_public_partners_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_public_partners.py"
     },
     {
@@ -10965,7 +10965,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "test_public_partners_client",
-      "community": 3,
+      "community": 4,
       "norm_label": "client()"
     },
     {
@@ -10981,7 +10981,7 @@
       "heat": 0.091,
       "owner": "unowned",
       "id": "test_public_partners_make_partner",
-      "community": 3,
+      "community": 4,
       "norm_label": "make_partner()"
     },
     {
@@ -10997,7 +10997,7 @@
       "heat": 0.103,
       "owner": "unowned",
       "id": "test_public_partners_test_partners_filter_by_level_excludes_private",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partners_filter_by_level_excludes_private()"
     },
     {
@@ -11013,7 +11013,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "test_public_partners_test_partners_empty_result",
-      "community": 3,
+      "community": 4,
       "norm_label": "test_partners_empty_result()"
     },
     {
@@ -11190,7 +11190,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_admin_panel_py",
-      "community": 8,
+      "community": 14,
       "norm_label": "test_admin_panel.py"
     },
     {
@@ -11207,7 +11207,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_make_admin",
-      "community": 8,
+      "community": 14,
       "norm_label": "make_admin()"
     },
     {
@@ -11224,7 +11224,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_grant_permission",
-      "community": 8,
+      "community": 14,
       "norm_label": "grant_permission()"
     },
     {
@@ -11241,7 +11241,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_dispose_global_engine",
-      "community": 8,
+      "community": 14,
       "norm_label": "_dispose_global_engine()"
     },
     {
@@ -11258,7 +11258,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_client",
-      "community": 8,
+      "community": 14,
       "norm_label": "client()"
     },
     {
@@ -11275,7 +11275,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_login_success_grants_access_to_a_permitted_view",
-      "community": 8,
+      "community": 14,
       "norm_label": "test_login_success_grants_access_to_a_permitted_view()"
     },
     {
@@ -11292,7 +11292,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_login_wrong_password_is_rejected",
-      "community": 8,
+      "community": 14,
       "norm_label": "test_login_wrong_password_is_rejected()"
     },
     {
@@ -11309,7 +11309,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_role_without_permission_gets_403_on_gated_view",
-      "community": 8,
+      "community": 14,
       "norm_label": "test_role_without_permission_gets_403_on_gated_view()"
     },
     {
@@ -11326,7 +11326,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_any_authenticated_admin_can_read_contact_messages",
-      "community": 8,
+      "community": 14,
       "norm_label": "test_any_authenticated_admin_can_read_contact_messages()"
     },
     {
@@ -11343,7 +11343,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_panel_test_unauthenticated_request_redirects_to_login",
-      "community": 8,
+      "community": 14,
       "norm_label": "test_unauthenticated_request_redirects_to_login()"
     },
     {
@@ -11496,7 +11496,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_admin_login_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_admin_login.py"
     },
     {
@@ -11513,7 +11513,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_login_make_admin",
-      "community": 4,
+      "community": 3,
       "norm_label": "make_admin()"
     },
     {
@@ -11547,7 +11547,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_login_test_login_success_returns_token_pair",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_login_success_returns_token_pair()"
     },
     {
@@ -11564,7 +11564,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_login_test_login_wrong_password_generic_401",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_login_wrong_password_generic_401()"
     },
     {
@@ -11581,7 +11581,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_login_test_unknown_email_same_generic_401",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_unknown_email_same_generic_401()"
     },
     {
@@ -11598,7 +11598,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_login_test_rate_limit_blocks_sixth_request_per_minute",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_rate_limit_blocks_sixth_request_per_minute()"
     },
     {
@@ -11615,7 +11615,7 @@
       "owner": "unowned",
       "sensitivity": "HIGH",
       "id": "test_admin_login_test_account_locks_after_five_failed_attempts",
-      "community": 4,
+      "community": 3,
       "norm_label": "test_account_locks_after_five_failed_attempts()"
     },
     {
@@ -12083,6 +12083,67 @@
       "id": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_rationale_1"
     },
     {
+      "label": "2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "file_type": "code",
+      "type": "FUNCTION",
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "source_location": "L1",
+      "complexity": 1,
+      "loc": 1,
+      "level": 2,
+      "granularity": "low",
+      "heat": 0.053,
+      "owner": "unowned",
+      "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_py",
+      "community": 31,
+      "norm_label": "2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py"
+    },
+    {
+      "label": "upgrade()",
+      "file_type": "code",
+      "type": "FUNCTION",
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "source_location": "L21",
+      "complexity": 1,
+      "loc": 36,
+      "level": 3,
+      "granularity": "low",
+      "heat": 0.104,
+      "owner": "unowned",
+      "id": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_upgrade",
+      "community": 31,
+      "norm_label": "upgrade()"
+    },
+    {
+      "label": "downgrade()",
+      "file_type": "code",
+      "type": "FUNCTION",
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "source_location": "L59",
+      "complexity": 1,
+      "loc": 18,
+      "level": 3,
+      "granularity": "low",
+      "heat": 0.074,
+      "owner": "unowned",
+      "id": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_downgrade",
+      "community": 31,
+      "norm_label": "downgrade()"
+    },
+    {
+      "label": "campaign_window_event_key  Revision ID: b1c2d3e4f5a6 Revises: 75418b933d4f Creat",
+      "file_type": "rationale",
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "source_location": "L1",
+      "level": 3,
+      "granularity": "low",
+      "heat": 0.045,
+      "owner": "unowned",
+      "id": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_rationale_1",
+      "community": 31,
+      "norm_label": "campaign_window_event_key  revision id: b1c2d3e4f5a6 revises: 75418b933d4f creat"
+    },
+    {
       "label": "2026_09_02_0711-75418b933d4f_otp_codes_table.py",
       "file_type": "code",
       "type": "FUNCTION",
@@ -12095,7 +12156,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_0711_75418b933d4f_otp_codes_table_py",
-      "community": 31,
+      "community": 32,
       "norm_label": "2026_09_02_0711-75418b933d4f_otp_codes_table.py"
     },
     {
@@ -12111,7 +12172,7 @@
       "heat": 0.08,
       "owner": "unowned",
       "id": "2026_09_02_0711_75418b933d4f_otp_codes_table_upgrade",
-      "community": 31,
+      "community": 32,
       "norm_label": "upgrade()"
     },
     {
@@ -12127,7 +12188,7 @@
       "heat": 0.062,
       "owner": "unowned",
       "id": "2026_09_02_0711_75418b933d4f_otp_codes_table_downgrade",
-      "community": 31,
+      "community": 32,
       "norm_label": "downgrade()"
     },
     {
@@ -12139,7 +12200,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 31,
+      "community": 32,
       "norm_label": "otp_codes table (participant otp login)  revision id: 75418b933d4f revises: d7d5",
       "id": "2026_09_02_0711_75418b933d4f_otp_codes_table_rationale_1"
     },
@@ -12156,7 +12217,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_25_2218_86b8fb32827d_users_and_user_profiles_py",
-      "community": 32,
+      "community": 33,
       "norm_label": "2026_08_25_2218-86b8fb32827d_users_and_user_profiles.py"
     },
     {
@@ -12172,7 +12233,7 @@
       "heat": 0.114,
       "owner": "unowned",
       "id": "2026_08_25_2218_86b8fb32827d_users_and_user_profiles_upgrade",
-      "community": 32,
+      "community": 33,
       "norm_label": "upgrade()"
     },
     {
@@ -12188,7 +12249,7 @@
       "heat": 0.067,
       "owner": "unowned",
       "id": "2026_08_25_2218_86b8fb32827d_users_and_user_profiles_downgrade",
-      "community": 32,
+      "community": 33,
       "norm_label": "downgrade()"
     },
     {
@@ -12200,7 +12261,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 32,
+      "community": 33,
       "norm_label": "users and user_profiles  revision id: 86b8fb32827d revises: e15b192c81f5 create",
       "id": "2026_08_25_2218_86b8fb32827d_users_and_user_profiles_rationale_1"
     },
@@ -12217,7 +12278,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_25_2252_2c2d07493eb5_campaign_windows_py",
-      "community": 33,
+      "community": 34,
       "norm_label": "2026_08_25_2252-2c2d07493eb5_campaign_windows.py"
     },
     {
@@ -12233,7 +12294,7 @@
       "heat": 0.149,
       "owner": "unowned",
       "id": "2026_08_25_2252_2c2d07493eb5_campaign_windows_upgrade",
-      "community": 33,
+      "community": 34,
       "norm_label": "upgrade()"
     },
     {
@@ -12249,7 +12310,7 @@
       "heat": 0.063,
       "owner": "unowned",
       "id": "2026_08_25_2252_2c2d07493eb5_campaign_windows_downgrade",
-      "community": 33,
+      "community": 34,
       "norm_label": "downgrade()"
     },
     {
@@ -12261,7 +12322,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 33,
+      "community": 34,
       "norm_label": "campaign_windows  revision id: 2c2d07493eb5 revises: a9e9ba5fc6f7 create date: 2",
       "id": "2026_08_25_2252_2c2d07493eb5_campaign_windows_rationale_1"
     },
@@ -12278,7 +12339,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_25_2247_a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_py",
-      "community": 34,
+      "community": 35,
       "norm_label": "2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py"
     },
     {
@@ -12294,7 +12355,7 @@
       "heat": 0.181,
       "owner": "unowned",
       "id": "2026_08_25_2247_a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_upgrade",
-      "community": 34,
+      "community": 35,
       "norm_label": "upgrade()"
     },
     {
@@ -12310,7 +12371,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "2026_08_25_2247_a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_downgrade",
-      "community": 34,
+      "community": 35,
       "norm_label": "downgrade()"
     },
     {
@@ -12323,7 +12384,7 @@
       "heat": 0.057,
       "owner": "unowned",
       "sensitivity": "HIGH",
-      "community": 34,
+      "community": 35,
       "norm_label": "rbac (roles, permissions, role_permissions, admin_users)  revision id: a9e9ba5fc",
       "id": "2026_08_25_2247_a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_rationale_1"
     },
@@ -12340,7 +12401,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_25_2240_3f306df50f16_faqs_contact_messages_py",
-      "community": 35,
+      "community": 36,
       "norm_label": "2026_08_25_2240-3f306df50f16_faqs_contact_messages.py"
     },
     {
@@ -12356,7 +12417,7 @@
       "heat": 0.097,
       "owner": "unowned",
       "id": "2026_08_25_2240_3f306df50f16_faqs_contact_messages_upgrade",
-      "community": 35,
+      "community": 36,
       "norm_label": "upgrade()"
     },
     {
@@ -12372,7 +12433,7 @@
       "heat": 0.063,
       "owner": "unowned",
       "id": "2026_08_25_2240_3f306df50f16_faqs_contact_messages_downgrade",
-      "community": 35,
+      "community": 36,
       "norm_label": "downgrade()"
     },
     {
@@ -12384,7 +12445,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 35,
+      "community": 36,
       "norm_label": "faqs, contact_messages  revision id: 3f306df50f16 revises: 7b6712058249 create d",
       "id": "2026_08_25_2240_3f306df50f16_faqs_contact_messages_rationale_1"
     },
@@ -12401,7 +12462,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_25_2135_5e965f30353e_initial_empty_py",
-      "community": 36,
+      "community": 37,
       "norm_label": "2026_08_25_2135-5e965f30353e_initial_empty.py"
     },
     {
@@ -12417,7 +12478,7 @@
       "heat": 0.06,
       "owner": "unowned",
       "id": "2026_08_25_2135_5e965f30353e_initial_empty_upgrade",
-      "community": 36,
+      "community": 37,
       "norm_label": "upgrade()"
     },
     {
@@ -12433,7 +12494,7 @@
       "heat": 0.06,
       "owner": "unowned",
       "id": "2026_08_25_2135_5e965f30353e_initial_empty_downgrade",
-      "community": 36,
+      "community": 37,
       "norm_label": "downgrade()"
     },
     {
@@ -12445,7 +12506,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 36,
+      "community": 37,
       "norm_label": "initial (empty)  revision id: 5e965f30353e revises:  create date: 2026-08-25 21:",
       "id": "2026_08_25_2135_5e965f30353e_initial_empty_rationale_1"
     },
@@ -12462,7 +12523,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_25_2235_7b6712058249_speakers_ambassadors_partners_exhibitors_py",
-      "community": 37,
+      "community": 38,
       "norm_label": "2026_08_25_2235-7b6712058249_speakers_ambassadors_partners_exhibitors.py"
     },
     {
@@ -12478,7 +12539,7 @@
       "heat": 0.255,
       "owner": "unowned",
       "id": "2026_08_25_2235_7b6712058249_speakers_ambassadors_partners_exhibitors_upgrade",
-      "community": 37,
+      "community": 38,
       "norm_label": "upgrade()"
     },
     {
@@ -12494,7 +12555,7 @@
       "heat": 0.072,
       "owner": "unowned",
       "id": "2026_08_25_2235_7b6712058249_speakers_ambassadors_partners_exhibitors_downgrade",
-      "community": 37,
+      "community": 38,
       "norm_label": "downgrade()"
     },
     {
@@ -12506,7 +12567,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 37,
+      "community": 38,
       "norm_label": "speakers, ambassadors, partners, exhibitors  revision id: 7b6712058249 revises:",
       "id": "2026_08_25_2235_7b6712058249_speakers_ambassadors_partners_exhibitors_rationale_1"
     },
@@ -12523,7 +12584,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_26_0048_866edbae2931_audit_logs_table_py",
-      "community": 38,
+      "community": 39,
       "norm_label": "2026_08_26_0048-866edbae2931_audit_logs_table.py"
     },
     {
@@ -12539,7 +12600,7 @@
       "heat": 0.078,
       "owner": "unowned",
       "id": "2026_08_26_0048_866edbae2931_audit_logs_table_upgrade",
-      "community": 38,
+      "community": 39,
       "norm_label": "upgrade()"
     },
     {
@@ -12555,7 +12616,7 @@
       "heat": 0.065,
       "owner": "unowned",
       "id": "2026_08_26_0048_866edbae2931_audit_logs_table_downgrade",
-      "community": 38,
+      "community": 39,
       "norm_label": "downgrade()"
     },
     {
@@ -12567,7 +12628,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 38,
+      "community": 39,
       "norm_label": "audit_logs table  revision id: 866edbae2931 revises: 5a30c6996bc8 create date: 2",
       "id": "2026_08_26_0048_866edbae2931_audit_logs_table_rationale_1"
     },
@@ -12584,7 +12645,7 @@
       "heat": 0.064,
       "owner": "unowned",
       "id": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_25_2222_9dd893772cc0_sessions_py",
-      "community": 39,
+      "community": 40,
       "norm_label": "2026_08_25_2222-9dd893772cc0_sessions.py"
     },
     {
@@ -12600,7 +12661,7 @@
       "heat": 0.09,
       "owner": "unowned",
       "id": "2026_08_25_2222_9dd893772cc0_sessions_upgrade",
-      "community": 39,
+      "community": 40,
       "norm_label": "upgrade()"
     },
     {
@@ -12616,7 +12677,7 @@
       "heat": 0.063,
       "owner": "unowned",
       "id": "2026_08_25_2222_9dd893772cc0_sessions_downgrade",
-      "community": 39,
+      "community": 40,
       "norm_label": "downgrade()"
     },
     {
@@ -12628,7 +12689,7 @@
       "granularity": "low",
       "heat": 0.057,
       "owner": "unowned",
-      "community": 39,
+      "community": 40,
       "norm_label": "sessions  revision id: 9dd893772cc0 revises: 86b8fb32827d create date: 2026-08-2",
       "id": "2026_08_25_2222_9dd893772cc0_sessions_rationale_1"
     },
@@ -12641,7 +12702,7 @@
       "granularity": "low",
       "heat": 0.105,
       "owner": "unowned",
-      "community": 4,
+      "community": 3,
       "norm_label": "todo.md: ticket download from the web page.      scoped to `ticket.user_id == us",
       "id": "user_me_rationale_55"
     },
@@ -12654,7 +12715,7 @@
       "granularity": "low",
       "heat": 0.105,
       "owner": "unowned",
-      "community": 4,
+      "community": 3,
       "norm_label": "right to erasure (rgpd) via anonymization, not a physical delete --     tickets/",
       "id": "user_me_rationale_76"
     },
@@ -12667,7 +12728,7 @@
       "granularity": "low",
       "heat": 0.101,
       "owner": "unowned",
-      "community": 4,
+      "community": 3,
       "norm_label": "right to erasure (rgpd) via anonymization, not a physical delete --     tickets/",
       "id": "user_me_rationale_54"
     },
@@ -12680,7 +12741,7 @@
       "granularity": "low",
       "heat": 0.064,
       "owner": "unowned",
-      "community": 58,
+      "community": 59,
       "norm_label": "generate the ticket's pdf+qr, upload it, and email it.      runs as a background",
       "id": "ticket_finalization_rationale_10"
     }
@@ -14682,7 +14743,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/campaign.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_src": "campaign_campaignwindow",
       "_tgt": "base",
@@ -16638,7 +16699,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/campaign.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_src": "users_kodjododjango_downloads_dev_projects_synca_conf_back_app_models_campaign_py",
       "_tgt": "campaign_campaignwindow",
@@ -24933,16 +24994,16 @@
       "source_location": "L11",
       "weight": 1.0,
       "_src": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_campaign_windows_py",
-      "_tgt": "test_campaign_windows_test_five_campaign_windows_seeded",
+      "_tgt": "test_campaign_windows_test_six_campaign_windows_seeded",
       "source": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_campaign_windows_py",
-      "target": "test_campaign_windows_test_five_campaign_windows_seeded",
+      "target": "test_campaign_windows_test_six_campaign_windows_seeded",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "_src": "users_kodjododjango_downloads_dev_projects_synca_conf_back_tests_test_campaign_windows_py",
       "_tgt": "test_campaign_windows_test_end_at_must_be_after_start_at",
@@ -28512,6 +28573,42 @@
       "_tgt": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_py",
       "source": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_py",
       "target": "2026_08_26_1444_d7d5f8910852_encrypt_users_phone_whatsapp_and_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_py",
+      "_tgt": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_upgrade",
+      "source": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_py",
+      "target": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_upgrade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_src": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_py",
+      "_tgt": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_downgrade",
+      "source": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_py",
+      "target": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_downgrade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_rationale_1",
+      "_tgt": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_py",
+      "source": "users_kodjododjango_downloads_dev_projects_synca_conf_back_alembic_versions_2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_py",
+      "target": "2026_09_02_1500_b1c2d3e4f5a6_campaign_window_event_key_rationale_1",
       "confidence_score": 1.0
     },
     {
