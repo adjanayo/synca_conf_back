@@ -140,6 +140,29 @@ async def update_partner_status(
     return PartnerRead.model_validate(partner)
 
 
+@router.get("/exhibitors", response_model=list[ExhibitorRead])
+@limiter.limit("30/minute")
+async def list_exhibitors(
+    request: Request,
+    status: str | None = None,
+    stand_type: str | None = None,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("exhibitors.manage")),
+) -> list[ExhibitorRead]:
+    query = select(Exhibitor)
+    if status is not None:
+        query = query.where(Exhibitor.status == status)
+    if stand_type is not None:
+        query = query.where(Exhibitor.stand_type == stand_type)
+    query = query.order_by(Exhibitor.created_at.desc()).limit(pagination.limit).offset(
+        pagination.offset
+    )
+
+    exhibitors = (await db.execute(query)).scalars().all()
+    return [ExhibitorRead.model_validate(exhibitor) for exhibitor in exhibitors]
+
+
 @router.patch("/exhibitors/{exhibitor_id}", response_model=ExhibitorRead)
 @limiter.limit("30/minute")
 async def update_exhibitor_status(
