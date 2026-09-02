@@ -18,14 +18,14 @@ sequenceDiagram
     participant P9 as RolePermission
     participant P10 as Permission
     participant P11 as Speaker
-    participant P12 as Ticket
-    participant P13 as Partner
-    participant P14 as Day
-    participant P15 as FaqCategory
-    participant P16 as Session
-    participant P17 as Exhibitor
-    participant P18 as ContactMessage
-    participant P19 as Ambassador
+    participant P12 as Partner
+    participant P13 as Ticket
+    participant P14 as Exhibitor
+    participant P15 as Day
+    participant P16 as FaqCategory
+    participant P17 as Session
+    participant P18 as Ambassador
+    participant P19 as ContactMessage
     participant P20 as Faq
     participant P21 as Waitlist
     participant P22 as UserProfile

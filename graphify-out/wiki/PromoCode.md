@@ -43,12 +43,12 @@ sequenceDiagram
     participant P34 as Permission
     participant P35 as Speaker
     participant P36 as Partner
-    participant P37 as Day
-    participant P38 as FaqCategory
-    participant P39 as Session
-    participant P40 as Exhibitor
-    participant P41 as ContactMessage
-    participant P42 as Ambassador
+    participant P37 as Exhibitor
+    participant P38 as Day
+    participant P39 as FaqCategory
+    participant P40 as Session
+    participant P41 as Ambassador
+    participant P42 as ContactMessage
     participant P43 as Faq
     participant P44 as UserProfile
     participant P45 as OtpCode
@@ -61,8 +61,8 @@ sequenceDiagram
     participant P52 as In this scenario we need to create an Engine     and associate a connection with
     participant P53 as Run migrations in 'online' mode.
     participant P54 as test_stats_computed_from_payments_tickets_and_applications()
-    participant P55 as test_promo_code_payment_ticket_waitlist_read()
-    participant P56 as generate_ambassador_promo_code()
+    participant P55 as generate_ambassador_promo_code()
+    participant P56 as test_promo_code_payment_ticket_waitlist_read()
     participant P57 as test_promo_code_and_waitlist_unique()
     participant P58 as test_promo_validate_success()
     participant P59 as test_promo_validate_inactive_400()
@@ -147,10 +147,10 @@ sequenceDiagram
     P34-->>- P1: return
     P1->>+ P35: uses
     P35-->>- P1: return
-    P1->>+ P4: uses
-    P4-->>- P1: return
     P1->>+ P36: uses
     P36-->>- P1: return
+    P1->>+ P4: uses
+    P4-->>- P1: return
     P1->>+ P37: uses
     P37-->>- P1: return
     P1->>+ P38: uses
@@ -193,10 +193,10 @@ sequenceDiagram
     P54-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
-    P0->>+ P13: calls
-    P13-->>- P0: return
     P0->>+ P55: calls
     P55-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
     P0->>+ P56: calls
     P56-->>- P0: return
     P0->>+ P20: calls
@@ -222,9 +222,9 @@ sequenceDiagram
 ### calls
 - [[test_stats_computed_from_payments_tickets_and_applications()]] `INFERRED`
 - [[test_webhook_increments_promo_usage_count_on_completion()]] `INFERRED`
+- [[generate_ambassador_promo_code()]] `INFERRED`
 - [[test_register_valid_promo_code_accepted()]] `INFERRED`
 - [[test_promo_code_payment_ticket_waitlist_read()]] `INFERRED`
-- [[generate_ambassador_promo_code()]] `INFERRED`
 - [[test_create_payment_applies_percent_discount()]] `INFERRED`
 - [[test_create_payment_applies_fixed_discount()]] `INFERRED`
 - [[test_promo_code_and_waitlist_unique()]] `INFERRED`

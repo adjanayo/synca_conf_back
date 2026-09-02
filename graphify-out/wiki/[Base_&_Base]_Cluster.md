@@ -1,47 +1,59 @@
 # [Base & Base] Cluster
 
-> 99 nodes · cohesion 0.03
+> 101 nodes · cohesion 0.03
 
 ## Key Concepts
 
-- **BaseModel** (61 connections)
+- **BaseModel** (65 connections)
 - [referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/referentials.py#L1) (10 connections)
+- [admin_applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L1) (8 connections)
 - **ValueError** (8 connections)
 - [auth.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L1) (6 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L1) (6 connections)
-- [login()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py#L24) (5 connections)
 - [RoleWithPermissionsRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L17) (4 connections)
-- [admin_applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L1) (4 connections)
 - [applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L1) (4 connections)
 - [payments.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/payments.py#L1) (4 connections)
 - [RegistrationRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_registrations.py#L6) (3 connections)
 - [AdminStatsRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_stats.py#L4) (3 connections)
 - [AdminMeOut](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L29) (3 connections)
-- [TokenPair](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L9) (3 connections)
 - [PromoValidateResponse](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/promo.py#L8) (3 connections)
 - [update_role_permissions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L58) (3 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L1) (3 connections)
 - [content.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/content.py#L1) (3 connections)
 - [exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py#L1) (3 connections)
 - [sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/sessions.py#L1) (3 connections)
-- [AmbassadorStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L12) (2 connections)
-- [ExhibitorStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L20) (2 connections)
-- [PartnerStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L16) (2 connections)
-- [SpeakerStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L8) (2 connections)
-- [list_registrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_registrations.py#L20) (2 connections)
-- *... and 74 more nodes in this community*
+- [AmbassadorAdminCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L79) (2 connections)
+- [AmbassadorStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L29) (2 connections)
+- [ExhibitorAdminCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L133) (2 connections)
+- [ExhibitorStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L37) (2 connections)
+- [PartnerAdminCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L105) (2 connections)
+- [PartnerStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L33) (2 connections)
+- [SpeakerAdminCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L50) (2 connections)
+- *... and 76 more nodes in this community*
 
 ## Class Diagram
 
 ```mermaid
 classDiagram
+    class AmbassadorAdminCreate {
+        +admin_applications.py()
+    }
     class AmbassadorStatusUpdate {
+        +admin_applications.py()
+    }
+    class ExhibitorAdminCreate {
         +admin_applications.py()
     }
     class ExhibitorStatusUpdate {
         +admin_applications.py()
     }
+    class PartnerAdminCreate {
+        +admin_applications.py()
+    }
     class PartnerStatusUpdate {
+        +admin_applications.py()
+    }
+    class SpeakerAdminCreate {
         +admin_applications.py()
     }
     class SpeakerStatusUpdate {
@@ -81,9 +93,6 @@ classDiagram
         +auth.py()
     }
     class OtpVerifyIn {
-        +auth.py()
-    }
-    class TokenPair {
         +auth.py()
     }
     class CampaignWindowRead {
@@ -237,8 +246,8 @@ classDiagram
 
 ## Audit Trail
 
-- EXTRACTED: 261 (90%)
-- INFERRED: 29 (10%)
+- EXTRACTED: 274 (92%)
+- INFERRED: 24 (8%)
 - AMBIGUOUS: 0 (0%)
 
 ---

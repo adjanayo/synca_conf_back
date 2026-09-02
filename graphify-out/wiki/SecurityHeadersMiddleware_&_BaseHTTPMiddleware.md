@@ -1,25 +1,14 @@
 # SecurityHeadersMiddleware & BaseHTTPMiddleware
 
-> 5 nodes · cohesion 0.40
+> 5 nodes · cohesion 0.70
 
 ## Key Concepts
 
-- [SecurityHeadersMiddleware](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L20) (4 connections)
-- **BaseHTTPMiddleware** (1 connections)
-- [.dispatch()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L25) (1 connections)
-- [.__init__()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L21) (1 connections)
-- [security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L1) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class SecurityHeadersMiddleware {
-        +security_headers.py()
-        +.__init__()
-        +.dispatch()
-    }
-```
+- [_csv_response()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L30) (4 connections)
+- [admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L1) (4 connections)
+- [export_payments_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L87) (2 connections)
+- [export_registrations_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L45) (2 connections)
+- [_sanitize_csv_cell()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L24) (2 connections)
 
 ## Relationships
 
@@ -27,11 +16,11 @@ classDiagram
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py)
 
 ## Audit Trail
 
-- EXTRACTED: 8 (100%)
+- EXTRACTED: 14 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

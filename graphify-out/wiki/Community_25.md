@@ -4,11 +4,11 @@
 
 ## Key Concepts
 
-- [test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L1) (4 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L9) (1 connections)
-- [test_newsletter_duplicate_email_conflict()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L28) (1 connections)
-- [test_newsletter_invalid_email_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L38) (1 connections)
-- [test_newsletter_subscribe_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L19) (1 connections)
+- [test_forms_contact.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L1) (4 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L10) (1 connections)
+- [test_contact_missing_message_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L39) (1 connections)
+- [test_contact_rejected_when_recaptcha_fails()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L50) (1 connections)
+- [test_contact_success_without_recaptcha_configured()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L20) (1 connections)
 
 ## Relationships
 
@@ -16,7 +16,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py)
 
 ## Audit Trail
 

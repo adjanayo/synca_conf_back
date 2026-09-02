@@ -1,49 +1,43 @@
 # [ModelView & _has_permission()] Cluster
 
-> 17 nodes · cohesion 0.23
+> 19 nodes · cohesion 0.16
 
 ## Key Concepts
 
-- [upload_file()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L57) (14 connections)
-- [test_storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L1) (10 connections)
-- [validate_is_real_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L26) (6 connections)
-- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L16) (5 connections)
-- [storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L1) (5 connections)
-- [UploadRejectedError](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L22) (4 connections)
-- [test_upload_file_rejects_disallowed_content_type()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L32) (3 connections)
-- [test_upload_file_respects_custom_max_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L96) (3 connections)
-- [test_upload_file_success_never_uses_original_filename()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L54) (3 connections)
-- [test_validate_is_real_image_accepts_real_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L22) (3 connections)
-- [_generate_key()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L50) (2 connections)
-- [test_upload_file_pdf_skips_image_validation()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L76) (2 connections)
-- [test_upload_file_rejects_fake_image_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L48) (2 connections)
-- [test_upload_file_rejects_oversized_file()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L41) (2 connections)
-- [test_validate_is_real_image_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L26) (2 connections)
-- [Reject anything whose bytes aren't actually a decodable image.      A client-sup](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L27) (1 connections)
-- [test_max_photo_bytes_is_tighter_than_shared_upload_cap()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py#L103) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class UploadRejectedError {
-        +storage.py()
-    }
-```
+- [test_admin_panel.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L1) (9 connections)
+- [make_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L16) (8 connections)
+- [make_admin_with_role()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L10) (6 connections)
+- [test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L1) (6 connections)
+- [get_current_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L14) (5 connections)
+- [test_require_permission_granted()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L49) (5 connections)
+- [test_get_current_admin_valid_token()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L26) (4 connections)
+- [require_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L42) (3 connections)
+- [test_login_success_grants_access_to_a_permitted_view()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L88) (3 connections)
+- [test_require_permission_denied_returns_403()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L63) (3 connections)
+- [test_any_authenticated_admin_can_read_contact_messages()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L138) (2 connections)
+- [test_login_wrong_password_is_rejected()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L105) (2 connections)
+- [test_role_without_permission_gets_403_on_gated_view()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L122) (2 connections)
+- [test_get_current_admin_invalid_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L42) (2 connections)
+- [test_get_current_admin_missing_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L35) (2 connections)
+- [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L1) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L68) (1 connections)
+- [_dispose_global_engine()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L56) (1 connections)
+- [test_unauthenticated_request_redirects_to_login()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L154) (1 connections)
 
 ## Relationships
 
-- [[[make_admin() & hash_password()] Cluster]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_storage.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py)
 
 ## Audit Trail
 
-- EXTRACTED: 48 (71%)
-- INFERRED: 20 (29%)
+- EXTRACTED: 48 (72%)
+- INFERRED: 19 (28%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -34,14 +34,14 @@ sequenceDiagram
     participant P25 as RolePermission
     participant P26 as Permission
     participant P27 as Speaker
-    participant P28 as Ticket
-    participant P29 as Partner
-    participant P30 as Day
-    participant P31 as FaqCategory
-    participant P32 as Session
-    participant P33 as Exhibitor
-    participant P34 as ContactMessage
-    participant P35 as Ambassador
+    participant P28 as Partner
+    participant P29 as Ticket
+    participant P30 as Exhibitor
+    participant P31 as Day
+    participant P32 as FaqCategory
+    participant P33 as Session
+    participant P34 as Ambassador
+    participant P35 as ContactMessage
     participant P36 as Faq
     participant P37 as Waitlist
     participant P38 as UserProfile
@@ -171,8 +171,8 @@ sequenceDiagram
     P22-->>- P0: return
     P0->>+ P23: uses
     P23-->>- P0: return
-    P0->>+ P28: uses
-    P28-->>- P0: return
+    P0->>+ P29: uses
+    P29-->>- P0: return
     P0->>+ P3: calls
     P3-->>- P0: return
     P0->>+ P37: uses

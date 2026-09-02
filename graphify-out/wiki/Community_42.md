@@ -5,8 +5,8 @@
 ## Key Concepts
 
 - [main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L1) (2 connections)
-- [health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L89) (1 connections)
-- [_log_rate_limit_exceeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L55) (1 connections)
+- [health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L91) (1 connections)
+- [_log_rate_limit_exceeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L56) (1 connections)
 
 ## Relationships
 

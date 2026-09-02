@@ -11,9 +11,9 @@ sequenceDiagram
     participant P2 as PromoCode
     participant P3 as test_stats_computed_from_payments_tickets_and_applications()
     participant P4 as test_webhook_increments_promo_usage_count_on_completion()
-    participant P5 as test_register_valid_promo_code_accepted()
-    participant P6 as test_promo_code_payment_ticket_waitlist_read()
-    participant P7 as generate_ambassador_promo_code()
+    participant P5 as generate_ambassador_promo_code()
+    participant P6 as test_register_valid_promo_code_accepted()
+    participant P7 as test_promo_code_payment_ticket_waitlist_read()
     participant P8 as test_create_payment_applies_percent_discount()
     participant P9 as test_create_payment_applies_fixed_discount()
     participant P10 as test_promo_code_and_waitlist_unique()
@@ -52,12 +52,12 @@ sequenceDiagram
     participant P43 as Permission
     participant P44 as Speaker
     participant P45 as Partner
-    participant P46 as Day
-    participant P47 as FaqCategory
-    participant P48 as Session
-    participant P49 as Exhibitor
-    participant P50 as ContactMessage
-    participant P51 as Ambassador
+    participant P46 as Exhibitor
+    participant P47 as Day
+    participant P48 as FaqCategory
+    participant P49 as Session
+    participant P50 as Ambassador
+    participant P51 as ContactMessage
     participant P52 as Faq
     participant P53 as UserProfile
     participant P54 as OtpCode
@@ -125,8 +125,8 @@ sequenceDiagram
     P23-->>- P1: return
     P1->>+ P24: calls
     P24-->>- P1: return
-    P1->>+ P5: calls
-    P5-->>- P1: return
+    P1->>+ P6: calls
+    P6-->>- P1: return
     P1->>+ P25: calls
     P25-->>- P1: return
     P1->>+ P26: calls
@@ -175,10 +175,10 @@ sequenceDiagram
     P43-->>- P0: return
     P0->>+ P44: uses
     P44-->>- P0: return
-    P0->>+ P17: uses
-    P17-->>- P0: return
     P0->>+ P45: uses
     P45-->>- P0: return
+    P0->>+ P17: uses
+    P17-->>- P0: return
     P0->>+ P46: uses
     P46-->>- P0: return
     P0->>+ P47: uses
@@ -236,14 +236,14 @@ sequenceDiagram
 - [[RolePermission]] `INFERRED`
 - [[Permission]] `INFERRED`
 - [[Speaker]] `INFERRED`
-- [[Ticket]] `INFERRED`
 - [[Partner]] `INFERRED`
+- [[Ticket]] `INFERRED`
+- [[Exhibitor]] `INFERRED`
 - [[Day]] `INFERRED`
 - [[FaqCategory]] `INFERRED`
 - [[Session]] `INFERRED`
-- [[Exhibitor]] `INFERRED`
-- [[ContactMessage]] `INFERRED`
 - [[Ambassador]] `INFERRED`
+- [[ContactMessage]] `INFERRED`
 - [[Faq]] `INFERRED`
 - [[Waitlist]] `INFERRED`
 

@@ -12,9 +12,9 @@ sequenceDiagram
     participant P3 as Base
     participant P4 as PassType
     participant P5 as test_webhook_increments_promo_usage_count_on_completion()
-    participant P6 as test_register_valid_promo_code_accepted()
-    participant P7 as test_promo_code_payment_ticket_waitlist_read()
-    participant P8 as generate_ambassador_promo_code()
+    participant P6 as generate_ambassador_promo_code()
+    participant P7 as test_register_valid_promo_code_accepted()
+    participant P8 as test_promo_code_payment_ticket_waitlist_read()
     participant P9 as test_create_payment_applies_percent_discount()
     participant P10 as test_create_payment_applies_fixed_discount()
     participant P11 as test_promo_code_and_waitlist_unique()

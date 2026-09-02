@@ -2,7 +2,7 @@
   "hotspots": [
     {
       "label": "payment_webhook()",
-      "risk": 0.514,
+      "risk": 0.51,
       "type": "FUNCTION"
     },
     {
@@ -12,17 +12,17 @@
     },
     {
       "label": "register()",
-      "risk": 0.391,
+      "risk": 0.383,
       "type": "FUNCTION"
     },
     {
       "label": "apply_as_partner()",
-      "risk": 0.36,
+      "risk": 0.351,
       "type": "FUNCTION"
     },
     {
       "label": "Settings",
-      "risk": 0.347,
+      "risk": 0.339,
       "type": "CLASS"
     }
   ],

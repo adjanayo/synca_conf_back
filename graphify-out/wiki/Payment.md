@@ -43,12 +43,12 @@ sequenceDiagram
     participant P34 as Permission
     participant P35 as Speaker
     participant P36 as Partner
-    participant P37 as Day
-    participant P38 as FaqCategory
-    participant P39 as Session
-    participant P40 as Exhibitor
-    participant P41 as ContactMessage
-    participant P42 as Ambassador
+    participant P37 as Exhibitor
+    participant P38 as Day
+    participant P39 as FaqCategory
+    participant P40 as Session
+    participant P41 as Ambassador
+    participant P42 as ContactMessage
     participant P43 as Faq
     participant P44 as UserProfile
     participant P45 as OtpCode
@@ -144,10 +144,10 @@ sequenceDiagram
     P34-->>- P1: return
     P1->>+ P35: uses
     P35-->>- P1: return
-    P1->>+ P4: uses
-    P4-->>- P1: return
     P1->>+ P36: uses
     P36-->>- P1: return
+    P1->>+ P4: uses
+    P4-->>- P1: return
     P1->>+ P37: uses
     P37-->>- P1: return
     P1->>+ P38: uses

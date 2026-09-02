@@ -1,18 +1,18 @@
 # [payload() & open_call_for_ambassador()] Cluster
 
-> 9 nodes · cohesion 0.22
+> 9 nodes · cohesion 0.47
 
 ## Key Concepts
 
-- [public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L1) (8 connections)
-- [list_campaign_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L141) (1 connections)
-- [list_days()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L25) (1 connections)
-- [list_exhibitors()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L103) (1 connections)
-- [list_faqs()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L124) (1 connections)
-- [list_partners()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L84) (1 connections)
-- [list_pass_types()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L54) (1 connections)
-- [list_sessions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L32) (1 connections)
-- [list_speakers()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L64) (1 connections)
+- [test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L1) (8 connections)
+- [payload()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L35) (6 connections)
+- [open_call_for_ambassador()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L22) (5 connections)
+- [test_ambassador_apply_empty_channels_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L89) (3 connections)
+- [test_ambassador_apply_missing_gdpr_consent_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L102) (3 connections)
+- [test_ambassador_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L63) (3 connections)
+- [test_ambassador_apply_under_age_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L77) (3 connections)
+- [test_ambassador_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L55) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L13) (1 connections)
 
 ## Relationships
 
@@ -20,11 +20,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py)
 
 ## Audit Trail
 
-- EXTRACTED: 16 (100%)
+- EXTRACTED: 34 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

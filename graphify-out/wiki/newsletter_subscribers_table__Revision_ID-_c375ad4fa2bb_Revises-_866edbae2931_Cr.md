@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L91) (1 connections)
-- [promo_codes, payments, tickets, waitlist  Revision ID: a3f8aaae2d58 Revises: 9dd](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L21) (1 connections)
+- [2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L58) (1 connections)
+- [waitlist.view permission  Revision ID: 80348b151263 Revises: 547ad7a3ad02 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L25) (1 connections)
 
 ## Relationships
 
-- [[referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py)
 
 ## Audit Trail
 
