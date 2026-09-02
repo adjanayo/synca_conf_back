@@ -30,7 +30,10 @@ async def test_admin_user_requires_permission_only_superadmin(db_session):
     ).scalar_one()
 
     admin_user = AdminUser(
-        email="admin@synca.conf",
+        # Not ADMIN_EMAIL's value (app/core/config.py bootstrap default) --
+        # colliding with it breaks this test on any dev DB where the real
+        # superadmin was already bootstrapped with that email.
+        email="rbac-test-admin@example.com",
         password_hash="not-a-real-hash",
         role_id=superadmin_id,
     )

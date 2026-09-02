@@ -1,7 +1,7 @@
 # Journal de dev — synca_conf_back
 
 ## TODO
-- [ ] Corriger incompatibilité version pytest-asyncio (échec identifié lors du run de tests)
+- [x] Corriger incompatibilité version pytest-asyncio (échec identifié lors du run de tests) — faux diagnostic initial, voir journal 2026-09-02 (suite)
 - [x] Vérifier flow signup côté API (erreur "service indisponible" vue côté front) — c'était un stub front statique, pas un bug back
 - [x] `GET /api/admin/me` (débloquait la phase A4 RBAC UI côté front)
 - [x] `GET /api/admin/speakers` (débloquait la phase C1 modération côté front)
@@ -23,3 +23,9 @@
 - Fait : ajout `GET /api/admin/partners` (liste tous les partenaires, filtres status/level_id, gardé derrière `partners.manage`) — manquait pour la modération C3 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
 - Fait : ajout `GET /api/admin/audit-logs` (liste des tentatives de connexion admin, filtres event/email/success, modèle `AuditLog` déjà existant et déjà rempli par `auth_service.py` mais sans endpoint de lecture) — débloque E2 côté front. Pas de code RBAC dédié dans les 8 permissions seedées, même situation que `GET /api/admin/contacts` : gardé par `get_current_admin` (tout admin authentifié) plutôt qu'une permission inventée ; smoke testé via TestClient (401 sans token).
 - À suivre : incompatibilité pytest-asyncio pré-existante à corriger (bloque aussi l'exécution des nouveaux tests admin).
+
+### 2026-09-02 (suite) — Phase F (qualité)
+- Fait : investigation de l'échec de la suite de tests — ce n'était pas une incompatibilité pytest-asyncio (mauvais diagnostic initial) mais deux causes locales : `DB_HOST` par défaut vaut `db` (nom du service docker-compose, non résolvable hors conteneur — lancer les tests localement nécessite `DB_HOST=localhost`), et pollution de la DB dev partagée par des tests réels manuels faits en session (3 lignes `otp_codes` d'anciens smoke tests curl, nettoyées). En CI, aucune des deux ne se produit (`DB_HOST=127.0.0.1` déjà fixé dans `ci.yml`, DB MySQL fraîche à chaque run) — la suite y tournait déjà correctement.
+- Fait : fix réel trouvé au passage — `tests/test_rbac.py` codait en dur l'email `admin@synca.conf`, qui est aussi la valeur par défaut d'`ADMIN_EMAIL` (bootstrap superadmin) ; collision garantie sur toute DB dev où le superadmin réel a été créé. Renommé en `rbac-test-admin@example.com`.
+- Fait : `ruff check .` sur tout le repo (jusqu'ici vérifié seulement fichier par fichier) — 1 erreur trouvée (`B904` dans `app/cli/create_admin.py`, `raise SystemExit(1)` sans `from exc`), corrigée.
+- Fait : suite complète verte — `244 passed`, `ruff check .` clean.

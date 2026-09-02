@@ -28,7 +28,7 @@ async def main() -> None:
         validate_password_strength(password)
     except WeakPasswordError as exc:
         print(f"Erreur : ADMIN_PASSWORD invalide — {exc}", file=sys.stderr)
-        raise SystemExit(1)
+        raise SystemExit(1) from exc
 
     async with AsyncSessionLocal() as db:
         role = (
