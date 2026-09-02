@@ -96,6 +96,42 @@ python -m app.cli.create_admin
 - L'image de prod ne contient **pas** `app/cli/` : vérifiable avec
   `docker compose exec app ls app/cli` (doit retourner introuvable).
 
+## Frontend Vercel — CORS et durcissement prod
+
+Le frontend (`synca_conf_front`) est déployé sur Vercel, séparément de ce
+backend (Hetzner + Docker Compose + Caddy). Checklist à traiter **avant** la
+mise en prod, aucune n'est du code :
+
+1. **`CORS_ORIGINS`** (`.env` prod, jamais commité) — remplacer les valeurs
+   dev (`http://localhost:3000,http://localhost:5173`) par le(s) domaine(s)
+   Vercel réel(s), ex. `https://syncaconf2027.com,https://www.syncaconf2027.com`.
+   Décider explicitement si les URLs de preview Vercel (`*.vercel.app`,
+   différentes à chaque déploiement) doivent aussi appeler l'API — si oui il
+   faut soit lister un sous-ensemble fixe, soit accepter qu'elles ne
+   fonctionnent pas contre la prod (recommandé : previews contre un backend
+   de staging séparé, pas contre la prod). Toujours **sans wildcard** (voir
+   `security-hardening` SKILL : "wildcard-free by design").
+2. **`RECAPTCHA_SECRET_KEY`** — absent de `.env.example`, et
+   `app/services/recaptcha.py` **désactive silencieusement** la vérification
+   si la clé est vide (comportement voulu en dev/CI). En prod, une clé
+   manquante désactive la protection anti-bot des formulaires publics
+   **sans aucune erreur visible** — vérifier explicitement sa présence dans
+   le `.env` de prod avant le déploiement, ce n'est pas rattrapable après coup
+   sans y repenser.
+3. **Rotation des secrets** — `JWT_SECRET_KEY` et `FERNET_KEY` du
+   `.env.example` sont des valeurs de dev ; en générer de nouvelles pour la
+   prod (commandes en commentaire dans `app/core/config.py`) avant le premier
+   déploiement, jamais réutiliser les valeurs dev.
+4. **Le frontend doit pointer sur l'API en HTTPS uniquement**
+   (`VITE_API_URL` sur Vercel = domaine derrière Caddy, jamais l'IP du VPS en
+   HTTP direct).
+5. **CORS n'est pas la ligne de défense principale** — CORS bloque les
+   appels navigateur cross-origin, pas un `curl`/script tiers qui appelle
+   l'API directement. La vraie protection contre l'abus direct de l'API
+   reste le rate limiting (`app/core/rate_limit.py`), reCAPTCHA (point 2) et
+   la validation stricte des entrées (Pydantic) — ne pas considérer une
+   whitelist CORS correcte comme suffisante à elle seule.
+
 ## Rappel sécurité du conteneur
 
 Le vrai périmètre de confiance est le **daemon Docker du VPS**. Qui peut
