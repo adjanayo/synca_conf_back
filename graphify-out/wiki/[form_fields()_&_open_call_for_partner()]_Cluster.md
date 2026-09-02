@@ -1,19 +1,48 @@
 # [form_fields() & open_call_for_partner()] Cluster
 
-> 10 nodes · cohesion 0.36
+> 13 nodes · cohesion 0.26
 
 ## Key Concepts
 
-- [make_admin_with_role()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L10) (6 connections)
-- [test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L1) (6 connections)
-- [get_current_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L14) (5 connections)
-- [test_require_permission_granted()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L49) (5 connections)
-- [test_get_current_admin_valid_token()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L26) (4 connections)
-- [require_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L47) (3 connections)
-- [test_require_permission_denied_returns_403()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L63) (3 connections)
-- [test_get_current_admin_invalid_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L42) (2 connections)
-- [test_get_current_admin_missing_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L35) (2 connections)
-- [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L1) (2 connections)
+- [views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L1) (6 connections)
+- **ModelView** (5 connections)
+- [_has_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L7) (5 connections)
+- [AmbassadorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L31) (3 connections)
+- [ContactMessageAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L89) (3 connections)
+- [ExhibitorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L70) (3 connections)
+- [PartnerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L50) (3 connections)
+- [SpeakerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L11) (3 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L46) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L85) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L66) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L27) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L109) (1 connections)
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class AmbassadorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ContactMessageAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ExhibitorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class PartnerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class SpeakerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+```
 
 ## Relationships
 
@@ -21,13 +50,12 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py)
 
 ## Audit Trail
 
-- EXTRACTED: 22 (58%)
-- INFERRED: 16 (42%)
+- EXTRACTED: 40 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

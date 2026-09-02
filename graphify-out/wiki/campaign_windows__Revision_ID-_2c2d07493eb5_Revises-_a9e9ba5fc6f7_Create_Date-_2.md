@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L62) (1 connections)
-- [admin_users.status column + admin_users.manage permission  Revision ID: 9c1e2f4a](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L25) (1 connections)
+- [2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L59) (1 connections)
+- [campaign_window_event_key  Revision ID: b1c2d3e4f5a6 Revises: 75418b933d4f Creat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L21) (1 connections)
 
 ## Relationships
 
-- [[faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D]] (1 shared connections)
+- [[rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py)
 
 ## Audit Trail
 

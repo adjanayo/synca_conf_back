@@ -1,18 +1,18 @@
 # [payload() & open_call_for_exhibitor()] Cluster
 
-> 9 nodes · cohesion 0.33
+> 9 nodes · cohesion 0.44
 
 ## Key Concepts
 
-- [test_admin_panel.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L1) (9 connections)
-- [make_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L16) (8 connections)
-- [test_login_success_grants_access_to_a_permitted_view()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L88) (3 connections)
-- [test_any_authenticated_admin_can_read_contact_messages()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L138) (2 connections)
-- [test_login_wrong_password_is_rejected()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L105) (2 connections)
-- [test_role_without_permission_gets_403_on_gated_view()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L122) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L68) (1 connections)
-- [_dispose_global_engine()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L56) (1 connections)
-- [test_unauthenticated_request_redirects_to_login()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py#L154) (1 connections)
+- [require_open_campaign()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L11) (6 connections)
+- [test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L1) (6 connections)
+- [set_window()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L11) (5 connections)
+- [test_open_window_allows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L24) (3 connections)
+- [test_window_already_closed_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L56) (3 connections)
+- [test_window_deactivated_forbidden_even_within_dates()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L73) (3 connections)
+- [test_window_not_yet_started_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L39) (3 connections)
+- [test_missing_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L90) (2 connections)
+- [campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L1) (1 connections)
 
 ## Relationships
 
@@ -20,12 +20,13 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_admin_panel.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py)
 
 ## Audit Trail
 
-- EXTRACTED: 26 (90%)
-- INFERRED: 3 (10%)
+- EXTRACTED: 22 (69%)
+- INFERRED: 10 (31%)
 - AMBIGUOUS: 0 (0%)
 
 ---

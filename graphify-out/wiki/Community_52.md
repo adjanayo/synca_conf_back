@@ -4,8 +4,8 @@
 
 ## Key Concepts
 
-- [list_waitlist()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L17) (1 connections)
-- [admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L1) (1 connections)
+- [test_health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L8) (1 connections)
+- [test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L1) (1 connections)
 
 ## Relationships
 
@@ -13,7 +13,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py)
 
 ## Audit Trail
 

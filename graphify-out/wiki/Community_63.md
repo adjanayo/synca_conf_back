@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/__init__.py#L1) (0 connections)
+- [Verify admin credentials, enforcing the account-lockout policy.      Always take](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L39) (0 connections)
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/__init__.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py)
 
 ## Audit Trail
 

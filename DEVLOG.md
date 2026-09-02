@@ -11,6 +11,7 @@
 - [x] `GET /api/admin/audit-logs` (débloquait la phase E2 côté front)
 - [x] Clé `event` sur `campaign_windows` (dates de l'événement pilotables au back-office)
 - [x] Phase J3 : notification email waitlist à l'ouverture de la billetterie
+- [x] `GET /api/partner-levels` (débloquait la phase M1 côté front — formulaire partenaire sans moyen de lister les paliers réels)
 
 ## Journal
 
@@ -40,3 +41,7 @@
 - Fait : `PATCH /api/admin/campaign-windows/{key}` (`admin_campaign_windows.py`) détecte désormais la transition fermée→ouverte de la fenêtre `ticketing` (comparaison `is_open` avant/après la mise à jour, même définition que `require_open_campaign`) et déclenche en `BackgroundTasks` l'envoi d'un email à toute entrée `Waitlist` avec `notified=False`, puis les marque `notified=True`. Nouveau template `waitlist_ticketing_open_email()` dans `email_templates.py`. Pas de cron/scheduler dans le projet — le déclencheur est l'action admin qui bascule `is_active`, pas le franchissement de `start_at` en tâche de fond ; limite acceptée (documentée dans `ROADMAP_ADMIN.md` côté front).
 - Fait : `ruff check` clean sur les 2 fichiers modifiés. Suite pytest non exécutable dans ce sandbox (ni en local — `DB_HOST=db` non résolvable hors conteneur — ni dans le conteneur `synca-dev-app` : échec `pytest-asyncio` `AssertionError` au setup, y compris sur des tests async préexistants non touchés ici, ex. `test_public_pass_types.py` — régression d'environnement CI/conteneur à investiguer séparément, pas causée par ce changement).
 - À suivre : investiguer la régression pytest-asyncio dans le conteneur `synca-dev-app` (setup `AssertionError` sur tous les tests async, y compris ceux non touchés par cette session) — bloque toute vérification de test dans ce conteneur jusqu'à résolution.
+
+### 2026-09-02 (suite 5) — Phase M côté front : ajout `GET /api/partner-levels`
+- Fait : en branchant le formulaire partenaire front (`partenaires.tsx`) sur l'API réelle, découvert qu'aucun endpoint public ne liste les paliers de partenariat (`PartnerLevel`) — le formulaire n'avait donc aucun moyen d'obtenir un `level_id` réel (FK requise par `POST /api/partners/apply`), seulement des noms de palier codés en dur côté front sans lien avec la table. Ajouté `GET /api/partner-levels` (`app/api/public.py`, `PartnerLevelRead` déjà existant côté schémas admin, réutilisé tel quel), trié par `sort_order`, même pattern que `GET /api/pass-types`.
+- Fait : `ruff check .` clean sur tout le repo après l'ajout. Pas de test ajouté (suite pytest toujours bloquée par la régression pytest-asyncio du conteneur, cf. entrée précédente) — endpoint non exercé par des tests automatisés dans ce sandbox, à couvrir quand la régression sera résolue.

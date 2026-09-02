@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L79) (1 connections)
-- [campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L21) (1 connections)
+- [2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L98) (1 connections)
+- [rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L21) (1 connections)
 
 ## Relationships
 
-- [[sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2]] (1 shared connections)
+- [[audit_logs table  Revision ID: 866edbae2931 Revises: 5a30c6996bc8 Create Date: 2]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py)
 
 ## Audit Trail
 

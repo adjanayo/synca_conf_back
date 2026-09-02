@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_26_0048-866edbae2931_audit_logs_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L37) (1 connections)
-- [audit_logs table  Revision ID: 866edbae2931 Revises: 5a30c6996bc8 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L21) (1 connections)
+- [2026_08_25_2222-9dd893772cc0_sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L44) (1 connections)
+- [sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L21) (1 connections)
 
 ## Relationships
 
-- [[Community 45]] (1 shared connections)
+- [[Community 44]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py)
 
 ## Audit Trail
 

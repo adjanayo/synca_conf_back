@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L93) (1 connections)
-- [event_settings, pass_types & sessions admin permissions  Revision ID: 547ad7a3ad](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L27) (1 connections)
+- [2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L29) (1 connections)
+- [admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L21) (1 connections)
 
 ## Relationships
 
-- [[referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1]] (1 shared connections)
+- [[admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py)
 
 ## Audit Trail
 
