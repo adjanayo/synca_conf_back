@@ -74,6 +74,29 @@ async def update_speaker_status(
     return SpeakerRead.model_validate(speaker)
 
 
+@router.get("/ambassadors", response_model=list[AmbassadorRead])
+@limiter.limit("30/minute")
+async def list_ambassadors(
+    request: Request,
+    status: str | None = None,
+    current_profile: str | None = None,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("ambassadors.approve")),
+) -> list[AmbassadorRead]:
+    query = select(Ambassador)
+    if status is not None:
+        query = query.where(Ambassador.status == status)
+    if current_profile is not None:
+        query = query.where(Ambassador.current_profile == current_profile)
+    query = query.order_by(Ambassador.created_at.desc()).limit(pagination.limit).offset(
+        pagination.offset
+    )
+
+    ambassadors = (await db.execute(query)).scalars().all()
+    return [AmbassadorRead.model_validate(ambassador) for ambassador in ambassadors]
+
+
 @router.patch("/ambassadors/{ambassador_id}", response_model=AmbassadorRead)
 @limiter.limit("30/minute")
 async def update_ambassador_status(
