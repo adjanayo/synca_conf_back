@@ -16,6 +16,7 @@ from app.api.admin_pass_types import router as admin_pass_types_router
 from app.api.admin_program import admin_days_router, admin_sessions_router
 from app.api.admin_registrations import router as admin_registrations_router
 from app.api.admin_stats import router as admin_stats_router
+from app.api.admin_waitlist import router as admin_waitlist_router
 from app.api.auth import router as auth_router
 from app.api.forms import router as forms_router
 from app.api.participant_auth import router as participant_auth_router
@@ -80,6 +81,7 @@ app.include_router(admin_pass_types_router)
 app.include_router(admin_event_settings_router)
 app.include_router(admin_days_router)
 app.include_router(admin_sessions_router)
+app.include_router(admin_waitlist_router)
 app.include_router(user_me_router)
 
 init_admin(app)

@@ -6,11 +6,15 @@ from app.core.database import get_db
 from app.core.rate_limit import limiter
 from app.deps.pagination import Pagination, pagination_params
 from app.deps.rbac import require_permission
-from app.models import Ambassador, Exhibitor, Partner, Speaker
+from app.models import Ambassador, Exhibitor, Partner, PartnerLevel, Speaker
 from app.schemas.admin_applications import (
+    AmbassadorAdminCreate,
     AmbassadorStatusUpdate,
+    ExhibitorAdminCreate,
     ExhibitorStatusUpdate,
+    PartnerAdminCreate,
     PartnerStatusUpdate,
+    SpeakerAdminCreate,
     SpeakerStatusUpdate,
 )
 from app.schemas.applications import (
@@ -50,6 +54,52 @@ async def list_speakers(
 
     speakers = (await db.execute(query)).scalars().all()
     return [SpeakerRead.model_validate(speaker) for speaker in speakers]
+
+
+@router.post("/speakers", response_model=SpeakerRead, status_code=status.HTTP_201_CREATED)
+@limiter.limit("30/minute")
+async def create_speaker_admin(
+    request: Request,
+    body: SpeakerAdminCreate,
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("speakers.approve")),
+) -> SpeakerRead:
+    # Same is_public-on-acceptance rule as the PATCH route above -- a
+    # direct-create with status="accepted" must publish immediately too.
+    is_public = True if body.status == "accepted" else body.is_public
+
+    speaker = Speaker(
+        first_name=body.first_name,
+        last_name=body.last_name,
+        title_role=body.title_role,
+        company=body.company,
+        country=body.country,
+        email=body.email,
+        phone_whatsapp=body.phone_whatsapp,
+        linkedin_url=body.linkedin_url,
+        website_url=body.website_url,
+        photo_url=body.photo_url,
+        intervention_format=body.intervention_format,
+        intervention_title=body.intervention_title,
+        theme=body.theme,
+        summary=body.summary,
+        audience_level=body.audience_level,
+        language=body.language,
+        past_experience=body.past_experience,
+        video_link=body.video_link,
+        availability=body.availability,
+        departure_city=body.departure_city,
+        needs_accommodation=body.needs_accommodation,
+        motivation=body.motivation,
+        video_consent=body.video_consent,
+        gdpr_consent=body.gdpr_consent,
+        status=body.status,
+        is_public=is_public,
+    )
+    db.add(speaker)
+    await db.commit()
+    await db.refresh(speaker)
+    return SpeakerRead.model_validate(speaker)
 
 
 @router.patch("/speakers/{speaker_id}", response_model=SpeakerRead)
@@ -95,6 +145,46 @@ async def list_ambassadors(
 
     ambassadors = (await db.execute(query)).scalars().all()
     return [AmbassadorRead.model_validate(ambassador) for ambassador in ambassadors]
+
+
+@router.post("/ambassadors", response_model=AmbassadorRead, status_code=status.HTTP_201_CREATED)
+@limiter.limit("30/minute")
+async def create_ambassador_admin(
+    request: Request,
+    body: AmbassadorAdminCreate,
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("ambassadors.approve")),
+) -> AmbassadorRead:
+    ambassador = Ambassador(
+        first_name=body.first_name,
+        last_name=body.last_name,
+        age=body.age,
+        country=body.country,
+        city=body.city,
+        email=body.email,
+        phone_whatsapp=body.phone_whatsapp,
+        current_profile=body.current_profile,
+        institution_company=body.institution_company,
+        linkedin_url=body.linkedin_url,
+        social_handles=body.social_handles,
+        followers_range=body.followers_range,
+        motivation=body.motivation,
+        mobilization_plan=body.mobilization_plan,
+        estimated_reach=body.estimated_reach,
+        previous_synca=body.previous_synca,
+        preferred_channels=body.preferred_channels,
+        availability_pre=body.availability_pre,
+        gdpr_consent=body.gdpr_consent,
+        status=body.status,
+    )
+    db.add(ambassador)
+    await db.flush()
+    # Same auto-promo-code rule as the PATCH route below.
+    if body.status == "accepted" and ambassador.promo_code_id is None:
+        await generate_ambassador_promo_code(db, ambassador)
+    await db.commit()
+    await db.refresh(ambassador)
+    return AmbassadorRead.model_validate(ambassador)
 
 
 @router.patch("/ambassadors/{ambassador_id}", response_model=AmbassadorRead)
@@ -143,6 +233,50 @@ async def list_partners(
     return [PartnerRead.model_validate(partner) for partner in partners]
 
 
+@router.post("/partners", response_model=PartnerRead, status_code=status.HTTP_201_CREATED)
+@limiter.limit("30/minute")
+async def create_partner_admin(
+    request: Request,
+    body: PartnerAdminCreate,
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("partners.manage")),
+) -> PartnerRead:
+    level = await db.get(PartnerLevel, body.level_id)
+    if level is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Palier de partenariat introuvable."
+        )
+
+    # Same is_public-on-confirmation rule as the PATCH route below.
+    is_public = True if body.status == "confirmed" else body.is_public
+
+    partner = Partner(
+        organization_name=body.organization_name,
+        sector=body.sector,
+        country=body.country,
+        city=body.city,
+        website_url=body.website_url,
+        contact_name=body.contact_name,
+        contact_position=body.contact_position,
+        contact_email=body.contact_email,
+        contact_phone=body.contact_phone,
+        level_id=body.level_id,
+        has_budget=body.has_budget,
+        objectives=body.objectives,
+        previous_sponsor=body.previous_sponsor,
+        message=body.message,
+        heard_from=body.heard_from,
+        gdpr_consent=body.gdpr_consent,
+        status=body.status,
+        logo_url=body.logo_url,
+        is_public=is_public,
+    )
+    db.add(partner)
+    await db.commit()
+    await db.refresh(partner)
+    return PartnerRead.model_validate(partner)
+
+
 @router.patch("/partners/{partner_id}", response_model=PartnerRead)
 @limiter.limit("30/minute")
 async def update_partner_status(
@@ -184,6 +318,46 @@ async def list_exhibitors(
 
     exhibitors = (await db.execute(query)).scalars().all()
     return [ExhibitorRead.model_validate(exhibitor) for exhibitor in exhibitors]
+
+
+@router.post("/exhibitors", response_model=ExhibitorRead, status_code=status.HTTP_201_CREATED)
+@limiter.limit("30/minute")
+async def create_exhibitor_admin(
+    request: Request,
+    body: ExhibitorAdminCreate,
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("exhibitors.manage")),
+) -> ExhibitorRead:
+    # Same is_public-on-confirmation rule as the PATCH route below.
+    is_public = True if body.status == "confirmed" else body.is_public
+
+    exhibitor = Exhibitor(
+        organization_name=body.organization_name,
+        sector=body.sector,
+        country=body.country,
+        city=body.city,
+        website_url=body.website_url,
+        contact_name=body.contact_name,
+        contact_position=body.contact_position,
+        contact_email=body.contact_email,
+        contact_phone=body.contact_phone,
+        stand_type=body.stand_type,
+        reps_count=body.reps_count,
+        linked_partner_level=body.linked_partner_level,
+        products_services=body.products_services,
+        equipment_needs=body.equipment_needs,
+        side_activities=body.side_activities,
+        visuals_url=body.visuals_url,
+        payment_method=body.payment_method,
+        rules_accepted=body.rules_accepted,
+        gdpr_consent=body.gdpr_consent,
+        status=body.status,
+        is_public=is_public,
+    )
+    db.add(exhibitor)
+    await db.commit()
+    await db.refresh(exhibitor)
+    return ExhibitorRead.model_validate(exhibitor)
 
 
 @router.patch("/exhibitors/{exhibitor_id}", response_model=ExhibitorRead)
