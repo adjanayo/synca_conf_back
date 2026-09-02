@@ -2,35 +2,35 @@
   "hotspots": [
     {
       "label": "payment_webhook()",
-      "risk": 0.662,
+      "risk": 0.653,
       "type": "FUNCTION"
     },
     {
       "label": "register()",
-      "risk": 0.489,
+      "risk": 0.469,
       "type": "FUNCTION"
     },
     {
       "label": "apply_as_partner()",
-      "risk": 0.444,
+      "risk": 0.423,
       "type": "FUNCTION"
     },
     {
       "label": "authenticate_admin()",
-      "risk": 0.396,
+      "risk": 0.4,
       "type": "FUNCTION"
     },
     {
       "label": "AdminAuth",
-      "risk": 0.382,
+      "risk": 0.378,
       "type": "CLASS"
     }
   ],
   "blast_radius": {
-    "create_access_token()": 45,
+    "create_access_token()": 46,
     "Base": 31,
     "PassType": 29,
     "User": 20,
-    "Role": 19
+    "Role": 20
   }
 }

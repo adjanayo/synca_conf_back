@@ -1,6 +1,6 @@
 # create_access_token()
 
-> God node · 45 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L95)
+> God node · 46 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L95)
 
 ## Call Trace Diagram
 
@@ -56,21 +56,22 @@ sequenceDiagram
     participant P47 as test_list_registrations_filters_by_status()
     participant P48 as test_list_registrations_respects_pagination_limit()
     participant P49 as .login()
-    participant P50 as test_list_campaign_windows_admin()
-    participant P51 as test_list_campaign_windows_forbidden_without_permission()
-    participant P52 as test_update_campaign_window_dates_and_is_active()
-    participant P53 as test_update_campaign_window_rejects_end_before_start()
-    participant P54 as test_update_campaign_window_unknown_key_404()
-    participant P55 as test_update_campaign_window_forbidden_without_permission()
-    participant P56 as test_export_registrations_forbidden_without_permission()
-    participant P57 as test_export_payments_forbidden_without_permission()
-    participant P58 as test_stats_forbidden_without_permission()
-    participant P59 as test_stats_handles_no_completed_payments()
-    participant P60 as test_speaker_update_404_for_unknown_id()
-    participant P61 as test_access_token_round_trip()
-    participant P62 as test_wrong_token_type_rejected()
-    participant P63 as test_invalid_signature_rejected()
-    participant P64 as test_list_registrations_forbidden_without_permission()
+    participant P50 as test_me_returns_identity_role_and_permissions()
+    participant P51 as test_list_campaign_windows_admin()
+    participant P52 as test_list_campaign_windows_forbidden_without_permission()
+    participant P53 as test_update_campaign_window_dates_and_is_active()
+    participant P54 as test_update_campaign_window_rejects_end_before_start()
+    participant P55 as test_update_campaign_window_unknown_key_404()
+    participant P56 as test_update_campaign_window_forbidden_without_permission()
+    participant P57 as test_export_registrations_forbidden_without_permission()
+    participant P58 as test_export_payments_forbidden_without_permission()
+    participant P59 as test_stats_forbidden_without_permission()
+    participant P60 as test_stats_handles_no_completed_payments()
+    participant P61 as test_speaker_update_404_for_unknown_id()
+    participant P62 as test_access_token_round_trip()
+    participant P63 as test_wrong_token_type_rejected()
+    participant P64 as test_invalid_signature_rejected()
+    participant P65 as test_list_registrations_forbidden_without_permission()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P0: calls
@@ -203,6 +204,8 @@ sequenceDiagram
     P63-->>- P0: return
     P0->>+ P64: calls
     P64-->>- P0: return
+    P0->>+ P65: calls
+    P65-->>- P0: return
 ```
 
 ## Connections by Relation

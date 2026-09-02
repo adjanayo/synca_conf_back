@@ -1,27 +1,18 @@
 # [payload() & open_call_for_ambassador()] Cluster
 
-> 9 nodes · cohesion 0.25
+> 9 nodes · cohesion 0.22
 
 ## Key Concepts
 
-- [test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L1) (5 connections)
-- [pagination_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L12) (3 connections)
-- [test_pagination_limit_actually_limits_results()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L52) (3 connections)
-- [Pagination](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L7) (2 connections)
-- [test_pagination_custom_values()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L10) (2 connections)
-- [pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L1) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L17) (1 connections)
-- [test_pagination_defaults_apply_without_query_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L43) (1 connections)
-- [test_pagination_rejects_out_of_range_limit()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L31) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class Pagination {
-        +pagination.py()
-    }
-```
+- [public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L1) (8 connections)
+- [list_campaign_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L141) (1 connections)
+- [list_days()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L25) (1 connections)
+- [list_exhibitors()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L103) (1 connections)
+- [list_faqs()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L124) (1 connections)
+- [list_partners()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L84) (1 connections)
+- [list_pass_types()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L54) (1 connections)
+- [list_sessions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L32) (1 connections)
+- [list_speakers()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L64) (1 connections)
 
 ## Relationships
 
@@ -29,13 +20,12 @@ classDiagram
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py)
 
 ## Audit Trail
 
-- EXTRACTED: 16 (80%)
-- INFERRED: 4 (20%)
+- EXTRACTED: 16 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

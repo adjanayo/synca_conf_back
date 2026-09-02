@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L91) (1 connections)
-- [promo_codes, payments, tickets, waitlist  Revision ID: a3f8aaae2d58 Revises: 9dd](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L21) (1 connections)
+- [2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L38) (1 connections)
+- [otp_codes table (participant OTP login)  Revision ID: 75418b933d4f Revises: d7d5](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[promo_codes, payments, tickets, waitlist  Revision ID: a3f8aaae2d58 Revises: 9dd]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py)
 
 ## Audit Trail
 

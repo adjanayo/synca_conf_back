@@ -129,10 +129,10 @@ sequenceDiagram
     P0-->>- P1: return
     P1->>+ P29: uses
     P29-->>- P1: return
-    P1->>+ P3: uses
-    P3-->>- P1: return
     P1->>+ P30: uses
     P30-->>- P1: return
+    P1->>+ P3: uses
+    P3-->>- P1: return
     P1->>+ P4: uses
     P4-->>- P1: return
     P1->>+ P31: uses

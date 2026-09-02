@@ -11,8 +11,8 @@ sequenceDiagram
     participant P2 as Base
     participant P3 as PassType
     participant P4 as User
-    participant P5 as PromoCode
-    participant P6 as AdminUser
+    participant P5 as AdminUser
+    participant P6 as PromoCode
     participant P7 as Payment
     participant P8 as PartnerLevel
     participant P9 as RolePermission
@@ -44,27 +44,28 @@ sequenceDiagram
     participant P35 as make_admin_with_permission()
     participant P36 as make_admin()
     participant P37 as make_admin_with_role()
-    participant P38 as test_admin_endpoint_limited_to_30_per_minute()
-    participant P39 as make_admin_with_role()
-    participant P40 as make_admin()
-    participant P41 as test_rbac_read()
-    participant P42 as test_superadmin_can_update_role_permissions()
-    participant P43 as test_non_superadmin_forbidden()
-    participant P44 as test_unknown_permission_code_rejected()
-    participant P45 as test_unauthenticated_rejected()
-    participant P46 as test_speaker_accepted_publishes_it()
-    participant P47 as test_speaker_rejected_stays_unpublished()
-    participant P48 as test_speaker_update_forbidden_without_permission()
-    participant P49 as test_speaker_update_rejects_invalid_status()
-    participant P50 as test_ambassador_accepted()
-    participant P51 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
-    participant P52 as test_ambassador_update_forbidden_without_permission()
-    participant P53 as test_partner_confirmed_publishes_it()
-    participant P54 as test_partner_negotiating_stays_unpublished()
-    participant P55 as test_partner_update_forbidden_without_permission()
-    participant P56 as test_exhibitor_confirmed_publishes_it()
-    participant P57 as test_exhibitor_update_forbidden_without_permission()
-    participant P58 as test_speaker_update_404_for_unknown_id()
+    participant P38 as make_admin_with_permissions()
+    participant P39 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P40 as make_admin_with_role()
+    participant P41 as make_admin()
+    participant P42 as test_rbac_read()
+    participant P43 as test_superadmin_can_update_role_permissions()
+    participant P44 as test_non_superadmin_forbidden()
+    participant P45 as test_unknown_permission_code_rejected()
+    participant P46 as test_unauthenticated_rejected()
+    participant P47 as test_speaker_accepted_publishes_it()
+    participant P48 as test_speaker_rejected_stays_unpublished()
+    participant P49 as test_speaker_update_forbidden_without_permission()
+    participant P50 as test_speaker_update_rejects_invalid_status()
+    participant P51 as test_ambassador_accepted()
+    participant P52 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
+    participant P53 as test_ambassador_update_forbidden_without_permission()
+    participant P54 as test_partner_confirmed_publishes_it()
+    participant P55 as test_partner_negotiating_stays_unpublished()
+    participant P56 as test_partner_update_forbidden_without_permission()
+    participant P57 as test_exhibitor_confirmed_publishes_it()
+    participant P58 as test_exhibitor_update_forbidden_without_permission()
+    participant P59 as test_speaker_update_404_for_unknown_id()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -159,14 +160,14 @@ sequenceDiagram
     P44-->>- P1: return
     P1->>+ P45: calls
     P45-->>- P1: return
-    P0->>+ P6: calls
-    P6-->>- P0: return
+    P1->>+ P46: calls
+    P46-->>- P1: return
+    P0->>+ P5: calls
+    P5-->>- P0: return
     P0->>+ P9: calls
     P9-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
-    P0->>+ P46: calls
-    P46-->>- P0: return
     P0->>+ P47: calls
     P47-->>- P0: return
     P0->>+ P48: calls
@@ -191,6 +192,8 @@ sequenceDiagram
     P57-->>- P0: return
     P0->>+ P58: calls
     P58-->>- P0: return
+    P0->>+ P59: calls
+    P59-->>- P0: return
 ```
 
 ## Connections by Relation

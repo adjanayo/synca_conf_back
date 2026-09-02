@@ -1,6 +1,6 @@
 # AdminUser
 
-> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py#L39)
+> God node · 18 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/rbac.py#L39)
 
 ## Call Trace Diagram
 
@@ -66,12 +66,13 @@ sequenceDiagram
     participant P57 as make_admin_with_permission()
     participant P58 as make_admin()
     participant P59 as make_admin_with_role()
-    participant P60 as test_admin_endpoint_limited_to_30_per_minute()
-    participant P61 as make_admin_with_role()
-    participant P62 as main()
-    participant P63 as make_admin()
-    participant P64 as test_rbac_read()
-    participant P65 as test_admin_user_requires_permission_only_superadmin()
+    participant P60 as make_admin_with_permissions()
+    participant P61 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P62 as make_admin_with_role()
+    participant P63 as main()
+    participant P64 as make_admin()
+    participant P65 as test_rbac_read()
+    participant P66 as test_admin_user_requires_permission_only_superadmin()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -134,10 +135,10 @@ sequenceDiagram
     P29-->>- P1: return
     P1->>+ P30: uses
     P30-->>- P1: return
-    P1->>+ P3: uses
-    P3-->>- P1: return
     P1->>+ P0: uses
     P0-->>- P1: return
+    P1->>+ P3: uses
+    P3-->>- P1: return
     P1->>+ P4: uses
     P4-->>- P1: return
     P1->>+ P31: uses
@@ -214,6 +215,8 @@ sequenceDiagram
     P64-->>- P0: return
     P0->>+ P65: calls
     P65-->>- P0: return
+    P0->>+ P66: calls
+    P66-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -227,6 +230,7 @@ sequenceDiagram
 - [[make_admin_with_permission()]] `INFERRED`
 - [[make_admin()]] `INFERRED`
 - [[make_admin_with_role()]] `INFERRED`
+- [[make_admin_with_permissions()]] `INFERRED`
 - [[test_admin_endpoint_limited_to_30_per_minute()]] `INFERRED`
 - [[make_admin_with_role()]] `INFERRED`
 - [[main()]] `INFERRED`
