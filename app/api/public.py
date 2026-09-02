@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -16,6 +16,7 @@ from app.models import (
     Session,
     Speaker,
 )
+from app.models.referentials import EventSettings
 from app.schemas import (
     CampaignWindowRead,
     DayRead,
@@ -27,8 +28,27 @@ from app.schemas import (
     SessionRead,
     SpeakerRead,
 )
+from app.schemas.referentials import EventSettingsRead
 
 router = APIRouter(prefix="/api", tags=["public"])
+
+# La ligne singleton est toujours seedée par la migration (id=1), même id que
+# côté admin (admin_event_settings.py).
+_EVENT_SETTINGS_ID = 1
+
+
+@router.get("/event-settings", response_model=EventSettingsRead)
+@limiter.limit("60/minute")
+async def get_event_settings(
+    request: Request, db: AsyncSession = Depends(get_db)
+) -> EventSettingsRead:
+    settings = await db.get(EventSettings, _EVENT_SETTINGS_ID)
+    if settings is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Paramètres de l'événement introuvables.",
+        )
+    return EventSettingsRead.model_validate(settings)
 
 
 @router.get("/days", response_model=list[DayRead])
