@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, status
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.rate_limit import limiter
+from app.deps.pagination import Pagination, pagination_params
 from app.deps.rbac import require_permission
 from app.models import Ambassador, Exhibitor, Partner, Speaker
 from app.schemas.admin_applications import (
@@ -20,6 +22,34 @@ from app.schemas.applications import (
 from app.services.promo_service import generate_ambassador_promo_code
 
 router = APIRouter(prefix="/api/admin", tags=["admin-applications"])
+
+
+@router.get("/speakers", response_model=list[SpeakerRead])
+@limiter.limit("30/minute")
+async def list_speakers(
+    request: Request,
+    status: str | None = None,
+    theme: str | None = None,
+    format: str | None = None,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("speakers.approve")),
+) -> list[SpeakerRead]:
+    # Unlike the public /api/speakers route, this one is not filtered on
+    # is_public -- moderation needs to see pending/rejected candidates too.
+    query = select(Speaker)
+    if status is not None:
+        query = query.where(Speaker.status == status)
+    if theme is not None:
+        query = query.where(Speaker.theme == theme)
+    if format is not None:
+        query = query.where(Speaker.intervention_format == format)
+    query = query.order_by(Speaker.created_at.desc()).limit(pagination.limit).offset(
+        pagination.offset
+    )
+
+    speakers = (await db.execute(query)).scalars().all()
+    return [SpeakerRead.model_validate(speaker) for speaker in speakers]
 
 
 @router.patch("/speakers/{speaker_id}", response_model=SpeakerRead)
