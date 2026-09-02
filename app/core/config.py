@@ -84,6 +84,14 @@ class Settings(BaseSettings):
     # needed since it's read at request time via get_settings().
     event_venue: str = "Lieu à confirmer"
 
+    # Rappels waitlist récurrents (app/services/waitlist_reminder.py) : pas de
+    # cron dans le projet -- une boucle asyncio en tâche de fond (démarrée
+    # dans app/main.py) se réveille toutes les `check` minutes et relance un
+    # email aux inscrits non enregistrés dont le dernier email date de plus de
+    # `interval` jours, tant que la fenêtre `ticketing` reste ouverte.
+    waitlist_reminder_interval_days: int = 3
+    waitlist_reminder_check_interval_minutes: int = 60
+
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common

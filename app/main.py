@@ -1,3 +1,6 @@
+import asyncio
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
@@ -27,20 +30,46 @@ from app.api.public import router as public_router
 from app.api.rbac import router as rbac_router
 from app.api.user_me import router as user_me_router
 from app.core.config import get_settings
+from app.core.database import AsyncSessionLocal
 from app.core.logging_config import configure_logging
 from app.core.rate_limit import limiter
 from app.core.security_headers import SecurityHeadersMiddleware
+from app.services.waitlist_reminder import send_waitlist_reminders
 
 settings = get_settings()
 configure_logging()
 
 docs_enabled = settings.environment != "production"
 
+
+async def _waitlist_reminder_loop() -> None:
+    """Pas de cron dans le projet : boucle asyncio en tâche de fond,
+    voir app/services/waitlist_reminder.py."""
+    interval_seconds = settings.waitlist_reminder_check_interval_minutes * 60
+    while True:
+        await asyncio.sleep(interval_seconds)
+        try:
+            async with AsyncSessionLocal() as db:
+                sent = await send_waitlist_reminders(db)
+            if sent:
+                logger.info(f"Rappels waitlist envoyés : {sent}")
+        except Exception:
+            logger.exception("Échec de la boucle de rappels waitlist")
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    task = asyncio.create_task(_waitlist_reminder_loop())
+    yield
+    task.cancel()
+
+
 app = FastAPI(
     title=settings.app_name,
     docs_url="/docs" if docs_enabled else None,
     redoc_url="/redoc" if docs_enabled else None,
     openapi_url="/openapi.json" if docs_enabled else None,
+    lifespan=lifespan,
 )
 
 app.add_middleware(

@@ -95,3 +95,12 @@ def waitlist_ticketing_open_email() -> str:
         "<p>Tu étais inscrit·e sur notre liste d'attente : les places sont limitées, "
         "inscris-toi dès maintenant pour réserver ton pass.</p>"
     )
+
+
+def waitlist_reminder_email() -> str:
+    return _render(
+        "<p>Bonjour,</p>"
+        "<p>La billetterie de <strong>SYNCA CONF 2027</strong> est toujours ouverte.</p>"
+        "<p>Tu es toujours sur notre liste d'attente et tu n'as pas encore réservé "
+        "ton pass — les places sont limitées, inscris-toi dès maintenant.</p>"
+    )

@@ -86,4 +86,5 @@ class Waitlist(Base):
     email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
     notified: Mapped[bool] = mapped_column(Boolean, default=False, server_default="0")
     registered: Mapped[bool] = mapped_column(Boolean, default=False, server_default="0")
+    last_notified_at: Mapped[datetime | None] = mapped_column(DateTime)
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())

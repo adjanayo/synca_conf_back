@@ -37,6 +37,7 @@ async def _notify_waitlist(db: AsyncSession) -> None:
             body=body,
         )
         entry.notified = True
+        entry.last_notified_at = datetime.now(UTC)
     await db.commit()
 
 
@@ -98,9 +99,9 @@ async def update_campaign_window(
     await db.commit()
     await db.refresh(window)
 
-    # Ouverture billetterie -> notifier la liste d'attente (J3). Déclenché sur
-    # l'action admin qui ouvre la fenêtre, pas sur un cron : il n'y a pas de
-    # scheduler en place, et is_active est toujours basculé manuellement ici.
+    # Ouverture billetterie -> notifier la liste d'attente (J3), en plus des
+    # rappels récurrents pris en charge par la boucle asyncio de
+    # app/services/waitlist_reminder.py une fois la fenêtre ouverte.
     if key == "ticketing" and not was_open and _is_open(window, now):
         background_tasks.add_task(_notify_waitlist, db)
 
