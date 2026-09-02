@@ -17,58 +17,59 @@ sequenceDiagram
     participant P8 as test_create_payment_applies_percent_discount()
     participant P9 as test_create_payment_applies_fixed_discount()
     participant P10 as test_promo_code_and_waitlist_unique()
-    participant P11 as test_promo_validate_success()
-    participant P12 as test_promo_validate_inactive_400()
-    participant P13 as test_promo_validate_expired_400()
-    participant P14 as test_promo_validate_exhausted_400()
-    participant P15 as test_promo_validate_fixed_discount()
-    participant P16 as Payment
-    participant P17 as Ticket
-    participant P18 as make_pending_payment()
-    participant P19 as Waitlist
-    participant P20 as make_ticket()
-    participant P21 as make_payment()
+    participant P11 as create_promo_code()
+    participant P12 as test_promo_validate_success()
+    participant P13 as test_promo_validate_inactive_400()
+    participant P14 as test_promo_validate_expired_400()
+    participant P15 as test_promo_validate_exhausted_400()
+    participant P16 as test_promo_validate_fixed_discount()
+    participant P17 as Payment
+    participant P18 as Ticket
+    participant P19 as make_pending_payment()
+    participant P20 as Waitlist
+    participant P21 as make_ticket()
     participant P22 as make_payment()
-    participant P23 as make_ticket_for()
-    participant P24 as make_user_and_pass()
-    participant P25 as test_register_duplicate_email_conflict()
-    participant P26 as test_register_success()
-    participant P27 as test_register_sends_confirmation_email()
-    participant P28 as test_register_inactive_pass_type_400()
-    participant P29 as test_register_invalid_promo_code_400()
-    participant P30 as make_user_and_pass_type()
-    participant P31 as test_create_payment_success_no_promo()
-    participant P32 as test_create_payment_invalid_promo_400()
-    participant P33 as create_pass_type()
-    participant P34 as test_list_pass_types_excludes_inactive()
-    participant P35 as test_pass_type_defaults()
-    participant P36 as test_create_payment_invalid_user_400()
-    participant P37 as test_pass_type_read()
-    participant P38 as User
-    participant P39 as Role
-    participant P40 as AdminUser
-    participant P41 as PartnerLevel
-    participant P42 as RolePermission
-    participant P43 as Permission
-    participant P44 as Speaker
-    participant P45 as Partner
-    participant P46 as Exhibitor
-    participant P47 as Day
-    participant P48 as FaqCategory
-    participant P49 as Session
-    participant P50 as Ambassador
-    participant P51 as ContactMessage
-    participant P52 as Faq
-    participant P53 as UserProfile
-    participant P54 as OtpCode
-    participant P55 as AuditLog
-    participant P56 as CampaignWindow
-    participant P57 as NewsletterSubscriber
-    participant P58 as EventSettings
-    participant P59 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P60 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P61 as In this scenario we need to create an Engine     and associate a connection with
-    participant P62 as Run migrations in 'online' mode.
+    participant P23 as make_payment()
+    participant P24 as make_ticket_for()
+    participant P25 as make_user_and_pass()
+    participant P26 as test_register_duplicate_email_conflict()
+    participant P27 as test_register_success()
+    participant P28 as test_register_sends_confirmation_email()
+    participant P29 as test_register_inactive_pass_type_400()
+    participant P30 as test_register_invalid_promo_code_400()
+    participant P31 as make_user_and_pass_type()
+    participant P32 as test_create_payment_success_no_promo()
+    participant P33 as test_create_payment_invalid_promo_400()
+    participant P34 as create_pass_type()
+    participant P35 as test_list_pass_types_excludes_inactive()
+    participant P36 as test_pass_type_defaults()
+    participant P37 as test_create_payment_invalid_user_400()
+    participant P38 as test_pass_type_read()
+    participant P39 as User
+    participant P40 as Role
+    participant P41 as AdminUser
+    participant P42 as PartnerLevel
+    participant P43 as RolePermission
+    participant P44 as Permission
+    participant P45 as Speaker
+    participant P46 as Partner
+    participant P47 as Exhibitor
+    participant P48 as Day
+    participant P49 as FaqCategory
+    participant P50 as Session
+    participant P51 as Ambassador
+    participant P52 as ContactMessage
+    participant P53 as Faq
+    participant P54 as UserProfile
+    participant P55 as OtpCode
+    participant P56 as AuditLog
+    participant P57 as CampaignWindow
+    participant P58 as NewsletterSubscriber
+    participant P59 as EventSettings
+    participant P60 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P61 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P62 as In this scenario we need to create an Engine     and associate a connection with
+    participant P63 as Run migrations in 'online' mode.
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -105,30 +106,30 @@ sequenceDiagram
     P14-->>- P2: return
     P2->>+ P15: calls
     P15-->>- P2: return
-    P1->>+ P16: uses
-    P16-->>- P1: return
+    P2->>+ P16: calls
+    P16-->>- P2: return
     P1->>+ P17: uses
     P17-->>- P1: return
-    P1->>+ P18: calls
+    P1->>+ P18: uses
     P18-->>- P1: return
-    P1->>+ P19: uses
+    P1->>+ P19: calls
     P19-->>- P1: return
-    P1->>+ P20: calls
+    P1->>+ P20: uses
     P20-->>- P1: return
     P1->>+ P21: calls
     P21-->>- P1: return
     P1->>+ P22: calls
     P22-->>- P1: return
-    P1->>+ P4: calls
-    P4-->>- P1: return
     P1->>+ P23: calls
     P23-->>- P1: return
+    P1->>+ P4: calls
+    P4-->>- P1: return
     P1->>+ P24: calls
     P24-->>- P1: return
-    P1->>+ P6: calls
-    P6-->>- P1: return
     P1->>+ P25: calls
     P25-->>- P1: return
+    P1->>+ P6: calls
+    P6-->>- P1: return
     P1->>+ P26: calls
     P26-->>- P1: return
     P1->>+ P27: calls
@@ -139,12 +140,12 @@ sequenceDiagram
     P29-->>- P1: return
     P1->>+ P30: calls
     P30-->>- P1: return
+    P1->>+ P31: calls
+    P31-->>- P1: return
     P1->>+ P8: calls
     P8-->>- P1: return
     P1->>+ P9: calls
     P9-->>- P1: return
-    P1->>+ P31: calls
-    P31-->>- P1: return
     P1->>+ P32: calls
     P32-->>- P1: return
     P1->>+ P33: calls
@@ -157,18 +158,18 @@ sequenceDiagram
     P36-->>- P1: return
     P1->>+ P37: calls
     P37-->>- P1: return
-    P0->>+ P38: uses
-    P38-->>- P0: return
+    P1->>+ P38: calls
+    P38-->>- P1: return
     P0->>+ P39: uses
     P39-->>- P0: return
     P0->>+ P40: uses
     P40-->>- P0: return
-    P0->>+ P2: uses
-    P2-->>- P0: return
-    P0->>+ P16: uses
-    P16-->>- P0: return
     P0->>+ P41: uses
     P41-->>- P0: return
+    P0->>+ P2: uses
+    P2-->>- P0: return
+    P0->>+ P17: uses
+    P17-->>- P0: return
     P0->>+ P42: uses
     P42-->>- P0: return
     P0->>+ P43: uses
@@ -177,10 +178,10 @@ sequenceDiagram
     P44-->>- P0: return
     P0->>+ P45: uses
     P45-->>- P0: return
-    P0->>+ P17: uses
-    P17-->>- P0: return
     P0->>+ P46: uses
     P46-->>- P0: return
+    P0->>+ P18: uses
+    P18-->>- P0: return
     P0->>+ P47: uses
     P47-->>- P0: return
     P0->>+ P48: uses
@@ -193,10 +194,10 @@ sequenceDiagram
     P51-->>- P0: return
     P0->>+ P52: uses
     P52-->>- P0: return
-    P0->>+ P19: uses
-    P19-->>- P0: return
     P0->>+ P53: uses
     P53-->>- P0: return
+    P0->>+ P20: uses
+    P20-->>- P0: return
     P0->>+ P54: uses
     P54-->>- P0: return
     P0->>+ P55: uses
@@ -215,6 +216,8 @@ sequenceDiagram
     P61-->>- P0: return
     P0->>+ P62: uses
     P62-->>- P0: return
+    P0->>+ P63: uses
+    P63-->>- P0: return
 ```
 
 ## Connections by Relation

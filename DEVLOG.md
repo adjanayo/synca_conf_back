@@ -12,6 +12,7 @@
 - [x] Clé `event` sur `campaign_windows` (dates de l'événement pilotables au back-office)
 - [x] Phase J3 : notification email waitlist à l'ouverture de la billetterie
 - [x] `GET /api/partner-levels` (débloquait la phase M1 côté front — formulaire partenaire sans moyen de lister les paliers réels)
+- [x] `GET/POST/PATCH /api/admin/promo-codes` + permission `promo_codes.manage` (débloquait la phase N côté front — aucun CRUD admin sur les codes promo)
 
 ## Journal
 
@@ -45,3 +46,8 @@
 ### 2026-09-02 (suite 5) — Phase M côté front : ajout `GET /api/partner-levels`
 - Fait : en branchant le formulaire partenaire front (`partenaires.tsx`) sur l'API réelle, découvert qu'aucun endpoint public ne liste les paliers de partenariat (`PartnerLevel`) — le formulaire n'avait donc aucun moyen d'obtenir un `level_id` réel (FK requise par `POST /api/partners/apply`), seulement des noms de palier codés en dur côté front sans lien avec la table. Ajouté `GET /api/partner-levels` (`app/api/public.py`, `PartnerLevelRead` déjà existant côté schémas admin, réutilisé tel quel), trié par `sort_order`, même pattern que `GET /api/pass-types`.
 - Fait : `ruff check .` clean sur tout le repo après l'ajout. Pas de test ajouté (suite pytest toujours bloquée par la régression pytest-asyncio du conteneur, cf. entrée précédente) — endpoint non exercé par des tests automatisés dans ce sandbox, à couvrir quand la régression sera résolue.
+
+### 2026-09-02 (suite 6) — Phase N côté front : CRUD admin `GET/POST/PATCH /api/admin/promo-codes`
+- Fait : le modèle `PromoCode`, `POST /api/promo/validate` et la génération auto de code à l'acceptation d'un ambassadeur existaient déjà, mais aucun endpoint n'exposait de CRUD admin sur la table — impossible de créer/désactiver un code depuis le dashboard. Ajouté `app/api/admin_promo_codes.py` (`GET`/`POST`/`PATCH`, même patron que `admin_pass_types.py` : pas de DELETE dur, `is_active` seul pour désactiver, FK `payments.promo_code_id`/`ambassadors.promo_code_id` préservées). Schémas `PromoCodeCreate`/`PromoCodeUpdate` ajoutés (`app/schemas/payments.py`, `PromoCodeRead` déjà existant réutilisé).
+- Fait : nouvelle permission `promo_codes.manage` (migration `c2d3e4f5a6b7`, seedée sur le rôle `superadmin` — même patron que `547ad7a3ad02`). Migration appliquée (`alembic upgrade head` réussi, `9c1e2f4a7b3d` → `c2d3e4f5a6b7`).
+- Fait : `ruff check .` clean sur tout le repo. Pas de test ajouté (régression pytest-asyncio du conteneur toujours non résolue, cf. entrées précédentes).

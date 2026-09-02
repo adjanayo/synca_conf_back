@@ -4,9 +4,9 @@
 
 ## Key Concepts
 
-- [admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L1) (2 connections)
-- [list_contacts()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L17) (1 connections)
-- [update_contact_read_status()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L38) (1 connections)
+- [main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L1) (2 connections)
+- [health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L95) (1 connections)
+- [_log_rate_limit_exceeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L58) (1 connections)
 
 ## Relationships
 
@@ -14,7 +14,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py)
 
 ## Audit Trail
 

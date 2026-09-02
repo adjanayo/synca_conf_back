@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

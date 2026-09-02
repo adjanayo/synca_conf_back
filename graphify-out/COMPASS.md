@@ -10,9 +10,9 @@
 4. `User` (20 edges)
 5. `Role` (20 edges)
 6. `AdminUser` (19 edges)
-7. `make_admin_with_permission()` (18 edges)
-8. `get_settings()` (17 edges)
-9. `PromoCode` (17 edges)
+7. `PromoCode` (18 edges)
+8. `make_admin_with_permission()` (18 edges)
+9. `get_settings()` (17 edges)
 10. `Payment` (16 edges)
 
 ## System Layers

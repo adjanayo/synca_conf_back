@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L79) (1 connections)
-- [campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L21) (1 connections)
+- [2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L57) (1 connections)
+- [promo_codes admin permission  Revision ID: c2d3e4f5a6b7 Revises: 9c1e2f4a7b3d Cr](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L25) (1 connections)
 
 ## Relationships
 
-- [[speakers, ambassadors, partners, exhibitors  Revision ID: 7b6712058249 Revises:]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py)
 
 ## Audit Trail
 

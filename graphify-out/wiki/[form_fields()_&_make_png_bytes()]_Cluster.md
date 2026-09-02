@@ -1,19 +1,19 @@
 # [form_fields() & make_png_bytes()] Cluster
 
-> 10 nodes · cohesion 0.20
+> 10 nodes · cohesion 0.36
 
 ## Key Concepts
 
-- [public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L1) (9 connections)
-- [list_campaign_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L162) (1 connections)
-- [list_days()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L36) (1 connections)
-- [list_exhibitors()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L124) (1 connections)
-- [list_faqs()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L145) (1 connections)
-- [list_partner_levels()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L95) (1 connections)
-- [list_partners()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L105) (1 connections)
-- [list_pass_types()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L65) (1 connections)
-- [list_sessions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L43) (1 connections)
-- [list_speakers()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L75) (1 connections)
+- [make_admin_with_role()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L10) (6 connections)
+- [test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L1) (6 connections)
+- [get_current_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L14) (5 connections)
+- [test_require_permission_granted()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L49) (5 connections)
+- [test_get_current_admin_valid_token()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L26) (4 connections)
+- [require_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L47) (3 connections)
+- [test_require_permission_denied_returns_403()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L63) (3 connections)
+- [test_get_current_admin_invalid_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L42) (2 connections)
+- [test_get_current_admin_missing_token_raises_401()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py#L35) (2 connections)
+- [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py#L1) (2 connections)
 
 ## Relationships
 
@@ -21,12 +21,13 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/rbac.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_rbac_deps.py)
 
 ## Audit Trail
 
-- EXTRACTED: 18 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 22 (58%)
+- INFERRED: 16 (42%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -1,6 +1,6 @@
 # PromoCode
 
-> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py#L22)
+> God node · 18 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py#L22)
 
 ## Call Trace Diagram
 
@@ -64,11 +64,12 @@ sequenceDiagram
     participant P55 as generate_ambassador_promo_code()
     participant P56 as test_promo_code_payment_ticket_waitlist_read()
     participant P57 as test_promo_code_and_waitlist_unique()
-    participant P58 as test_promo_validate_success()
-    participant P59 as test_promo_validate_inactive_400()
-    participant P60 as test_promo_validate_expired_400()
-    participant P61 as test_promo_validate_exhausted_400()
-    participant P62 as test_promo_validate_fixed_discount()
+    participant P58 as create_promo_code()
+    participant P59 as test_promo_validate_success()
+    participant P60 as test_promo_validate_inactive_400()
+    participant P61 as test_promo_validate_expired_400()
+    participant P62 as test_promo_validate_exhausted_400()
+    participant P63 as test_promo_validate_fixed_discount()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -215,6 +216,8 @@ sequenceDiagram
     P61-->>- P0: return
     P0->>+ P62: calls
     P62-->>- P0: return
+    P0->>+ P63: calls
+    P63-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -228,6 +231,7 @@ sequenceDiagram
 - [[test_create_payment_applies_percent_discount()]] `INFERRED`
 - [[test_create_payment_applies_fixed_discount()]] `INFERRED`
 - [[test_promo_code_and_waitlist_unique()]] `INFERRED`
+- [[create_promo_code()]] `INFERRED`
 - [[test_promo_validate_success()]] `INFERRED`
 - [[test_promo_validate_inactive_400()]] `INFERRED`
 - [[test_promo_validate_expired_400()]] `INFERRED`

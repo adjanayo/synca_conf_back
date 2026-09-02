@@ -18,60 +18,61 @@ sequenceDiagram
     participant P9 as test_create_payment_applies_percent_discount()
     participant P10 as test_create_payment_applies_fixed_discount()
     participant P11 as test_promo_code_and_waitlist_unique()
-    participant P12 as test_promo_validate_success()
-    participant P13 as test_promo_validate_inactive_400()
-    participant P14 as test_promo_validate_expired_400()
-    participant P15 as test_promo_validate_exhausted_400()
-    participant P16 as test_promo_validate_fixed_discount()
-    participant P17 as Payment
-    participant P18 as Speaker
-    participant P19 as Ticket
-    participant P20 as make_admin_with_permission()
-    participant P21 as make_user_and_pass_type()
-    participant P22 as test_admin_endpoint_limited_to_30_per_minute()
-    participant P23 as login()
-    participant P24 as _create_token()
-    participant P25 as test_get_current_admin_valid_token()
-    participant P26 as test_export_registrations_csv()
-    participant P27 as test_export_payments_csv()
-    participant P28 as test_export_registrations_neutralizes_csv_formula_injection()
-    participant P29 as test_any_authenticated_admin_can_list_contacts()
-    participant P30 as test_list_contacts_filters_by_is_read()
-    participant P31 as test_superadmin_can_update_role_permissions()
-    participant P32 as test_non_superadmin_forbidden()
-    participant P33 as test_unknown_permission_code_rejected()
-    participant P34 as test_speaker_accepted_publishes_it()
-    participant P35 as test_speaker_rejected_stays_unpublished()
-    participant P36 as test_speaker_update_forbidden_without_permission()
-    participant P37 as test_speaker_update_rejects_invalid_status()
-    participant P38 as test_ambassador_accepted()
-    participant P39 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
-    participant P40 as test_ambassador_update_forbidden_without_permission()
-    participant P41 as test_partner_confirmed_publishes_it()
-    participant P42 as test_partner_negotiating_stays_unpublished()
-    participant P43 as test_partner_update_forbidden_without_permission()
-    participant P44 as test_exhibitor_confirmed_publishes_it()
-    participant P45 as test_exhibitor_update_forbidden_without_permission()
-    participant P46 as test_list_registrations_returns_all_by_default()
-    participant P47 as test_list_registrations_filters_by_status()
-    participant P48 as test_list_registrations_respects_pagination_limit()
-    participant P49 as .login()
-    participant P50 as test_me_returns_identity_role_and_permissions()
-    participant P51 as test_list_campaign_windows_admin()
-    participant P52 as test_list_campaign_windows_forbidden_without_permission()
-    participant P53 as test_update_campaign_window_dates_and_is_active()
-    participant P54 as test_update_campaign_window_rejects_end_before_start()
-    participant P55 as test_update_campaign_window_unknown_key_404()
-    participant P56 as test_update_campaign_window_forbidden_without_permission()
-    participant P57 as test_export_registrations_forbidden_without_permission()
-    participant P58 as test_export_payments_forbidden_without_permission()
-    participant P59 as test_stats_forbidden_without_permission()
-    participant P60 as test_stats_handles_no_completed_payments()
-    participant P61 as test_speaker_update_404_for_unknown_id()
-    participant P62 as test_access_token_round_trip()
-    participant P63 as test_wrong_token_type_rejected()
-    participant P64 as test_invalid_signature_rejected()
-    participant P65 as test_list_registrations_forbidden_without_permission()
+    participant P12 as create_promo_code()
+    participant P13 as test_promo_validate_success()
+    participant P14 as test_promo_validate_inactive_400()
+    participant P15 as test_promo_validate_expired_400()
+    participant P16 as test_promo_validate_exhausted_400()
+    participant P17 as test_promo_validate_fixed_discount()
+    participant P18 as Payment
+    participant P19 as Speaker
+    participant P20 as Ticket
+    participant P21 as make_admin_with_permission()
+    participant P22 as make_user_and_pass_type()
+    participant P23 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P24 as login()
+    participant P25 as _create_token()
+    participant P26 as test_get_current_admin_valid_token()
+    participant P27 as test_export_registrations_csv()
+    participant P28 as test_export_payments_csv()
+    participant P29 as test_export_registrations_neutralizes_csv_formula_injection()
+    participant P30 as test_any_authenticated_admin_can_list_contacts()
+    participant P31 as test_list_contacts_filters_by_is_read()
+    participant P32 as test_superadmin_can_update_role_permissions()
+    participant P33 as test_non_superadmin_forbidden()
+    participant P34 as test_unknown_permission_code_rejected()
+    participant P35 as test_speaker_accepted_publishes_it()
+    participant P36 as test_speaker_rejected_stays_unpublished()
+    participant P37 as test_speaker_update_forbidden_without_permission()
+    participant P38 as test_speaker_update_rejects_invalid_status()
+    participant P39 as test_ambassador_accepted()
+    participant P40 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
+    participant P41 as test_ambassador_update_forbidden_without_permission()
+    participant P42 as test_partner_confirmed_publishes_it()
+    participant P43 as test_partner_negotiating_stays_unpublished()
+    participant P44 as test_partner_update_forbidden_without_permission()
+    participant P45 as test_exhibitor_confirmed_publishes_it()
+    participant P46 as test_exhibitor_update_forbidden_without_permission()
+    participant P47 as test_list_registrations_returns_all_by_default()
+    participant P48 as test_list_registrations_filters_by_status()
+    participant P49 as test_list_registrations_respects_pagination_limit()
+    participant P50 as .login()
+    participant P51 as test_me_returns_identity_role_and_permissions()
+    participant P52 as test_list_campaign_windows_admin()
+    participant P53 as test_list_campaign_windows_forbidden_without_permission()
+    participant P54 as test_update_campaign_window_dates_and_is_active()
+    participant P55 as test_update_campaign_window_rejects_end_before_start()
+    participant P56 as test_update_campaign_window_unknown_key_404()
+    participant P57 as test_update_campaign_window_forbidden_without_permission()
+    participant P58 as test_export_registrations_forbidden_without_permission()
+    participant P59 as test_export_payments_forbidden_without_permission()
+    participant P60 as test_stats_forbidden_without_permission()
+    participant P61 as test_stats_handles_no_completed_payments()
+    participant P62 as test_speaker_update_404_for_unknown_id()
+    participant P63 as test_access_token_round_trip()
+    participant P64 as test_wrong_token_type_rejected()
+    participant P65 as test_invalid_signature_rejected()
+    participant P66 as test_list_registrations_forbidden_without_permission()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P0: calls
@@ -108,8 +109,8 @@ sequenceDiagram
     P15-->>- P2: return
     P2->>+ P16: calls
     P16-->>- P2: return
-    P1->>+ P17: calls
-    P17-->>- P1: return
+    P2->>+ P17: calls
+    P17-->>- P2: return
     P1->>+ P18: calls
     P18-->>- P1: return
     P1->>+ P19: calls
@@ -118,8 +119,8 @@ sequenceDiagram
     P20-->>- P1: return
     P1->>+ P21: calls
     P21-->>- P1: return
-    P0->>+ P22: calls
-    P22-->>- P0: return
+    P1->>+ P22: calls
+    P22-->>- P1: return
     P0->>+ P23: calls
     P23-->>- P0: return
     P0->>+ P24: calls
@@ -206,6 +207,8 @@ sequenceDiagram
     P64-->>- P0: return
     P0->>+ P65: calls
     P65-->>- P0: return
+    P0->>+ P66: calls
+    P66-->>- P0: return
 ```
 
 ## Connections by Relation
