@@ -5,12 +5,23 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.core.rate_limit import limiter
 from app.deps.pagination import Pagination, pagination_params
-from app.models import CampaignWindow, Day, Exhibitor, Faq, Partner, PassType, Session, Speaker
+from app.models import (
+    CampaignWindow,
+    Day,
+    Exhibitor,
+    Faq,
+    Partner,
+    PartnerLevel,
+    PassType,
+    Session,
+    Speaker,
+)
 from app.schemas import (
     CampaignWindowRead,
     DayRead,
     ExhibitorRead,
     FaqRead,
+    PartnerLevelRead,
     PartnerRead,
     PassTypeRead,
     SessionRead,
@@ -77,6 +88,16 @@ async def list_speakers(
 
     speakers = (await db.execute(query)).scalars().all()
     return [SpeakerRead.model_validate(speaker) for speaker in speakers]
+
+
+@router.get("/partner-levels", response_model=list[PartnerLevelRead])
+@limiter.limit("60/minute")
+async def list_partner_levels(
+    request: Request, db: AsyncSession = Depends(get_db)
+) -> list[PartnerLevelRead]:
+    query = select(PartnerLevel).order_by(PartnerLevel.sort_order)
+    levels = (await db.execute(query)).scalars().all()
+    return [PartnerLevelRead.model_validate(level) for level in levels]
 
 
 @router.get("/partners", response_model=list[PartnerRead])
