@@ -86,3 +86,12 @@ def ticket_delivered_email(first_name: str, ticket_number: str, pdf_url: str) ->
         f"<p>Voici votre billet pour SYNCA CONF 2027 — référence <strong>{ref}</strong>.</p>"
         f'<p><a href="{escape(pdf_url)}" style="{link_style}">Télécharger mon billet</a></p>'
     )
+
+
+def waitlist_ticketing_open_email() -> str:
+    return _render(
+        "<p>Bonjour,</p>"
+        "<p>La billetterie de <strong>SYNCA CONF 2027</strong> vient d'ouvrir.</p>"
+        "<p>Tu étais inscrit·e sur notre liste d'attente : les places sont limitées, "
+        "inscris-toi dès maintenant pour réserver ton pass.</p>"
+    )
