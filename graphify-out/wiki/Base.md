@@ -1,6 +1,6 @@
 # Base
 
-> God node · 29 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
+> God node · 31 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
 
 ## Call Trace Diagram
 
@@ -59,12 +59,14 @@ sequenceDiagram
     participant P50 as Ambassador
     participant P51 as Faq
     participant P52 as UserProfile
-    participant P53 as AuditLog
-    participant P54 as CampaignWindow
-    participant P55 as NewsletterSubscriber
-    participant P56 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P57 as In this scenario we need to create an Engine     and associate a connection with
-    participant P58 as Run migrations in 'online' mode.
+    participant P53 as OtpCode
+    participant P54 as AuditLog
+    participant P55 as CampaignWindow
+    participant P56 as NewsletterSubscriber
+    participant P57 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P58 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P59 as In this scenario we need to create an Engine     and associate a connection with
+    participant P60 as Run migrations in 'online' mode.
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -203,6 +205,10 @@ sequenceDiagram
     P57-->>- P0: return
     P0->>+ P58: uses
     P58-->>- P0: return
+    P0->>+ P59: uses
+    P59-->>- P0: return
+    P0->>+ P60: uses
+    P60-->>- P0: return
 ```
 
 ## Connections by Relation

@@ -29,40 +29,42 @@ sequenceDiagram
     participant P20 as Faq
     participant P21 as Waitlist
     participant P22 as UserProfile
-    participant P23 as AuditLog
-    participant P24 as CampaignWindow
-    participant P25 as NewsletterSubscriber
-    participant P26 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P27 as In this scenario we need to create an Engine     and associate a connection with
-    participant P28 as Run migrations in 'online' mode.
-    participant P29 as make_admin_with_permission()
-    participant P30 as make_admin()
+    participant P23 as OtpCode
+    participant P24 as AuditLog
+    participant P25 as CampaignWindow
+    participant P26 as NewsletterSubscriber
+    participant P27 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P28 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P29 as In this scenario we need to create an Engine     and associate a connection with
+    participant P30 as Run migrations in 'online' mode.
     participant P31 as make_admin_with_permission()
-    participant P32 as make_admin_with_permission()
+    participant P32 as make_admin()
     participant P33 as make_admin_with_permission()
-    participant P34 as make_admin()
-    participant P35 as make_admin_with_role()
-    participant P36 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P34 as make_admin_with_permission()
+    participant P35 as make_admin_with_permission()
+    participant P36 as make_admin()
     participant P37 as make_admin_with_role()
-    participant P38 as make_admin()
-    participant P39 as test_rbac_read()
-    participant P40 as test_superadmin_can_update_role_permissions()
-    participant P41 as test_non_superadmin_forbidden()
-    participant P42 as test_unknown_permission_code_rejected()
-    participant P43 as test_unauthenticated_rejected()
-    participant P44 as test_speaker_accepted_publishes_it()
-    participant P45 as test_speaker_rejected_stays_unpublished()
-    participant P46 as test_speaker_update_forbidden_without_permission()
-    participant P47 as test_speaker_update_rejects_invalid_status()
-    participant P48 as test_ambassador_accepted()
-    participant P49 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
-    participant P50 as test_ambassador_update_forbidden_without_permission()
-    participant P51 as test_partner_confirmed_publishes_it()
-    participant P52 as test_partner_negotiating_stays_unpublished()
-    participant P53 as test_partner_update_forbidden_without_permission()
-    participant P54 as test_exhibitor_confirmed_publishes_it()
-    participant P55 as test_exhibitor_update_forbidden_without_permission()
-    participant P56 as test_speaker_update_404_for_unknown_id()
+    participant P38 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P39 as make_admin_with_role()
+    participant P40 as make_admin()
+    participant P41 as test_rbac_read()
+    participant P42 as test_superadmin_can_update_role_permissions()
+    participant P43 as test_non_superadmin_forbidden()
+    participant P44 as test_unknown_permission_code_rejected()
+    participant P45 as test_unauthenticated_rejected()
+    participant P46 as test_speaker_accepted_publishes_it()
+    participant P47 as test_speaker_rejected_stays_unpublished()
+    participant P48 as test_speaker_update_forbidden_without_permission()
+    participant P49 as test_speaker_update_rejects_invalid_status()
+    participant P50 as test_ambassador_accepted()
+    participant P51 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
+    participant P52 as test_ambassador_update_forbidden_without_permission()
+    participant P53 as test_partner_confirmed_publishes_it()
+    participant P54 as test_partner_negotiating_stays_unpublished()
+    participant P55 as test_partner_update_forbidden_without_permission()
+    participant P56 as test_exhibitor_confirmed_publishes_it()
+    participant P57 as test_exhibitor_update_forbidden_without_permission()
+    participant P58 as test_speaker_update_404_for_unknown_id()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -121,12 +123,12 @@ sequenceDiagram
     P27-->>- P2: return
     P2->>+ P28: uses
     P28-->>- P2: return
+    P2->>+ P29: uses
+    P29-->>- P2: return
+    P2->>+ P30: uses
+    P30-->>- P2: return
     P1->>+ P0: calls
     P0-->>- P1: return
-    P1->>+ P29: calls
-    P29-->>- P1: return
-    P1->>+ P30: calls
-    P30-->>- P1: return
     P1->>+ P31: calls
     P31-->>- P1: return
     P1->>+ P32: calls
@@ -153,16 +155,16 @@ sequenceDiagram
     P42-->>- P1: return
     P1->>+ P43: calls
     P43-->>- P1: return
+    P1->>+ P44: calls
+    P44-->>- P1: return
+    P1->>+ P45: calls
+    P45-->>- P1: return
     P0->>+ P6: calls
     P6-->>- P0: return
     P0->>+ P9: calls
     P9-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
-    P0->>+ P44: calls
-    P44-->>- P0: return
-    P0->>+ P45: calls
-    P45-->>- P0: return
     P0->>+ P46: calls
     P46-->>- P0: return
     P0->>+ P47: calls
@@ -185,6 +187,10 @@ sequenceDiagram
     P55-->>- P0: return
     P0->>+ P56: calls
     P56-->>- P0: return
+    P0->>+ P57: calls
+    P57-->>- P0: return
+    P0->>+ P58: calls
+    P58-->>- P0: return
 ```
 
 ## Connections by Relation

@@ -4,9 +4,9 @@
 
 ## Key Concepts
 
-- [test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L1) (2 connections)
-- [test_end_at_must_be_after_start_at()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L25) (1 connections)
-- [test_five_campaign_windows_seeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L11) (1 connections)
+- [test_public_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L1) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L9) (1 connections)
+- [test_list_campaign_windows_returns_seeded_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L19) (1 connections)
 
 ## Relationships
 
@@ -14,7 +14,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py)
 
 ## Audit Trail
 

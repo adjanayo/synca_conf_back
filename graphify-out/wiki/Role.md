@@ -50,28 +50,30 @@ sequenceDiagram
     participant P41 as Ambassador
     participant P42 as Faq
     participant P43 as UserProfile
-    participant P44 as AuditLog
-    participant P45 as CampaignWindow
-    participant P46 as NewsletterSubscriber
-    participant P47 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P48 as In this scenario we need to create an Engine     and associate a connection with
-    participant P49 as Run migrations in 'online' mode.
-    participant P50 as make_admin_with_permission()
-    participant P51 as make_admin_with_permission()
-    participant P52 as make_admin()
+    participant P44 as OtpCode
+    participant P45 as AuditLog
+    participant P46 as CampaignWindow
+    participant P47 as NewsletterSubscriber
+    participant P48 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P49 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P50 as In this scenario we need to create an Engine     and associate a connection with
+    participant P51 as Run migrations in 'online' mode.
+    participant P52 as make_admin_with_permission()
     participant P53 as make_admin_with_permission()
-    participant P54 as make_admin_with_permission()
+    participant P54 as make_admin()
     participant P55 as make_admin_with_permission()
-    participant P56 as make_admin()
-    participant P57 as make_admin_with_role()
-    participant P58 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P56 as make_admin_with_permission()
+    participant P57 as make_admin_with_permission()
+    participant P58 as make_admin()
     participant P59 as make_admin_with_role()
-    participant P60 as make_admin()
-    participant P61 as test_rbac_read()
-    participant P62 as test_superadmin_can_update_role_permissions()
-    participant P63 as test_non_superadmin_forbidden()
-    participant P64 as test_unknown_permission_code_rejected()
-    participant P65 as test_unauthenticated_rejected()
+    participant P60 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P61 as make_admin_with_role()
+    participant P62 as make_admin()
+    participant P63 as test_rbac_read()
+    participant P64 as test_superadmin_can_update_role_permissions()
+    participant P65 as test_non_superadmin_forbidden()
+    participant P66 as test_unknown_permission_code_rejected()
+    participant P67 as test_unauthenticated_rejected()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -182,10 +184,10 @@ sequenceDiagram
     P48-->>- P1: return
     P1->>+ P49: uses
     P49-->>- P1: return
-    P0->>+ P50: calls
-    P50-->>- P0: return
-    P0->>+ P51: calls
-    P51-->>- P0: return
+    P1->>+ P50: uses
+    P50-->>- P1: return
+    P1->>+ P51: uses
+    P51-->>- P1: return
     P0->>+ P52: calls
     P52-->>- P0: return
     P0->>+ P53: calls
@@ -214,6 +216,10 @@ sequenceDiagram
     P64-->>- P0: return
     P0->>+ P65: calls
     P65-->>- P0: return
+    P0->>+ P66: calls
+    P66-->>- P0: return
+    P0->>+ P67: calls
+    P67-->>- P0: return
 ```
 
 ## Connections by Relation

@@ -50,21 +50,23 @@ sequenceDiagram
     participant P41 as Ambassador
     participant P42 as Faq
     participant P43 as UserProfile
-    participant P44 as AuditLog
-    participant P45 as CampaignWindow
-    participant P46 as NewsletterSubscriber
-    participant P47 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P48 as In this scenario we need to create an Engine     and associate a connection with
-    participant P49 as Run migrations in 'online' mode.
-    participant P50 as test_stats_computed_from_payments_tickets_and_applications()
-    participant P51 as test_promo_code_payment_ticket_waitlist_read()
-    participant P52 as generate_ambassador_promo_code()
-    participant P53 as test_promo_code_and_waitlist_unique()
-    participant P54 as test_promo_validate_success()
-    participant P55 as test_promo_validate_inactive_400()
-    participant P56 as test_promo_validate_expired_400()
-    participant P57 as test_promo_validate_exhausted_400()
-    participant P58 as test_promo_validate_fixed_discount()
+    participant P44 as OtpCode
+    participant P45 as AuditLog
+    participant P46 as CampaignWindow
+    participant P47 as NewsletterSubscriber
+    participant P48 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P49 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P50 as In this scenario we need to create an Engine     and associate a connection with
+    participant P51 as Run migrations in 'online' mode.
+    participant P52 as test_stats_computed_from_payments_tickets_and_applications()
+    participant P53 as test_promo_code_payment_ticket_waitlist_read()
+    participant P54 as generate_ambassador_promo_code()
+    participant P55 as test_promo_code_and_waitlist_unique()
+    participant P56 as test_promo_validate_success()
+    participant P57 as test_promo_validate_inactive_400()
+    participant P58 as test_promo_validate_expired_400()
+    participant P59 as test_promo_validate_exhausted_400()
+    participant P60 as test_promo_validate_fixed_discount()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -175,26 +177,26 @@ sequenceDiagram
     P48-->>- P1: return
     P1->>+ P49: uses
     P49-->>- P1: return
+    P1->>+ P50: uses
+    P50-->>- P1: return
+    P1->>+ P51: uses
+    P51-->>- P1: return
     P0->>+ P2: uses
     P2-->>- P0: return
-    P0->>+ P50: calls
-    P50-->>- P0: return
+    P0->>+ P52: calls
+    P52-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
     P0->>+ P13: calls
     P13-->>- P0: return
-    P0->>+ P51: calls
-    P51-->>- P0: return
-    P0->>+ P52: calls
-    P52-->>- P0: return
-    P0->>+ P20: calls
-    P20-->>- P0: return
-    P0->>+ P21: calls
-    P21-->>- P0: return
     P0->>+ P53: calls
     P53-->>- P0: return
     P0->>+ P54: calls
     P54-->>- P0: return
+    P0->>+ P20: calls
+    P20-->>- P0: return
+    P0->>+ P21: calls
+    P21-->>- P0: return
     P0->>+ P55: calls
     P55-->>- P0: return
     P0->>+ P56: calls
@@ -203,6 +205,10 @@ sequenceDiagram
     P57-->>- P0: return
     P0->>+ P58: calls
     P58-->>- P0: return
+    P0->>+ P59: calls
+    P59-->>- P0: return
+    P0->>+ P60: calls
+    P60-->>- P0: return
 ```
 
 ## Connections by Relation

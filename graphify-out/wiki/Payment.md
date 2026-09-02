@@ -50,18 +50,20 @@ sequenceDiagram
     participant P41 as Ambassador
     participant P42 as Faq
     participant P43 as UserProfile
-    participant P44 as AuditLog
-    participant P45 as CampaignWindow
-    participant P46 as NewsletterSubscriber
-    participant P47 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P48 as In this scenario we need to create an Engine     and associate a connection with
-    participant P49 as Run migrations in 'online' mode.
-    participant P50 as test_stats_computed_from_payments_tickets_and_applications()
-    participant P51 as test_promo_code_payment_ticket_waitlist_read()
-    participant P52 as create_payment()
-    participant P53 as test_ticket_one_per_payment()
-    participant P54 as test_payment_default_status_pending()
-    participant P55 as test_payment_requires_valid_fk()
+    participant P44 as OtpCode
+    participant P45 as AuditLog
+    participant P46 as CampaignWindow
+    participant P47 as NewsletterSubscriber
+    participant P48 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P49 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P50 as In this scenario we need to create an Engine     and associate a connection with
+    participant P51 as Run migrations in 'online' mode.
+    participant P52 as test_stats_computed_from_payments_tickets_and_applications()
+    participant P53 as test_promo_code_payment_ticket_waitlist_read()
+    participant P54 as create_payment()
+    participant P55 as test_ticket_one_per_payment()
+    participant P56 as test_payment_default_status_pending()
+    participant P57 as test_payment_requires_valid_fk()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -172,12 +174,16 @@ sequenceDiagram
     P48-->>- P1: return
     P1->>+ P49: uses
     P49-->>- P1: return
+    P1->>+ P50: uses
+    P50-->>- P1: return
+    P1->>+ P51: uses
+    P51-->>- P1: return
     P0->>+ P2: uses
     P2-->>- P0: return
     P0->>+ P5: calls
     P5-->>- P0: return
-    P0->>+ P50: calls
-    P50-->>- P0: return
+    P0->>+ P52: calls
+    P52-->>- P0: return
     P0->>+ P7: calls
     P7-->>- P0: return
     P0->>+ P8: calls
@@ -188,16 +194,16 @@ sequenceDiagram
     P10-->>- P0: return
     P0->>+ P11: calls
     P11-->>- P0: return
-    P0->>+ P51: calls
-    P51-->>- P0: return
-    P0->>+ P52: calls
-    P52-->>- P0: return
     P0->>+ P53: calls
     P53-->>- P0: return
     P0->>+ P54: calls
     P54-->>- P0: return
     P0->>+ P55: calls
     P55-->>- P0: return
+    P0->>+ P56: calls
+    P56-->>- P0: return
+    P0->>+ P57: calls
+    P57-->>- P0: return
 ```
 
 ## Connections by Relation

@@ -9,6 +9,7 @@ from app.core.rate_limit import limiter
 from app.models import Ticket, User
 from app.schemas.tickets import TicketRead
 from app.schemas.users import UserRead
+from app.services.auth_service import InvalidTokenError, decode_token
 
 router = APIRouter(prefix="/api/user", tags=["user-me"])
 
@@ -19,6 +20,11 @@ async def get_current_participant(
     credentials: HTTPAuthorizationCredentials | None = Depends(_bearer_scheme),
     db: AsyncSession = Depends(get_db),
 ) -> User:
+    """Accepts either credential: the legacy one-time `access_token` handed
+    out at registration (still valid, never re-issued), or the JWT from the
+    OTP login flow (app/api/participant_auth.py). JWT is tried first since
+    it's cheap to reject on a decode failure before falling back to a DB hit.
+    """
     invalid = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Jeton d'accès invalide.",
@@ -28,8 +34,24 @@ async def get_current_participant(
         logger.bind(channel="security").warning("Accès /api/user/me refusé : aucun jeton fourni")
         raise invalid
 
+    token = credentials.credentials
+
+    try:
+        payload = decode_token(token, expected_type="participant_access")
+    except InvalidTokenError:
+        payload = None
+
+    if payload is not None:
+        user = await db.get(User, int(payload["sub"]))
+        if user is None:
+            logger.bind(channel="security").warning(
+                "Accès /api/user/me refusé : sujet de jeton OTP inconnu"
+            )
+            raise invalid
+        return user
+
     user = (
-        await db.execute(select(User).where(User.access_token == credentials.credentials))
+        await db.execute(select(User).where(User.access_token == token))
     ).scalar_one_or_none()
     if user is None:
         logger.bind(channel="security").warning("Accès /api/user/me refusé : jeton inconnu")

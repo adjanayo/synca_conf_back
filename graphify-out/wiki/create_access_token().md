@@ -1,6 +1,6 @@
 # create_access_token()
 
-> God node · 45 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L93)
+> God node · 45 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L95)
 
 ## Call Trace Diagram
 
@@ -30,31 +30,31 @@ sequenceDiagram
     participant P21 as make_user_and_pass_type()
     participant P22 as test_admin_endpoint_limited_to_30_per_minute()
     participant P23 as login()
-    participant P24 as test_get_current_admin_valid_token()
-    participant P25 as test_export_registrations_csv()
-    participant P26 as test_export_payments_csv()
-    participant P27 as test_export_registrations_neutralizes_csv_formula_injection()
-    participant P28 as test_any_authenticated_admin_can_list_contacts()
-    participant P29 as test_list_contacts_filters_by_is_read()
-    participant P30 as test_superadmin_can_update_role_permissions()
-    participant P31 as test_non_superadmin_forbidden()
-    participant P32 as test_unknown_permission_code_rejected()
-    participant P33 as test_speaker_accepted_publishes_it()
-    participant P34 as test_speaker_rejected_stays_unpublished()
-    participant P35 as test_speaker_update_forbidden_without_permission()
-    participant P36 as test_speaker_update_rejects_invalid_status()
-    participant P37 as test_ambassador_accepted()
-    participant P38 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
-    participant P39 as test_ambassador_update_forbidden_without_permission()
-    participant P40 as test_partner_confirmed_publishes_it()
-    participant P41 as test_partner_negotiating_stays_unpublished()
-    participant P42 as test_partner_update_forbidden_without_permission()
-    participant P43 as test_exhibitor_confirmed_publishes_it()
-    participant P44 as test_exhibitor_update_forbidden_without_permission()
-    participant P45 as test_list_registrations_returns_all_by_default()
-    participant P46 as test_list_registrations_filters_by_status()
-    participant P47 as test_list_registrations_respects_pagination_limit()
-    participant P48 as _create_token()
+    participant P24 as _create_token()
+    participant P25 as test_get_current_admin_valid_token()
+    participant P26 as test_export_registrations_csv()
+    participant P27 as test_export_payments_csv()
+    participant P28 as test_export_registrations_neutralizes_csv_formula_injection()
+    participant P29 as test_any_authenticated_admin_can_list_contacts()
+    participant P30 as test_list_contacts_filters_by_is_read()
+    participant P31 as test_superadmin_can_update_role_permissions()
+    participant P32 as test_non_superadmin_forbidden()
+    participant P33 as test_unknown_permission_code_rejected()
+    participant P34 as test_speaker_accepted_publishes_it()
+    participant P35 as test_speaker_rejected_stays_unpublished()
+    participant P36 as test_speaker_update_forbidden_without_permission()
+    participant P37 as test_speaker_update_rejects_invalid_status()
+    participant P38 as test_ambassador_accepted()
+    participant P39 as test_ambassador_accepted_twice_does_not_regenerate_promo_code()
+    participant P40 as test_ambassador_update_forbidden_without_permission()
+    participant P41 as test_partner_confirmed_publishes_it()
+    participant P42 as test_partner_negotiating_stays_unpublished()
+    participant P43 as test_partner_update_forbidden_without_permission()
+    participant P44 as test_exhibitor_confirmed_publishes_it()
+    participant P45 as test_exhibitor_update_forbidden_without_permission()
+    participant P46 as test_list_registrations_returns_all_by_default()
+    participant P47 as test_list_registrations_filters_by_status()
+    participant P48 as test_list_registrations_respects_pagination_limit()
     participant P49 as .login()
     participant P50 as test_list_campaign_windows_admin()
     participant P51 as test_list_campaign_windows_forbidden_without_permission()
@@ -211,6 +211,7 @@ sequenceDiagram
 - [[test_stats_computed_from_payments_tickets_and_applications()]] `INFERRED`
 - [[test_admin_endpoint_limited_to_30_per_minute()]] `INFERRED`
 - [[login()]] `INFERRED`
+- [[_create_token()]] `EXTRACTED`
 - [[test_get_current_admin_valid_token()]] `INFERRED`
 - [[test_export_registrations_csv()]] `INFERRED`
 - [[test_export_payments_csv()]] `INFERRED`
@@ -227,7 +228,6 @@ sequenceDiagram
 - [[test_ambassador_accepted()]] `INFERRED`
 - [[test_ambassador_accepted_twice_does_not_regenerate_promo_code()]] `INFERRED`
 - [[test_ambassador_update_forbidden_without_permission()]] `INFERRED`
-- [[test_partner_confirmed_publishes_it()]] `INFERRED`
 
 ### contains
 - [[auth_service.py]] `EXTRACTED`

@@ -14,6 +14,7 @@ from app.api.admin_registrations import router as admin_registrations_router
 from app.api.admin_stats import router as admin_stats_router
 from app.api.auth import router as auth_router
 from app.api.forms import router as forms_router
+from app.api.participant_auth import router as participant_auth_router
 from app.api.payments import router as payments_router
 from app.api.public import router as public_router
 from app.api.rbac import router as rbac_router
@@ -59,6 +60,7 @@ app.add_exception_handler(RateLimitExceeded, _log_rate_limit_exceeded)
 app.add_middleware(SlowAPIMiddleware)
 
 app.include_router(auth_router)
+app.include_router(participant_auth_router)
 app.include_router(rbac_router)
 app.include_router(public_router)
 app.include_router(forms_router)

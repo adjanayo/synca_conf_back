@@ -24,6 +24,11 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 7
+    # Participant OTP login (app/api/participant_auth.py) -- deliberately
+    # longer-lived than the admin access token: a one-shot event site where
+    # re-entering an email + OTP code every 15 minutes would be poor UX for
+    # someone checking their ticket days apart.
+    participant_token_expire_hours: int = 24
 
     # Same reasoning as JWT_SECRET_KEY: no default, so a deployment that
     # forgets to set FERNET_KEY fails to start rather than silently

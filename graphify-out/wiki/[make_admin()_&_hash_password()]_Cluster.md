@@ -4,8 +4,8 @@
 
 ## Key Concepts
 
+- [send_email()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/email_service.py#L9) (8 connections)
 - [finalize_ticket()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py#L10) (8 connections)
-- [send_email()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/email_service.py#L9) (7 connections)
 - [make_ticket()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L9) (7 connections)
 - [test_ticket_finalization.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L1) (5 connections)
 - [generate_and_upload_ticket_pdf()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py#L93) (4 connections)
@@ -28,7 +28,7 @@
 
 ## Relationships
 
-- [[[ModelView & _has_permission()] Cluster]] (2 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
@@ -40,8 +40,8 @@
 
 ## Audit Trail
 
-- EXTRACTED: 44 (65%)
-- INFERRED: 24 (35%)
+- EXTRACTED: 44 (64%)
+- INFERRED: 25 (36%)
 - AMBIGUOUS: 0 (0%)
 
 ---

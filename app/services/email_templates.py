@@ -65,6 +65,16 @@ def application_received_email(name: str, application_label: str) -> str:
     )
 
 
+def otp_login_email(first_name: str, code: str) -> str:
+    return _render(
+        f"<p>Bonjour {escape(first_name)},</p>"
+        "<p>Voici votre code de connexion à votre espace SYNCA CONF 2027 :</p>"
+        f'<p style="font-size:28px;font-weight:bold;letter-spacing:4px;">{escape(code)}</p>'
+        "<p>Ce code expire dans 10 minutes. Si vous n'êtes pas à l'origine de cette "
+        "demande, ignorez cet email.</p>"
+    )
+
+
 def ticket_delivered_email(first_name: str, ticket_number: str, pdf_url: str) -> str:
     ref = escape(ticket_number)
     link_style = (

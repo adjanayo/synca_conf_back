@@ -1,12 +1,12 @@
-# Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-08-30)
+# Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-09-02)
 
 ## Corpus Check
-- 150 files · ~143,130 words
+- 155 files · ~146,049 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 727 nodes · 1248 edges · 58 communities detected
-- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 390 edges (avg confidence: 0.76)
+- 765 nodes · 1319 edges · 59 communities detected
+- Extraction: 69% EXTRACTED · 31% INFERRED · 0% AMBIGUOUS · INFERRED: 414 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -68,12 +68,13 @@
 - [[_COMMUNITY_Community 55|Community 55]]
 - [[_COMMUNITY_Community 56|Community 56]]
 - [[_COMMUNITY_Community 57|Community 57]]
+- [[_COMMUNITY_Community 58|Community 58]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `create_access_token()` - 45 edges
-2. `Base` - 29 edges
+2. `Base` - 31 edges
 3. `PassType` - 29 edges
-4. `User` - 19 edges
+4. `User` - 20 edges
 5. `Role` - 19 edges
 6. `make_admin_with_permission()` - 18 edges
 7. `get_settings()` - 17 edges
@@ -82,58 +83,58 @@
 10. `Payment` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Waitlist` --calls--> `join_waitlist()`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/payments.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py
 - `PassType` --calls--> `test_pass_type_defaults()`  [INFERRED]
   /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py
 - `PassType` --calls--> `test_pass_type_read()`  [INFERRED]
   /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py
-- `PartnerLevel` --calls--> `test_partner_level_read()`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_schemas.py
 - `get_settings()` --calls--> `build_admin_auth()`  [INFERRED]
   /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/auth.py
+- `get_settings()` --calls--> `main()`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/cli/create_admin.py
+- `get_settings()` --calls--> `payment_webhook()`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/payments.py
 
 ## Communities
 
 ### Community 0 - "Community 0"
 
-Cohesion: 0.03
-Nodes (64): AmbassadorStatusUpdate, ExhibitorStatusUpdate, PartnerStatusUpdate, SpeakerStatusUpdate, list_registrations(), RegistrationRead, AdminStatsRead, get_admin_stats() (+56 more)
+Cohesion: 0.04
+Nodes (61): Ambassador, Exhibitor, Partner, Speaker, AuditLog, Base, CampaignWindow, ContactMessage (+53 more)
 
 ### Community 1 - "Community 1"
 
-Cohesion: 0.04
-Nodes (55): Speaker, AuditLog, Base, CampaignWindow, ContactMessage, Faq, Base, DeclarativeBase (+47 more)
+Cohesion: 0.03
+Nodes (58): AmbassadorStatusUpdate, ExhibitorStatusUpdate, PartnerStatusUpdate, SpeakerStatusUpdate, list_registrations(), RegistrationRead, AdminStatsRead, get_admin_stats() (+50 more)
 
 ### Community 2 - "Community 2"
 
-Cohesion: 0.09
-Nodes (45): create_access_token(), Role, make_admin_with_permission(), make_ambassador(), make_exhibitor(), make_partner(), make_speaker(), test_ambassador_accepted() (+37 more)
+Cohesion: 0.06
+Nodes (60): create_access_token(), AdminUser, Permission, Role, RolePermission, make_admin_with_permission(), make_ambassador(), make_exhibitor() (+52 more)
 
 ### Community 3 - "Community 3"
 
-Cohesion: 0.08
-Nodes (39): Payment, PromoCode, Ticket, Waitlist, PassType, make_admin_with_permission(), make_user_and_pass_type(), test_stats_computed_from_payments_tickets_and_applications() (+31 more)
+Cohesion: 0.06
+Nodes (42): AdminAuth, build_admin_auth(), SQLAdmin login backed by the same admin_users/Argon2id/lockout path     as POST, AccountLockedError, authenticate_admin(), create_participant_token(), create_refresh_token(), _create_token() (+34 more)
 
 ### Community 4 - "Community 4"
 
-Cohesion: 0.08
-Nodes (30): AdminAuth, build_admin_auth(), login(), SQLAdmin login backed by the same admin_users/Argon2id/lockout path     as POST, AccountLockedError, authenticate_admin(), create_refresh_token(), _create_token() (+22 more)
+Cohesion: 0.09
+Nodes (35): join_waitlist(), Payment, PromoCode, Ticket, Waitlist, PassType, open_ticketing(), register_payload() (+27 more)
 
 ### Community 5 - "Community 5"
 
-Cohesion: 0.1
-Nodes (30): application_received_email(), TODO.md: HTML email templates.  Table-based, inline-CSS layout (the only markup, registration_confirmed_email(), _render(), ticket_delivered_email(), apply_as_ambassador(), apply_as_exhibitor(), apply_as_partner() (+22 more)
+Cohesion: 0.07
+Nodes (31): ParticipantTokenOut, main(), _generate_code(), InvalidOtpError, Create + email a login code if the address matches a verified account.      Sile, Consume the most recent unexpired, unconsumed code for this email.      Every fa, request_otp(), verify_otp() (+23 more)
 
 ### Community 6 - "Community 6"
 
-Cohesion: 0.1
-Nodes (24): Ambassador, Exhibitor, Partner, PartnerLevel, make_speaker(), test_ambassador_social_handles_json(), test_exhibitor_default_status_and_public(), test_partner_negotiation_workflow() (+16 more)
+Cohesion: 0.07
+Nodes (23): downgrade(), encrypt users phone_whatsapp and special_needs (PII 7.8)  Revision ID: d7d5f8910, upgrade(), BaseSettings, get_settings(), Settings, db_session(), EncryptedString (+15 more)
 
 ### Community 7 - "Community 7"
 
-Cohesion: 0.08
-Nodes (20): downgrade(), encrypt users phone_whatsapp and special_needs (PII 7.8)  Revision ID: d7d5f8910, upgrade(), BaseSettings, get_settings(), Settings, db_session(), EncryptedString (+12 more)
+Cohesion: 0.11
+Nodes (27): application_received_email(), otp_login_email(), TODO.md: HTML email templates.  Table-based, inline-CSS layout (the only markup, registration_confirmed_email(), _render(), ticket_delivered_email(), apply_as_partner(), apply_as_speaker() (+19 more)
 
 ### Community 8 - "Community 8"
 
@@ -142,8 +143,8 @@ Nodes (23): update_ambassador_status(), create_payment(), payment_webhook(), val
 
 ### Community 9 - "Community 9"
 
-Cohesion: 0.14
-Nodes (15): main(), hash_password(), validate_password_strength(), verify_password(), WeakPasswordError, grant_permission(), make_admin(), test_any_authenticated_admin_can_read_contact_messages() (+7 more)
+Cohesion: 0.13
+Nodes (21): make_user(), test_null_special_needs_stays_null(), test_orm_read_returns_plaintext(), test_raw_db_row_is_not_plaintext(), make_pending_payment(), stripe_signature(), test_webhook_completes_payment_and_creates_ticket(), test_webhook_failed_status_marks_payment_failed() (+13 more)
 
 ### Community 10 - "Community 10"
 
@@ -153,17 +154,17 @@ Nodes (15): Send a transactional email, or log it in dev.      Without RESEND_AP
 ### Community 11 - "Community 11"
 
 Cohesion: 0.26
-Nodes (11): make_pending_payment(), stripe_signature(), test_webhook_completes_payment_and_creates_ticket(), test_webhook_failed_status_marks_payment_failed(), test_webhook_increments_promo_usage_count_on_completion(), test_webhook_invalid_signature_401(), test_webhook_rejects_transaction_ref_reused_on_other_payment(), test_webhook_replay_is_idempotent() (+3 more)
+Nodes (7): ModelView, AmbassadorAdmin, ContactMessageAdmin, ExhibitorAdmin, _has_permission(), PartnerAdmin, SpeakerAdmin
 
 ### Community 12 - "Community 12"
 
-Cohesion: 0.26
-Nodes (7): ModelView, AmbassadorAdmin, ContactMessageAdmin, ExhibitorAdmin, _has_permission(), PartnerAdmin, SpeakerAdmin
+Cohesion: 0.29
+Nodes (7): make_ticket_for(), make_user(), test_delete_me_anonymizes_and_revokes_token(), test_delete_me_token_cannot_be_reused(), test_get_me_rejects_invalid_token(), test_get_me_returns_own_data(), test_get_my_tickets_returns_only_own_tickets()
 
 ### Community 13 - "Community 13"
 
-Cohesion: 0.29
-Nodes (7): make_ticket_for(), make_user(), test_delete_me_anonymizes_and_revokes_token(), test_delete_me_token_cannot_be_reused(), test_get_me_rejects_invalid_token(), test_get_me_returns_own_data(), test_get_my_tickets_returns_only_own_tickets()
+Cohesion: 0.49
+Nodes (8): form_fields(), make_png_bytes(), open_call_for_speaker(), test_speaker_apply_closed_window_forbidden(), test_speaker_apply_missing_gdpr_consent_422(), test_speaker_apply_oversized_photo_rejected_400(), test_speaker_apply_rejects_fake_image(), test_speaker_apply_success()
 
 ### Community 14 - "Community 14"
 
@@ -172,13 +173,13 @@ Nodes (8): get_current_admin(), require_permission(), make_admin_with_role(), te
 
 ### Community 15 - "Community 15"
 
-Cohesion: 0.49
-Nodes (8): form_fields(), make_png_bytes(), open_call_for_speaker(), test_speaker_apply_closed_window_forbidden(), test_speaker_apply_missing_gdpr_consent_422(), test_speaker_apply_oversized_photo_rejected_400(), test_speaker_apply_rejects_fake_image(), test_speaker_apply_success()
+Cohesion: 0.22
+Nodes (0): 
 
 ### Community 16 - "Community 16"
 
-Cohesion: 0.22
-Nodes (0): 
+Cohesion: 0.25
+Nodes (4): Pagination, pagination_params(), test_pagination_custom_values(), test_pagination_limit_actually_limits_results()
 
 ### Community 17 - "Community 17"
 
@@ -192,23 +193,23 @@ Nodes (7): require_open_campaign(), set_window(), test_missing_window_forbidden(
 
 ### Community 19 - "Community 19"
 
-Cohesion: 0.29
-Nodes (3): Pagination, pagination_params(), test_pagination_custom_values()
-
-### Community 20 - "Community 20"
-
 Cohesion: 0.5
 Nodes (6): open_call_for_exhibitor(), payload(), test_exhibitor_apply_closed_window_forbidden(), test_exhibitor_apply_invalid_reps_count_422(), test_exhibitor_apply_rules_not_accepted_422(), test_exhibitor_apply_success()
 
-### Community 21 - "Community 21"
+### Community 20 - "Community 20"
 
 Cohesion: 0.47
 Nodes (3): _make_test_app(), test_common_headers_always_present(), test_hsts_only_sent_when_enabled()
 
-### Community 22 - "Community 22"
+### Community 21 - "Community 21"
 
 Cohesion: 0.4
 Nodes (2): BaseHTTPMiddleware, SecurityHeadersMiddleware
+
+### Community 22 - "Community 22"
+
+Cohesion: 0.5
+Nodes (2): make_speaker(), test_speakers_filter_by_theme_and_format_excludes_private()
 
 ### Community 23 - "Community 23"
 
@@ -228,7 +229,7 @@ Nodes (0):
 ### Community 26 - "Community 26"
 
 Cohesion: 0.5
-Nodes (2): make_speaker(), test_speakers_filter_by_theme_and_format_excludes_private()
+Nodes (2): make_exhibitor(), test_exhibitors_excludes_private()
 
 ### Community 27 - "Community 27"
 
@@ -258,47 +259,47 @@ Nodes (1): promo_codes, payments, tickets, waitlist  Revision ID: a3f8aaae2d58 R
 ### Community 32 - "Community 32"
 
 Cohesion: 0.5
-Nodes (1): users and user_profiles  Revision ID: 86b8fb32827d Revises: e15b192c81f5 Create
+Nodes (1): otp_codes table (participant OTP login)  Revision ID: 75418b933d4f Revises: d7d5
 
 ### Community 33 - "Community 33"
 
 Cohesion: 0.5
-Nodes (1): campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2
+Nodes (1): users and user_profiles  Revision ID: 86b8fb32827d Revises: e15b192c81f5 Create
 
 ### Community 34 - "Community 34"
 
 Cohesion: 0.5
-Nodes (1): rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc
+Nodes (1): campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2
 
 ### Community 35 - "Community 35"
 
 Cohesion: 0.5
-Nodes (1): faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D
+Nodes (1): rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc
 
 ### Community 36 - "Community 36"
 
 Cohesion: 0.5
-Nodes (1): initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:
+Nodes (1): faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D
 
 ### Community 37 - "Community 37"
 
 Cohesion: 0.5
-Nodes (1): speakers, ambassadors, partners, exhibitors  Revision ID: 7b6712058249 Revises:
+Nodes (1): initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:
 
 ### Community 38 - "Community 38"
 
 Cohesion: 0.5
-Nodes (1): audit_logs table  Revision ID: 866edbae2931 Revises: 5a30c6996bc8 Create Date: 2
+Nodes (1): speakers, ambassadors, partners, exhibitors  Revision ID: 7b6712058249 Revises:
 
 ### Community 39 - "Community 39"
 
 Cohesion: 0.5
-Nodes (1): sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2
+Nodes (1): audit_logs table  Revision ID: 866edbae2931 Revises: 5a30c6996bc8 Create Date: 2
 
 ### Community 40 - "Community 40"
 
-Cohesion: 0.67
-Nodes (0): 
+Cohesion: 0.5
+Nodes (1): sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2
 
 ### Community 41 - "Community 41"
 
@@ -322,7 +323,7 @@ Nodes (0):
 
 ### Community 45 - "Community 45"
 
-Cohesion: 1.0
+Cohesion: 0.67
 Nodes (0): 
 
 ### Community 46 - "Community 46"
@@ -383,22 +384,25 @@ Nodes (0):
 ### Community 57 - "Community 57"
 
 Cohesion: 1.0
+Nodes (0): 
+
+### Community 58 - "Community 58"
+
+Cohesion: 1.0
 Nodes (1): Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background
 
 ## Knowledge Gaps
-- **26 isolated node(s):** `Validate a multipart form's non-file fields against a Pydantic model.      Works`, `Application-layer encryption for genuinely sensitive PII (7.8).      Not for fie`, `Verify admin credentials, enforcing the account-lockout policy.      Always take`, `Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background`, `Verify a Stripe webhook using Stripe's documented scheme.      The `Stripe-Signa` (+21 more)
+- **30 isolated node(s):** `Validate a multipart form's non-file fields against a Pydantic model.      Works`, `Application-layer encryption for genuinely sensitive PII (7.8).      Not for fie`, `Verify admin credentials, enforcing the account-lockout policy.      Always take`, `Issued after a successful OTP verify (app/api/participant_auth.py).      Distinc`, `Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background` (+25 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 45`** (2 nodes): `list_contacts()`, `admin_contacts.py`
+- **Thin community `Community 46`** (2 nodes): `list_contacts()`, `admin_contacts.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (2 nodes): `test_health()`, `test_health.py`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (1 nodes): `__init__.py`
+- **Thin community `Community 47`** (2 nodes): `test_health()`, `test_health.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 48`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 49`** (1 nodes): `rate_limit.py`
+- **Thin community `Community 49`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (1 nodes): `__init__.py`
+- **Thin community `Community 50`** (1 nodes): `rate_limit.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 51`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -412,5 +416,7 @@ Nodes (1): Generate the ticket's PDF+QR, upload it, and email it.      Runs as a
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 56`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 57`** (1 nodes): `Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background`
+- **Thin community `Community 57`** (1 nodes): `__init__.py`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 58`** (1 nodes): `Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.

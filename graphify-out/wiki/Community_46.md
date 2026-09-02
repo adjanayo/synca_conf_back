@@ -4,8 +4,8 @@
 
 ## Key Concepts
 
-- [test_health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L8) (1 connections)
-- [test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py#L1) (1 connections)
+- [list_contacts()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L17) (1 connections)
+- [admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L1) (1 connections)
 
 ## Relationships
 
@@ -13,7 +13,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_health.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py)
 
 ## Audit Trail
 

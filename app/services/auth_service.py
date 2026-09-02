@@ -78,7 +78,9 @@ async def authenticate_admin(
 
 
 def _create_token(
-    subject: str, expires_delta: timedelta, token_type: Literal["access", "refresh"]
+    subject: str,
+    expires_delta: timedelta,
+    token_type: Literal["access", "refresh", "participant_access"],
 ) -> str:
     now = datetime.now(UTC)
     payload = {
@@ -100,7 +102,25 @@ def create_refresh_token(subject: str) -> str:
     return _create_token(subject, timedelta(days=settings.refresh_token_expire_days), "refresh")
 
 
-def decode_token(token: str, expected_type: Literal["access", "refresh"]) -> dict:
+def create_participant_token(subject: str) -> str:
+    """Issued after a successful OTP verify (app/api/participant_auth.py).
+
+    Distinct `type` claim from the admin "access" token on purpose: the
+    subject is a `User.id`, not an `AdminUser.id`, and the two id spaces can
+    collide. Without a separate type, a participant token could decode
+    successfully in `get_current_admin` and grant admin access to whichever
+    admin row happens to share that id.
+    """
+    return _create_token(
+        subject,
+        timedelta(hours=settings.participant_token_expire_hours),
+        "participant_access",
+    )
+
+
+def decode_token(
+    token: str, expected_type: Literal["access", "refresh", "participant_access"]
+) -> dict:
     try:
         payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
     except jwt.InvalidTokenError as exc:

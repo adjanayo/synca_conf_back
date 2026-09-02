@@ -1,6 +1,6 @@
 # get_settings()
 
-> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L101)
+> God node · 17 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/config.py#L106)
 
 ## Call Trace Diagram
 
@@ -26,9 +26,9 @@ sequenceDiagram
     participant P17 as test_upload_file_rejects_oversized_file()
     participant P18 as test_upload_file_rejects_fake_image_bytes()
     participant P19 as test_upload_file_pdf_skips_image_validation()
-    participant P20 as verify_recaptcha()
-    participant P21 as payment_webhook()
-    participant P22 as send_email()
+    participant P20 as send_email()
+    participant P21 as verify_recaptcha()
+    participant P22 as payment_webhook()
     participant P23 as main()
     participant P24 as configure_logging()
     participant P25 as build_admin_auth()
@@ -129,9 +129,9 @@ sequenceDiagram
 
 ### calls
 - [[upload_file()]] `INFERRED`
+- [[send_email()]] `INFERRED`
 - [[verify_recaptcha()]] `INFERRED`
 - [[payment_webhook()]] `INFERRED`
-- [[send_email()]] `INFERRED`
 - [[main()]] `INFERRED`
 - [[configure_logging()]] `INFERRED`
 - [[build_admin_auth()]] `INFERRED`
