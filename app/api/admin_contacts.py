@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -7,7 +7,7 @@ from app.core.rate_limit import limiter
 from app.deps.pagination import Pagination, pagination_params
 from app.deps.rbac import get_current_admin
 from app.models import ContactMessage
-from app.schemas.content import ContactMessageRead
+from app.schemas.content import ContactMessageRead, ContactMessageUpdate
 
 router = APIRouter(prefix="/api/admin", tags=["admin-contacts"])
 
@@ -31,3 +31,21 @@ async def list_contacts(
 
     messages = (await db.execute(query)).scalars().all()
     return [ContactMessageRead.model_validate(message) for message in messages]
+
+
+@router.patch("/contacts/{contact_id}", response_model=ContactMessageRead)
+@limiter.limit("30/minute")
+async def update_contact_read_status(
+    request: Request,
+    contact_id: int,
+    body: ContactMessageUpdate,
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(get_current_admin),
+) -> ContactMessageRead:
+    message = await db.get(ContactMessage, contact_id)
+    if message is None:
+        raise HTTPException(status_code=404, detail="Message de contact introuvable.")
+    message.is_read = body.is_read
+    await db.commit()
+    await db.refresh(message)
+    return ContactMessageRead.model_validate(message)

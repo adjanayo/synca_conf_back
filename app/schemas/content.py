@@ -24,3 +24,7 @@ class ContactMessageRead(BaseModel):
     message: str
     is_read: bool
     created_at: datetime.datetime
+
+
+class ContactMessageUpdate(BaseModel):
+    is_read: bool
