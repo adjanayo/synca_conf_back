@@ -11,6 +11,7 @@ CAMPAIGN_WINDOW_KEY_VALUES = (
     "call_for_partner",
     "call_for_ambassador",
     "call_for_exhibitor",
+    "event",
 )
 
 

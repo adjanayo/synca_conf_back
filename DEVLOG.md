@@ -9,6 +9,7 @@
 - [x] `GET /api/admin/exhibitors` (débloquait la phase C4 modération côté front)
 - [x] `GET /api/admin/partners` (débloquait la phase C3 modération côté front)
 - [x] `GET /api/admin/audit-logs` (débloquait la phase E2 côté front)
+- [x] Clé `event` sur `campaign_windows` (dates de l'événement pilotables au back-office)
 
 ## Journal
 
@@ -29,3 +30,7 @@
 - Fait : fix réel trouvé au passage — `tests/test_rbac.py` codait en dur l'email `admin@synca.conf`, qui est aussi la valeur par défaut d'`ADMIN_EMAIL` (bootstrap superadmin) ; collision garantie sur toute DB dev où le superadmin réel a été créé. Renommé en `rbac-test-admin@example.com`.
 - Fait : `ruff check .` sur tout le repo (jusqu'ici vérifié seulement fichier par fichier) — 1 erreur trouvée (`B904` dans `app/cli/create_admin.py`, `raise SystemExit(1)` sans `from exc`), corrigée.
 - Fait : suite complète verte — `244 passed`, `ruff check .` clean.
+
+### 2026-09-02 (suite 3) — dates de l'événement pilotables au back-office
+- Fait : `campaign_windows` ne couvrait que les fenêtres de candidature/billetterie (call_for_speaker, ticketing, call_for_partner, call_for_ambassador, call_for_exhibitor) — aucune fenêtre pour les dates de la conférence elle-même, qui étaient codées en dur côté front (`TARGET`/`PARAMETER.date`). Ajout d'une 6e clé `event` à l'enum `campaign_window_key` (migration `b1c2d3e4f5a6`, alter enum + seed `18-20 août 2027` d'après `syncaconf/Infos.md`) — réutilise toute la plomberie existante (CRUD admin `GET`/`PATCH /api/admin/campaign-windows`, lecture publique `GET /api/campaign-windows`) sans nouveau modèle ni endpoint.
+- Fait : 4 tests mettaient en dur le compte/la liste des 5 fenêtres (`test_campaign_windows.py`, `test_public_campaign_windows.py`, `test_admin_campaign_windows.py`) — mis à jour pour 6. Suite verte : `244 passed`, `ruff check .` clean.

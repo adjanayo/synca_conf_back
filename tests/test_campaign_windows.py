@@ -8,7 +8,7 @@ from app.models import CampaignWindow
 
 
 @pytest.mark.asyncio
-async def test_five_campaign_windows_seeded(db_session):
+async def test_six_campaign_windows_seeded(db_session):
     keys = (await db_session.execute(select(CampaignWindow.key))).scalars().all()
     assert set(keys) == {
         "call_for_speaker",
@@ -16,9 +16,10 @@ async def test_five_campaign_windows_seeded(db_session):
         "call_for_partner",
         "call_for_ambassador",
         "call_for_exhibitor",
+        "event",
     }
     count = (await db_session.execute(select(func.count(CampaignWindow.id)))).scalar_one()
-    assert count == 5
+    assert count == 6
 
 
 @pytest.mark.asyncio

@@ -67,7 +67,7 @@ async def test_list_campaign_windows_admin(db_session, client):
         )
 
     assert response.status_code == 200
-    assert len(response.json()) == 5
+    assert len(response.json()) == 6
 
 
 @pytest.mark.asyncio
