@@ -33,6 +33,10 @@ class AccountLockedError(Exception):
     pass
 
 
+class AccountDisabledError(Exception):
+    pass
+
+
 async def authenticate_admin(
     db: AsyncSession, email: str, password: str, ip_address: str | None = None
 ) -> AdminUser:
@@ -51,6 +55,11 @@ async def authenticate_admin(
         db.add(AuditLog(event="login", email=email, ip_address=ip_address, success=False))
         await db.commit()
         raise AccountLockedError("Compte temporairement verrouillé, réessayez plus tard.")
+
+    if admin and admin.status != "active":
+        db.add(AuditLog(event="login", email=email, ip_address=ip_address, success=False))
+        await db.commit()
+        raise AccountDisabledError("Compte désactivé ou archivé.")
 
     password_hash = admin.password_hash if admin else _DUMMY_PASSWORD_HASH
     is_valid = verify_password(password, password_hash)

@@ -36,6 +36,11 @@ async def get_current_admin(
             f"Accès admin refusé : sujet de jeton inconnu ({payload['sub']})"
         )
         raise credentials_error
+    if admin.status != "active":
+        logger.bind(channel="security").warning(
+            f"Accès admin refusé : compte {admin.email} {admin.status}"
+        )
+        raise credentials_error
     return admin
 
 

@@ -9,6 +9,7 @@ from app.deps.rbac import get_current_admin
 from app.models import AdminUser, Permission, Role, RolePermission
 from app.schemas.auth import AdminLoginRequest, AdminMeOut, TokenPair
 from app.services.auth_service import (
+    AccountDisabledError,
     AccountLockedError,
     InvalidCredentialsError,
     authenticate_admin,
@@ -29,7 +30,7 @@ async def login(
     client_ip = request.client.host if request.client else None
     try:
         admin = await authenticate_admin(db, credentials.email, credentials.password, client_ip)
-    except (InvalidCredentialsError, AccountLockedError) as exc:
+    except (InvalidCredentialsError, AccountLockedError, AccountDisabledError) as exc:
         logger.bind(channel="security").warning(
             f"Connexion admin échouée : {credentials.email} depuis {client_ip}"
         )

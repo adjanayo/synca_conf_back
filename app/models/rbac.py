@@ -45,6 +45,7 @@ class AdminUser(Base):
     role_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("roles.id"), nullable=False, index=True
     )
+    status: Mapped[str] = mapped_column(String(20), nullable=False, server_default="active")
     last_login: Mapped[datetime | None] = mapped_column(DateTime)
     failed_login_attempts: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
     locked_until: Mapped[datetime | None] = mapped_column(DateTime)
