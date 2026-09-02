@@ -120,6 +120,29 @@ async def update_ambassador_status(
     return AmbassadorRead.model_validate(ambassador)
 
 
+@router.get("/partners", response_model=list[PartnerRead])
+@limiter.limit("30/minute")
+async def list_partners(
+    request: Request,
+    status: str | None = None,
+    level_id: int | None = None,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+    _admin=Depends(require_permission("partners.manage")),
+) -> list[PartnerRead]:
+    query = select(Partner)
+    if status is not None:
+        query = query.where(Partner.status == status)
+    if level_id is not None:
+        query = query.where(Partner.level_id == level_id)
+    query = query.order_by(Partner.created_at.desc()).limit(pagination.limit).offset(
+        pagination.offset
+    )
+
+    partners = (await db.execute(query)).scalars().all()
+    return [PartnerRead.model_validate(partner) for partner in partners]
+
+
 @router.patch("/partners/{partner_id}", response_model=PartnerRead)
 @limiter.limit("30/minute")
 async def update_partner_status(

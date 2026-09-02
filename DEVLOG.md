@@ -7,6 +7,7 @@
 - [x] `GET /api/admin/speakers` (débloquait la phase C1 modération côté front)
 - [x] `GET /api/admin/ambassadors` (débloquait la phase C2 modération côté front)
 - [x] `GET /api/admin/exhibitors` (débloquait la phase C4 modération côté front)
+- [x] `GET /api/admin/partners` (débloquait la phase C3 modération côté front)
 
 ## Journal
 
@@ -18,4 +19,5 @@
 - Fait : ajout `GET /api/admin/speakers` (liste toutes les candidatures, filtres status/theme/format, gardé derrière `speakers.approve`) — manquait pour la modération C1 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
 - Fait : ajout `GET /api/admin/ambassadors` (liste toutes les candidatures ambassadeurs, filtres status/current_profile, gardé derrière `ambassadors.approve`) — manquait pour la modération C2 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
 - Fait : ajout `GET /api/admin/exhibitors` (liste tous les exposants, filtres status/stand_type, gardé derrière `exhibitors.manage`) — manquait pour la modération C4 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
+- Fait : ajout `GET /api/admin/partners` (liste tous les partenaires, filtres status/level_id, gardé derrière `partners.manage`) — manquait pour la modération C3 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
 - À suivre : incompatibilité pytest-asyncio pré-existante à corriger (bloque aussi l'exécution des nouveaux tests admin).
