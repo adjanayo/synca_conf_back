@@ -1,27 +1,30 @@
 # SecurityHeadersMiddleware & BaseHTTPMiddleware
 
-> 5 nodes · cohesion 0.70
+> 8 nodes · cohesion 0.29
 
 ## Key Concepts
 
-- [_csv_response()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L30) (4 connections)
-- [admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L1) (4 connections)
-- [export_payments_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L87) (2 connections)
-- [export_registrations_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L45) (2 connections)
-- [_sanitize_csv_cell()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L24) (2 connections)
+- [env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L1) (4 connections)
+- [run_async_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L63) (3 connections)
+- [run_migrations_online()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L81) (3 connections)
+- [Run migrations in 'offline' mode.      This configures the context with just a U](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L33) (2 connections)
+- [In this scenario we need to create an Engine     and associate a connection with](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L64) (2 connections)
+- [Run migrations in 'online' mode.](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L82) (2 connections)
+- [run_migrations_offline()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L32) (2 connections)
+- [do_run_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L56) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[[create_access_token() & Role] Cluster]] (3 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py)
 
 ## Audit Trail
 
-- EXTRACTED: 14 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 16 (84%)
+- INFERRED: 3 (16%)
 - AMBIGUOUS: 0 (0%)
 
 ---

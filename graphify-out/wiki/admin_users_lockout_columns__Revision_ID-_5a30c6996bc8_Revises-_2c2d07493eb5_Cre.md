@@ -1,25 +1,26 @@
 # admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre
 
-> 4 nodes · cohesion 0.50
+> 5 nodes · cohesion 0.40
 
 ## Key Concepts
 
-- [2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L34) (1 connections)
-- [newsletter_subscribers table  Revision ID: c375ad4fa2bb Revises: 866edbae2931 Cr](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L21) (1 connections)
+- [test_forms_contact.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L1) (4 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L10) (1 connections)
+- [test_contact_missing_message_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L39) (1 connections)
+- [test_contact_rejected_when_recaptcha_fails()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L50) (1 connections)
+- [test_contact_success_without_recaptcha_configured()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L20) (1 connections)
 
 ## Relationships
 
-- [[referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py)
 
 ## Audit Trail
 
-- EXTRACTED: 6 (100%)
+- EXTRACTED: 8 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

@@ -4,11 +4,22 @@
 
 ## Key Concepts
 
-- [test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L1) (4 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L9) (1 connections)
-- [test_newsletter_duplicate_email_conflict()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L28) (1 connections)
-- [test_newsletter_invalid_email_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L38) (1 connections)
-- [test_newsletter_subscribe_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L19) (1 connections)
+- [SecurityHeadersMiddleware](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L20) (4 connections)
+- **BaseHTTPMiddleware** (1 connections)
+- [.dispatch()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L25) (1 connections)
+- [.__init__()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L21) (1 connections)
+- [security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L1) (1 connections)
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class SecurityHeadersMiddleware {
+        +security_headers.py()
+        +.__init__()
+        +.dispatch()
+    }
+```
 
 ## Relationships
 
@@ -16,7 +27,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py)
 
 ## Audit Trail
 

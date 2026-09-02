@@ -1,25 +1,17 @@
 # [_make_test_app() & test_common_headers_always_present()] Cluster
 
-> 5 nodes · cohesion 0.40
+> 8 nodes · cohesion 0.50
 
 ## Key Concepts
 
-- [SecurityHeadersMiddleware](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L20) (4 connections)
-- **BaseHTTPMiddleware** (1 connections)
-- [.dispatch()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L25) (1 connections)
-- [.__init__()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L21) (1 connections)
-- [security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L1) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class SecurityHeadersMiddleware {
-        +security_headers.py()
-        +.__init__()
-        +.dispatch()
-    }
-```
+- [test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L1) (7 connections)
+- [payload()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L35) (5 connections)
+- [open_call_for_exhibitor()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L22) (4 connections)
+- [test_exhibitor_apply_invalid_reps_count_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L94) (3 connections)
+- [test_exhibitor_apply_rules_not_accepted_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L81) (3 connections)
+- [test_exhibitor_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L64) (3 connections)
+- [test_exhibitor_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L56) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L13) (1 connections)
 
 ## Relationships
 
@@ -27,11 +19,11 @@ classDiagram
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py)
 
 ## Audit Trail
 
-- EXTRACTED: 8 (100%)
+- EXTRACTED: 28 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

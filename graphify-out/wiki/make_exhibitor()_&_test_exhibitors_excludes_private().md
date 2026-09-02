@@ -1,25 +1,26 @@
 # make_exhibitor() & test_exhibitors_excludes_private()
 
-> 4 nodes · cohesion 0.50
+> 5 nodes · cohesion 0.40
 
 ## Key Concepts
 
-- [2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L29) (1 connections)
-- [admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L21) (1 connections)
+- [test_forms_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L1) (4 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L9) (1 connections)
+- [test_join_waitlist_duplicate_email_conflict()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L31) (1 connections)
+- [test_join_waitlist_invalid_email_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L41) (1 connections)
+- [test_join_waitlist_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L19) (1 connections)
 
 ## Relationships
 
-- [[Community 28]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py)
 
 ## Audit Trail
 
-- EXTRACTED: 6 (100%)
+- EXTRACTED: 8 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

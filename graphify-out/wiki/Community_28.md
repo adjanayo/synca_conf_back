@@ -1,25 +1,26 @@
 # Community 28
 
-> 4 nodes · cohesion 0.50
+> 5 nodes · cohesion 0.40
 
 ## Key Concepts
 
-- [2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L63) (1 connections)
-- [referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L21) (1 connections)
+- [test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L1) (4 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L9) (1 connections)
+- [test_newsletter_duplicate_email_conflict()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L28) (1 connections)
+- [test_newsletter_invalid_email_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L38) (1 connections)
+- [test_newsletter_subscribe_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L19) (1 connections)
 
 ## Relationships
 
-- [[admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py)
 
 ## Audit Trail
 
-- EXTRACTED: 6 (100%)
+- EXTRACTED: 8 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

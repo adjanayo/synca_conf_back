@@ -1,10 +1,12 @@
 # Community 52
 
-> 1 nodes · cohesion 1.00
+> 3 nodes · cohesion 0.67
 
 ## Key Concepts
 
-- [__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py#L1) (0 connections)
+- [test_public_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L1) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L9) (1 connections)
+- [test_list_campaign_windows_returns_seeded_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L19) (1 connections)
 
 ## Relationships
 
@@ -12,11 +14,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py)
 
 ## Audit Trail
 
-- EXTRACTED: 0 (0%)
+- EXTRACTED: 4 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

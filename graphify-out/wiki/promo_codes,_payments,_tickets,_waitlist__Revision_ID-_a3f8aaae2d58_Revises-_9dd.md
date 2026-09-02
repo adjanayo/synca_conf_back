@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L59) (1 connections)
-- [campaign_window_event_key  Revision ID: b1c2d3e4f5a6 Revises: 75418b933d4f Creat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L21) (1 connections)
+- [2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L63) (1 connections)
+- [referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 28]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py)
 
 ## Audit Trail
 

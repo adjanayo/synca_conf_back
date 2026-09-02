@@ -1,11 +1,12 @@
 # Community 50
 
-> 2 nodes · cohesion 1.00
+> 3 nodes · cohesion 0.67
 
 ## Key Concepts
 
-- [list_waitlist()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L17) (1 connections)
-- [admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L1) (1 connections)
+- [admin_event_settings.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py#L1) (2 connections)
+- [get_event_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py#L19) (1 connections)
+- [update_event_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py#L35) (1 connections)
 
 ## Relationships
 
@@ -13,11 +14,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py)
 
 ## Audit Trail
 
-- EXTRACTED: 2 (100%)
+- EXTRACTED: 4 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

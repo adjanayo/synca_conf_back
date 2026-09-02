@@ -1,24 +1,25 @@
 # Community 42
 
-> 3 nodes · cohesion 0.67
+> 4 nodes · cohesion 0.50
 
 ## Key Concepts
 
-- [main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L1) (2 connections)
-- [health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L91) (1 connections)
-- [_log_rate_limit_exceeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L56) (1 connections)
+- [2026_08_25_2240-3f306df50f16_faqs_contact_messages.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L48) (1 connections)
+- [faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py)
 
 ## Audit Trail
 
-- EXTRACTED: 4 (100%)
+- EXTRACTED: 6 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
