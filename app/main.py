@@ -7,6 +7,7 @@ from slowapi.middleware import SlowAPIMiddleware
 
 from app.admin.setup import init_admin
 from app.api.admin_applications import router as admin_applications_router
+from app.api.admin_audit import router as admin_audit_router
 from app.api.admin_campaign_windows import router as admin_campaign_windows_router
 from app.api.admin_contacts import router as admin_contacts_router
 from app.api.admin_export import router as admin_export_router
@@ -71,6 +72,7 @@ app.include_router(admin_stats_router)
 app.include_router(admin_registrations_router)
 app.include_router(admin_contacts_router)
 app.include_router(admin_export_router)
+app.include_router(admin_audit_router)
 app.include_router(user_me_router)
 
 init_admin(app)

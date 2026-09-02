@@ -8,6 +8,7 @@
 - [x] `GET /api/admin/ambassadors` (débloquait la phase C2 modération côté front)
 - [x] `GET /api/admin/exhibitors` (débloquait la phase C4 modération côté front)
 - [x] `GET /api/admin/partners` (débloquait la phase C3 modération côté front)
+- [x] `GET /api/admin/audit-logs` (débloquait la phase E2 côté front)
 
 ## Journal
 
@@ -20,4 +21,5 @@
 - Fait : ajout `GET /api/admin/ambassadors` (liste toutes les candidatures ambassadeurs, filtres status/current_profile, gardé derrière `ambassadors.approve`) — manquait pour la modération C2 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
 - Fait : ajout `GET /api/admin/exhibitors` (liste tous les exposants, filtres status/stand_type, gardé derrière `exhibitors.manage`) — manquait pour la modération C4 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
 - Fait : ajout `GET /api/admin/partners` (liste tous les partenaires, filtres status/level_id, gardé derrière `partners.manage`) — manquait pour la modération C3 côté front, seul le PATCH existait ; smoke testé via curl (200 liste vide avec token, 401 sans).
+- Fait : ajout `GET /api/admin/audit-logs` (liste des tentatives de connexion admin, filtres event/email/success, modèle `AuditLog` déjà existant et déjà rempli par `auth_service.py` mais sans endpoint de lecture) — débloque E2 côté front. Pas de code RBAC dédié dans les 8 permissions seedées, même situation que `GET /api/admin/contacts` : gardé par `get_current_admin` (tout admin authentifié) plutôt qu'une permission inventée ; smoke testé via TestClient (401 sans token).
 - À suivre : incompatibilité pytest-asyncio pré-existante à corriger (bloque aussi l'exécution des nouveaux tests admin).
