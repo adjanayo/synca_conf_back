@@ -1,17 +1,15 @@
 # [_make_test_app() & test_common_headers_always_present()] Cluster
 
-> 8 nodes · cohesion 0.50
+> 6 nodes · cohesion 0.47
 
 ## Key Concepts
 
-- [test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L1) (7 connections)
-- [payload()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L35) (5 connections)
-- [open_call_for_exhibitor()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L22) (4 connections)
-- [test_exhibitor_apply_invalid_reps_count_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L94) (3 connections)
-- [test_exhibitor_apply_rules_not_accepted_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L81) (3 connections)
-- [test_exhibitor_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L64) (3 connections)
-- [test_exhibitor_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L56) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L13) (1 connections)
+- [test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L1) (5 connections)
+- [_make_test_app()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L11) (3 connections)
+- [test_common_headers_always_present()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L21) (2 connections)
+- [test_hsts_only_sent_when_enabled()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L34) (2 connections)
+- [test_admin_routes_get_permissive_same_origin_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L66) (1 connections)
+- [test_api_routes_get_locked_down_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L54) (1 connections)
 
 ## Relationships
 
@@ -19,11 +17,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py)
 
 ## Audit Trail
 
-- EXTRACTED: 28 (100%)
+- EXTRACTED: 14 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

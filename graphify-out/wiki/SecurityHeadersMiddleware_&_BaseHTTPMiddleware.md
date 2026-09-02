@@ -1,30 +1,38 @@
 # SecurityHeadersMiddleware & BaseHTTPMiddleware
 
-> 8 nodes · cohesion 0.29
+> 5 nodes · cohesion 0.40
 
 ## Key Concepts
 
-- [env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L1) (4 connections)
-- [run_async_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L63) (3 connections)
-- [run_migrations_online()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L81) (3 connections)
-- [Run migrations in 'offline' mode.      This configures the context with just a U](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L33) (2 connections)
-- [In this scenario we need to create an Engine     and associate a connection with](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L64) (2 connections)
-- [Run migrations in 'online' mode.](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L82) (2 connections)
-- [run_migrations_offline()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L32) (2 connections)
-- [do_run_migrations()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py#L56) (1 connections)
+- [SecurityHeadersMiddleware](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L20) (4 connections)
+- **BaseHTTPMiddleware** (1 connections)
+- [.dispatch()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L25) (1 connections)
+- [.__init__()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L21) (1 connections)
+- [security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L1) (1 connections)
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class SecurityHeadersMiddleware {
+        +security_headers.py()
+        +.__init__()
+        +.dispatch()
+    }
+```
 
 ## Relationships
 
-- [[[create_access_token() & Role] Cluster]] (3 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/env.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py)
 
 ## Audit Trail
 
-- EXTRACTED: 16 (84%)
-- INFERRED: 3 (16%)
+- EXTRACTED: 8 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

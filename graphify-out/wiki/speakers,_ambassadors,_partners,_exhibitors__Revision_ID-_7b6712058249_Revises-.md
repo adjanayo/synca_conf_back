@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L38) (1 connections)
-- [otp_codes table (participant OTP login)  Revision ID: 75418b933d4f Revises: d7d5](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L21) (1 connections)
+- [2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L79) (1 connections)
+- [campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L21) (1 connections)
 
 ## Relationships
 
-- [[users and user_profiles  Revision ID: 86b8fb32827d Revises: e15b192c81f5 Create]] (1 shared connections)
+- [[sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py)
 
 ## Audit Trail
 

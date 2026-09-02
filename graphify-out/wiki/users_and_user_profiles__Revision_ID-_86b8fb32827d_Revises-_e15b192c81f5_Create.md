@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L34) (1 connections)
-- [newsletter_subscribers table  Revision ID: c375ad4fa2bb Revises: 866edbae2931 Cr](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L21) (1 connections)
+- [2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L58) (1 connections)
+- [waitlist.view permission  Revision ID: 80348b151263 Revises: 547ad7a3ad02 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L25) (1 connections)
 
 ## Relationships
 
-- [[admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre]] (1 shared connections)
+- [[rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py)
 
 ## Audit Trail
 

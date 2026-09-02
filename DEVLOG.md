@@ -10,6 +10,7 @@
 - [x] `GET /api/admin/partners` (débloquait la phase C3 modération côté front)
 - [x] `GET /api/admin/audit-logs` (débloquait la phase E2 côté front)
 - [x] Clé `event` sur `campaign_windows` (dates de l'événement pilotables au back-office)
+- [x] Phase J3 : notification email waitlist à l'ouverture de la billetterie
 
 ## Journal
 
@@ -34,3 +35,8 @@
 ### 2026-09-02 (suite 3) — dates de l'événement pilotables au back-office
 - Fait : `campaign_windows` ne couvrait que les fenêtres de candidature/billetterie (call_for_speaker, ticketing, call_for_partner, call_for_ambassador, call_for_exhibitor) — aucune fenêtre pour les dates de la conférence elle-même, qui étaient codées en dur côté front (`TARGET`/`PARAMETER.date`). Ajout d'une 6e clé `event` à l'enum `campaign_window_key` (migration `b1c2d3e4f5a6`, alter enum + seed `18-20 août 2027` d'après `syncaconf/Infos.md`) — réutilise toute la plomberie existante (CRUD admin `GET`/`PATCH /api/admin/campaign-windows`, lecture publique `GET /api/campaign-windows`) sans nouveau modèle ni endpoint.
 - Fait : 4 tests mettaient en dur le compte/la liste des 5 fenêtres (`test_campaign_windows.py`, `test_public_campaign_windows.py`, `test_admin_campaign_windows.py`) — mis à jour pour 6. Suite verte : `244 passed`, `ruff check .` clean.
+
+### 2026-09-02 (suite 4) — Phase J3 : notification waitlist à l'ouverture billetterie
+- Fait : `PATCH /api/admin/campaign-windows/{key}` (`admin_campaign_windows.py`) détecte désormais la transition fermée→ouverte de la fenêtre `ticketing` (comparaison `is_open` avant/après la mise à jour, même définition que `require_open_campaign`) et déclenche en `BackgroundTasks` l'envoi d'un email à toute entrée `Waitlist` avec `notified=False`, puis les marque `notified=True`. Nouveau template `waitlist_ticketing_open_email()` dans `email_templates.py`. Pas de cron/scheduler dans le projet — le déclencheur est l'action admin qui bascule `is_active`, pas le franchissement de `start_at` en tâche de fond ; limite acceptée (documentée dans `ROADMAP_ADMIN.md` côté front).
+- Fait : `ruff check` clean sur les 2 fichiers modifiés. Suite pytest non exécutable dans ce sandbox (ni en local — `DB_HOST=db` non résolvable hors conteneur — ni dans le conteneur `synca-dev-app` : échec `pytest-asyncio` `AssertionError` au setup, y compris sur des tests async préexistants non touchés ici, ex. `test_public_pass_types.py` — régression d'environnement CI/conteneur à investiguer séparément, pas causée par ce changement).
+- À suivre : investiguer la régression pytest-asyncio dans le conteneur `synca-dev-app` (setup `AssertionError` sur tous les tests async, y compris ceux non touchés par cette session) — bloque toute vérification de test dans ce conteneur jusqu'à résolution.

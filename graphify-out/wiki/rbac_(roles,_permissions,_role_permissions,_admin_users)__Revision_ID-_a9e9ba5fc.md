@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L58) (1 connections)
-- [waitlist.view permission  Revision ID: 80348b151263 Revises: 547ad7a3ad02 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L25) (1 connections)
+- [2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L59) (1 connections)
+- [campaign_window_event_key  Revision ID: b1c2d3e4f5a6 Revises: 75418b933d4f Creat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L21) (1 connections)
 
 ## Relationships
 
-- [[newsletter_subscribers table  Revision ID: c375ad4fa2bb Revises: 866edbae2931 Cr]] (1 shared connections)
+- [[initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py)
 
 ## Audit Trail
 

@@ -1,12 +1,11 @@
 # Community 52
 
-> 3 nodes · cohesion 0.67
+> 2 nodes · cohesion 1.00
 
 ## Key Concepts
 
-- [test_public_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L1) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L9) (1 connections)
-- [test_list_campaign_windows_returns_seeded_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py#L19) (1 connections)
+- [list_waitlist()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L17) (1 connections)
+- [admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L1) (1 connections)
 
 ## Relationships
 
@@ -14,11 +13,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py)
 
 ## Audit Trail
 
-- EXTRACTED: 4 (100%)
+- EXTRACTED: 2 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

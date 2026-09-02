@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L63) (1 connections)
-- [referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L21) (1 connections)
+- [2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L91) (1 connections)
+- [promo_codes, payments, tickets, waitlist  Revision ID: a3f8aaae2d58 Revises: 9dd](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py#L21) (1 connections)
 
 ## Relationships
 
-- [[Community 28]] (1 shared connections)
+- [[campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2229-a3f8aaae2d58_promo_codes_payments_tickets_waitlist.py)
 
 ## Audit Trail
 

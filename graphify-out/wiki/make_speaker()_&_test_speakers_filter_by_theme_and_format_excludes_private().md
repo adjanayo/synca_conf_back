@@ -1,14 +1,14 @@
 # make_speaker() & test_speakers_filter_by_theme_and_format_excludes_private()
 
-> 5 nodes · cohesion 0.70
+> 5 nodes · cohesion 0.50
 
 ## Key Concepts
 
-- [_csv_response()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L30) (4 connections)
-- [admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L1) (4 connections)
-- [export_payments_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L87) (2 connections)
-- [export_registrations_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L45) (2 connections)
-- [_sanitize_csv_cell()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L24) (2 connections)
+- [test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L1) (4 connections)
+- [make_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L19) (3 connections)
+- [test_speakers_filter_by_theme_and_format_excludes_private()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L40) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L10) (1 connections)
+- [test_speakers_empty_result()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L65) (1 connections)
 
 ## Relationships
 
@@ -16,12 +16,12 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py)
 
 ## Audit Trail
 
-- EXTRACTED: 14 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 10 (91%)
+- INFERRED: 1 (9%)
 - AMBIGUOUS: 0 (0%)
 
 ---
