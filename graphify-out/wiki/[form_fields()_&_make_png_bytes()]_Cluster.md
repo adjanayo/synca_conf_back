@@ -17,7 +17,7 @@
 
 ## Relationships
 
-- [[[FaqCategory & ContactMessage] Cluster]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
