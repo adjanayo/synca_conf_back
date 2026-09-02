@@ -59,12 +59,14 @@ class EventSettingsRead(BaseModel):
     id: int
     name: str
     venue: str
+    year: int | None
     updated_at: datetime.datetime
 
 
 class EventSettingsUpdate(BaseModel):
     name: str | None = None
     venue: str | None = None
+    year: int | None = None
 
 
 class PartnerLevelRead(BaseModel):

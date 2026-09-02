@@ -15,6 +15,7 @@
 - [x] `GET/POST/PATCH /api/admin/promo-codes` + permission `promo_codes.manage` (débloquait la phase N côté front — aucun CRUD admin sur les codes promo)
 - [x] Rappels waitlist récurrents après ouverture billetterie (demandé côté front, DEVLOG.md ligne 52 — pas de cron, boucle asyncio en tâche de fond)
 - [x] `GET /api/event-settings` public (débloquait l'affichage nom/lieu événement depuis la DB côté front, existait déjà en admin mais pas en lecture publique)
+- [x] Colonne `event_settings.year` nullable (débloquait l'affichage "Synca Conf &lt;année&gt;" pilotable depuis le dashboard, sans rien afficher si non définie)
 
 ## Journal
 
@@ -62,3 +63,8 @@
 ### 2026-09-02 (suite 8) — `GET /api/event-settings` public
 - Fait : côté front, `EventSettings` (nom+lieu) existait déjà en base et déjà éditable au dashboard (`admin_event_settings.py`, Phase I) mais aucune route publique ne l'exposait — le site public affichait toujours des valeurs codées en dur (`data/parameter.ts`) au lieu de la table pilotée par l'admin. Ajouté `GET /api/event-settings` (`app/api/public.py`), même patron que `GET /api/admin/event-settings` mais sans `require_permission` (donnée publique par nature) — réutilise `EventSettingsRead`/`EventSettings` (`app/models/referentials.py`) tels quels, aucun nouveau modèle/migration.
 - Fait : `ruff check app/api/public.py` clean. Pas de test ajouté (régression pytest-asyncio du conteneur toujours non résolue).
+
+### 2026-09-02 (suite 9) — `event_settings.year` nullable
+- Fait : demande front — le texte de marque "Synca Conf &lt;année&gt;" apparaît à plusieurs endroits du site public, codé en dur ; il fallait un champ dédié pilotable au dashboard, distinct des dates de l'événement (`campaign_windows.event`) qui existaient déjà. Ajouté colonne `event_settings.year` (`Integer`, nullable — migration `e4f5a6b7c8d9`), exposée dans `EventSettingsRead`/`EventSettingsUpdate` (`app/schemas/referentials.py`) et donc automatiquement dans `GET /api/event-settings` (public, suite 8) et `GET/PATCH /api/admin/event-settings`.
+- Fait : `PATCH /api/admin/event-settings` (`admin_event_settings.py`) distingue "champ `year` absent du body" de "champ explicitement remis à `null`" via `body.model_fields_set` — contrairement à `name`/`venue` (toujours requis, jamais effacables), `year` doit pouvoir repasser à `null` depuis le dashboard pour que le front n'affiche plus d'année.
+- Fait : migration appliquée (`alembic upgrade head`, `d3e4f5a6b7c8` → `e4f5a6b7c8d9`), `ruff check .` clean sur tout le repo. Pas de test ajouté (régression pytest-asyncio du conteneur toujours non résolue).

@@ -49,6 +49,11 @@ async def update_event_settings(
         settings.name = body.name
     if body.venue is not None:
         settings.venue = body.venue
+    # `year` est nullable par design (contrairement à name/venue) -- on
+    # distingue "champ absent" de "champ explicitement remis à null" pour
+    # permettre à l'admin d'effacer l'année, pas seulement de la fixer.
+    if "year" in body.model_fields_set:
+        settings.year = body.year
 
     await db.commit()
     await db.refresh(settings)
