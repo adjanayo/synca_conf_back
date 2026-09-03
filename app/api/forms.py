@@ -381,10 +381,20 @@ async def apply_as_partner(
 @limiter.limit("3/minute")
 async def apply_as_exhibitor(
     request: Request,
-    body: ExhibitorApplyCreate,
     background_tasks: BackgroundTasks,
+    visuals: UploadFile | None = File(default=None),
     db: AsyncSession = Depends(get_db),
 ) -> ExhibitorRead:
+    body = await parse_multipart_form(request, ExhibitorApplyCreate)
+
+    visuals_url = None
+    if visuals is not None and visuals.filename:
+        content = await visuals.read()
+        try:
+            visuals_url = await upload_file(content, visuals.filename, visuals.content_type or "")
+        except UploadRejectedError as exc:
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
     exhibitor = Exhibitor(
         organization_name=body.organization_name,
         sector=body.sector,
@@ -401,7 +411,7 @@ async def apply_as_exhibitor(
         products_services=body.products_services,
         equipment_needs=", ".join(body.equipment_needs) if body.equipment_needs else None,
         side_activities=", ".join(body.side_activities) if body.side_activities else None,
-        visuals_url=body.visuals_url,
+        visuals_url=visuals_url,
         payment_method=body.payment_method,
         rules_accepted=body.rules_accepted,
         gdpr_consent=body.gdpr_consent,

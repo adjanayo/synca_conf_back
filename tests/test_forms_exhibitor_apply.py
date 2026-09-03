@@ -1,7 +1,10 @@
 import datetime
+import io
+from unittest.mock import MagicMock
 
 import pytest
 from httpx import ASGITransport, AsyncClient
+from PIL import Image
 from sqlalchemy import select
 
 from app.core.database import get_db
@@ -32,7 +35,13 @@ async def open_call_for_exhibitor(db_session) -> None:
     await db_session.commit()
 
 
-def payload(**overrides) -> dict:
+def make_png_bytes() -> bytes:
+    buffer = io.BytesIO()
+    Image.new("RGB", (10, 10), color="blue").save(buffer, format="PNG")
+    return buffer.getvalue()
+
+
+def form_fields(**overrides) -> dict:
     data = {
         "organization_name": "Expo Corp",
         "sector": "Tech",
@@ -43,10 +52,10 @@ def payload(**overrides) -> dict:
         "contact_email": "awa@expo.com",
         "contact_phone": "+221774444444",
         "stand_type": "Standard",
-        "reps_count": 2,
+        "reps_count": "2",
         "products_services": "Logiciels B2B",
-        "rules_accepted": True,
-        "gdpr_consent": True,
+        "rules_accepted": "true",
+        "gdpr_consent": "true",
     }
     data.update(overrides)
     return data
@@ -55,19 +64,19 @@ def payload(**overrides) -> dict:
 @pytest.mark.asyncio
 async def test_exhibitor_apply_closed_window_forbidden(db_session, client):
     async with AsyncClient(transport=client, base_url="http://test") as http:
-        response = await http.post("/api/exhibitors/apply", json=payload())
+        response = await http.post("/api/exhibitors/apply", data=form_fields())
 
     assert response.status_code == 403
 
 
 @pytest.mark.asyncio
-async def test_exhibitor_apply_success(db_session, client):
+async def test_exhibitor_apply_success_without_visuals(db_session, client):
     await open_call_for_exhibitor(db_session)
 
     async with AsyncClient(transport=client, base_url="http://test") as http:
         response = await http.post(
             "/api/exhibitors/apply",
-            json=payload(equipment_needs=["Électricité", "Wifi"]),
+            data=form_fields(equipment_needs=["Électricité", "Wifi"]),
         )
 
     assert response.status_code == 201
@@ -75,6 +84,38 @@ async def test_exhibitor_apply_success(db_session, client):
     assert body["status"] == "pending"
     assert body["is_public"] is False
     assert body["equipment_needs"] == "Électricité, Wifi"
+    assert body["visuals_url"] is None
+
+
+@pytest.mark.asyncio
+async def test_exhibitor_apply_success_with_visuals(db_session, client, monkeypatch):
+    await open_call_for_exhibitor(db_session)
+    monkeypatch.setattr("app.services.storage._client", lambda: MagicMock())
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        response = await http.post(
+            "/api/exhibitors/apply",
+            data=form_fields(contact_email="visuel@expo.com"),
+            files={"visuals": ("stand.png", make_png_bytes(), "image/png")},
+        )
+
+    assert response.status_code == 201
+    assert response.json()["visuals_url"] is not None
+
+
+@pytest.mark.asyncio
+async def test_exhibitor_apply_rejects_fake_image(db_session, client, monkeypatch):
+    await open_call_for_exhibitor(db_session)
+    monkeypatch.setattr("app.services.storage._client", lambda: MagicMock())
+
+    async with AsyncClient(transport=client, base_url="http://test") as http:
+        response = await http.post(
+            "/api/exhibitors/apply",
+            data=form_fields(contact_email="fake@expo.com"),
+            files={"visuals": ("stand.png", b"not-a-real-image", "image/png")},
+        )
+
+    assert response.status_code == 400
 
 
 @pytest.mark.asyncio
@@ -84,7 +125,7 @@ async def test_exhibitor_apply_rules_not_accepted_422(db_session, client):
     async with AsyncClient(transport=client, base_url="http://test") as http:
         response = await http.post(
             "/api/exhibitors/apply",
-            json=payload(rules_accepted=False, contact_email="autre@expo.com"),
+            data=form_fields(rules_accepted="false", contact_email="autre@expo.com"),
         )
 
     assert response.status_code == 422
@@ -97,7 +138,7 @@ async def test_exhibitor_apply_invalid_reps_count_422(db_session, client):
     async with AsyncClient(transport=client, base_url="http://test") as http:
         response = await http.post(
             "/api/exhibitors/apply",
-            json=payload(reps_count=0, contact_email="zero@expo.com"),
+            data=form_fields(reps_count="0", contact_email="zero@expo.com"),
         )
 
     assert response.status_code == 422

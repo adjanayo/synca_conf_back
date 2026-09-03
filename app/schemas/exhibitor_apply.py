@@ -21,7 +21,6 @@ class ExhibitorApplyCreate(BaseModel):
     products_services: str = Field(min_length=1)
     equipment_needs: list[str] | None = None
     side_activities: list[str] | None = None
-    visuals_url: str | None = None
     payment_method: Literal[*EXHIBITOR_PAYMENT_METHOD_VALUES] | None = None
     rules_accepted: bool
     gdpr_consent: bool
