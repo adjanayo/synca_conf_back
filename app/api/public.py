@@ -10,6 +10,7 @@ from app.models import (
     Day,
     Exhibitor,
     Faq,
+    FaqCategory,
     Partner,
     PartnerLevel,
     PassType,
@@ -21,6 +22,7 @@ from app.schemas import (
     CampaignWindowRead,
     DayRead,
     ExhibitorRead,
+    FaqCategoryRead,
     FaqRead,
     PartnerLevelRead,
     PartnerRead,
@@ -158,6 +160,17 @@ async def list_exhibitors(
     )
     exhibitors = (await db.execute(query)).scalars().all()
     return [ExhibitorRead.model_validate(exhibitor) for exhibitor in exhibitors]
+
+
+@router.get("/faq-categories", response_model=list[FaqCategoryRead])
+@limiter.limit("60/minute")
+async def list_faq_categories(
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+) -> list[FaqCategoryRead]:
+    query = select(FaqCategory).order_by(FaqCategory.id)
+    categories = (await db.execute(query)).scalars().all()
+    return [FaqCategoryRead.model_validate(category) for category in categories]
 
 
 @router.get("/faqs", response_model=list[FaqRead])

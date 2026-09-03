@@ -85,3 +85,11 @@ class FaqCategoryRead(BaseModel):
 
     id: int
     name: str
+
+
+class FaqCategoryCreate(BaseModel):
+    name: str
+
+
+class FaqCategoryUpdate(BaseModel):
+    name: str | None = None

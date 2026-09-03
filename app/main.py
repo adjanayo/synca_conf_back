@@ -15,6 +15,7 @@ from app.api.admin_campaign_windows import router as admin_campaign_windows_rout
 from app.api.admin_contacts import router as admin_contacts_router
 from app.api.admin_event_settings import router as admin_event_settings_router
 from app.api.admin_export import router as admin_export_router
+from app.api.admin_faqs import admin_faq_categories_router, admin_faqs_router
 from app.api.admin_pass_types import router as admin_pass_types_router
 from app.api.admin_program import admin_days_router, admin_sessions_router
 from app.api.admin_promo_codes import router as admin_promo_codes_router
@@ -112,6 +113,8 @@ app.include_router(admin_pass_types_router)
 app.include_router(admin_event_settings_router)
 app.include_router(admin_days_router)
 app.include_router(admin_sessions_router)
+app.include_router(admin_faq_categories_router)
+app.include_router(admin_faqs_router)
 app.include_router(admin_waitlist_router)
 app.include_router(admin_promo_codes_router)
 app.include_router(admin_users_router)
