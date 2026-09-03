@@ -12,6 +12,8 @@ CAMPAIGN_WINDOW_KEY_VALUES = (
     "call_for_ambassador",
     "call_for_exhibitor",
     "event",
+    "hackathon_universitaire",
+    "call_for_community_certified",
 )
 
 

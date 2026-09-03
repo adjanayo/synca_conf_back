@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2222-9dd893772cc0_sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L44) (1 connections)
-- [sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py#L21) (1 connections)
+- [2026_08_25_2240-3f306df50f16_faqs_contact_messages.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L48) (1 connections)
+- [faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L21) (1 connections)
 
 ## Relationships
 
-- [[Community 44]] (1 shared connections)
+- [[Community 42]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2222-9dd893772cc0_sessions.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py)
 
 ## Audit Trail
 

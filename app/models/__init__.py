@@ -2,6 +2,7 @@ from app.models.applications import Ambassador, Exhibitor, Partner, Speaker
 from app.models.audit import AuditLog
 from app.models.campaign import CampaignWindow
 from app.models.content import ContactMessage, Faq
+from app.models.hackathon import HackathonTeam, HackathonTeamMember
 from app.models.newsletter import NewsletterSubscriber
 from app.models.otp import OtpCode
 from app.models.payments import Payment, PromoCode, Ticket, Waitlist
@@ -21,6 +22,8 @@ __all__ = [
     "Exhibitor",
     "Faq",
     "FaqCategory",
+    "HackathonTeam",
+    "HackathonTeamMember",
     "NewsletterSubscriber",
     "OtpCode",
     "Partner",

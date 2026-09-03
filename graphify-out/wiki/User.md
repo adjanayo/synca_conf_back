@@ -43,32 +43,34 @@ sequenceDiagram
     participant P34 as Permission
     participant P35 as Speaker
     participant P36 as Partner
-    participant P37 as Exhibitor
-    participant P38 as Day
-    participant P39 as FaqCategory
-    participant P40 as Session
-    participant P41 as Ambassador
-    participant P42 as ContactMessage
-    participant P43 as Faq
+    participant P37 as FaqCategory
+    participant P38 as Ambassador
+    participant P39 as Exhibitor
+    participant P40 as Day
+    participant P41 as Session
+    participant P42 as Faq
+    participant P43 as ContactMessage
     participant P44 as UserProfile
     participant P45 as OtpCode
     participant P46 as CampaignWindow
-    participant P47 as AuditLog
-    participant P48 as NewsletterSubscriber
-    participant P49 as EventSettings
-    participant P50 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P51 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P52 as In this scenario we need to create an Engine     and associate a connection with
-    participant P53 as Run migrations in 'online' mode.
-    participant P54 as make_verified_user()
-    participant P55 as EncryptedString
-    participant P56 as make_user()
-    participant P57 as make_user()
-    participant P58 as register()
+    participant P47 as HackathonTeam
+    participant P48 as HackathonTeamMember
+    participant P49 as AuditLog
+    participant P50 as NewsletterSubscriber
+    participant P51 as EventSettings
+    participant P52 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P53 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P54 as In this scenario we need to create an Engine     and associate a connection with
+    participant P55 as Run migrations in 'online' mode.
+    participant P56 as make_verified_user()
+    participant P57 as EncryptedString
+    participant P58 as make_user()
     participant P59 as make_user()
-    participant P60 as make_user()
-    participant P61 as test_user_and_profile_read()
-    participant P62 as test_null_special_needs_stays_null()
+    participant P60 as register()
+    participant P61 as make_user()
+    participant P62 as make_user()
+    participant P63 as test_user_and_profile_read()
+    participant P64 as test_null_special_needs_stays_null()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -149,10 +151,10 @@ sequenceDiagram
     P35-->>- P1: return
     P1->>+ P36: uses
     P36-->>- P1: return
-    P1->>+ P5: uses
-    P5-->>- P1: return
     P1->>+ P37: uses
     P37-->>- P1: return
+    P1->>+ P5: uses
+    P5-->>- P1: return
     P1->>+ P38: uses
     P38-->>- P1: return
     P1->>+ P39: uses
@@ -187,40 +189,44 @@ sequenceDiagram
     P52-->>- P1: return
     P1->>+ P53: uses
     P53-->>- P1: return
+    P1->>+ P54: uses
+    P54-->>- P1: return
+    P1->>+ P55: uses
+    P55-->>- P1: return
     P0->>+ P6: calls
     P6-->>- P0: return
-    P0->>+ P54: calls
-    P54-->>- P0: return
-    P0->>+ P55: uses
-    P55-->>- P0: return
-    P0->>+ P8: calls
-    P8-->>- P0: return
     P0->>+ P56: calls
     P56-->>- P0: return
+    P0->>+ P57: uses
+    P57-->>- P0: return
+    P0->>+ P8: calls
+    P8-->>- P0: return
+    P0->>+ P58: calls
+    P58-->>- P0: return
     P0->>+ P9: calls
     P9-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
     P0->>+ P11: calls
     P11-->>- P0: return
-    P0->>+ P57: calls
-    P57-->>- P0: return
-    P0->>+ P58: calls
-    P58-->>- P0: return
+    P0->>+ P59: calls
+    P59-->>- P0: return
+    P0->>+ P60: calls
+    P60-->>- P0: return
     P0->>+ P13: calls
     P13-->>- P0: return
     P0->>+ P15: calls
     P15-->>- P0: return
-    P0->>+ P59: calls
-    P59-->>- P0: return
-    P0->>+ P20: calls
-    P20-->>- P0: return
-    P0->>+ P60: calls
-    P60-->>- P0: return
     P0->>+ P61: calls
     P61-->>- P0: return
+    P0->>+ P20: calls
+    P20-->>- P0: return
     P0->>+ P62: calls
     P62-->>- P0: return
+    P0->>+ P63: calls
+    P63-->>- P0: return
+    P0->>+ P64: calls
+    P64-->>- P0: return
 ```
 
 ## Connections by Relation

@@ -1,6 +1,6 @@
 # Base
 
-> God node · 32 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
+> God node · 34 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
 
 ## Call Trace Diagram
 
@@ -53,23 +53,25 @@ sequenceDiagram
     participant P44 as Permission
     participant P45 as Speaker
     participant P46 as Partner
-    participant P47 as Exhibitor
-    participant P48 as Day
-    participant P49 as FaqCategory
-    participant P50 as Session
-    participant P51 as Ambassador
-    participant P52 as ContactMessage
-    participant P53 as Faq
+    participant P47 as FaqCategory
+    participant P48 as Ambassador
+    participant P49 as Exhibitor
+    participant P50 as Day
+    participant P51 as Session
+    participant P52 as Faq
+    participant P53 as ContactMessage
     participant P54 as UserProfile
     participant P55 as OtpCode
     participant P56 as CampaignWindow
-    participant P57 as AuditLog
-    participant P58 as NewsletterSubscriber
-    participant P59 as EventSettings
-    participant P60 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P61 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P62 as In this scenario we need to create an Engine     and associate a connection with
-    participant P63 as Run migrations in 'online' mode.
+    participant P57 as HackathonTeam
+    participant P58 as HackathonTeamMember
+    participant P59 as AuditLog
+    participant P60 as NewsletterSubscriber
+    participant P61 as EventSettings
+    participant P62 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P63 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P64 as In this scenario we need to create an Engine     and associate a connection with
+    participant P65 as Run migrations in 'online' mode.
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -180,10 +182,10 @@ sequenceDiagram
     P45-->>- P0: return
     P0->>+ P46: uses
     P46-->>- P0: return
-    P0->>+ P18: uses
-    P18-->>- P0: return
     P0->>+ P47: uses
     P47-->>- P0: return
+    P0->>+ P18: uses
+    P18-->>- P0: return
     P0->>+ P48: uses
     P48-->>- P0: return
     P0->>+ P49: uses
@@ -218,6 +220,10 @@ sequenceDiagram
     P62-->>- P0: return
     P0->>+ P63: uses
     P63-->>- P0: return
+    P0->>+ P64: uses
+    P64-->>- P0: return
+    P0->>+ P65: uses
+    P65-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -240,14 +246,14 @@ sequenceDiagram
 - [[Permission]] `INFERRED`
 - [[Speaker]] `INFERRED`
 - [[Partner]] `INFERRED`
+- [[FaqCategory]] `INFERRED`
 - [[Ticket]] `INFERRED`
+- [[Ambassador]] `INFERRED`
 - [[Exhibitor]] `INFERRED`
 - [[Day]] `INFERRED`
-- [[FaqCategory]] `INFERRED`
 - [[Session]] `INFERRED`
-- [[Ambassador]] `INFERRED`
-- [[ContactMessage]] `INFERRED`
 - [[Faq]] `INFERRED`
+- [[ContactMessage]] `INFERRED`
 - [[Waitlist]] `INFERRED`
 
 ---

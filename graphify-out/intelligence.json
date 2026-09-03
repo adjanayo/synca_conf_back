@@ -2,33 +2,33 @@
   "hotspots": [
     {
       "label": "update_session()",
-      "risk": 0.504,
+      "risk": 0.503,
       "type": "FUNCTION"
     },
     {
       "label": "payment_webhook()",
-      "risk": 0.502,
+      "risk": 0.496,
       "type": "FUNCTION"
     },
     {
       "label": "update_admin_user()",
-      "risk": 0.376,
+      "risk": 0.374,
       "type": "FUNCTION"
     },
     {
       "label": "register()",
-      "risk": 0.363,
+      "risk": 0.373,
       "type": "FUNCTION"
     },
     {
-      "label": "authenticate_admin()",
-      "risk": 0.346,
+      "label": "apply_as_exhibitor()",
+      "risk": 0.359,
       "type": "FUNCTION"
     }
   ],
   "blast_radius": {
     "create_access_token()": 46,
-    "Base": 32,
+    "Base": 34,
     "PassType": 30,
     "User": 20,
     "Role": 20

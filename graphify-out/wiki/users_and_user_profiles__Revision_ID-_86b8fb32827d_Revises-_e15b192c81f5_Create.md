@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[newsletter_subscribers table  Revision ID: c375ad4fa2bb Revises: 866edbae2931 Cr]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

@@ -4,9 +4,9 @@
 
 ## Key Concepts
 
-- [test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L1) (2 connections)
-- [test_end_at_must_be_after_start_at()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L26) (1 connections)
-- [test_six_campaign_windows_seeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py#L11) (1 connections)
+- [admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L1) (2 connections)
+- [list_contacts()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L17) (1 connections)
+- [update_contact_read_status()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py#L38) (1 connections)
 
 ## Relationships
 
@@ -14,7 +14,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_contacts.py)
 
 ## Audit Trail
 

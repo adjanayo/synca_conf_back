@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 from app.core.database import get_db
 from app.core.rate_limit import limiter
@@ -12,6 +13,7 @@ from app.models import (
     Exhibitor,
     Faq,
     FaqCategory,
+    HackathonTeam,
     Partner,
     PartnerLevel,
     PassType,
@@ -26,6 +28,7 @@ from app.schemas import (
     ExhibitorPublicRead,
     FaqCategoryRead,
     FaqRead,
+    HackathonTeamRead,
     PartnerLevelRead,
     PartnerPublicRead,
     PassTypeRead,
@@ -242,3 +245,21 @@ async def list_campaign_windows(
     query = select(CampaignWindow).order_by(CampaignWindow.start_at)
     windows = (await db.execute(query)).scalars().all()
     return [CampaignWindowRead.model_validate(window) for window in windows]
+
+
+@router.get("/hackathon-teams", response_model=list[HackathonTeamRead])
+@limiter.limit("60/minute")
+async def list_hackathon_teams(
+    request: Request,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+) -> list[HackathonTeamRead]:
+    query = (
+        select(HackathonTeam)
+        .options(selectinload(HackathonTeam.members))
+        .order_by(HackathonTeam.university_name, HackathonTeam.name)
+        .limit(pagination.limit)
+        .offset(pagination.offset)
+    )
+    teams = (await db.execute(query)).scalars().all()
+    return [HackathonTeamRead.model_validate(team) for team in teams]

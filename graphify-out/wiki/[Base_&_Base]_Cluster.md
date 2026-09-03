@@ -1,21 +1,27 @@
 # [Base & Base] Cluster
 
-> 109 nodes · cohesion 0.03
+> 128 nodes · cohesion 0.02
 
 ## Key Concepts
 
-- **BaseModel** (70 connections)
-- [referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/referentials.py#L1) (10 connections)
+- **BaseModel** (84 connections)
+- [referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/referentials.py#L1) (12 connections)
 - [admin_applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L1) (8 connections)
+- [applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L1) (8 connections)
 - **ValueError** (8 connections)
 - [auth.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L1) (6 connections)
+- [hackathon.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/hackathon.py#L1) (6 connections)
 - [payments.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/payments.py#L1) (6 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L1) (6 connections)
 - [login()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py#L25) (5 connections)
+- [content.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/content.py#L1) (5 connections)
 - [RoleWithPermissionsRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L17) (4 connections)
-- [applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L1) (4 connections)
 - [RegistrationRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_registrations.py#L6) (3 connections)
 - [AdminStatsRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_stats.py#L4) (3 connections)
+- [AmbassadorPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L91) (3 connections)
+- [ExhibitorPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L174) (3 connections)
+- [PartnerPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L162) (3 connections)
+- [SpeakerPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L69) (3 connections)
 - [AdminMeOut](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L29) (3 connections)
 - [TokenPair](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L9) (3 connections)
 - [PromoValidateResponse](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/promo.py#L8) (3 connections)
@@ -23,13 +29,7 @@
 - [update_role_permissions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L58) (3 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L1) (3 connections)
 - [admin_users.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_users.py#L1) (3 connections)
-- [content.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/content.py#L1) (3 connections)
-- [exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py#L1) (3 connections)
-- [sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/sessions.py#L1) (3 connections)
-- [AmbassadorAdminCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L79) (2 connections)
-- [AmbassadorStatusUpdate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L29) (2 connections)
-- [ExhibitorAdminCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L133) (2 connections)
-- *... and 84 more nodes in this community*
+- *... and 103 more nodes in this community*
 
 ## Class Diagram
 
@@ -77,13 +77,25 @@ classDiagram
     class AmbassadorApplyCreate {
         +ambassador_apply.py()
     }
+    class AmbassadorPublicRead {
+        +applications.py()
+    }
     class AmbassadorRead {
+        +applications.py()
+    }
+    class ExhibitorPublicRead {
         +applications.py()
     }
     class ExhibitorRead {
         +applications.py()
     }
+    class PartnerPublicRead {
+        +applications.py()
+    }
     class PartnerRead {
+        +applications.py()
+    }
+    class SpeakerPublicRead {
         +applications.py()
     }
     class SpeakerRead {
@@ -122,11 +134,35 @@ classDiagram
     class ContactMessageUpdate {
         +content.py()
     }
+    class FaqCreate {
+        +content.py()
+    }
     class FaqRead {
+        +content.py()
+    }
+    class FaqUpdate {
         +content.py()
     }
     class ExhibitorApplyCreate {
         +exhibitor_apply.py()
+    }
+    class HackathonTeamCreate {
+        +hackathon.py()
+    }
+    class HackathonTeamMemberCreate {
+        +hackathon.py()
+    }
+    class HackathonTeamMemberRead {
+        +hackathon.py()
+    }
+    class HackathonTeamMemberUpdate {
+        +hackathon.py()
+    }
+    class HackathonTeamRead {
+        +hackathon.py()
+    }
+    class HackathonTeamUpdate {
+        +hackathon.py()
     }
     class NewsletterCreate {
         +newsletter.py()
@@ -200,7 +236,13 @@ classDiagram
     class EventSettingsUpdate {
         +referentials.py()
     }
+    class FaqCategoryCreate {
+        +referentials.py()
+    }
     class FaqCategoryRead {
+        +referentials.py()
+    }
+    class FaqCategoryUpdate {
         +referentials.py()
     }
     class PartnerLevelRead {
@@ -257,15 +299,15 @@ classDiagram
 - [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/contact.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/contact.py)
 - [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/content.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/content.py)
 - [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/hackathon.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/hackathon.py)
 - [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/newsletter.py)
 - [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/partner_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/partner_apply.py)
 - [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/payment_create.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/payment_create.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/payment_webhook.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/payment_webhook.py)
 
 ## Audit Trail
 
-- EXTRACTED: 297 (91%)
-- INFERRED: 30 (9%)
+- EXTRACTED: 361 (92%)
+- INFERRED: 30 (8%)
 - AMBIGUOUS: 0 (0%)
 
 ---

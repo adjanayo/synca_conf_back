@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [Issued after a successful OTP verify (app/api/participant_auth.py).      Distinc](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L106) (0 connections)
+- [__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/__init__.py#L1) (0 connections)
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/__init__.py)
 
 ## Audit Trail
 

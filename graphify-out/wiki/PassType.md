@@ -35,40 +35,42 @@ sequenceDiagram
     participant P26 as Permission
     participant P27 as Speaker
     participant P28 as Partner
-    participant P29 as Ticket
-    participant P30 as Exhibitor
-    participant P31 as Day
-    participant P32 as FaqCategory
-    participant P33 as Session
-    participant P34 as Ambassador
-    participant P35 as ContactMessage
-    participant P36 as Faq
+    participant P29 as FaqCategory
+    participant P30 as Ticket
+    participant P31 as Ambassador
+    participant P32 as Exhibitor
+    participant P33 as Day
+    participant P34 as Session
+    participant P35 as Faq
+    participant P36 as ContactMessage
     participant P37 as Waitlist
     participant P38 as UserProfile
     participant P39 as OtpCode
     participant P40 as CampaignWindow
-    participant P41 as AuditLog
-    participant P42 as NewsletterSubscriber
-    participant P43 as EventSettings
-    participant P44 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P45 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P46 as In this scenario we need to create an Engine     and associate a connection with
-    participant P47 as Run migrations in 'online' mode.
-    participant P48 as make_ticket_for()
-    participant P49 as test_register_valid_promo_code_accepted()
-    participant P50 as test_register_success()
-    participant P51 as test_register_sends_confirmation_email()
-    participant P52 as test_register_inactive_pass_type_400()
-    participant P53 as test_register_invalid_promo_code_400()
-    participant P54 as test_create_payment_applies_percent_discount()
-    participant P55 as test_create_payment_applies_fixed_discount()
-    participant P56 as test_create_payment_success_no_promo()
-    participant P57 as test_create_payment_invalid_promo_400()
-    participant P58 as create_pass_type()
-    participant P59 as test_list_pass_types_excludes_inactive()
-    participant P60 as test_pass_type_defaults()
-    participant P61 as test_create_payment_invalid_user_400()
-    participant P62 as test_pass_type_read()
+    participant P41 as HackathonTeam
+    participant P42 as HackathonTeamMember
+    participant P43 as AuditLog
+    participant P44 as NewsletterSubscriber
+    participant P45 as EventSettings
+    participant P46 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P47 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P48 as In this scenario we need to create an Engine     and associate a connection with
+    participant P49 as Run migrations in 'online' mode.
+    participant P50 as make_ticket_for()
+    participant P51 as test_register_valid_promo_code_accepted()
+    participant P52 as test_register_success()
+    participant P53 as test_register_sends_confirmation_email()
+    participant P54 as test_register_inactive_pass_type_400()
+    participant P55 as test_register_invalid_promo_code_400()
+    participant P56 as test_create_payment_applies_percent_discount()
+    participant P57 as test_create_payment_applies_fixed_discount()
+    participant P58 as test_create_payment_success_no_promo()
+    participant P59 as test_create_payment_invalid_promo_400()
+    participant P60 as create_pass_type()
+    participant P61 as test_list_pass_types_excludes_inactive()
+    participant P62 as test_pass_type_defaults()
+    participant P63 as test_create_payment_invalid_user_400()
+    participant P64 as test_pass_type_read()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -167,12 +169,16 @@ sequenceDiagram
     P46-->>- P1: return
     P1->>+ P47: uses
     P47-->>- P1: return
+    P1->>+ P48: uses
+    P48-->>- P1: return
+    P1->>+ P49: uses
+    P49-->>- P1: return
     P0->>+ P22: uses
     P22-->>- P0: return
     P0->>+ P23: uses
     P23-->>- P0: return
-    P0->>+ P29: uses
-    P29-->>- P0: return
+    P0->>+ P30: uses
+    P30-->>- P0: return
     P0->>+ P3: calls
     P3-->>- P0: return
     P0->>+ P37: uses
@@ -185,28 +191,24 @@ sequenceDiagram
     P9-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
-    P0->>+ P48: calls
-    P48-->>- P0: return
-    P0->>+ P13: calls
-    P13-->>- P0: return
-    P0->>+ P49: calls
-    P49-->>- P0: return
-    P0->>+ P14: calls
-    P14-->>- P0: return
     P0->>+ P50: calls
     P50-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
     P0->>+ P51: calls
     P51-->>- P0: return
+    P0->>+ P14: calls
+    P14-->>- P0: return
     P0->>+ P52: calls
     P52-->>- P0: return
     P0->>+ P53: calls
     P53-->>- P0: return
-    P0->>+ P16: calls
-    P16-->>- P0: return
     P0->>+ P54: calls
     P54-->>- P0: return
     P0->>+ P55: calls
     P55-->>- P0: return
+    P0->>+ P16: calls
+    P16-->>- P0: return
     P0->>+ P56: calls
     P56-->>- P0: return
     P0->>+ P57: calls
@@ -221,6 +223,10 @@ sequenceDiagram
     P61-->>- P0: return
     P0->>+ P62: calls
     P62-->>- P0: return
+    P0->>+ P63: calls
+    P63-->>- P0: return
+    P0->>+ P64: calls
+    P64-->>- P0: return
 ```
 
 ## Connections by Relation

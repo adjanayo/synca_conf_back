@@ -10,6 +10,7 @@ from app.schemas.applications import (
 )
 from app.schemas.campaign import CampaignWindowRead
 from app.schemas.content import ContactMessageRead, FaqRead
+from app.schemas.hackathon import HackathonTeamMemberRead, HackathonTeamRead
 from app.schemas.payments import (
     PaymentRead,
     PromoCodeCreate,
@@ -34,6 +35,8 @@ __all__ = [
     "ExhibitorRead",
     "FaqCategoryRead",
     "FaqRead",
+    "HackathonTeamMemberRead",
+    "HackathonTeamRead",
     "PartnerLevelRead",
     "PartnerPublicRead",
     "PartnerRead",

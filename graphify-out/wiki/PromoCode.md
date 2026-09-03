@@ -43,33 +43,35 @@ sequenceDiagram
     participant P34 as Permission
     participant P35 as Speaker
     participant P36 as Partner
-    participant P37 as Exhibitor
-    participant P38 as Day
-    participant P39 as FaqCategory
-    participant P40 as Session
-    participant P41 as Ambassador
-    participant P42 as ContactMessage
-    participant P43 as Faq
+    participant P37 as FaqCategory
+    participant P38 as Ambassador
+    participant P39 as Exhibitor
+    participant P40 as Day
+    participant P41 as Session
+    participant P42 as Faq
+    participant P43 as ContactMessage
     participant P44 as UserProfile
     participant P45 as OtpCode
     participant P46 as CampaignWindow
-    participant P47 as AuditLog
-    participant P48 as NewsletterSubscriber
-    participant P49 as EventSettings
-    participant P50 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P51 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P52 as In this scenario we need to create an Engine     and associate a connection with
-    participant P53 as Run migrations in 'online' mode.
-    participant P54 as test_stats_computed_from_payments_tickets_and_applications()
-    participant P55 as generate_ambassador_promo_code()
-    participant P56 as test_promo_code_payment_ticket_waitlist_read()
-    participant P57 as test_promo_code_and_waitlist_unique()
-    participant P58 as create_promo_code()
-    participant P59 as test_promo_validate_success()
-    participant P60 as test_promo_validate_inactive_400()
-    participant P61 as test_promo_validate_expired_400()
-    participant P62 as test_promo_validate_exhausted_400()
-    participant P63 as test_promo_validate_fixed_discount()
+    participant P47 as HackathonTeam
+    participant P48 as HackathonTeamMember
+    participant P49 as AuditLog
+    participant P50 as NewsletterSubscriber
+    participant P51 as EventSettings
+    participant P52 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P53 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P54 as In this scenario we need to create an Engine     and associate a connection with
+    participant P55 as Run migrations in 'online' mode.
+    participant P56 as test_stats_computed_from_payments_tickets_and_applications()
+    participant P57 as generate_ambassador_promo_code()
+    participant P58 as test_promo_code_payment_ticket_waitlist_read()
+    participant P59 as test_promo_code_and_waitlist_unique()
+    participant P60 as create_promo_code()
+    participant P61 as test_promo_validate_success()
+    participant P62 as test_promo_validate_inactive_400()
+    participant P63 as test_promo_validate_expired_400()
+    participant P64 as test_promo_validate_exhausted_400()
+    participant P65 as test_promo_validate_fixed_discount()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -150,10 +152,10 @@ sequenceDiagram
     P35-->>- P1: return
     P1->>+ P36: uses
     P36-->>- P1: return
-    P1->>+ P4: uses
-    P4-->>- P1: return
     P1->>+ P37: uses
     P37-->>- P1: return
+    P1->>+ P4: uses
+    P4-->>- P1: return
     P1->>+ P38: uses
     P38-->>- P1: return
     P1->>+ P39: uses
@@ -188,26 +190,26 @@ sequenceDiagram
     P52-->>- P1: return
     P1->>+ P53: uses
     P53-->>- P1: return
+    P1->>+ P54: uses
+    P54-->>- P1: return
+    P1->>+ P55: uses
+    P55-->>- P1: return
     P0->>+ P2: uses
     P2-->>- P0: return
-    P0->>+ P54: calls
-    P54-->>- P0: return
-    P0->>+ P10: calls
-    P10-->>- P0: return
-    P0->>+ P55: calls
-    P55-->>- P0: return
-    P0->>+ P13: calls
-    P13-->>- P0: return
     P0->>+ P56: calls
     P56-->>- P0: return
+    P0->>+ P10: calls
+    P10-->>- P0: return
+    P0->>+ P57: calls
+    P57-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
+    P0->>+ P58: calls
+    P58-->>- P0: return
     P0->>+ P20: calls
     P20-->>- P0: return
     P0->>+ P21: calls
     P21-->>- P0: return
-    P0->>+ P57: calls
-    P57-->>- P0: return
-    P0->>+ P58: calls
-    P58-->>- P0: return
     P0->>+ P59: calls
     P59-->>- P0: return
     P0->>+ P60: calls
@@ -218,6 +220,10 @@ sequenceDiagram
     P62-->>- P0: return
     P0->>+ P63: calls
     P63-->>- P0: return
+    P0->>+ P64: calls
+    P64-->>- P0: return
+    P0->>+ P65: calls
+    P65-->>- P0: return
 ```
 
 ## Connections by Relation
