@@ -84,6 +84,7 @@ class AmbassadorAdminCreate(BaseModel):
     city: str = Field(min_length=1, max_length=100)
     email: EmailStr
     phone_whatsapp: str = Field(min_length=1, max_length=20)
+    photo_url: str | None = None
     current_profile: Literal[*AMBASSADOR_PROFILE_VALUES] | None = None
     institution_company: str | None = Field(default=None, max_length=200)
     linkedin_url: str | None = None

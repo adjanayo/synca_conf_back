@@ -111,6 +111,7 @@ class Ambassador(Base):
     city: Mapped[str] = mapped_column(String(100), nullable=False)
     email: Mapped[str] = mapped_column(String(255), nullable=False)
     phone_whatsapp: Mapped[str] = mapped_column(String(20), nullable=False)
+    photo_url: Mapped[str | None] = mapped_column(String(255))
     current_profile: Mapped[str | None] = mapped_column(
         Enum(*AMBASSADOR_PROFILE_VALUES, name="ambassador_current_profile")
     )

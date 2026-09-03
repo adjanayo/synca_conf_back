@@ -259,10 +259,22 @@ async def apply_as_speaker(
 @limiter.limit("3/minute")
 async def apply_as_ambassador(
     request: Request,
-    body: AmbassadorApplyCreate,
     background_tasks: BackgroundTasks,
+    photo: UploadFile = File(...),
     db: AsyncSession = Depends(get_db),
 ) -> AmbassadorRead:
+    body = await parse_multipart_form(request, AmbassadorApplyCreate)
+    content = await photo.read()
+    try:
+        photo_url = await upload_file(
+            content,
+            photo.filename or "photo",
+            photo.content_type or "",
+            max_bytes=MAX_PHOTO_BYTES,
+        )
+    except UploadRejectedError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
     ambassador = Ambassador(
         first_name=body.first_name,
         last_name=body.last_name,
@@ -271,6 +283,7 @@ async def apply_as_ambassador(
         city=body.city,
         email=body.email,
         phone_whatsapp=body.phone_whatsapp,
+        photo_url=photo_url,
         current_profile=body.current_profile,
         institution_company=body.institution_company,
         linkedin_url=body.linkedin_url,

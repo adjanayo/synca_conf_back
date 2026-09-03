@@ -163,6 +163,7 @@ async def create_ambassador_admin(
         city=body.city,
         email=body.email,
         phone_whatsapp=body.phone_whatsapp,
+        photo_url=body.photo_url,
         current_profile=body.current_profile,
         institution_company=body.institution_company,
         linkedin_url=body.linkedin_url,

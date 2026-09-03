@@ -47,6 +47,7 @@ class AmbassadorRead(BaseModel):
     city: str
     email: str
     phone_whatsapp: str
+    photo_url: str | None
     current_profile: str | None
     institution_company: str | None
     linkedin_url: str | None
