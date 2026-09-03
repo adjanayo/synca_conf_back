@@ -22,16 +22,16 @@ sequenceDiagram
     participant P13 as make_user_and_pass()
     participant P14 as test_register_valid_promo_code_accepted()
     participant P15 as test_register_duplicate_email_conflict()
-    participant P16 as test_register_success()
-    participant P17 as test_register_sends_confirmation_email()
-    participant P18 as test_register_inactive_pass_type_400()
-    participant P19 as test_register_invalid_promo_code_400()
-    participant P20 as make_user_and_pass_type()
-    participant P21 as test_create_payment_applies_percent_discount()
-    participant P22 as test_create_payment_applies_fixed_discount()
-    participant P23 as test_create_payment_success_no_promo()
-    participant P24 as test_create_payment_invalid_promo_400()
-    participant P25 as create_pass_type()
+    participant P16 as create_pass_type()
+    participant P17 as test_register_success()
+    participant P18 as test_register_sends_confirmation_email()
+    participant P19 as test_register_inactive_pass_type_400()
+    participant P20 as test_register_invalid_promo_code_400()
+    participant P21 as make_user_and_pass_type()
+    participant P22 as test_create_payment_applies_percent_discount()
+    participant P23 as test_create_payment_applies_fixed_discount()
+    participant P24 as test_create_payment_success_no_promo()
+    participant P25 as test_create_payment_invalid_promo_400()
     participant P26 as test_list_pass_types_excludes_inactive()
     participant P27 as test_pass_type_defaults()
     participant P28 as test_create_payment_invalid_user_400()
@@ -53,24 +53,26 @@ sequenceDiagram
     participant P44 as UserProfile
     participant P45 as OtpCode
     participant P46 as CampaignWindow
-    participant P47 as EventSettings
-    participant P48 as HackathonTeam
-    participant P49 as HackathonTeamMember
-    participant P50 as AuditLog
-    participant P51 as NewsletterSubscriber
-    participant P52 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P53 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P54 as In this scenario we need to create an Engine     and associate a connection with
-    participant P55 as Run migrations in 'online' mode.
-    participant P56 as make_verified_user()
-    participant P57 as EncryptedString
-    participant P58 as make_user()
-    participant P59 as make_user()
-    participant P60 as register()
+    participant P47 as PassContent
+    participant P48 as EventSettings
+    participant P49 as HackathonTeam
+    participant P50 as HackathonTeamMember
+    participant P51 as AuditLog
+    participant P52 as NewsletterSubscriber
+    participant P53 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P54 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
+    participant P55 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P56 as In this scenario we need to create an Engine     and associate a connection with
+    participant P57 as Run migrations in 'online' mode.
+    participant P58 as make_verified_user()
+    participant P59 as EncryptedString
+    participant P60 as make_user()
     participant P61 as make_user()
-    participant P62 as make_user()
-    participant P63 as test_user_and_profile_read()
-    participant P64 as test_null_special_needs_stays_null()
+    participant P62 as register()
+    participant P63 as make_user()
+    participant P64 as make_user()
+    participant P65 as test_user_and_profile_read()
+    participant P66 as test_null_special_needs_stays_null()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -193,40 +195,44 @@ sequenceDiagram
     P54-->>- P1: return
     P1->>+ P55: uses
     P55-->>- P1: return
+    P1->>+ P56: uses
+    P56-->>- P1: return
+    P1->>+ P57: uses
+    P57-->>- P1: return
     P0->>+ P6: calls
     P6-->>- P0: return
-    P0->>+ P56: calls
-    P56-->>- P0: return
-    P0->>+ P7: calls
-    P7-->>- P0: return
-    P0->>+ P57: uses
-    P57-->>- P0: return
     P0->>+ P58: calls
     P58-->>- P0: return
+    P0->>+ P7: calls
+    P7-->>- P0: return
+    P0->>+ P59: uses
+    P59-->>- P0: return
+    P0->>+ P60: calls
+    P60-->>- P0: return
     P0->>+ P9: calls
     P9-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
     P0->>+ P11: calls
     P11-->>- P0: return
-    P0->>+ P59: calls
-    P59-->>- P0: return
-    P0->>+ P60: calls
-    P60-->>- P0: return
+    P0->>+ P61: calls
+    P61-->>- P0: return
+    P0->>+ P62: calls
+    P62-->>- P0: return
     P0->>+ P13: calls
     P13-->>- P0: return
     P0->>+ P15: calls
     P15-->>- P0: return
-    P0->>+ P61: calls
-    P61-->>- P0: return
-    P0->>+ P20: calls
-    P20-->>- P0: return
-    P0->>+ P62: calls
-    P62-->>- P0: return
     P0->>+ P63: calls
     P63-->>- P0: return
+    P0->>+ P21: calls
+    P21-->>- P0: return
     P0->>+ P64: calls
     P64-->>- P0: return
+    P0->>+ P65: calls
+    P65-->>- P0: return
+    P0->>+ P66: calls
+    P66-->>- P0: return
 ```
 
 ## Connections by Relation

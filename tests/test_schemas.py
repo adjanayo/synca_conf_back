@@ -61,7 +61,7 @@ def test_day_read():
 
 def test_pass_type_read():
     obj = PassType(
-        id=1, name="Standard", price=15000, description=None, inclusions=None,
+        id=1, name="Standard", price=15000, description=None,
         max_days=3, is_active=True, created_at=NOW,
     )
     read = PassTypeRead.model_validate(obj)

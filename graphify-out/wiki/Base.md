@@ -1,6 +1,6 @@
 # Base
 
-> God node · 34 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
+> God node · 36 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
 
 ## Call Trace Diagram
 
@@ -33,14 +33,14 @@ sequenceDiagram
     participant P24 as make_ticket_for()
     participant P25 as make_user_and_pass()
     participant P26 as test_register_duplicate_email_conflict()
-    participant P27 as test_register_success()
-    participant P28 as test_register_sends_confirmation_email()
-    participant P29 as test_register_inactive_pass_type_400()
-    participant P30 as test_register_invalid_promo_code_400()
-    participant P31 as make_user_and_pass_type()
-    participant P32 as test_create_payment_success_no_promo()
-    participant P33 as test_create_payment_invalid_promo_400()
-    participant P34 as create_pass_type()
+    participant P27 as create_pass_type()
+    participant P28 as test_register_success()
+    participant P29 as test_register_sends_confirmation_email()
+    participant P30 as test_register_inactive_pass_type_400()
+    participant P31 as test_register_invalid_promo_code_400()
+    participant P32 as make_user_and_pass_type()
+    participant P33 as test_create_payment_success_no_promo()
+    participant P34 as test_create_payment_invalid_promo_400()
     participant P35 as test_list_pass_types_excludes_inactive()
     participant P36 as test_pass_type_defaults()
     participant P37 as test_create_payment_invalid_user_400()
@@ -63,15 +63,17 @@ sequenceDiagram
     participant P54 as UserProfile
     participant P55 as OtpCode
     participant P56 as CampaignWindow
-    participant P57 as EventSettings
-    participant P58 as HackathonTeam
-    participant P59 as HackathonTeamMember
-    participant P60 as AuditLog
-    participant P61 as NewsletterSubscriber
-    participant P62 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P63 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P64 as In this scenario we need to create an Engine     and associate a connection with
-    participant P65 as Run migrations in 'online' mode.
+    participant P57 as PassContent
+    participant P58 as EventSettings
+    participant P59 as HackathonTeam
+    participant P60 as HackathonTeamMember
+    participant P61 as AuditLog
+    participant P62 as NewsletterSubscriber
+    participant P63 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P64 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
+    participant P65 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P66 as In this scenario we need to create an Engine     and associate a connection with
+    participant P67 as Run migrations in 'online' mode.
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -144,12 +146,12 @@ sequenceDiagram
     P30-->>- P1: return
     P1->>+ P31: calls
     P31-->>- P1: return
+    P1->>+ P32: calls
+    P32-->>- P1: return
     P1->>+ P8: calls
     P8-->>- P1: return
     P1->>+ P9: calls
     P9-->>- P1: return
-    P1->>+ P32: calls
-    P32-->>- P1: return
     P1->>+ P33: calls
     P33-->>- P1: return
     P1->>+ P34: calls
@@ -224,6 +226,10 @@ sequenceDiagram
     P64-->>- P0: return
     P0->>+ P65: uses
     P65-->>- P0: return
+    P0->>+ P66: uses
+    P66-->>- P0: return
+    P0->>+ P67: uses
+    P67-->>- P0: return
 ```
 
 ## Connections by Relation

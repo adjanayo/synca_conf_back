@@ -1,20 +1,48 @@
 # Community 15
 
-> 11 nodes · cohesion 0.47
+> 13 nodes · cohesion 0.26
 
 ## Key Concepts
 
-- [test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L1) (10 connections)
-- [form_fields()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L45) (7 connections)
-- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L39) (6 connections)
-- [open_call_for_ambassador()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L26) (6 connections)
-- [test_ambassador_apply_empty_channels_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L112) (4 connections)
-- [test_ambassador_apply_missing_gdpr_consent_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L126) (4 connections)
-- [test_ambassador_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L77) (4 connections)
-- [test_ambassador_apply_under_age_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L98) (4 connections)
-- [test_ambassador_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L65) (3 connections)
-- [test_ambassador_apply_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L140) (3 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L17) (1 connections)
+- [views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L1) (6 connections)
+- **ModelView** (5 connections)
+- [_has_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L7) (5 connections)
+- [AmbassadorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L31) (3 connections)
+- [ContactMessageAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L89) (3 connections)
+- [ExhibitorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L70) (3 connections)
+- [PartnerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L50) (3 connections)
+- [SpeakerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L11) (3 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L46) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L85) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L66) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L27) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L109) (1 connections)
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class AmbassadorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ContactMessageAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ExhibitorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class PartnerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class SpeakerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+```
 
 ## Relationships
 
@@ -22,11 +50,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py)
 
 ## Audit Trail
 
-- EXTRACTED: 52 (100%)
+- EXTRACTED: 40 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

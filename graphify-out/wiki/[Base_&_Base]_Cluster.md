@@ -1,11 +1,11 @@
 # [Base & Base] Cluster
 
-> 128 nodes · cohesion 0.02
+> 130 nodes · cohesion 0.02
 
 ## Key Concepts
 
-- **BaseModel** (84 connections)
-- [referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/referentials.py#L1) (12 connections)
+- **BaseModel** (89 connections)
+- [referentials.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/referentials.py#L1) (17 connections)
 - [admin_applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L1) (8 connections)
 - [applications.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L1) (8 connections)
 - **ValueError** (8 connections)
@@ -24,12 +24,12 @@
 - [SpeakerPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L69) (3 connections)
 - [AdminMeOut](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L29) (3 connections)
 - [TokenPair](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/auth.py#L9) (3 connections)
-- [PromoValidateResponse](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/promo.py#L8) (3 connections)
 - [AdminUserRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L40) (3 connections)
 - [update_role_permissions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L58) (3 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L1) (3 connections)
 - [admin_users.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_users.py#L1) (3 connections)
-- *... and 103 more nodes in this community*
+- [exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py#L1) (3 connections)
+- *... and 105 more nodes in this community*
 
 ## Class Diagram
 
@@ -197,12 +197,6 @@ classDiagram
     class WaitlistRead {
         +payments.py()
     }
-    class PromoValidateRequest {
-        +promo.py()
-    }
-    class PromoValidateResponse {
-        +promo.py()
-    }
     class AdminUserRead {
         +rbac.py()
     }
@@ -245,7 +239,22 @@ classDiagram
     class FaqCategoryUpdate {
         +referentials.py()
     }
+    class PartnerLevelCreate {
+        +referentials.py()
+    }
     class PartnerLevelRead {
+        +referentials.py()
+    }
+    class PartnerLevelUpdate {
+        +referentials.py()
+    }
+    class PassContentCreate {
+        +referentials.py()
+    }
+    class PassContentRead {
+        +referentials.py()
+    }
+    class PassContentUpdate {
         +referentials.py()
     }
     class PassTypeCreate {
@@ -306,8 +315,8 @@ classDiagram
 
 ## Audit Trail
 
-- EXTRACTED: 361 (92%)
-- INFERRED: 30 (8%)
+- EXTRACTED: 375 (93%)
+- INFERRED: 29 (7%)
 - AMBIGUOUS: 0 (0%)
 
 ---

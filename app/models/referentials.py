@@ -1,8 +1,8 @@
 from datetime import date as date_type
 from datetime import datetime
 
-from sqlalchemy import Date, DateTime, Integer, String, Text, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import Column, Date, DateTime, ForeignKey, Integer, String, Table, Text, func
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
 
@@ -16,6 +16,33 @@ class Day(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
 
+class PassContent(Base):
+    """Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché
+    par pass à la création plutôt que retapé en texte libre par pass
+    (ROADMAP_PUBLIC_SEO.md Partie 8)."""
+
+    __tablename__ = "pass_contents"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    label: Mapped[str] = mapped_column(String(200), unique=True, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+
+pass_type_contents = Table(
+    "pass_type_contents",
+    Base.metadata,
+    Column(
+        "pass_type_id", Integer, ForeignKey("pass_types.id", ondelete="CASCADE"), primary_key=True
+    ),
+    Column(
+        "pass_content_id",
+        Integer,
+        ForeignKey("pass_contents.id", ondelete="CASCADE"),
+        primary_key=True,
+    ),
+)
+
+
 class PassType(Base):
     __tablename__ = "pass_types"
 
@@ -23,10 +50,13 @@ class PassType(Base):
     name: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
     price: Mapped[int] = mapped_column(Integer, nullable=False)
     description: Mapped[str | None] = mapped_column(Text)
-    inclusions: Mapped[str | None] = mapped_column(Text)
     max_days: Mapped[int] = mapped_column(Integer, default=3, server_default="3")
     is_active: Mapped[bool] = mapped_column(default=True, server_default="1")
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+    contents: Mapped[list[PassContent]] = relationship(
+        secondary=pass_type_contents, order_by=PassContent.id
+    )
 
 
 class PartnerLevel(Base):

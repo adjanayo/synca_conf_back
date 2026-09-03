@@ -92,7 +92,12 @@ async def list_sessions(
 async def list_pass_types(
     request: Request, db: AsyncSession = Depends(get_db)
 ) -> list[PassTypeRead]:
-    query = select(PassType).where(PassType.is_active.is_(True)).order_by(PassType.price)
+    query = (
+        select(PassType)
+        .where(PassType.is_active.is_(True))
+        .order_by(PassType.price)
+        .options(selectinload(PassType.contents))
+    )
     pass_types = (await db.execute(query)).scalars().all()
     return [PassTypeRead.model_validate(pass_type) for pass_type in pass_types]
 

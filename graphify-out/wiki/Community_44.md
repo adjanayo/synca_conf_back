@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L128) (1 connections)
-- [hackathon_universitaire  Revision ID: c3d4e5f6a7b8 Revises: b2c3d4e5f6a7 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L31) (1 connections)
+- [2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L57) (1 connections)
+- [promo_codes admin permission  Revision ID: c2d3e4f5a6b7 Revises: 9c1e2f4a7b3d Cr](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L25) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 41]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py)
 
 ## Audit Trail
 

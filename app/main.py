@@ -17,6 +17,8 @@ from app.api.admin_event_settings import router as admin_event_settings_router
 from app.api.admin_export import router as admin_export_router
 from app.api.admin_faqs import admin_faq_categories_router, admin_faqs_router
 from app.api.admin_hackathon import admin_hackathon_teams_router
+from app.api.admin_partner_levels import router as admin_partner_levels_router
+from app.api.admin_pass_types import contents_router as admin_pass_contents_router
 from app.api.admin_pass_types import router as admin_pass_types_router
 from app.api.admin_program import admin_days_router, admin_sessions_router
 from app.api.admin_promo_codes import router as admin_promo_codes_router
@@ -111,6 +113,8 @@ app.include_router(admin_contacts_router)
 app.include_router(admin_export_router)
 app.include_router(admin_audit_router)
 app.include_router(admin_pass_types_router)
+app.include_router(admin_pass_contents_router)
+app.include_router(admin_partner_levels_router)
 app.include_router(admin_event_settings_router)
 app.include_router(admin_days_router)
 app.include_router(admin_sessions_router)

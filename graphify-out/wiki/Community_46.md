@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2240-3f306df50f16_faqs_contact_messages.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L48) (1 connections)
-- [faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py#L21) (1 connections)
+- [2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L26) (1 connections)
+- [ambassador photo_url  Revision ID: a1b2c3d4e5f6 Revises: f5a6b7c8d9e0 Create Dat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 43]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2240-3f306df50f16_faqs_contact_messages.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py)
 
 ## Audit Trail
 
