@@ -26,8 +26,8 @@ sequenceDiagram
     participant P17 as Payment
     participant P18 as Ticket
     participant P19 as make_pending_payment()
-    participant P20 as Waitlist
-    participant P21 as make_ticket()
+    participant P20 as make_ticket()
+    participant P21 as Waitlist
     participant P22 as make_payment()
     participant P23 as make_payment()
     participant P24 as make_ticket_for()
@@ -63,11 +63,11 @@ sequenceDiagram
     participant P54 as UserProfile
     participant P55 as OtpCode
     participant P56 as CampaignWindow
-    participant P57 as HackathonTeam
-    participant P58 as HackathonTeamMember
-    participant P59 as AuditLog
-    participant P60 as NewsletterSubscriber
-    participant P61 as EventSettings
+    participant P57 as EventSettings
+    participant P58 as HackathonTeam
+    participant P59 as HackathonTeamMember
+    participant P60 as AuditLog
+    participant P61 as NewsletterSubscriber
     participant P62 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
     participant P63 as Run migrations in 'offline' mode.      This configures the context with just a U
     participant P64 as In this scenario we need to create an Engine     and associate a connection with
@@ -116,9 +116,9 @@ sequenceDiagram
     P18-->>- P1: return
     P1->>+ P19: calls
     P19-->>- P1: return
-    P1->>+ P20: uses
+    P1->>+ P20: calls
     P20-->>- P1: return
-    P1->>+ P21: calls
+    P1->>+ P21: uses
     P21-->>- P1: return
     P1->>+ P22: calls
     P22-->>- P1: return
@@ -198,8 +198,8 @@ sequenceDiagram
     P52-->>- P0: return
     P0->>+ P53: uses
     P53-->>- P0: return
-    P0->>+ P20: uses
-    P20-->>- P0: return
+    P0->>+ P21: uses
+    P21-->>- P0: return
     P0->>+ P54: uses
     P54-->>- P0: return
     P0->>+ P55: uses

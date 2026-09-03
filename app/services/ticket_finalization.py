@@ -2,9 +2,13 @@ from loguru import logger
 
 from app.core.database import AsyncSessionLocal
 from app.models import PassType, Ticket, User
+from app.models.referentials import EventSettings
 from app.services.email_service import send_email
 from app.services.email_templates import ticket_delivered_email
 from app.services.ticket_pdf import generate_and_upload_ticket_pdf
+
+# Même ligne singleton que public.py/admin_event_settings.py (id=1).
+_EVENT_SETTINGS_ID = 1
 
 
 async def finalize_ticket(ticket_id: int) -> None:
@@ -30,9 +34,25 @@ async def finalize_ticket(ticket_id: int) -> None:
             )
             return
 
+        settings = await db.get(EventSettings, _EVENT_SETTINGS_ID)
+        if settings is None:
+            logger.bind(channel="payment").warning(
+                f"Impossible de finaliser le ticket {ticket.id} : EventSettings introuvable"
+            )
+            return
+        event_name = (
+            f"{settings.name} {settings.year}" if settings.year else settings.name
+        )
+        venue = settings.venue
+
         attendee_name = f"{user.first_name} {user.last_name}"
         pdf_url = await generate_and_upload_ticket_pdf(
-            ticket.ticket_number, ticket.qr_code_hash, attendee_name, pass_type.name
+            ticket.ticket_number,
+            ticket.qr_code_hash,
+            attendee_name,
+            pass_type.name,
+            event_name,
+            venue,
         )
 
         ticket.pdf_url = pdf_url

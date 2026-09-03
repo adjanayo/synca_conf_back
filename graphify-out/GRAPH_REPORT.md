@@ -1,12 +1,12 @@
 # Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-09-03)
 
 ## Corpus Check
-- 182 files · ~176,609 words
+- 182 files · ~185,467 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 957 nodes · 1597 edges · 73 communities detected
-- Extraction: 71% EXTRACTED · 29% INFERRED · 0% AMBIGUOUS · INFERRED: 461 edges (avg confidence: 0.76)
+- 958 nodes · 1599 edges · 74 communities detected
+- Extraction: 71% EXTRACTED · 29% INFERRED · 0% AMBIGUOUS · INFERRED: 463 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -83,6 +83,7 @@
 - [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
 - [[_COMMUNITY_Community 72|Community 72]]
+- [[_COMMUNITY_Community 73|Community 73]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `create_access_token()` - 46 edges
@@ -122,8 +123,8 @@ Nodes (69): create_access_token(), AdminUser, get_current_admin(), Permission, r
 
 ### Community 2 - "Community 2"
 
-Cohesion: 0.04
-Nodes (44): create_faq(), create_faq_category(), create_day(), create_session(), AuditLog, Base, CampaignWindow, ContactMessage (+36 more)
+Cohesion: 0.03
+Nodes (55): create_faq(), create_faq_category(), create_day(), create_session(), AuditLog, Base, CampaignWindow, ContactMessage (+47 more)
 
 ### Community 3 - "Community 3"
 
@@ -147,8 +148,8 @@ Nodes (36): create_team(), create_team_member(), delete_team(), _get_team_or_404
 
 ### Community 7 - "Community 7"
 
-Cohesion: 0.06
-Nodes (27): _is_open(), _notify_waitlist(), update_campaign_window(), BaseHTTPMiddleware, Send a transactional email, or log it in dev.      Without RESEND_API_KEY config, send_email(), lifespan(), Pas de cron dans le projet : boucle asyncio en tâche de fond,     voir app/servi (+19 more)
+Cohesion: 0.08
+Nodes (30): create_admin_user(), list_admin_users(), _to_read(), update_admin_user(), ParticipantTokenOut, main(), _generate_code(), InvalidOtpError (+22 more)
 
 ### Community 8 - "Community 8"
 
@@ -157,43 +158,43 @@ Nodes (23): downgrade(), encrypt users phone_whatsapp and special_needs (PII 7.8
 
 ### Community 9 - "Community 9"
 
-Cohesion: 0.12
-Nodes (22): create_admin_user(), list_admin_users(), _to_read(), update_admin_user(), ParticipantTokenOut, main(), _generate_code(), InvalidOtpError (+14 more)
+Cohesion: 0.09
+Nodes (18): _is_open(), _notify_waitlist(), update_campaign_window(), BaseHTTPMiddleware, Send a transactional email, or log it in dev.      Without RESEND_API_KEY config, send_email(), lifespan(), Pas de cron dans le projet : boucle asyncio en tâche de fond,     voir app/servi (+10 more)
 
 ### Community 10 - "Community 10"
 
 Cohesion: 0.12
-Nodes (19): register(), make_user(), test_null_special_needs_stays_null(), test_orm_read_returns_plaintext(), test_raw_db_row_is_not_plaintext(), make_verified_user(), test_request_otp_only_creates_row_for_known_verified_email(), test_request_otp_rate_limited_after_three_per_15_minutes() (+11 more)
+Nodes (21): _validate_promo_code(), create_payment(), payment_webhook(), validate_promo(), compute_discounted_amount(), get_valid_promo_code(), test_verify_hmac_signature_accepts_valid(), test_verify_hmac_signature_rejects_empty_secret_even_with_matching_forged_signature() (+13 more)
 
 ### Community 11 - "Community 11"
 
 Cohesion: 0.12
-Nodes (21): _validate_promo_code(), create_payment(), payment_webhook(), validate_promo(), compute_discounted_amount(), get_valid_promo_code(), test_verify_hmac_signature_accepts_valid(), test_verify_hmac_signature_rejects_empty_secret_even_with_matching_forged_signature() (+13 more)
-
-### Community 12 - "Community 12"
-
-Cohesion: 0.12
 Nodes (0): 
 
-### Community 13 - "Community 13"
+### Community 12 - "Community 12"
 
 Cohesion: 0.26
 Nodes (7): ModelView, AmbassadorAdmin, ContactMessageAdmin, ExhibitorAdmin, _has_permission(), PartnerAdmin, SpeakerAdmin
 
+### Community 13 - "Community 13"
+
+Cohesion: 0.23
+Nodes (9): make_ticket(), test_finalize_ticket_is_idempotent_when_already_finalized(), test_finalize_ticket_noops_on_missing_ticket(), test_finalize_ticket_sets_pdf_url_and_sends_email(), finalize_ticket(), Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background, generate_and_upload_ticket_pdf(), _render_qr_png() (+1 more)
+
 ### Community 14 - "Community 14"
+
+Cohesion: 0.29
+Nodes (7): make_ticket_for(), make_user(), test_delete_me_anonymizes_and_revokes_token(), test_delete_me_token_cannot_be_reused(), test_get_me_rejects_invalid_token(), test_get_me_returns_own_data(), test_get_my_tickets_returns_only_own_tickets()
+
+### Community 15 - "Community 15"
 
 Cohesion: 0.47
 Nodes (9): form_fields(), make_png_bytes(), open_call_for_ambassador(), test_ambassador_apply_closed_window_forbidden(), test_ambassador_apply_empty_channels_422(), test_ambassador_apply_missing_gdpr_consent_422(), test_ambassador_apply_rejects_fake_image(), test_ambassador_apply_success() (+1 more)
 
-### Community 15 - "Community 15"
+### Community 16 - "Community 16"
 
 Cohesion: 0.4
 Nodes (9): form_fields(), make_png_bytes(), open_call_for_exhibitor(), test_exhibitor_apply_closed_window_forbidden(), test_exhibitor_apply_invalid_reps_count_422(), test_exhibitor_apply_rejects_fake_image(), test_exhibitor_apply_rules_not_accepted_422(), test_exhibitor_apply_success_with_visuals() (+1 more)
-
-### Community 16 - "Community 16"
-
-Cohesion: 0.29
-Nodes (7): make_ticket_for(), make_user(), test_delete_me_anonymizes_and_revokes_token(), test_delete_me_token_cannot_be_reused(), test_get_me_rejects_invalid_token(), test_get_me_returns_own_data(), test_get_my_tickets_returns_only_own_tickets()
 
 ### Community 17 - "Community 17"
 
@@ -458,19 +459,24 @@ Nodes (0):
 ### Community 69 - "Community 69"
 
 Cohesion: 1.0
-Nodes (1): Validate a multipart form's non-file fields against a Pydantic model.      Works
+Nodes (1): Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background
 
 ### Community 70 - "Community 70"
 
 Cohesion: 1.0
-Nodes (1): Verify admin credentials, enforcing the account-lockout policy.      Always take
+Nodes (1): Validate a multipart form's non-file fields against a Pydantic model.      Works
 
 ### Community 71 - "Community 71"
 
 Cohesion: 1.0
-Nodes (1): Issued after a successful OTP verify (app/api/participant_auth.py).      Distinc
+Nodes (1): Verify admin credentials, enforcing the account-lockout policy.      Always take
 
 ### Community 72 - "Community 72"
+
+Cohesion: 1.0
+Nodes (1): Issued after a successful OTP verify (app/api/participant_auth.py).      Distinc
+
+### Community 73 - "Community 73"
 
 Cohesion: 1.0
 Nodes (1): Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background
@@ -504,11 +510,13 @@ Nodes (1): Generate the ticket's PDF+QR, upload it, and email it.      Runs as a
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 68`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 69`** (1 nodes): `Validate a multipart form's non-file fields against a Pydantic model.      Works`
+- **Thin community `Community 69`** (1 nodes): `Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 70`** (1 nodes): `Verify admin credentials, enforcing the account-lockout policy.      Always take`
+- **Thin community `Community 70`** (1 nodes): `Validate a multipart form's non-file fields against a Pydantic model.      Works`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 71`** (1 nodes): `Issued after a successful OTP verify (app/api/participant_auth.py).      Distinc`
+- **Thin community `Community 71`** (1 nodes): `Verify admin credentials, enforcing the account-lockout policy.      Always take`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 72`** (1 nodes): `Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background`
+- **Thin community `Community 72`** (1 nodes): `Issued after a successful OTP verify (app/api/participant_auth.py).      Distinc`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 73`** (1 nodes): `Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.

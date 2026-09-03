@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [Verify admin credentials, enforcing the account-lockout policy.      Always take](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L39) (0 connections)
+- [Validate a multipart form's non-file fields against a Pydantic model.      Works](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/multipart.py#L19) (0 connections)
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/multipart.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/multipart.py)
 
 ## Audit Trail
 

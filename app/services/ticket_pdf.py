@@ -6,7 +6,6 @@ from reportlab.lib.units import mm
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 
-from app.core.config import get_settings
 from app.services.storage import upload_file
 
 # TODO.md: ticket is a wide strip, not a full A4/A5 page -- 210mm x 50mm
@@ -33,10 +32,14 @@ def _render_qr_png(data: str) -> bytes:
 
 
 def _render_ticket_pdf(
-    ticket_number: str, qr_code_hash: str, attendee_name: str, pass_type_name: str
+    ticket_number: str,
+    qr_code_hash: str,
+    attendee_name: str,
+    pass_type_name: str,
+    event_name: str,
+    venue: str,
 ) -> bytes:
     qr_png = _render_qr_png(qr_code_hash)
-    venue = get_settings().event_venue
 
     buffer = io.BytesIO()
     pdf = canvas.Canvas(buffer, pagesize=(_TICKET_WIDTH, _TICKET_HEIGHT))
@@ -50,7 +53,7 @@ def _render_ticket_pdf(
     )
     pdf.setFillColor(colors.white)
     pdf.setFont("Helvetica-Bold", 14)
-    pdf.drawString(_MARGIN, _TICKET_HEIGHT - _HEADER_HEIGHT + 3.5 * mm, "SYNCA CONF 2027")
+    pdf.drawString(_MARGIN, _TICKET_HEIGHT - _HEADER_HEIGHT + 3.5 * mm, event_name.upper())
 
     # QR block, right-aligned, on a light amber tile.
     tile_size = _QR_SIZE + 4 * mm
@@ -91,7 +94,14 @@ def _render_ticket_pdf(
 
 
 async def generate_and_upload_ticket_pdf(
-    ticket_number: str, qr_code_hash: str, attendee_name: str, pass_type_name: str
+    ticket_number: str,
+    qr_code_hash: str,
+    attendee_name: str,
+    pass_type_name: str,
+    event_name: str,
+    venue: str,
 ) -> str:
-    pdf_bytes = _render_ticket_pdf(ticket_number, qr_code_hash, attendee_name, pass_type_name)
+    pdf_bytes = _render_ticket_pdf(
+        ticket_number, qr_code_hash, attendee_name, pass_type_name, event_name, venue
+    )
     return await upload_file(pdf_bytes, f"{ticket_number}.pdf", "application/pdf")

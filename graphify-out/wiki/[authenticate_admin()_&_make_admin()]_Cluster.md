@@ -77,7 +77,7 @@ classDiagram
 
 ## Relationships
 
-- [[[get_settings() & upload_file()] Cluster]] (23 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

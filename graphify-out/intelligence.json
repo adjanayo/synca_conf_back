@@ -7,22 +7,22 @@
     },
     {
       "label": "payment_webhook()",
-      "risk": 0.496,
+      "risk": 0.495,
       "type": "FUNCTION"
     },
     {
       "label": "update_admin_user()",
-      "risk": 0.374,
-      "type": "FUNCTION"
-    },
-    {
-      "label": "register()",
       "risk": 0.373,
       "type": "FUNCTION"
     },
     {
+      "label": "register()",
+      "risk": 0.367,
+      "type": "FUNCTION"
+    },
+    {
       "label": "apply_as_exhibitor()",
-      "risk": 0.359,
+      "risk": 0.354,
       "type": "FUNCTION"
     }
   ],

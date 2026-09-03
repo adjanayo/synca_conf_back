@@ -31,11 +31,11 @@ sequenceDiagram
     participant P22 as UserProfile
     participant P23 as OtpCode
     participant P24 as CampaignWindow
-    participant P25 as HackathonTeam
-    participant P26 as HackathonTeamMember
-    participant P27 as AuditLog
-    participant P28 as NewsletterSubscriber
-    participant P29 as EventSettings
+    participant P25 as EventSettings
+    participant P26 as HackathonTeam
+    participant P27 as HackathonTeamMember
+    participant P28 as AuditLog
+    participant P29 as NewsletterSubscriber
     participant P30 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
     participant P31 as Run migrations in 'offline' mode.      This configures the context with just a U
     participant P32 as In this scenario we need to create an Engine     and associate a connection with

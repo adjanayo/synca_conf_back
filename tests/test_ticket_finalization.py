@@ -3,10 +3,16 @@ from contextlib import asynccontextmanager
 import pytest
 
 from app.models import PassType, Payment, Ticket, User
+from app.models.referentials import EventSettings
 from app.services import ticket_finalization
 
 
 async def make_ticket(db_session) -> Ticket:
+    if await db_session.get(EventSettings, 1) is None:
+        db_session.add(
+            EventSettings(id=1, name="Synca Conf", venue="Dakar, Sénégal", year=2027)
+        )
+
     user = User(
         first_name="Awa",
         last_name="Diop",
@@ -62,11 +68,15 @@ def _use_test_session(monkeypatch, db_session):
 async def test_finalize_ticket_sets_pdf_url_and_sends_email(db_session, monkeypatch):
     ticket = await make_ticket(db_session)
 
-    async def fake_generate_and_upload(ticket_number, qr_code_hash, attendee_name, pass_type_name):
+    async def fake_generate_and_upload(
+        ticket_number, qr_code_hash, attendee_name, pass_type_name, event_name, venue
+    ):
         assert ticket_number == "SYNCA-000001"
         assert qr_code_hash == "hash123"
         assert attendee_name == "Awa Diop"
         assert pass_type_name == "Standard"
+        assert event_name == "Synca Conf 2027"
+        assert venue == "Dakar, Sénégal"
         return "https://cdn.example.com/SYNCA-000001.pdf"
 
     sent_emails = []
