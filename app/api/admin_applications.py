@@ -177,6 +177,7 @@ async def create_ambassador_admin(
         availability_pre=body.availability_pre,
         gdpr_consent=body.gdpr_consent,
         status=body.status,
+        is_public=body.status == "accepted",
     )
     db.add(ambassador)
     await db.flush()
@@ -204,6 +205,7 @@ async def update_ambassador_status(
         )
 
     ambassador.status = body.status
+    ambassador.is_public = body.status == "accepted"
     if body.status == "accepted" and ambassador.promo_code_id is None:
         await generate_ambassador_promo_code(db, ambassador)
     await db.commit()

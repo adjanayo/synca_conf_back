@@ -6,6 +6,7 @@ from app.core.database import get_db
 from app.core.rate_limit import limiter
 from app.deps.pagination import Pagination, pagination_params
 from app.models import (
+    Ambassador,
     CampaignWindow,
     Day,
     Exhibitor,
@@ -19,16 +20,17 @@ from app.models import (
 )
 from app.models.referentials import EventSettings
 from app.schemas import (
+    AmbassadorPublicRead,
     CampaignWindowRead,
     DayRead,
-    ExhibitorRead,
+    ExhibitorPublicRead,
     FaqCategoryRead,
     FaqRead,
     PartnerLevelRead,
-    PartnerRead,
+    PartnerPublicRead,
     PassTypeRead,
     SessionRead,
-    SpeakerRead,
+    SpeakerPublicRead,
 )
 from app.schemas.referentials import EventSettingsRead
 
@@ -92,7 +94,7 @@ async def list_pass_types(
     return [PassTypeRead.model_validate(pass_type) for pass_type in pass_types]
 
 
-@router.get("/speakers", response_model=list[SpeakerRead])
+@router.get("/speakers", response_model=list[SpeakerPublicRead])
 @limiter.limit("60/minute")
 async def list_speakers(
     request: Request,
@@ -100,7 +102,7 @@ async def list_speakers(
     format: str | None = None,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),
-) -> list[SpeakerRead]:
+) -> list[SpeakerPublicRead]:
     query = select(Speaker).where(Speaker.is_public.is_(True))
     if theme is not None:
         query = query.where(Speaker.theme == theme)
@@ -109,7 +111,49 @@ async def list_speakers(
     query = query.order_by(Speaker.last_name).limit(pagination.limit).offset(pagination.offset)
 
     speakers = (await db.execute(query)).scalars().all()
-    return [SpeakerRead.model_validate(speaker) for speaker in speakers]
+    return [SpeakerPublicRead.model_validate(speaker) for speaker in speakers]
+
+
+@router.get("/speakers/{speaker_id}", response_model=SpeakerPublicRead)
+@limiter.limit("60/minute")
+async def get_speaker(
+    request: Request, speaker_id: int, db: AsyncSession = Depends(get_db)
+) -> SpeakerPublicRead:
+    speaker = await db.get(Speaker, speaker_id)
+    if speaker is None or not speaker.is_public:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Speaker introuvable.")
+    return SpeakerPublicRead.model_validate(speaker)
+
+
+@router.get("/ambassadors", response_model=list[AmbassadorPublicRead])
+@limiter.limit("60/minute")
+async def list_ambassadors(
+    request: Request,
+    pagination: Pagination = Depends(pagination_params),
+    db: AsyncSession = Depends(get_db),
+) -> list[AmbassadorPublicRead]:
+    query = (
+        select(Ambassador)
+        .where(Ambassador.is_public.is_(True))
+        .order_by(Ambassador.last_name)
+        .limit(pagination.limit)
+        .offset(pagination.offset)
+    )
+    ambassadors = (await db.execute(query)).scalars().all()
+    return [AmbassadorPublicRead.model_validate(ambassador) for ambassador in ambassadors]
+
+
+@router.get("/ambassadors/{ambassador_id}", response_model=AmbassadorPublicRead)
+@limiter.limit("60/minute")
+async def get_ambassador(
+    request: Request, ambassador_id: int, db: AsyncSession = Depends(get_db)
+) -> AmbassadorPublicRead:
+    ambassador = await db.get(Ambassador, ambassador_id)
+    if ambassador is None or not ambassador.is_public:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Ambassadeur introuvable."
+        )
+    return AmbassadorPublicRead.model_validate(ambassador)
 
 
 @router.get("/partner-levels", response_model=list[PartnerLevelRead])
@@ -122,14 +166,14 @@ async def list_partner_levels(
     return [PartnerLevelRead.model_validate(level) for level in levels]
 
 
-@router.get("/partners", response_model=list[PartnerRead])
+@router.get("/partners", response_model=list[PartnerPublicRead])
 @limiter.limit("60/minute")
 async def list_partners(
     request: Request,
     level: int | None = None,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),
-) -> list[PartnerRead]:
+) -> list[PartnerPublicRead]:
     query = select(Partner).where(Partner.is_public.is_(True))
     if level is not None:
         query = query.where(Partner.level_id == level)
@@ -138,16 +182,16 @@ async def list_partners(
     )
 
     partners = (await db.execute(query)).scalars().all()
-    return [PartnerRead.model_validate(partner) for partner in partners]
+    return [PartnerPublicRead.model_validate(partner) for partner in partners]
 
 
-@router.get("/exhibitors", response_model=list[ExhibitorRead])
+@router.get("/exhibitors", response_model=list[ExhibitorPublicRead])
 @limiter.limit("60/minute")
 async def list_exhibitors(
     request: Request,
     pagination: Pagination = Depends(pagination_params),
     db: AsyncSession = Depends(get_db),
-) -> list[ExhibitorRead]:
+) -> list[ExhibitorPublicRead]:
     # `public=true` per schema.md's endpoint recap is the only mode this
     # endpoint supports -- is_public=true is enforced unconditionally,
     # there's no "show private exhibitors" toggle on a public endpoint.
@@ -159,7 +203,7 @@ async def list_exhibitors(
         .offset(pagination.offset)
     )
     exhibitors = (await db.execute(query)).scalars().all()
-    return [ExhibitorRead.model_validate(exhibitor) for exhibitor in exhibitors]
+    return [ExhibitorPublicRead.model_validate(exhibitor) for exhibitor in exhibitors]
 
 
 @router.get("/faq-categories", response_model=list[FaqCategoryRead])

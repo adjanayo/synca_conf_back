@@ -1,4 +1,13 @@
-from app.schemas.applications import AmbassadorRead, ExhibitorRead, PartnerRead, SpeakerRead
+from app.schemas.applications import (
+    AmbassadorPublicRead,
+    AmbassadorRead,
+    ExhibitorPublicRead,
+    ExhibitorRead,
+    PartnerPublicRead,
+    PartnerRead,
+    SpeakerPublicRead,
+    SpeakerRead,
+)
 from app.schemas.campaign import CampaignWindowRead
 from app.schemas.content import ContactMessageRead, FaqRead
 from app.schemas.payments import (
@@ -16,14 +25,17 @@ from app.schemas.users import UserProfileRead, UserRead
 
 __all__ = [
     "AdminUserRead",
+    "AmbassadorPublicRead",
     "AmbassadorRead",
     "CampaignWindowRead",
     "ContactMessageRead",
     "DayRead",
+    "ExhibitorPublicRead",
     "ExhibitorRead",
     "FaqCategoryRead",
     "FaqRead",
     "PartnerLevelRead",
+    "PartnerPublicRead",
     "PartnerRead",
     "PassTypeRead",
     "PaymentRead",
@@ -34,6 +46,7 @@ __all__ = [
     "RolePermissionRead",
     "RoleRead",
     "SessionRead",
+    "SpeakerPublicRead",
     "SpeakerRead",
     "TicketRead",
     "UserProfileRead",
