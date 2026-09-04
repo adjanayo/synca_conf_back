@@ -23,18 +23,29 @@ async def db_session() -> AsyncSession:
     engine = create_async_engine(get_settings().database_url)
     async with engine.connect() as connection:
         outer_transaction = await connection.begin()
-        # Session.join_transaction_mode defaults to "conditional_savepoint"
-        # (SQLAlchemy 2.0): binding the session to a connection that already
-        # has an open transaction makes it automatically open/restart its own
-        # SAVEPOINT around every commit()/rollback(), so session.commit()
-        # calls made by test or application code never touch -- let alone
-        # end -- the outer transaction below. No manual savepoint bookkeeping
-        # needed; a hand-rolled version of this (event listener restarting a
-        # SAVEPOINT via connection.sync_connection) used to live here and
-        # fought with this built-in behavior, causing intermittent
-        # MissingGreenlet errors on the second nested commit.
         session_factory = async_sessionmaker(bind=connection, expire_on_commit=False)
         session = session_factory()
+
+        # Every test (and the app code it exercises through the FastAPI
+        # dependency override) shares this single connection/transaction,
+        # rolled back wholesale at teardown -- so a real commit() is never
+        # needed for writes to be visible to later queries in the same test,
+        # a flush() already gives that (same connection, same transaction).
+        # Faking commit() as flush() sidesteps SAVEPOINT-per-commit isolation
+        # entirely: both a hand-rolled restart-savepoint-on-commit listener
+        # and SQLAlchemy's own built-in "conditional_savepoint" join mode
+        # (the alternative, more "correct" ways to let real nested commits
+        # happen) intermittently raise MissingGreenlet with the asyncmy
+        # driver. Real rollback() (e.g. forms.py catching IntegrityError) is
+        # left untouched -- the DB requires a real rollback after a failed
+        # statement before the connection can be used again, and since we
+        # never issue a real commit either, nothing it ends is ever actually
+        # persisted: the connection is dropped unpersisted at teardown either
+        # way.
+        async def _commit_as_flush() -> None:
+            await session.flush()
+
+        session.commit = _commit_as_flush
 
         try:
             yield session
