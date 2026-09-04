@@ -1,6 +1,6 @@
 # Base
 
-> God node · 36 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
+> God node · 38 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py#L13)
 
 ## Call Trace Diagram
 
@@ -64,16 +64,18 @@ sequenceDiagram
     participant P55 as OtpCode
     participant P56 as CampaignWindow
     participant P57 as PassContent
-    participant P58 as EventSettings
-    participant P59 as HackathonTeam
-    participant P60 as HackathonTeamMember
-    participant P61 as AuditLog
-    participant P62 as NewsletterSubscriber
-    participant P63 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P64 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
-    participant P65 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P66 as In this scenario we need to create an Engine     and associate a connection with
-    participant P67 as Run migrations in 'online' mode.
+    participant P58 as PartnerBenefit
+    participant P59 as EventSettings
+    participant P60 as HackathonTeam
+    participant P61 as HackathonTeamMember
+    participant P62 as AuditLog
+    participant P63 as NewsletterSubscriber
+    participant P64 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P65 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
+    participant P66 as Avantage pilotable au dashboard -- catalogue global, coché par palier     de par
+    participant P67 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P68 as In this scenario we need to create an Engine     and associate a connection with
+    participant P69 as Run migrations in 'online' mode.
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -230,6 +232,10 @@ sequenceDiagram
     P66-->>- P0: return
     P0->>+ P67: uses
     P67-->>- P0: return
+    P0->>+ P68: uses
+    P68-->>- P0: return
+    P0->>+ P69: uses
+    P69-->>- P0: return
 ```
 
 ## Connections by Relation

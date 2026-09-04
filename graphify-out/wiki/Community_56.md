@@ -4,9 +4,9 @@
 
 ## Key Concepts
 
-- [test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L1) (2 connections)
-- [test_cors_preflight_allows_configured_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L8) (1 connections)
-- [test_cors_rejects_unlisted_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L24) (1 connections)
+- [admin_event_settings.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py#L1) (2 connections)
+- [get_event_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py#L19) (1 connections)
+- [update_event_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py#L35) (1 connections)
 
 ## Relationships
 
@@ -14,7 +14,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_event_settings.py)
 
 ## Audit Trail
 

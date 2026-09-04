@@ -17,7 +17,7 @@
     },
     {
       "label": "register()",
-      "risk": 0.362,
+      "risk": 0.361,
       "type": "FUNCTION"
     },
     {
@@ -28,7 +28,7 @@
   ],
   "blast_radius": {
     "create_access_token()": 46,
-    "Base": 36,
+    "Base": 38,
     "PassType": 30,
     "User": 20,
     "Role": 20

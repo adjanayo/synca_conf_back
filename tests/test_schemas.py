@@ -69,7 +69,7 @@ def test_pass_type_read():
 
 
 def test_partner_level_read():
-    obj = PartnerLevel(id=1, name="Gold", price=500000, benefits=None, sort_order=0, created_at=NOW)
+    obj = PartnerLevel(id=1, name="Gold", price=500000, sort_order=0, created_at=NOW)
     read = PartnerLevelRead.model_validate(obj)
     assert read.name == "Gold"
 

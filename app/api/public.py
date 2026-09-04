@@ -169,7 +169,11 @@ async def get_ambassador(
 async def list_partner_levels(
     request: Request, db: AsyncSession = Depends(get_db)
 ) -> list[PartnerLevelRead]:
-    query = select(PartnerLevel).order_by(PartnerLevel.sort_order)
+    query = (
+        select(PartnerLevel)
+        .order_by(PartnerLevel.sort_order)
+        .options(selectinload(PartnerLevel.benefits))
+    )
     levels = (await db.execute(query)).scalars().all()
     return [PartnerLevelRead.model_validate(level) for level in levels]
 

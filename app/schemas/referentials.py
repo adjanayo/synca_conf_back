@@ -85,29 +85,45 @@ class EventSettingsUpdate(BaseModel):
     year: int | None = None
 
 
+class PartnerBenefitRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    label: str
+    created_at: datetime.datetime
+
+
+class PartnerBenefitCreate(BaseModel):
+    label: str
+
+
+class PartnerBenefitUpdate(BaseModel):
+    label: str | None = None
+
+
 class PartnerLevelRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
     name: str
     price: int
-    benefits: str | None
     sort_order: int
     created_at: datetime.datetime
+    benefits: list[PartnerBenefitRead] = []
 
 
 class PartnerLevelCreate(BaseModel):
     name: str
     price: int
-    benefits: str | None = None
     sort_order: int = 0
+    benefit_ids: list[int] = []
 
 
 class PartnerLevelUpdate(BaseModel):
     name: str | None = None
     price: int | None = None
-    benefits: str | None = None
     sort_order: int | None = None
+    benefit_ids: list[int] | None = None
 
 
 class FaqCategoryRead(BaseModel):

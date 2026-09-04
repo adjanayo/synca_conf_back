@@ -54,33 +54,35 @@ sequenceDiagram
     participant P45 as OtpCode
     participant P46 as CampaignWindow
     participant P47 as PassContent
-    participant P48 as EventSettings
-    participant P49 as HackathonTeam
-    participant P50 as HackathonTeamMember
-    participant P51 as AuditLog
-    participant P52 as NewsletterSubscriber
-    participant P53 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P54 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
-    participant P55 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P56 as In this scenario we need to create an Engine     and associate a connection with
-    participant P57 as Run migrations in 'online' mode.
-    participant P58 as make_admin_with_permission()
-    participant P59 as make_admin_with_permission()
-    participant P60 as make_admin()
+    participant P48 as PartnerBenefit
+    participant P49 as EventSettings
+    participant P50 as HackathonTeam
+    participant P51 as HackathonTeamMember
+    participant P52 as AuditLog
+    participant P53 as NewsletterSubscriber
+    participant P54 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P55 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
+    participant P56 as Avantage pilotable au dashboard -- catalogue global, coché par palier     de par
+    participant P57 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P58 as In this scenario we need to create an Engine     and associate a connection with
+    participant P59 as Run migrations in 'online' mode.
+    participant P60 as make_admin_with_permission()
     participant P61 as make_admin_with_permission()
-    participant P62 as make_admin_with_permission()
+    participant P62 as make_admin()
     participant P63 as make_admin_with_permission()
-    participant P64 as make_admin()
-    participant P65 as make_admin_with_role()
-    participant P66 as make_admin_with_permissions()
-    participant P67 as test_admin_endpoint_limited_to_30_per_minute()
-    participant P68 as make_admin_with_role()
-    participant P69 as make_admin()
-    participant P70 as test_rbac_read()
-    participant P71 as test_superadmin_can_update_role_permissions()
-    participant P72 as test_non_superadmin_forbidden()
-    participant P73 as test_unknown_permission_code_rejected()
-    participant P74 as test_unauthenticated_rejected()
+    participant P64 as make_admin_with_permission()
+    participant P65 as make_admin_with_permission()
+    participant P66 as make_admin()
+    participant P67 as make_admin_with_role()
+    participant P68 as make_admin_with_permissions()
+    participant P69 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P70 as make_admin_with_role()
+    participant P71 as make_admin()
+    participant P72 as test_rbac_read()
+    participant P73 as test_superadmin_can_update_role_permissions()
+    participant P74 as test_non_superadmin_forbidden()
+    participant P75 as test_unknown_permission_code_rejected()
+    participant P76 as test_unauthenticated_rejected()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -207,10 +209,10 @@ sequenceDiagram
     P56-->>- P1: return
     P1->>+ P57: uses
     P57-->>- P1: return
-    P0->>+ P58: calls
-    P58-->>- P0: return
-    P0->>+ P59: calls
-    P59-->>- P0: return
+    P1->>+ P58: uses
+    P58-->>- P1: return
+    P1->>+ P59: uses
+    P59-->>- P1: return
     P0->>+ P60: calls
     P60-->>- P0: return
     P0->>+ P61: calls
@@ -241,6 +243,10 @@ sequenceDiagram
     P73-->>- P0: return
     P0->>+ P74: calls
     P74-->>- P0: return
+    P0->>+ P75: calls
+    P75-->>- P0: return
+    P0->>+ P76: calls
+    P76-->>- P0: return
 ```
 
 ## Connections by Relation

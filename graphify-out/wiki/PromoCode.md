@@ -54,26 +54,28 @@ sequenceDiagram
     participant P45 as OtpCode
     participant P46 as CampaignWindow
     participant P47 as PassContent
-    participant P48 as EventSettings
-    participant P49 as HackathonTeam
-    participant P50 as HackathonTeamMember
-    participant P51 as AuditLog
-    participant P52 as NewsletterSubscriber
-    participant P53 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P54 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
-    participant P55 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P56 as In this scenario we need to create an Engine     and associate a connection with
-    participant P57 as Run migrations in 'online' mode.
-    participant P58 as test_stats_computed_from_payments_tickets_and_applications()
-    participant P59 as generate_ambassador_promo_code()
-    participant P60 as test_promo_code_payment_ticket_waitlist_read()
-    participant P61 as test_promo_code_and_waitlist_unique()
-    participant P62 as create_promo_code()
-    participant P63 as test_promo_validate_success()
-    participant P64 as test_promo_validate_inactive_400()
-    participant P65 as test_promo_validate_expired_400()
-    participant P66 as test_promo_validate_exhausted_400()
-    participant P67 as test_promo_validate_fixed_discount()
+    participant P48 as PartnerBenefit
+    participant P49 as EventSettings
+    participant P50 as HackathonTeam
+    participant P51 as HackathonTeamMember
+    participant P52 as AuditLog
+    participant P53 as NewsletterSubscriber
+    participant P54 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P55 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
+    participant P56 as Avantage pilotable au dashboard -- catalogue global, coché par palier     de par
+    participant P57 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P58 as In this scenario we need to create an Engine     and associate a connection with
+    participant P59 as Run migrations in 'online' mode.
+    participant P60 as test_stats_computed_from_payments_tickets_and_applications()
+    participant P61 as generate_ambassador_promo_code()
+    participant P62 as test_promo_code_payment_ticket_waitlist_read()
+    participant P63 as test_promo_code_and_waitlist_unique()
+    participant P64 as create_promo_code()
+    participant P65 as test_promo_validate_success()
+    participant P66 as test_promo_validate_inactive_400()
+    participant P67 as test_promo_validate_expired_400()
+    participant P68 as test_promo_validate_exhausted_400()
+    participant P69 as test_promo_validate_fixed_discount()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -200,26 +202,26 @@ sequenceDiagram
     P56-->>- P1: return
     P1->>+ P57: uses
     P57-->>- P1: return
+    P1->>+ P58: uses
+    P58-->>- P1: return
+    P1->>+ P59: uses
+    P59-->>- P1: return
     P0->>+ P2: uses
     P2-->>- P0: return
-    P0->>+ P58: calls
-    P58-->>- P0: return
-    P0->>+ P10: calls
-    P10-->>- P0: return
-    P0->>+ P59: calls
-    P59-->>- P0: return
-    P0->>+ P13: calls
-    P13-->>- P0: return
     P0->>+ P60: calls
     P60-->>- P0: return
+    P0->>+ P10: calls
+    P10-->>- P0: return
+    P0->>+ P61: calls
+    P61-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
+    P0->>+ P62: calls
+    P62-->>- P0: return
     P0->>+ P21: calls
     P21-->>- P0: return
     P0->>+ P22: calls
     P22-->>- P0: return
-    P0->>+ P61: calls
-    P61-->>- P0: return
-    P0->>+ P62: calls
-    P62-->>- P0: return
     P0->>+ P63: calls
     P63-->>- P0: return
     P0->>+ P64: calls
@@ -230,6 +232,10 @@ sequenceDiagram
     P66-->>- P0: return
     P0->>+ P67: calls
     P67-->>- P0: return
+    P0->>+ P68: calls
+    P68-->>- P0: return
+    P0->>+ P69: calls
+    P69-->>- P0: return
 ```
 
 ## Connections by Relation

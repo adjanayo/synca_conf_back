@@ -48,31 +48,33 @@ sequenceDiagram
     participant P39 as OtpCode
     participant P40 as CampaignWindow
     participant P41 as PassContent
-    participant P42 as EventSettings
-    participant P43 as HackathonTeam
-    participant P44 as HackathonTeamMember
-    participant P45 as AuditLog
-    participant P46 as NewsletterSubscriber
-    participant P47 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
-    participant P48 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
-    participant P49 as Run migrations in 'offline' mode.      This configures the context with just a U
-    participant P50 as In this scenario we need to create an Engine     and associate a connection with
-    participant P51 as Run migrations in 'online' mode.
-    participant P52 as make_ticket_for()
-    participant P53 as test_register_valid_promo_code_accepted()
-    participant P54 as create_pass_type()
-    participant P55 as test_register_success()
-    participant P56 as test_register_sends_confirmation_email()
-    participant P57 as test_register_inactive_pass_type_400()
-    participant P58 as test_register_invalid_promo_code_400()
-    participant P59 as test_create_payment_applies_percent_discount()
-    participant P60 as test_create_payment_applies_fixed_discount()
-    participant P61 as test_create_payment_success_no_promo()
-    participant P62 as test_create_payment_invalid_promo_400()
-    participant P63 as test_list_pass_types_excludes_inactive()
-    participant P64 as test_pass_type_defaults()
-    participant P65 as test_create_payment_invalid_user_400()
-    participant P66 as test_pass_type_read()
+    participant P42 as PartnerBenefit
+    participant P43 as EventSettings
+    participant P44 as HackathonTeam
+    participant P45 as HackathonTeamMember
+    participant P46 as AuditLog
+    participant P47 as NewsletterSubscriber
+    participant P48 as Login code for the participant OTP flow (app/api/participant_auth.py).      Sepa
+    participant P49 as Bénéfice/inclusion pilotable au dashboard -- catalogue global, coché     par pas
+    participant P50 as Avantage pilotable au dashboard -- catalogue global, coché par palier     de par
+    participant P51 as Run migrations in 'offline' mode.      This configures the context with just a U
+    participant P52 as In this scenario we need to create an Engine     and associate a connection with
+    participant P53 as Run migrations in 'online' mode.
+    participant P54 as make_ticket_for()
+    participant P55 as test_register_valid_promo_code_accepted()
+    participant P56 as create_pass_type()
+    participant P57 as test_register_success()
+    participant P58 as test_register_sends_confirmation_email()
+    participant P59 as test_register_inactive_pass_type_400()
+    participant P60 as test_register_invalid_promo_code_400()
+    participant P61 as test_create_payment_applies_percent_discount()
+    participant P62 as test_create_payment_applies_fixed_discount()
+    participant P63 as test_create_payment_success_no_promo()
+    participant P64 as test_create_payment_invalid_promo_400()
+    participant P65 as test_list_pass_types_excludes_inactive()
+    participant P66 as test_pass_type_defaults()
+    participant P67 as test_create_payment_invalid_user_400()
+    participant P68 as test_pass_type_read()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P0: uses
@@ -179,6 +181,10 @@ sequenceDiagram
     P50-->>- P1: return
     P1->>+ P51: uses
     P51-->>- P1: return
+    P1->>+ P52: uses
+    P52-->>- P1: return
+    P1->>+ P53: uses
+    P53-->>- P1: return
     P0->>+ P22: uses
     P22-->>- P0: return
     P0->>+ P23: uses
@@ -197,30 +203,26 @@ sequenceDiagram
     P9-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
-    P0->>+ P52: calls
-    P52-->>- P0: return
-    P0->>+ P13: calls
-    P13-->>- P0: return
-    P0->>+ P53: calls
-    P53-->>- P0: return
-    P0->>+ P14: calls
-    P14-->>- P0: return
     P0->>+ P54: calls
     P54-->>- P0: return
+    P0->>+ P13: calls
+    P13-->>- P0: return
     P0->>+ P55: calls
     P55-->>- P0: return
+    P0->>+ P14: calls
+    P14-->>- P0: return
     P0->>+ P56: calls
     P56-->>- P0: return
     P0->>+ P57: calls
     P57-->>- P0: return
     P0->>+ P58: calls
     P58-->>- P0: return
-    P0->>+ P16: calls
-    P16-->>- P0: return
     P0->>+ P59: calls
     P59-->>- P0: return
     P0->>+ P60: calls
     P60-->>- P0: return
+    P0->>+ P16: calls
+    P16-->>- P0: return
     P0->>+ P61: calls
     P61-->>- P0: return
     P0->>+ P62: calls
@@ -233,6 +235,10 @@ sequenceDiagram
     P65-->>- P0: return
     P0->>+ P66: calls
     P66-->>- P0: return
+    P0->>+ P67: calls
+    P67-->>- P0: return
+    P0->>+ P68: calls
+    P68-->>- P0: return
 ```
 
 ## Connections by Relation
