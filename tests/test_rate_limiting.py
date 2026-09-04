@@ -68,6 +68,11 @@ async def test_admin_endpoint_limited_to_30_per_minute(db_session, client):
     admin = AdminUser(email="rl-admin@synca.conf", password_hash="hash", role_id=role.id)
     db_session.add(admin)
     await db_session.commit()
+    # status/created_at are server_default-only -- unloaded on the Python
+    # object after commit. Refresh now so a later sync attribute access
+    # (e.g. Pydantic model_validate) doesn't trigger a lazy load outside the
+    # async/greenlet context.
+    await db_session.refresh(admin)
 
     token = create_access_token(subject=str(admin.id))
 
