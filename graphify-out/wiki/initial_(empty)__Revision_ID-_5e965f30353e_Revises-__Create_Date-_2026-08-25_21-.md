@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L62) (1 connections)
-- [admin_users.status column + admin_users.manage permission  Revision ID: 9c1e2f4a](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L25) (1 connections)
+- [2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L440) (1 connections)
+- [faqs.manage permission and seed FAQ content  Revision ID: f5a6b7c8d9e0 Revises:](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L375) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[speakers, ambassadors, partners, exhibitors  Revision ID: 7b6712058249 Revises:]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py)
 
 ## Audit Trail
 

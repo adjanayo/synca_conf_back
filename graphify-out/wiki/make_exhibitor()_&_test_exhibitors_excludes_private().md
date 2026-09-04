@@ -1,26 +1,25 @@
 # make_exhibitor() & test_exhibitors_excludes_private()
 
-> 5 nodes · cohesion 0.40
+> 4 nodes · cohesion 0.50
 
 ## Key Concepts
 
-- [test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L1) (4 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L9) (1 connections)
-- [test_newsletter_duplicate_email_conflict()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L28) (1 connections)
-- [test_newsletter_invalid_email_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L38) (1 connections)
-- [test_newsletter_subscribe_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L19) (1 connections)
+- [2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L93) (1 connections)
+- [event_settings, pass_types & sessions admin permissions  Revision ID: 547ad7a3ad](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py#L27) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1600-547ad7a3ad02_event_settings_pass_types_sessions_admin.py)
 
 ## Audit Trail
 
-- EXTRACTED: 8 (100%)
+- EXTRACTED: 6 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

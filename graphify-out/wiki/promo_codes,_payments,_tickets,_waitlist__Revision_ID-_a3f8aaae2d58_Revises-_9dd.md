@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L34) (1 connections)
-- [newsletter_subscribers table  Revision ID: c375ad4fa2bb Revises: 866edbae2931 Cr](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py#L21) (1 connections)
+- [2026_09_02_2100-e4f5a6b7c8d9_event_settings_year.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2100-e4f5a6b7c8d9_event_settings_year.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2100-e4f5a6b7c8d9_event_settings_year.py#L25) (1 connections)
+- [event_settings year  Revision ID: e4f5a6b7c8d9 Revises: d3e4f5a6b7c8 Create Date](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2100-e4f5a6b7c8d9_event_settings_year.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2100-e4f5a6b7c8d9_event_settings_year.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0339-c375ad4fa2bb_newsletter_subscribers_table.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2100-e4f5a6b7c8d9_event_settings_year.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2100-e4f5a6b7c8d9_event_settings_year.py)
 
 ## Audit Trail
 

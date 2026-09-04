@@ -1,6 +1,6 @@
 # User
 
-> God node · 20 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py#L24)
+> God node · 21 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py#L24)
 
 ## Call Trace Diagram
 
@@ -74,7 +74,8 @@ sequenceDiagram
     participant P65 as make_user()
     participant P66 as make_user()
     participant P67 as test_user_and_profile_read()
-    participant P68 as test_null_special_needs_stays_null()
+    participant P68 as create_participant()
+    participant P69 as test_null_special_needs_stays_null()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -239,6 +240,8 @@ sequenceDiagram
     P67-->>- P0: return
     P0->>+ P68: calls
     P68-->>- P0: return
+    P0->>+ P69: calls
+    P69-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -259,6 +262,7 @@ sequenceDiagram
 - [[make_user_and_pass_type()]] `INFERRED`
 - [[make_user()]] `INFERRED`
 - [[test_user_and_profile_read()]] `INFERRED`
+- [[create_participant()]] `INFERRED`
 - [[test_null_special_needs_stays_null()]] `INFERRED`
 
 ### contains

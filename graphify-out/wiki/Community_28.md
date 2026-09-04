@@ -1,26 +1,25 @@
 # Community 28
 
-> 5 nodes · cohesion 0.40
+> 4 nodes · cohesion 0.50
 
 ## Key Concepts
 
-- [test_forms_contact.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L1) (4 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L10) (1 connections)
-- [test_contact_missing_message_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L39) (1 connections)
-- [test_contact_rejected_when_recaptcha_fails()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L50) (1 connections)
-- [test_contact_success_without_recaptcha_configured()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py#L20) (1 connections)
+- [2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L29) (1 connections)
+- [admin_users lockout columns  Revision ID: 5a30c6996bc8 Revises: 2c2d07493eb5 Cre](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_contact.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2348-5a30c6996bc8_admin_users_lockout_columns.py)
 
 ## Audit Trail
 
-- EXTRACTED: 8 (100%)
+- EXTRACTED: 6 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

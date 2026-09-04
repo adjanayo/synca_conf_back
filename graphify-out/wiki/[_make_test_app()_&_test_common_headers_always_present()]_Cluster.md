@@ -1,18 +1,26 @@
 # [_make_test_app() & test_common_headers_always_present()] Cluster
 
-> 9 nodes · cohesion 0.44
+> 8 nodes · cohesion 0.29
 
 ## Key Concepts
 
-- [require_open_campaign()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L11) (6 connections)
-- [test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L1) (6 connections)
-- [set_window()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L11) (5 connections)
-- [test_open_window_allows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L24) (3 connections)
-- [test_window_already_closed_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L56) (3 connections)
-- [test_window_deactivated_forbidden_even_within_dates()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L73) (3 connections)
-- [test_window_not_yet_started_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L39) (3 connections)
-- [test_missing_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L90) (2 connections)
-- [campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L1) (1 connections)
+- [test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L1) (5 connections)
+- [pagination_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L12) (3 connections)
+- [Pagination](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L7) (2 connections)
+- [test_pagination_custom_values()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L10) (2 connections)
+- [pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L1) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L17) (1 connections)
+- [test_pagination_defaults_apply_without_query_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L43) (1 connections)
+- [test_pagination_rejects_out_of_range_limit()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L31) (1 connections)
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class Pagination {
+        +pagination.py()
+    }
+```
 
 ## Relationships
 
@@ -20,13 +28,13 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py)
 
 ## Audit Trail
 
-- EXTRACTED: 22 (69%)
-- INFERRED: 10 (31%)
+- EXTRACTED: 15 (88%)
+- INFERRED: 2 (12%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -1,19 +1,18 @@
 # [make_user() & test_delete_me_anonymizes_and_revokes_token()] Cluster
 
-> 10 nodes · cohesion 0.31
+> 9 nodes · cohesion 0.44
 
 ## Key Concepts
 
-- [admin_partner_levels.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L1) (10 connections)
-- [create_partner_level()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L81) (4 connections)
-- [_get_level_or_404()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L42) (4 connections)
-- [_resolve_benefits()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L24) (3 connections)
-- [update_partner_level()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L108) (3 connections)
-- [delete_partner_level()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L142) (2 connections)
-- [delete_partner_benefit()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L234) (1 connections)
-- [list_partner_benefits_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L168) (1 connections)
-- [list_partner_levels_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L60) (1 connections)
-- [update_partner_benefit()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py#L205) (1 connections)
+- [require_open_campaign()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L11) (6 connections)
+- [test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L1) (6 connections)
+- [set_window()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L11) (5 connections)
+- [test_open_window_allows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L24) (3 connections)
+- [test_window_already_closed_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L56) (3 connections)
+- [test_window_deactivated_forbidden_even_within_dates()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L73) (3 connections)
+- [test_window_not_yet_started_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L39) (3 connections)
+- [test_missing_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L90) (2 connections)
+- [campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L1) (1 connections)
 
 ## Relationships
 
@@ -21,12 +20,13 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_partner_levels.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py)
 
 ## Audit Trail
 
-- EXTRACTED: 29 (97%)
-- INFERRED: 1 (3%)
+- EXTRACTED: 22 (69%)
+- INFERRED: 10 (31%)
 - AMBIGUOUS: 0 (0%)
 
 ---

@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L128) (1 connections)
-- [hackathon_universitaire  Revision ID: c3d4e5f6a7b8 Revises: b2c3d4e5f6a7 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L31) (1 connections)
+- [2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L98) (1 connections)
+- [rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 48]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py)
 
 ## Audit Trail
 

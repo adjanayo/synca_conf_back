@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L63) (1 connections)
-- [referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py#L21) (1 connections)
+- [2026_09_02_2000-d3e4f5a6b7c8_waitlist_last_notified_at.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2000-d3e4f5a6b7c8_waitlist_last_notified_at.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2000-d3e4f5a6b7c8_waitlist_last_notified_at.py#L25) (1 connections)
+- [waitlist last_notified_at  Revision ID: d3e4f5a6b7c8 Revises: c2d3e4f5a6b7 Creat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2000-d3e4f5a6b7c8_waitlist_last_notified_at.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2000-d3e4f5a6b7c8_waitlist_last_notified_at.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[users and user_profiles  Revision ID: 86b8fb32827d Revises: e15b192c81f5 Create]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2210-e15b192c81f5_referentials_days_pass_types_partner_.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2000-d3e4f5a6b7c8_waitlist_last_notified_at.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_2000-d3e4f5a6b7c8_waitlist_last_notified_at.py)
 
 ## Audit Trail
 

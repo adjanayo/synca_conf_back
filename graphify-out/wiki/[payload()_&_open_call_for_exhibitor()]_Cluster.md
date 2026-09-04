@@ -1,20 +1,19 @@
 # [payload() & open_call_for_exhibitor()] Cluster
 
-> 11 nodes · cohesion 0.40
+> 10 nodes · cohesion 0.49
 
 ## Key Concepts
 
-- [test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L1) (10 connections)
-- [form_fields()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L44) (7 connections)
-- [open_call_for_exhibitor()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L25) (6 connections)
-- [test_exhibitor_apply_success_with_visuals()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L91) (4 connections)
-- [test_exhibitor_apply_invalid_reps_count_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L135) (3 connections)
-- [test_exhibitor_apply_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L107) (3 connections)
-- [test_exhibitor_apply_rules_not_accepted_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L122) (3 connections)
-- [test_exhibitor_apply_success_without_visuals()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L73) (3 connections)
-- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L38) (2 connections)
-- [test_exhibitor_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L65) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py#L16) (1 connections)
+- [test_forms_speaker_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L1) (9 connections)
+- [form_fields()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L44) (6 connections)
+- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L38) (5 connections)
+- [open_call_for_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L25) (5 connections)
+- [test_speaker_apply_missing_gdpr_consent_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L129) (4 connections)
+- [test_speaker_apply_oversized_photo_rejected_400()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L110) (4 connections)
+- [test_speaker_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L76) (4 connections)
+- [test_speaker_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L64) (3 connections)
+- [test_speaker_apply_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L96) (3 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L16) (1 connections)
 
 ## Relationships
 
@@ -22,7 +21,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_exhibitor_apply.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py)
 
 ## Audit Trail
 

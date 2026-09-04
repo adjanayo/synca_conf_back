@@ -1,19 +1,17 @@
 # [run_async_migrations() & run_migrations_online()] Cluster
 
-> 10 nodes · cohesion 0.49
+> 8 nodes · cohesion 0.36
 
 ## Key Concepts
 
-- [test_forms_speaker_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L1) (9 connections)
-- [form_fields()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L44) (6 connections)
-- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L38) (5 connections)
-- [open_call_for_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L25) (5 connections)
-- [test_speaker_apply_missing_gdpr_consent_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L129) (4 connections)
-- [test_speaker_apply_oversized_photo_rejected_400()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L110) (4 connections)
-- [test_speaker_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L76) (4 connections)
-- [test_speaker_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L64) (3 connections)
-- [test_speaker_apply_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L96) (3 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py#L16) (1 connections)
+- [test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L1) (7 connections)
+- [make_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L19) (5 connections)
+- [test_get_speaker_detail()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L80) (2 connections)
+- [test_get_speaker_detail_404_when_not_public()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L97) (2 connections)
+- [test_speakers_filter_by_theme_and_format_excludes_private()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L40) (2 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L10) (1 connections)
+- [test_get_speaker_detail_404_when_missing()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L110) (1 connections)
+- [test_speakers_empty_result()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L71) (1 connections)
 
 ## Relationships
 
@@ -21,12 +19,12 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_speaker_apply.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py)
 
 ## Audit Trail
 
-- EXTRACTED: 44 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 20 (95%)
+- INFERRED: 1 (5%)
 - AMBIGUOUS: 0 (0%)
 
 ---

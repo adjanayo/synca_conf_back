@@ -4,10 +4,10 @@
 
 ## Key Concepts
 
-- [2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L58) (1 connections)
-- [waitlist.view permission  Revision ID: 80348b151263 Revises: 547ad7a3ad02 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L25) (1 connections)
+- [2026_09_04_0930-f6a7b8c9d0e1_hackathon_member_participant_link.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0930-f6a7b8c9d0e1_hackathon_member_participant_link.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0930-f6a7b8c9d0e1_hackathon_member_participant_link.py#L74) (1 connections)
+- [hackathon_member_participant_link  Revision ID: f6a7b8c9d0e1 Revises: e5f6a7b8c9](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0930-f6a7b8c9d0e1_hackathon_member_participant_link.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0930-f6a7b8c9d0e1_hackathon_member_participant_link.py#L23) (1 connections)
 
 ## Relationships
 
@@ -15,7 +15,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0930-f6a7b8c9d0e1_hackathon_member_participant_link.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0930-f6a7b8c9d0e1_hackathon_member_participant_link.py)
 
 ## Audit Trail
 

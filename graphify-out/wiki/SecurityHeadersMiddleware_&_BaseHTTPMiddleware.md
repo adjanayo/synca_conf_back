@@ -1,17 +1,15 @@
 # SecurityHeadersMiddleware & BaseHTTPMiddleware
 
-> 8 nodes · cohesion 0.36
+> 6 nodes · cohesion 0.47
 
 ## Key Concepts
 
-- [test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L1) (7 connections)
-- [make_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L19) (5 connections)
-- [test_get_speaker_detail()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L80) (2 connections)
-- [test_get_speaker_detail_404_when_not_public()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L97) (2 connections)
-- [test_speakers_filter_by_theme_and_format_excludes_private()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L40) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L10) (1 connections)
-- [test_get_speaker_detail_404_when_missing()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L110) (1 connections)
-- [test_speakers_empty_result()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L71) (1 connections)
+- [test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L1) (5 connections)
+- [_make_test_app()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L11) (3 connections)
+- [test_common_headers_always_present()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L21) (2 connections)
+- [test_hsts_only_sent_when_enabled()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L34) (2 connections)
+- [test_admin_routes_get_permissive_same_origin_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L66) (1 connections)
+- [test_api_routes_get_locked_down_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L54) (1 connections)
 
 ## Relationships
 
@@ -19,12 +17,12 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py)
 
 ## Audit Trail
 
-- EXTRACTED: 20 (95%)
-- INFERRED: 1 (5%)
+- EXTRACTED: 14 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

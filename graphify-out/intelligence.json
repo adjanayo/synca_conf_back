@@ -7,7 +7,7 @@
     },
     {
       "label": "payment_webhook()",
-      "risk": 0.492,
+      "risk": 0.49,
       "type": "FUNCTION"
     },
     {
@@ -17,12 +17,12 @@
     },
     {
       "label": "register()",
-      "risk": 0.361,
+      "risk": 0.357,
       "type": "FUNCTION"
     },
     {
-      "label": "apply_as_exhibitor()",
-      "risk": 0.348,
+      "label": "parse_multipart_form()",
+      "risk": 0.344,
       "type": "FUNCTION"
     }
   ],
@@ -30,7 +30,7 @@
     "create_access_token()": 46,
     "Base": 38,
     "PassType": 30,
-    "User": 20,
+    "User": 21,
     "Role": 20
   }
 }

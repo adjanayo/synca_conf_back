@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L59) (1 connections)
-- [campaign_window_event_key  Revision ID: b1c2d3e4f5a6 Revises: 75418b933d4f Creat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py#L21) (1 connections)
+- [2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L38) (1 connections)
+- [otp_codes table (participant OTP login)  Revision ID: 75418b933d4f Revises: d7d5](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 41]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1500-b1c2d3e4f5a6_campaign_window_event_key.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_0711-75418b933d4f_otp_codes_table.py)
 
 ## Audit Trail
 

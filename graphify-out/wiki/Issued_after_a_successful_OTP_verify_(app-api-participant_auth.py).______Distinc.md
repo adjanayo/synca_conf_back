@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [Verify admin credentials, enforcing the account-lockout policy.      Always take](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L39) (0 connections)
+- [Issued after a successful OTP verify (app/api/participant_auth.py).      Distinc](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L106) (0 connections)
 
 ## Relationships
 

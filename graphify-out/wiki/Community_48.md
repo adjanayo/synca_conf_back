@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L98) (1 connections)
-- [rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py#L21) (1 connections)
+- [2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L50) (1 connections)
+- [partner_benefits  Revision ID: e5f6a7b8c9d0 Revises: d4e5f6a7b8c9 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 49]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2247-a9e9ba5fc6f7_rbac_roles_permissions_role_permissions_.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py)
 
 ## Audit Trail
 
