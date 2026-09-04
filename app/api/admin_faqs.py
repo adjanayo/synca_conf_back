@@ -173,7 +173,9 @@ async def update_faq(
 ) -> FaqRead:
     faq = await db.get(Faq, faq_id)
     if faq is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Question FAQ introuvable.")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Question FAQ introuvable."
+        )
 
     if body.category_id is not None and body.category_id != faq.category_id:
         category = await db.get(FaqCategory, body.category_id)
@@ -205,7 +207,9 @@ async def delete_faq(
 ) -> None:
     faq = await db.get(Faq, faq_id)
     if faq is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Question FAQ introuvable.")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Question FAQ introuvable."
+        )
 
     await db.delete(faq)
     await db.commit()
