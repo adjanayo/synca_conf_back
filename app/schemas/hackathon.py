@@ -35,6 +35,7 @@ class HackathonTeamRead(BaseModel):
     name: str
     project_name: str
     project_description: str
+    is_public: bool
     created_at: datetime
     members: list[HackathonTeamMemberRead] = []
 
@@ -44,6 +45,7 @@ class HackathonTeamCreate(BaseModel):
     name: str
     project_name: str
     project_description: str
+    is_public: bool = True
 
 
 class HackathonTeamUpdate(BaseModel):
@@ -51,3 +53,4 @@ class HackathonTeamUpdate(BaseModel):
     name: str | None = None
     project_name: str | None = None
     project_description: str | None = None
+    is_public: bool | None = None

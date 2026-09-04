@@ -1,20 +1,48 @@
 # [form_fields() & make_png_bytes()] Cluster
 
-> 11 nodes · cohesion 0.27
+> 13 nodes · cohesion 0.26
 
 ## Key Concepts
 
-- [admin_pass_types.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L1) (10 connections)
-- [create_pass_type()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L78) (4 connections)
-- [_get_pass_type_or_404()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L41) (4 connections)
-- [create_pass_content()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L177) (3 connections)
-- [_resolve_contents()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L23) (3 connections)
-- [update_pass_type()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L110) (3 connections)
-- [delete_pass_type()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L148) (2 connections)
-- [update_pass_content()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L201) (2 connections)
-- [delete_pass_content()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L230) (1 connections)
-- [list_pass_contents_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L164) (1 connections)
-- [list_pass_types_admin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py#L59) (1 connections)
+- [views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L1) (6 connections)
+- **ModelView** (5 connections)
+- [_has_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L7) (5 connections)
+- [AmbassadorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L31) (3 connections)
+- [ContactMessageAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L89) (3 connections)
+- [ExhibitorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L70) (3 connections)
+- [PartnerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L50) (3 connections)
+- [SpeakerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L11) (3 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L46) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L85) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L66) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L27) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L109) (1 connections)
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class AmbassadorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ContactMessageAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ExhibitorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class PartnerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class SpeakerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+```
 
 ## Relationships
 
@@ -22,12 +50,12 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py)
 
 ## Audit Trail
 
-- EXTRACTED: 30 (88%)
-- INFERRED: 4 (12%)
+- EXTRACTED: 40 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

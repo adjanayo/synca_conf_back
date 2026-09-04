@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2135-5e965f30353e_initial_empty.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L26) (1 connections)
-- [initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py#L21) (1 connections)
+- [2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L50) (1 connections)
+- [partner_benefits  Revision ID: e5f6a7b8c9d0 Revises: d4e5f6a7b8c9 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 48]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2135-5e965f30353e_initial_empty.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py)
 
 ## Audit Trail
 

@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_03_1130-b2c3d4e5f6a7_ambassador_is_public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1130-b2c3d4e5f6a7_ambassador_is_public.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1130-b2c3d4e5f6a7_ambassador_is_public.py#L29) (1 connections)
-- [ambassador is_public  Revision ID: b2c3d4e5f6a7 Revises: a1b2c3d4e5f6 Create Dat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1130-b2c3d4e5f6a7_ambassador_is_public.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1130-b2c3d4e5f6a7_ambassador_is_public.py#L21) (1 connections)
+- [2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L440) (1 connections)
+- [faqs.manage permission and seed FAQ content  Revision ID: f5a6b7c8d9e0 Revises:](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L375) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1130-b2c3d4e5f6a7_ambassador_is_public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1130-b2c3d4e5f6a7_ambassador_is_public.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py)
 
 ## Audit Trail
 

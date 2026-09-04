@@ -75,6 +75,7 @@ async def create_team(
         name=body.name,
         project_name=body.project_name,
         project_description=body.project_description,
+        is_public=body.is_public,
     )
     db.add(team)
     await db.commit()
@@ -101,6 +102,8 @@ async def update_team(
         team.project_name = body.project_name
     if body.project_description is not None:
         team.project_description = body.project_description
+    if body.is_public is not None:
+        team.is_public = body.is_public
 
     await db.commit()
     team = await _get_team_or_404(db, team_id)

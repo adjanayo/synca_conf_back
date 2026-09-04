@@ -265,6 +265,7 @@ async def list_hackathon_teams(
 ) -> list[HackathonTeamRead]:
     query = (
         select(HackathonTeam)
+        .where(HackathonTeam.is_public.is_(True))
         .options(selectinload(HackathonTeam.members))
         .order_by(HackathonTeam.university_name, HackathonTeam.name)
         .limit(pagination.limit)

@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L79) (1 connections)
-- [campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py#L21) (1 connections)
+- [2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L83) (1 connections)
+- [pass_contents and partner_levels admin  Revision ID: d4e5f6a7b8c9 Revises: c3d4e](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L23) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 42]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_25_2252-2c2d07493eb5_campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py)
 
 ## Audit Trail
 

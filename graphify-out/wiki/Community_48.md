@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L50) (1 connections)
-- [partner_benefits  Revision ID: e5f6a7b8c9d0 Revises: d4e5f6a7b8c9 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py#L21) (1 connections)
+- [2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L128) (1 connections)
+- [hackathon_universitaire  Revision ID: c3d4e5f6a7b8 Revises: b2c3d4e5f6a7 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py#L31) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 46]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-e5f6a7b8c9d0_partner_benefits.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2030-c3d4e5f6a7b8_hackathon_universitaire.py)
 
 ## Audit Trail
 

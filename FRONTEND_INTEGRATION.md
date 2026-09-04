@@ -96,6 +96,16 @@ Utiliser `access_token` en header `Authorization: Bearer <token>` sur les routes
 
 5 échecs de connexion consécutifs verrouillent le compte 15 min (doublement à chaque échec suivant, plafonné à 4h).
 
+#### `POST /api/admin/refresh`
+
+Échange le `refresh_token` (longue durée, `REFRESH_TOKEN_EXPIRE_DAYS` dans `.env`) contre une nouvelle paire — évite de renvoyer l'admin au login à chaque expiration de l'`access_token`.
+
+```json
+{ "refresh_token": "..." }
+```
+
+**Réponse `200`** : même forme que le login (`access_token`/`refresh_token`/`token_type`). **Rotation à chaque appel** — l'ancien `refresh_token` n'est plus valide une fois échangé, toujours stocker la nouvelle paire renvoyée. **`401`** si le jeton est invalide, expiré, du mauvais type (ex. un `access_token` envoyé par erreur), ou si le compte n'est plus actif.
+
 ---
 
 ## 4. Endpoints publics — lecture (GET, pas d'auth)
@@ -174,15 +184,18 @@ Types de billets actifs uniquement.
     "name": "Pass 1 jour",
     "price": 15000,
     "description": "Accès à une journée au choix",
-    "inclusions": "Badge, café pause, déjeuner",
     "max_days": 1,
     "is_active": true,
-    "created_at": "2026-08-01T10:00:00"
+    "created_at": "2026-08-01T10:00:00",
+    "contents": [
+      { "id": 1, "label": "Badge nominatif", "created_at": "2026-08-01T10:00:00" },
+      { "id": 2, "label": "Déjeuner inclus", "created_at": "2026-08-01T10:00:00" }
+    ]
   }
 ]
 ```
 
-> `price` est un `int` en **francs CFA (FCFA)**, sans décimales.
+> `price` est un `int` en **francs CFA (FCFA)**, sans décimales. Les inclusions (`contents`) sont un catalogue coché au dashboard (`PassContent`), pas du texte libre — un pass sans contenu coché renvoie `contents: []`.
 
 ### 4.5 `GET /api/speakers`
 
@@ -207,8 +220,6 @@ Speakers acceptés et publiés uniquement (`is_public=true` filtré côté serve
     "title_role": "CTO",
     "company": "Synca Tech",
     "country": "Côte d'Ivoire",
-    "email": "aminata@example.com",
-    "phone_whatsapp": "+2250707070707",
     "linkedin_url": "https://linkedin.com/in/aminata-diallo",
     "website_url": null,
     "photo_url": "https://b2-cdn.example.com/speakers/abc123.jpg",
@@ -217,21 +228,12 @@ Speakers acceptés et publiés uniquement (`is_public=true` filtré côté serve
     "theme": "IA",
     "summary": "Aminata partage son expérience...",
     "audience_level": "Tous",
-    "language": "Français",
-    "past_experience": "3 conférences passées",
-    "video_link": "https://youtube.com/watch?v=...",
-    "availability": "Oui confirmé",
-    "departure_city": "Abidjan",
-    "needs_accommodation": false,
-    "motivation": "Vulgariser l'IA auprès des jeunes",
-    "video_consent": "Oui sans restriction",
-    "gdpr_consent": true,
-    "status": "accepted",
-    "is_public": true,
-    "created_at": "2026-08-01T10:00:00"
+    "language": "Français"
   }
 ]
 ```
+
+> Sous-ensemble sans PII (`SpeakerPublicRead` côté back) : ni `email`, `phone_whatsapp`, `motivation`, `gdpr_consent`, `status` ni les autres champs internes de candidature — uniquement ce qui précède.
 
 ### 4.6 `GET /api/partners`
 
@@ -251,30 +253,56 @@ Partenaires confirmés et publiés uniquement (`is_public=true` filtré côté s
   {
     "id": 1,
     "organization_name": "Orange CI",
-    "sector": "Télécoms",
-    "country": "Côte d'Ivoire",
-    "city": "Abidjan",
     "website_url": "https://orange.ci",
-    "contact_name": "Kofi Asante",
-    "contact_position": "Directeur Marketing",
-    "contact_email": "kofi@orange.ci",
-    "contact_phone": "+2250707070707",
-    "level_id": 1,
-    "has_budget": "Oui — budget précis",
-    "objectives": "Visibilité, recrutement",
-    "previous_sponsor": true,
-    "message": null,
-    "heard_from": "Réseau LinkedIn",
-    "gdpr_consent": true,
-    "status": "confirmed",
     "logo_url": "https://b2-cdn.example.com/logos/orange.png",
-    "is_public": true,
-    "created_at": "2026-08-01T10:00:00"
+    "level_id": 1
   }
 ]
 ```
 
-### 4.7 `GET /api/exhibitors`
+> Sous-ensemble sans PII (`PartnerPublicRead` côté back) : ni `sector`/`country`/`city`, ni les champs de contact (`contact_name`/`contact_email`/`contact_phone`/...), ni `status`/`gdpr_consent` — uniquement ce qui précède.
+
+### 4.7 `GET /api/partner-levels`
+
+Paliers de partenariat (les `level_id` référencés par `/api/partners` et le formulaire de candidature).
+
+**Paramètres** : aucun.
+
+**Réponse** `200` — tableau :
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Gold",
+    "price": 500000,
+    "sort_order": 1,
+    "created_at": "2026-08-01T10:00:00",
+    "benefits": [
+      { "id": 1, "label": "Logo sur le site", "created_at": "2026-08-01T10:00:00" },
+      { "id": 2, "label": "Stand exposition", "created_at": "2026-08-01T10:00:00" }
+    ]
+  }
+]
+```
+
+> Les avantages (`benefits`) sont un catalogue coché au dashboard (`PartnerBenefit`), pas du texte libre.
+
+### 4.8 `GET /api/faq-categories`
+
+Catégories de FAQ, triées par `id`.
+
+**Paramètres** : aucun.
+
+**Réponse** `200` — tableau :
+
+```json
+[
+  { "id": 1, "name": "Billetterie" }
+]
+```
+
+### 4.9 `GET /api/exhibitors`
 
 Exposants confirmés et publiés uniquement (`is_public=true` filtré côté serveur).
 
@@ -291,32 +319,15 @@ Exposants confirmés et publiés uniquement (`is_public=true` filtré côté ser
   {
     "id": 1,
     "organization_name": "TechCorp Africa",
-    "sector": "Fintech",
-    "country": "Sénégal",
-    "city": "Dakar",
     "website_url": "https://techcorp.africa",
-    "contact_name": "Fatou Ndiaye",
-    "contact_position": "CEO",
-    "contact_email": "fatou@techcorp.africa",
-    "contact_phone": "+221771234567",
-    "stand_type": "Premium",
-    "reps_count": 4,
-    "linked_partner_level": null,
-    "products_services": "Solutions de paiement mobile",
-    "equipment_needs": null,
-    "side_activities": null,
-    "visuals_url": "https://drive.google.com/...",
-    "payment_method": "Virement bancaire",
-    "rules_accepted": true,
-    "gdpr_consent": true,
-    "status": "confirmed",
-    "is_public": true,
-    "created_at": "2026-08-01T10:00:00"
+    "stand_type": "Premium"
   }
 ]
 ```
 
-### 4.8 `GET /api/faqs`
+> Sous-ensemble sans PII (`ExhibitorPublicRead` côté back) : ni `sector`/`country`/`city`, ni les champs de contact, ni `reps_count`/`status`/`gdpr_consent`/... — uniquement ce qui précède.
+
+### 4.10 `GET /api/faqs`
 
 FAQ, triée par `sort_order`.
 
@@ -342,7 +353,7 @@ FAQ, triée par `sort_order`.
 ]
 ```
 
-### 4.9 `GET /api/campaign-windows`
+### 4.11 `GET /api/campaign-windows`
 
 Dates d'ouverture/fermeture de chaque étape (billetterie, call for speaker, etc.). Utile pour un **compte à rebours** frontend ou pour activer/désactiver des formulaires côté client.
 
@@ -373,7 +384,45 @@ Dates d'ouverture/fermeture de chaque étape (billetterie, call for speaker, etc
 ]
 ```
 
-> Les `key` possibles : `ticketing`, `call_for_speaker`, `call_for_partner`, `call_for_ambassador`, `call_for_exhibitor`.
+> Les `key` possibles : `call_for_speaker`, `ticketing`, `call_for_partner`, `call_for_ambassador`, `call_for_exhibitor`, `event`, `hackathon_universitaire`, `call_for_community_certified`.
+
+### 4.12 `GET /api/hackathon-teams`
+
+Équipes du hackathon universitaire, avec leurs membres imbriqués. Ne renvoie que les équipes visibles publiquement (`is_public=true` filtré côté serveur — l'admin peut masquer une équipe sans la supprimer).
+
+**Paramètres query** (optionnels) :
+| Param | Type | Description |
+|---|---|---|
+| `limit` | `int` | Défaut `50`, max `200` |
+| `offset` | `int` | Défaut `0` |
+
+**Réponse** `200` — tableau :
+
+```json
+[
+  {
+    "id": 1,
+    "university_name": "UCAD",
+    "name": "Team Alpha",
+    "project_name": "AgriSense",
+    "project_description": "Capteurs IoT pour agriculture de précision.",
+    "created_at": "2026-08-01T10:00:00",
+    "members": [
+      {
+        "id": 1,
+        "team_id": 1,
+        "full_name": "Awa Diop",
+        "study_level": "Licence 3",
+        "specialty": "Informatique",
+        "photo_url": "https://b2-cdn.example.com/hackathon/abc123.jpg",
+        "created_at": "2026-08-01T10:00:00"
+      }
+    ]
+  }
+]
+```
+
+> Les membres sont saisis directement au dashboard admin (pas liés aux inscrits/billetterie — deux populations volontairement distinctes).
 
 ---
 
@@ -831,9 +880,44 @@ Inscription newsletter. Toujours ouvert.
 
 ---
 
-## 6. Espace participant (`Bearer` token, pas de login)
+## 6. Espace participant
 
-Il n'y a pas de login participant : le seul identifiant est l'`access_token` reçu **une fois**, dans la réponse de `POST /api/register` (§5.2). Le frontend doit le stocker et l'envoyer en header `Authorization: Bearer <access_token>` sur les 3 routes ci-dessous. Voir §7 pour les précautions de stockage.
+Deux façons d'obtenir un `Authorization: Bearer <token>` valable sur les 3 routes de ce paragraphe :
+
+1. **`access_token` one-time** — reçu une seule fois dans la réponse de `POST /api/register` (§5.2). Historique, toujours valide, jamais réémis.
+2. **Login OTP (email + code)** — depuis le 2026-09-02, un participant déjà inscrit (`email_verified=true`) peut se reconnecter à tout moment sans redemander son `access_token` d'origine. Voir §6.0 ci-dessous.
+
+Voir §7 pour les précautions de stockage du token, quel que soit son origine.
+
+### 6.0 Login OTP (email + code à 6 chiffres)
+
+#### `POST /api/auth/otp/request`
+
+```json
+{ "email": "participant@example.com" }
+```
+
+**Réponse `200`** (toujours la même, que l'email existe ou non — anti-énumération) :
+```json
+{ "detail": "Si un compte existe pour cet email, un code de connexion vient d'être envoyé." }
+```
+
+Si l'email correspond à un compte `email_verified=true`, un code à 6 chiffres est envoyé par email, valable **10 minutes**, invalidé après **5 tentatives** de vérification. Rate limit : **3 requêtes / 15 min** par IP (`429` au-delà).
+
+#### `POST /api/auth/otp/verify`
+
+```json
+{ "email": "participant@example.com", "code": "123456" }
+```
+
+**Réponse `200`** :
+```json
+{ "access_token": "eyJhbGciOiJIUzI1NiIs...", "token_type": "bearer" }
+```
+
+**`401`** — code invalide, expiré, déjà utilisé, ou email inconnu (même message générique dans tous les cas). Rate limit : 10 requêtes / 15 min par IP.
+
+Le token retourné est un **JWT distinct** de l'`access_token` d'inscription (claim `type: participant_access`, expire après 24h — configurable côté serveur via `PARTICIPANT_TOKEN_EXPIRE_HOURS`). `GET/DELETE /api/user/me` et `GET /api/user/me/tickets` acceptent indifféremment l'un ou l'autre en header `Authorization: Bearer <token>`.
 
 ### 6.1 `GET /api/user/me`
 
@@ -873,7 +957,7 @@ Droit à l'effacement RGPD : anonymise le compte (nom/email/téléphone remplac�
 
 Points qui ne se voient pas dans le schéma JSON mais que le frontend doit gérer pour ne pas introduire de faille côté client :
 
-- **Stockage de `access_token`** — ni cookie ni `localStorage` (XSS = vol du token) : préférer la mémoire JS (variable de state) ou, si la session doit survivre un refresh de page, `sessionStorage`. Jamais dans une URL, un log, ou un outil d'analytics.
+- **Stockage du token** (`access_token` d'inscription ou JWT participant issu du login OTP §6.0) — ni cookie ni `localStorage` (XSS = vol du token) : préférer la mémoire JS (variable de state) ou, si la session doit survivre un refresh de page, `sessionStorage`. Jamais dans une URL, un log, ou un outil d'analytics.
 - **Ne jamais construire une URL de billet à la main** — toujours passer par `GET /api/user/me/tickets` (§6.2) pour obtenir `pdf_url` ; ne pas essayer de deviner/reconstruire un lien à partir d'un `ticket_number` ou d'un id. Le backend ne route pas les billets par id — ce n'est pas juste "poli", `GET /api/tickets/:id` n'existe pas.
 - **CORS strict** — l'API n'autorise que les origines listées dans `CORS_ORIGINS` côté serveur (pas de wildcard `*`). Un domaine de prod non enregistré doit être ajouté côté backend avant déploiement, le frontend ne peut pas contourner ça.
 - **Uploads (logo partenaire §5.5, photo speaker §5.3)** — le backend revalide déjà le type MIME réel et la taille (5 Mo photo / 10 Mo logo, cf. `TO_TEST.md` 7.6) et rejette en `400` sinon ; valider aussi côté client pour l'UX, mais ne pas s'y fier comme seul garde-fou.
@@ -914,6 +998,8 @@ Toutes les erreurs suivent le même format :
 | Formulaires (`POST /api/waitlist`, `/register`, `/speakers/apply`, etc.) | 3/min |
 | Login admin (`POST /api/admin/login`) | 5/min |
 | Backoffice admin (autres routes) | 30/min |
+| `POST /api/auth/otp/request` | 3/15min |
+| `POST /api/auth/otp/verify` | 10/15min |
 
 Quand la limite est dépassée, la réponse est :
 
@@ -927,7 +1013,7 @@ Quand la limite est dépassée, la réponse est :
 
 ## 9. Pagination
 
-Les endpoints de liste (`sessions`, `speakers`, `partners`, `exhibitors`, `faqs`) supportent la pagination. La réponse est un **tableau brut** (pas un objet wrapper) :
+Les endpoints de liste (`sessions`, `speakers`, `partners`, `exhibitors`, `faqs`, `hackathon-teams`) supportent la pagination. La réponse est un **tableau brut** (pas un objet wrapper) :
 
 ```
 GET /api/speakers?limit=10&offset=0   → 10 premiers speakers
@@ -946,8 +1032,6 @@ GET /api/speakers?limit=10&offset=10  → 10 suivants
 ## 10. Ce qui n'est pas encore disponible
 
 - **Paiement/billetterie** — Phase 5 terminée côté backend (webhooks Stripe/Wave/Orange Money, génération billet PDF + QR code) mais pas encore testée en conditions réelles. Les endpoints `POST /api/payments` et `POST /api/promo/validate` existent mais ne doivent pas encore être consommés par le frontend en production.
-- **Refresh token endpoint** — pas encore exposé, seul le login émet une paire access+refresh.
-
 Le suivi d'avancement précis est dans `ROADMAP.md` à la racine du repo.
 
 ---

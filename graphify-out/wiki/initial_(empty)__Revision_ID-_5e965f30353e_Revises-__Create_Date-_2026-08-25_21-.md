@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L440) (1 connections)
-- [faqs.manage permission and seed FAQ content  Revision ID: f5a6b7c8d9e0 Revises:](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py#L375) (1 connections)
+- [2026_09_04_0200-a7b8c9d0e1f2_revert_hackathon_participant_link.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0200-a7b8c9d0e1f2_revert_hackathon_participant_link.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0200-a7b8c9d0e1f2_revert_hackathon_participant_link.py#L62) (1 connections)
+- [revert_hackathon_participant_link  Revision ID: a7b8c9d0e1f2 Revises: f6a7b8c9d0](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0200-a7b8c9d0e1f2_revert_hackathon_participant_link.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0200-a7b8c9d0e1f2_revert_hackathon_participant_link.py#L29) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_0930-f5a6b7c8d9e0_faqs_manage_permission_and_seed.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0200-a7b8c9d0e1f2_revert_hackathon_participant_link.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0200-a7b8c9d0e1f2_revert_hackathon_participant_link.py)
 
 ## Audit Trail
 

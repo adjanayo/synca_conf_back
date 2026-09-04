@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L26) (1 connections)
-- [ambassador photo_url  Revision ID: a1b2c3d4e5f6 Revises: f5a6b7c8d9e0 Create Dat](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py#L21) (1 connections)
+- [2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L57) (1 connections)
+- [promo_codes admin permission  Revision ID: c2d3e4f5a6b7 Revises: 9c1e2f4a7b3d Cr](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py#L25) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 43]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_1030-a1b2c3d4e5f6_ambassador_photo_url.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1700-c2d3e4f5a6b7_promo_codes_admin_permission.py)
 
 ## Audit Trail
 

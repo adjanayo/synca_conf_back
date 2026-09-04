@@ -1,14 +1,15 @@
 # SecurityHeadersMiddleware & BaseHTTPMiddleware
 
-> 5 nodes · cohesion 0.70
+> 6 nodes · cohesion 0.47
 
 ## Key Concepts
 
-- [_csv_response()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L30) (4 connections)
-- [admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L1) (4 connections)
-- [export_payments_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L87) (2 connections)
-- [export_registrations_csv()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L45) (2 connections)
-- [_sanitize_csv_cell()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py#L24) (2 connections)
+- [test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L1) (5 connections)
+- [_make_test_app()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L11) (3 connections)
+- [test_common_headers_always_present()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L21) (2 connections)
+- [test_hsts_only_sent_when_enabled()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L34) (2 connections)
+- [test_admin_routes_get_permissive_same_origin_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L66) (1 connections)
+- [test_api_routes_get_locked_down_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L54) (1 connections)
 
 ## Relationships
 
@@ -16,7 +17,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_export.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py)
 
 ## Audit Trail
 

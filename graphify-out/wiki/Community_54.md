@@ -1,24 +1,25 @@
 # Community 54
 
-> 3 nodes · cohesion 0.67
+> 4 nodes · cohesion 0.50
 
 ## Key Concepts
 
-- [test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L1) (2 connections)
-- [test_cors_preflight_allows_configured_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L8) (1 connections)
-- [test_cors_rejects_unlisted_origin()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py#L24) (1 connections)
+- [2026_08_26_0048-866edbae2931_audit_logs_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L37) (1 connections)
+- [audit_logs table  Revision ID: 866edbae2931 Revises: 5a30c6996bc8 Create Date: 2](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 52]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_cors.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_08_26_0048-866edbae2931_audit_logs_table.py)
 
 ## Audit Trail
 
-- EXTRACTED: 4 (100%)
+- EXTRACTED: 6 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
