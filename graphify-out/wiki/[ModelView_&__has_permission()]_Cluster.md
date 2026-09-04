@@ -1,54 +1,38 @@
 # [ModelView & _has_permission()] Cluster
 
-> 19 nodes · cohesion 0.12
+> 16 nodes · cohesion 0.12
 
 ## Key Concepts
 
-- [SecurityHeadersMiddleware](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L20) (9 connections)
-- [_waitlist_reminder_loop()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L51) (5 connections)
-- [send_waitlist_reminders()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/waitlist_reminder.py#L36) (5 connections)
-- [main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L1) (4 connections)
-- [waitlist_reminder.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/waitlist_reminder.py#L1) (3 connections)
-- [lifespan()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L67) (2 connections)
-- [Pas de cron dans le projet : boucle asyncio en tâche de fond,     voir app/servi](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L52) (2 connections)
-- [Rappels récurrents waitlist (voir DEVLOG.md front, phase J3 suite).  Pas de cron](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/waitlist_reminder.py#L1) (2 connections)
-- [_ticketing_window_open()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/waitlist_reminder.py#L24) (2 connections)
-- **BaseHTTPMiddleware** (1 connections)
-- [health()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L137) (1 connections)
-- [_log_rate_limit_exceeded()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L93) (1 connections)
-- [Pas de cron dans le projet : boucle asyncio en tâche de fond,     voir app/servi](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L46) (1 connections)
-- [Pas de cron dans le projet : boucle asyncio en tâche de fond,     voir app/servi](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L48) (1 connections)
-- [Pas de cron dans le projet : boucle asyncio en tâche de fond,     voir app/servi](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L50) (1 connections)
-- [Pas de cron dans le projet : boucle asyncio en tâche de fond,     voir app/servi](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py#L51) (1 connections)
-- [.dispatch()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L25) (1 connections)
-- [.__init__()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L21) (1 connections)
-- [security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py#L1) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class SecurityHeadersMiddleware {
-        +security_headers.py()
-        +.__init__()
-        +.dispatch()
-    }
-```
+- [public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L1) (15 connections)
+- [get_ambassador()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L156) (1 connections)
+- [get_event_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L49) (1 connections)
+- [get_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L127) (1 connections)
+- [list_ambassadors()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L138) (1 connections)
+- [list_campaign_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L251) (1 connections)
+- [list_days()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L63) (1 connections)
+- [list_exhibitors()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L202) (1 connections)
+- [list_faq_categories()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L223) (1 connections)
+- [list_faqs()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L234) (1 connections)
+- [list_hackathon_teams()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L261) (1 connections)
+- [list_partner_levels()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L169) (1 connections)
+- [list_partners()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L183) (1 connections)
+- [list_pass_types()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L92) (1 connections)
+- [list_sessions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L70) (1 connections)
+- [list_speakers()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L107) (1 connections)
 
 ## Relationships
 
-- [[[send_email() & make_ticket()] Cluster]] (5 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/security_headers.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/main.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/waitlist_reminder.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/waitlist_reminder.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py)
 
 ## Audit Trail
 
-- EXTRACTED: 28 (64%)
-- INFERRED: 16 (36%)
+- EXTRACTED: 30 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

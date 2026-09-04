@@ -28,16 +28,10 @@ class HackathonTeamMember(Base):
     team_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("hackathon_teams.id"), nullable=False, index=True
     )
-    # Compte participant optionnel (table `users`) -- l'admin peut créer le
-    # compte directement depuis le dashboard hackathon (pas besoin de passer
-    # par l'inscription/billetterie publique) ou lier un participant déjà
-    # inscrit. `full_name`/etc. restent saisis à part : un membre d'équipe
-    # peut aussi n'être qu'une entrée texte, sans compte du tout. SET NULL
-    # (pas CASCADE) -- supprimer le compte ne doit pas effacer la ligne du
-    # roster, juste délier.
-    user_id: Mapped[int | None] = mapped_column(
-        Integer, ForeignKey("users.id", ondelete="SET NULL"), index=True
-    )
+    # Les membres du hackathon ne sont volontairement PAS liés à la table
+    # `users` (inscrits/billetterie) -- demande explicite de l'utilisateur,
+    # ce sont deux populations distinctes. Toutes les infos sont saisies à
+    # la main au dashboard.
     full_name: Mapped[str] = mapped_column(String(200), nullable=False)
     study_level: Mapped[str] = mapped_column(String(100), nullable=False)
     specialty: Mapped[str] = mapped_column(String(150), nullable=False)

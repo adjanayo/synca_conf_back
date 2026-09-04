@@ -1,61 +1,37 @@
 # [form_fields() & open_call_for_partner()] Cluster
 
-> 13 nodes · cohesion 0.26
+> 13 nodes · cohesion 0.23
 
 ## Key Concepts
 
-- [views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L1) (6 connections)
-- **ModelView** (5 connections)
-- [_has_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L7) (5 connections)
-- [AmbassadorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L31) (3 connections)
-- [ContactMessageAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L89) (3 connections)
-- [ExhibitorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L70) (3 connections)
-- [PartnerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L50) (3 connections)
-- [SpeakerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L11) (3 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L46) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L85) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L66) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L27) (2 connections)
-- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L109) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class AmbassadorAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class ContactMessageAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class ExhibitorAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class PartnerAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-    class SpeakerAdmin {
-        +views.py()
-        +.is_accessible()
-    }
-```
+- [make_ticket()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L10) (9 connections)
+- [finalize_ticket()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py#L14) (8 connections)
+- [test_ticket_finalization.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L1) (5 connections)
+- [test_finalize_ticket_sets_pdf_url_and_sends_email()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L68) (4 connections)
+- [generate_and_upload_ticket_pdf()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py#L96) (4 connections)
+- [_render_ticket_pdf()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py#L34) (4 connections)
+- [test_finalize_ticket_is_idempotent_when_already_finalized()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L102) (3 connections)
+- [ticket_pdf.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py#L1) (3 connections)
+- [test_finalize_ticket_noops_on_missing_ticket()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L127) (2 connections)
+- [Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py#L15) (2 connections)
+- [_render_qr_png()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py#L27) (2 connections)
+- [_use_test_session()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py#L55) (1 connections)
+- [ticket_finalization.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py#L1) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[[FaqCategory & ContactMessage] Cluster]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_pdf.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_ticket_finalization.py)
 
 ## Audit Trail
 
-- EXTRACTED: 40 (100%)
-- INFERRED: 0 (0%)
+- EXTRACTED: 28 (58%)
+- INFERRED: 20 (42%)
 - AMBIGUOUS: 0 (0%)
 
 ---

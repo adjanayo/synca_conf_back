@@ -1,25 +1,48 @@
 # [make_admin_with_role() & get_current_admin()] Cluster
 
-> 16 nodes · cohesion 0.12
+> 13 nodes · cohesion 0.26
 
 ## Key Concepts
 
-- [public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L1) (15 connections)
-- [get_ambassador()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L156) (1 connections)
-- [get_event_settings()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L49) (1 connections)
-- [get_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L127) (1 connections)
-- [list_ambassadors()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L138) (1 connections)
-- [list_campaign_windows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L251) (1 connections)
-- [list_days()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L63) (1 connections)
-- [list_exhibitors()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L202) (1 connections)
-- [list_faq_categories()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L223) (1 connections)
-- [list_faqs()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L234) (1 connections)
-- [list_hackathon_teams()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L261) (1 connections)
-- [list_partner_levels()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L169) (1 connections)
-- [list_partners()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L183) (1 connections)
-- [list_pass_types()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L92) (1 connections)
-- [list_sessions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L70) (1 connections)
-- [list_speakers()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py#L107) (1 connections)
+- [views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L1) (6 connections)
+- **ModelView** (5 connections)
+- [_has_permission()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L7) (5 connections)
+- [AmbassadorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L31) (3 connections)
+- [ContactMessageAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L89) (3 connections)
+- [ExhibitorAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L70) (3 connections)
+- [PartnerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L50) (3 connections)
+- [SpeakerAdmin](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L11) (3 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L46) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L85) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L66) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L27) (2 connections)
+- [.is_accessible()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py#L109) (1 connections)
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class AmbassadorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ContactMessageAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class ExhibitorAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class PartnerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+    class SpeakerAdmin {
+        +views.py()
+        +.is_accessible()
+    }
+```
 
 ## Relationships
 
@@ -27,11 +50,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/public.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/views.py)
 
 ## Audit Trail
 
-- EXTRACTED: 30 (100%)
+- EXTRACTED: 40 (100%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

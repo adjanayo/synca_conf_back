@@ -14,9 +14,9 @@ sequenceDiagram
     participant P5 as make_pending_payment()
     participant P6 as make_ticket()
     participant P7 as Waitlist
-    participant P8 as make_payment()
+    participant P8 as test_webhook_increments_promo_usage_count_on_completion()
     participant P9 as make_payment()
-    participant P10 as test_webhook_increments_promo_usage_count_on_completion()
+    participant P10 as make_payment()
     participant P11 as make_ticket_for()
     participant P12 as make_user_and_pass()
     participant P13 as test_register_valid_promo_code_accepted()
@@ -69,8 +69,8 @@ sequenceDiagram
     participant P60 as test_stats_computed_from_payments_tickets_and_applications()
     participant P61 as generate_ambassador_promo_code()
     participant P62 as test_promo_code_payment_ticket_waitlist_read()
-    participant P63 as test_promo_code_and_waitlist_unique()
-    participant P64 as create_promo_code()
+    participant P63 as create_promo_code()
+    participant P64 as test_promo_code_and_waitlist_unique()
     participant P65 as test_promo_validate_success()
     participant P66 as test_promo_validate_inactive_400()
     participant P67 as test_promo_validate_expired_400()
@@ -210,8 +210,8 @@ sequenceDiagram
     P2-->>- P0: return
     P0->>+ P60: calls
     P60-->>- P0: return
-    P0->>+ P10: calls
-    P10-->>- P0: return
+    P0->>+ P8: calls
+    P8-->>- P0: return
     P0->>+ P61: calls
     P61-->>- P0: return
     P0->>+ P13: calls
@@ -248,8 +248,8 @@ sequenceDiagram
 - [[test_promo_code_payment_ticket_waitlist_read()]] `INFERRED`
 - [[test_create_payment_applies_percent_discount()]] `INFERRED`
 - [[test_create_payment_applies_fixed_discount()]] `INFERRED`
-- [[test_promo_code_and_waitlist_unique()]] `INFERRED`
 - [[create_promo_code()]] `INFERRED`
+- [[test_promo_code_and_waitlist_unique()]] `INFERRED`
 - [[test_promo_validate_success()]] `INFERRED`
 - [[test_promo_validate_inactive_400()]] `INFERRED`
 - [[test_promo_validate_expired_400()]] `INFERRED`

@@ -1,11 +1,10 @@
 # Community 60
 
-> 2 nodes · cohesion 1.00
+> 1 nodes · cohesion 1.00
 
 ## Key Concepts
 
-- [list_waitlist()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L17) (1 connections)
-- [admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py#L1) (1 connections)
+- [__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py#L1) (0 connections)
 
 ## Relationships
 
@@ -13,11 +12,11 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_waitlist.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/__init__.py)
 
 ## Audit Trail
 
-- EXTRACTED: 2 (100%)
+- EXTRACTED: 0 (0%)
 - INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 

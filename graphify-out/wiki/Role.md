@@ -15,9 +15,9 @@ sequenceDiagram
     participant P6 as make_pending_payment()
     participant P7 as make_ticket()
     participant P8 as Waitlist
-    participant P9 as make_payment()
+    participant P9 as test_webhook_increments_promo_usage_count_on_completion()
     participant P10 as make_payment()
-    participant P11 as test_webhook_increments_promo_usage_count_on_completion()
+    participant P11 as make_payment()
     participant P12 as make_ticket_for()
     participant P13 as make_user_and_pass()
     participant P14 as test_register_valid_promo_code_accepted()

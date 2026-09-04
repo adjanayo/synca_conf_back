@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L58) (1 connections)
-- [waitlist.view permission  Revision ID: 80348b151263 Revises: 547ad7a3ad02 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py#L25) (1 connections)
+- [2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L62) (1 connections)
+- [admin_users.status column + admin_users.manage permission  Revision ID: 9c1e2f4a](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py#L25) (1 connections)
 
 ## Relationships
 
-- [[faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D]] (1 shared connections)
+- [[rbac (roles, permissions, role_permissions, admin_users)  Revision ID: a9e9ba5fc]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1800-80348b151263_waitlist_view_permission.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_02_1900-9c1e2f4a7b3d_admin_users_status_and_permission.py)
 
 ## Audit Trail
 

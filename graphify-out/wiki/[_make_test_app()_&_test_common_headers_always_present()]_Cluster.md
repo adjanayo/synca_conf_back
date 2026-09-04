@@ -1,26 +1,15 @@
 # [_make_test_app() & test_common_headers_always_present()] Cluster
 
-> 8 nodes · cohesion 0.29
+> 6 nodes · cohesion 0.47
 
 ## Key Concepts
 
-- [test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L1) (5 connections)
-- [pagination_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L12) (3 connections)
-- [Pagination](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L7) (2 connections)
-- [test_pagination_custom_values()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L10) (2 connections)
-- [pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py#L1) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L17) (1 connections)
-- [test_pagination_defaults_apply_without_query_params()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L43) (1 connections)
-- [test_pagination_rejects_out_of_range_limit()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py#L31) (1 connections)
-
-## Class Diagram
-
-```mermaid
-classDiagram
-    class Pagination {
-        +pagination.py()
-    }
-```
+- [test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L1) (5 connections)
+- [_make_test_app()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L11) (3 connections)
+- [test_common_headers_always_present()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L21) (2 connections)
+- [test_hsts_only_sent_when_enabled()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L34) (2 connections)
+- [test_admin_routes_get_permissive_same_origin_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L66) (1 connections)
+- [test_api_routes_get_locked_down_csp()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py#L54) (1 connections)
 
 ## Relationships
 
@@ -28,13 +17,12 @@ classDiagram
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/pagination.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_pagination.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_security_headers.py)
 
 ## Audit Trail
 
-- EXTRACTED: 15 (88%)
-- INFERRED: 2 (12%)
+- EXTRACTED: 14 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

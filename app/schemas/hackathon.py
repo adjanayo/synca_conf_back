@@ -8,7 +8,6 @@ class HackathonTeamMemberRead(BaseModel):
 
     id: int
     team_id: int
-    user_id: int | None
     full_name: str
     study_level: str
     specialty: str
@@ -20,14 +19,12 @@ class HackathonTeamMemberCreate(BaseModel):
     full_name: str
     study_level: str
     specialty: str
-    user_id: int | None = None
 
 
 class HackathonTeamMemberUpdate(BaseModel):
     full_name: str | None = None
     study_level: str | None = None
     specialty: str | None = None
-    user_id: int | None = None
 
 
 class HackathonTeamRead(BaseModel):

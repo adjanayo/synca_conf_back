@@ -1,17 +1,18 @@
 # [run_async_migrations() & run_migrations_online()] Cluster
 
-> 8 nodes · cohesion 0.36
+> 9 nodes · cohesion 0.44
 
 ## Key Concepts
 
-- [test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L1) (7 connections)
-- [make_speaker()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L19) (5 connections)
-- [test_get_speaker_detail()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L80) (2 connections)
-- [test_get_speaker_detail_404_when_not_public()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L97) (2 connections)
-- [test_speakers_filter_by_theme_and_format_excludes_private()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L40) (2 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L10) (1 connections)
-- [test_get_speaker_detail_404_when_missing()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L110) (1 connections)
-- [test_speakers_empty_result()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py#L71) (1 connections)
+- [require_open_campaign()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L11) (6 connections)
+- [test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L1) (6 connections)
+- [set_window()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L11) (5 connections)
+- [test_open_window_allows()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L24) (3 connections)
+- [test_window_already_closed_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L56) (3 connections)
+- [test_window_deactivated_forbidden_even_within_dates()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L73) (3 connections)
+- [test_window_not_yet_started_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L39) (3 connections)
+- [test_missing_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py#L90) (2 connections)
+- [campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py#L1) (1 connections)
 
 ## Relationships
 
@@ -19,12 +20,13 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_public_speakers.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/deps/campaign_windows.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_campaign_window_deps.py)
 
 ## Audit Trail
 
-- EXTRACTED: 20 (95%)
-- INFERRED: 1 (5%)
+- EXTRACTED: 22 (69%)
+- INFERRED: 10 (31%)
 - AMBIGUOUS: 0 (0%)
 
 ---

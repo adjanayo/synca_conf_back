@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[speakers, ambassadors, partners, exhibitors  Revision ID: 7b6712058249 Revises:]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

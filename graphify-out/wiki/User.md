@@ -1,6 +1,6 @@
 # User
 
-> God node · 21 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py#L24)
+> God node · 20 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/users.py#L24)
 
 ## Call Trace Diagram
 
@@ -15,9 +15,9 @@ sequenceDiagram
     participant P6 as make_pending_payment()
     participant P7 as make_ticket()
     participant P8 as Waitlist
-    participant P9 as make_payment()
+    participant P9 as test_webhook_increments_promo_usage_count_on_completion()
     participant P10 as make_payment()
-    participant P11 as test_webhook_increments_promo_usage_count_on_completion()
+    participant P11 as make_payment()
     participant P12 as make_ticket_for()
     participant P13 as make_user_and_pass()
     participant P14 as test_register_valid_promo_code_accepted()
@@ -69,13 +69,12 @@ sequenceDiagram
     participant P60 as make_verified_user()
     participant P61 as EncryptedString
     participant P62 as make_user()
-    participant P63 as make_user()
-    participant P64 as register()
+    participant P63 as register()
+    participant P64 as make_user()
     participant P65 as make_user()
     participant P66 as make_user()
-    participant P67 as test_user_and_profile_read()
-    participant P68 as create_participant()
-    participant P69 as test_null_special_needs_stays_null()
+    participant P67 as test_null_special_needs_stays_null()
+    participant P68 as test_user_and_profile_read()
     P0->>+ P1: uses
     P1-->>- P0: return
     P1->>+ P2: uses
@@ -208,16 +207,16 @@ sequenceDiagram
     P59-->>- P1: return
     P0->>+ P6: calls
     P6-->>- P0: return
-    P0->>+ P60: calls
-    P60-->>- P0: return
     P0->>+ P7: calls
     P7-->>- P0: return
+    P0->>+ P60: calls
+    P60-->>- P0: return
     P0->>+ P61: uses
     P61-->>- P0: return
-    P0->>+ P62: calls
-    P62-->>- P0: return
     P0->>+ P9: calls
     P9-->>- P0: return
+    P0->>+ P62: calls
+    P62-->>- P0: return
     P0->>+ P10: calls
     P10-->>- P0: return
     P0->>+ P11: calls
@@ -226,12 +225,12 @@ sequenceDiagram
     P63-->>- P0: return
     P0->>+ P64: calls
     P64-->>- P0: return
+    P0->>+ P65: calls
+    P65-->>- P0: return
     P0->>+ P13: calls
     P13-->>- P0: return
     P0->>+ P15: calls
     P15-->>- P0: return
-    P0->>+ P65: calls
-    P65-->>- P0: return
     P0->>+ P21: calls
     P21-->>- P0: return
     P0->>+ P66: calls
@@ -240,30 +239,27 @@ sequenceDiagram
     P67-->>- P0: return
     P0->>+ P68: calls
     P68-->>- P0: return
-    P0->>+ P69: calls
-    P69-->>- P0: return
 ```
 
 ## Connections by Relation
 
 ### calls
 - [[make_pending_payment()]] `INFERRED`
-- [[make_verified_user()]] `INFERRED`
 - [[make_ticket()]] `INFERRED`
-- [[make_user()]] `INFERRED`
-- [[make_payment()]] `INFERRED`
-- [[make_payment()]] `INFERRED`
+- [[make_verified_user()]] `INFERRED`
 - [[test_webhook_increments_promo_usage_count_on_completion()]] `INFERRED`
 - [[make_user()]] `INFERRED`
+- [[make_payment()]] `INFERRED`
+- [[make_payment()]] `INFERRED`
 - [[register()]] `INFERRED`
+- [[make_user()]] `INFERRED`
+- [[make_user()]] `INFERRED`
 - [[make_user_and_pass()]] `INFERRED`
 - [[test_register_duplicate_email_conflict()]] `INFERRED`
-- [[make_user()]] `INFERRED`
 - [[make_user_and_pass_type()]] `INFERRED`
 - [[make_user()]] `INFERRED`
-- [[test_user_and_profile_read()]] `INFERRED`
-- [[create_participant()]] `INFERRED`
 - [[test_null_special_needs_stays_null()]] `INFERRED`
+- [[test_user_and_profile_read()]] `INFERRED`
 
 ### contains
 - [[users.py]] `EXTRACTED`

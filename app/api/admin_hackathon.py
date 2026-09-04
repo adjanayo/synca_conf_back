@@ -8,7 +8,6 @@ from app.core.multipart import parse_multipart_form
 from app.core.rate_limit import limiter
 from app.deps.rbac import require_permission
 from app.models.hackathon import HackathonTeam, HackathonTeamMember
-from app.models.users import User
 from app.schemas.hackathon import (
     HackathonTeamCreate,
     HackathonTeamMemberCreate,
@@ -146,11 +145,6 @@ async def create_team_member(
     await _get_team_or_404(db, team_id)
     body = await parse_multipart_form(request, HackathonTeamMemberCreate)
 
-    if body.user_id is not None and await db.get(User, body.user_id) is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Participant introuvable."
-        )
-
     photo_url = None
     if photo is not None:
         content = await photo.read()
@@ -166,7 +160,6 @@ async def create_team_member(
 
     member = HackathonTeamMember(
         team_id=team_id,
-        user_id=body.user_id,
         full_name=body.full_name,
         study_level=body.study_level,
         specialty=body.specialty,
@@ -196,11 +189,6 @@ async def update_team_member(
 
     body = await parse_multipart_form(request, HackathonTeamMemberUpdate)
 
-    if body.user_id is not None and await db.get(User, body.user_id) is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Participant introuvable."
-        )
-
     if photo is not None:
         content = await photo.read()
         try:
@@ -219,8 +207,6 @@ async def update_team_member(
         member.study_level = body.study_level
     if body.specialty is not None:
         member.specialty = body.specialty
-    if body.user_id is not None:
-        member.user_id = body.user_id
 
     await db.commit()
     await db.refresh(member)

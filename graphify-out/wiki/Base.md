@@ -16,8 +16,8 @@ sequenceDiagram
     participant P7 as test_promo_code_payment_ticket_waitlist_read()
     participant P8 as test_create_payment_applies_percent_discount()
     participant P9 as test_create_payment_applies_fixed_discount()
-    participant P10 as test_promo_code_and_waitlist_unique()
-    participant P11 as create_promo_code()
+    participant P10 as create_promo_code()
+    participant P11 as test_promo_code_and_waitlist_unique()
     participant P12 as test_promo_validate_success()
     participant P13 as test_promo_validate_inactive_400()
     participant P14 as test_promo_validate_expired_400()
@@ -124,12 +124,12 @@ sequenceDiagram
     P20-->>- P1: return
     P1->>+ P21: uses
     P21-->>- P1: return
+    P1->>+ P4: calls
+    P4-->>- P1: return
     P1->>+ P22: calls
     P22-->>- P1: return
     P1->>+ P23: calls
     P23-->>- P1: return
-    P1->>+ P4: calls
-    P4-->>- P1: return
     P1->>+ P24: calls
     P24-->>- P1: return
     P1->>+ P25: calls
