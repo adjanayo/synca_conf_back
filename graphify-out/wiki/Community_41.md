@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[audit_logs table  Revision ID: 866edbae2931 Revises: 5a30c6996bc8 Create Date: 2]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

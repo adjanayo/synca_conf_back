@@ -95,8 +95,9 @@ class Settings(BaseSettings):
     # Comma-separated in .env, e.g. "http://localhost:3000,http://localhost:5173".
     # Wildcard-free by design (see security-hardening: CORS restricted to the
     # real frontend domain, not "*") -- dev defaults cover the two most common
-    # local dev-server ports.
-    cors_origins: str = "http://localhost:3000,http://localhost:5173"
+    # local dev-server ports, plus :4666 used by the front's prerender step
+    # (scripts/prerender.mjs, `vite preview` -- ROADMAP_PUBLIC_SEO.md S1.6).
+    cors_origins: str = "http://localhost:3000,http://localhost:5173,http://localhost:4666"
 
     @property
     def cors_origin_list(self) -> list[str]:

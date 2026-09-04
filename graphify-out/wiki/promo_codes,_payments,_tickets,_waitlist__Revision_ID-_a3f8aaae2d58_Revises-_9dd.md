@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[referentials (days, pass_types, partner_levels, faq_categories)  Revision ID: e1]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

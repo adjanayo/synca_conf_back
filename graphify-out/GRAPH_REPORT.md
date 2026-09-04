@@ -1,7 +1,7 @@
-# Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-09-03)
+# Graph Report - /Users/kodjododjango/Downloads/dev_projects/synca_conf_back  (2026-09-04)
 
 ## Corpus Check
-- 184 files · ~186,751 words
+- 184 files · ~189,973 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -105,8 +105,8 @@
   /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/database.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/otp.py
 - `CampaignWindow` --uses--> `Rappels récurrents waitlist (voir DEVLOG.md front, phase J3 suite).  Pas de cron`  [INFERRED]
   /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/campaign.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/waitlist_reminder.py
-- `create_pass_content()` --calls--> `PassContent`  [INFERRED]
-  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py
+- `PassContent` --calls--> `create_pass_content()`  [INFERRED]
+  /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/admin_pass_types.py
 - `PassType` --calls--> `test_pass_type_defaults()`  [INFERRED]
   /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/models/referentials.py → /Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_referentials.py
 - `PassType` --calls--> `test_pass_type_read()`  [INFERRED]

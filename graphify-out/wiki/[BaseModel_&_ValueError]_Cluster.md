@@ -124,9 +124,8 @@ classDiagram
 
 ## Relationships
 
-- [[[create_access_token() & Role] Cluster]] (7 shared connections)
-- [[[send_email() & make_ticket()] Cluster]] (1 shared connections)
-- [[[form_fields() & open_call_for_partner()] Cluster]] (1 shared connections)
+- [[[get_settings() & upload_file()] Cluster]] (2 shared connections)
+- [[[form_fields() & make_png_bytes()] Cluster]] (1 shared connections)
 
 ## Source Files
 

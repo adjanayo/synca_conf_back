@@ -50,10 +50,7 @@ classDiagram
 
 ## Relationships
 
-- [[[send_email() & make_ticket()] Cluster]] (4 shared connections)
-- [[[verify_stripe_signature() & payment_webhook()] Cluster]] (2 shared connections)
-- [[[form_fields() & open_call_for_partner()] Cluster]] (1 shared connections)
-- [[[FaqCategory & ContactMessage] Cluster]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
