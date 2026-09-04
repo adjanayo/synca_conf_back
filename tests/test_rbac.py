@@ -10,7 +10,7 @@ async def test_seeded_roles_and_permissions(db_session):
     assert set(role_names) == {"superadmin", "admin", "editor", "support"}
 
     permission_count = (await db_session.execute(select(func.count(Permission.id)))).scalar_one()
-    assert permission_count == 8
+    assert permission_count == 17
 
     superadmin_id = (
         await db_session.execute(select(Role.id).where(Role.name == "superadmin"))

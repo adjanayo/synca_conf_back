@@ -6,7 +6,7 @@ from app.models import ContactMessage, Faq, FaqCategory
 
 @pytest.mark.asyncio
 async def test_faq_crud_basic(db_session):
-    category = FaqCategory(name="Billetterie")
+    category = FaqCategory(name="Billetterie (test)")
     db_session.add(category)
     await db_session.flush()
 

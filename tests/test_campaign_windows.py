@@ -17,9 +17,11 @@ async def test_six_campaign_windows_seeded(db_session):
         "call_for_ambassador",
         "call_for_exhibitor",
         "event",
+        "hackathon_universitaire",
+        "call_for_community_certified",
     }
     count = (await db_session.execute(select(func.count(CampaignWindow.id)))).scalar_one()
-    assert count == 6
+    assert count == 8
 
 
 @pytest.mark.asyncio

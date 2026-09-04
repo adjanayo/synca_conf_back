@@ -150,7 +150,7 @@ def test_applications_read():
         institution_company=None, linkedin_url=None, social_handles={"instagram": "@f"},
         followers_range=None, motivation="M", mobilization_plan="P", estimated_reach=None,
         previous_synca=False, preferred_channels="WhatsApp", availability_pre=None,
-        gdpr_consent=True, promo_code_id=None, status="pending", created_at=NOW,
+        gdpr_consent=True, promo_code_id=None, status="pending", is_public=False, created_at=NOW,
     )
     assert AmbassadorRead.model_validate(ambassador).social_handles == {"instagram": "@f"}
 

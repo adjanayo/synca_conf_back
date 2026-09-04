@@ -18,8 +18,8 @@ def client(db_session):
 
 @pytest.mark.asyncio
 async def test_faqs_filter_by_category(db_session, client):
-    billeterie = FaqCategory(name="Billetterie")
-    speakers = FaqCategory(name="Speakers")
+    billeterie = FaqCategory(name="Billetterie (test)")
+    speakers = FaqCategory(name="Speakers (test)")
     db_session.add_all([billeterie, speakers])
     await db_session.flush()
 

@@ -29,4 +29,6 @@ async def test_list_campaign_windows_returns_seeded_windows(db_session, client):
         "call_for_ambassador",
         "call_for_exhibitor",
         "event",
+        "hackathon_universitaire",
+        "call_for_community_certified",
     }

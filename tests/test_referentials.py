@@ -28,6 +28,6 @@ async def test_pass_type_defaults(db_session):
 
 @pytest.mark.asyncio
 async def test_partner_level_and_faq_category(db_session):
-    db_session.add(PartnerLevel(name="Gold", price=500000))
-    db_session.add(FaqCategory(name="Billetterie"))
+    db_session.add(PartnerLevel(name="Gold (test)", price=500000))
+    db_session.add(FaqCategory(name="Billetterie (test)"))
     await db_session.commit()

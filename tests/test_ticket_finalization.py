@@ -8,10 +8,19 @@ from app.services import ticket_finalization
 
 
 async def make_ticket(db_session) -> Ticket:
-    if await db_session.get(EventSettings, 1) is None:
+    # Force deterministic EventSettings for this test's SAVEPOINT-isolated
+    # session (rolled back at teardown, doesn't touch the real seeded row) --
+    # a row may already exist for real (id=1), so update it rather than
+    # skipping when present.
+    settings = await db_session.get(EventSettings, 1)
+    if settings is None:
         db_session.add(
             EventSettings(id=1, name="Synca Conf", venue="Dakar, Sénégal", year=2027)
         )
+    else:
+        settings.name = "Synca Conf"
+        settings.venue = "Dakar, Sénégal"
+        settings.year = 2027
 
     user = User(
         first_name="Awa",
