@@ -1,9 +1,11 @@
-.PHONY: help up down restart build logs migrate seed admin curl-health swagger create-admin db-shell
+.PHONY: help up down restart build logs migrate seed admin curl-health swagger create-admin db-shell backup restore migrate-export migrate-import
 
 DOCKER    := docker compose
 APP       := $(DOCKER) exec app
 DB        := $(DOCKER) exec db
 API       := http://127.0.0.1:8010
+BACKUP_DIR := backups
+STAMP      := $(shell date +%Y%m%d-%H%M%S)
 
 help: ## Affiche cette aide
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -60,3 +62,32 @@ build: ## Rebuild l'image Docker sans cache
 
 shell: ## Shell dans le conteneur app (bash)
 	$(APP) bash
+
+# ── Backup & migration ────────────────────────────────────
+
+backup: ## Dump la base MySQL dans backups/ (horodaté)
+	@mkdir -p $(BACKUP_DIR)
+	$(DB) sh -c 'exec mysqldump -uroot -p"$$MYSQL_ROOT_PASSWORD" --single-transaction --routines --triggers syncaconf' > $(BACKUP_DIR)/syncaconf-$(STAMP).sql
+	@echo "\n  ✅ Backup : $(BACKUP_DIR)/syncaconf-$(STAMP).sql\n"
+
+restore: ## Restaurer un dump (usage: make restore FILE=backups/xxx.sql)
+	@test -n "$(FILE)" || (echo "Usage: make restore FILE=backups/xxx.sql" && exit 1)
+	cat $(FILE) | $(DB) sh -c 'exec mysql -uroot -p"$$MYSQL_ROOT_PASSWORD" syncaconf'
+	@echo "\n  ✅ Restauré depuis $(FILE)\n"
+
+migrate-export: backup ## Préparer une archive de migration (dump DB + .env) vers backups/
+	@tar -czf $(BACKUP_DIR)/migration-$(STAMP).tar.gz -C $(BACKUP_DIR) syncaconf-$(STAMP).sql -C .. .env
+	@echo "\n  ✅ Archive de migration : $(BACKUP_DIR)/migration-$(STAMP).tar.gz"
+	@echo "     Copier ce fichier sur le nouveau serveur puis lancer 'make migrate-import ARCHIVE=...'\n"
+
+migrate-import: ## Importer une archive de migration sur le nouveau serveur (usage: make migrate-import ARCHIVE=migration-xxx.tar.gz)
+	@test -n "$(ARCHIVE)" || (echo "Usage: make migrate-import ARCHIVE=backups/migration-xxx.tar.gz" && exit 1)
+	@mkdir -p $(BACKUP_DIR)/import-$(STAMP)
+	tar -xzf $(ARCHIVE) -C $(BACKUP_DIR)/import-$(STAMP)
+	@cp $(BACKUP_DIR)/import-$(STAMP)/.env .env
+	$(MAKE) up
+	$(MAKE) migrate
+	$(DOCKER) up -d db
+	@sleep 5
+	cat $(BACKUP_DIR)/import-$(STAMP)/*.sql | $(DB) sh -c 'exec mysql -uroot -p"$$MYSQL_ROOT_PASSWORD" syncaconf'
+	@echo "\n  ✅ Import terminé depuis $(ARCHIVE)\n"
