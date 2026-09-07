@@ -1,4 +1,4 @@
-name: synca-prod
+name: synca-conf
 
 x-logging: &default-logging
   driver: json-file
@@ -11,8 +11,8 @@ services:
     build:
       context: .
       target: runtime
-    image: synca-prod-app
-    container_name: synca-prod-app
+    image: prod-app
+    container_name: prod-app
     env_file:
       - .env
     environment:
@@ -28,7 +28,7 @@ services:
 
   db:
     image: mysql:8.4.11
-    container_name: synca-prod-db
+    container_name: prod-db
     env_file:
       - .env
     command:
@@ -47,7 +47,7 @@ services:
 
   caddy:
     image: caddy:2.11.4-alpine
-    container_name: synca-prod-caddy
+    container_name: prod-caddy
     env_file:
       - .env
     restart: unless-stopped
@@ -65,10 +65,10 @@ services:
 
 volumes:
   mysql_data:
-    name: synca-prod-mysql-data
+    name: prod-mysql-data
   caddy_data:
-    name: synca-prod-caddy-data
+    name: prod-caddy-data
   caddy_config:
-    name: synca-prod-caddy-config
+    name: prod-caddy-config
   app_logs:
-    name: synca-prod-app-logs
+    name: prod-app-logs
