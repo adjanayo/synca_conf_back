@@ -7,4 +7,6 @@ class AdminStatsRead(BaseModel):
     completed_payments: int
     payments_with_promo: int
     promo_conversion_rate: float
+    pending_payments: int
+    waitlist_count: int
     applications_by_status: dict[str, dict[str, int]]
