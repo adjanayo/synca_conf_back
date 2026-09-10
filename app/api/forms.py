@@ -47,7 +47,12 @@ from app.services.email_service import send_email
 from app.services.email_templates import application_received_email, registration_confirmed_email
 from app.services.promo_service import get_valid_promo_code
 from app.services.recaptcha import verify_recaptcha
-from app.services.storage import MAX_PHOTO_BYTES, UploadRejectedError, upload_file
+from app.services.storage import (
+    MAX_PHOTO_BYTES,
+    StorageUnavailableError,
+    UploadRejectedError,
+    upload_file,
+)
 
 router = APIRouter(prefix="/api", tags=["forms"])
 
@@ -120,6 +125,10 @@ async def register(
         gdpr_consent=body.gdpr_consent,
         newsletter_consent=body.newsletter_consent,
         access_token=secrets.token_urlsafe(32),
+        # Pas de flux de confirmation par lien distinct (USER_JOURNEYS.md
+        # §3 : "Compte créé, email_verified=true") -- l'email est déjà
+        # confirmé par l'usage même du access_token reçu à l'inscription.
+        email_verified=True,
     )
     db.add(user)
     try:
@@ -210,6 +219,8 @@ async def apply_as_speaker(
         )
     except UploadRejectedError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except StorageUnavailableError as exc:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
 
     speaker = Speaker(
         first_name=body.first_name,
@@ -274,6 +285,8 @@ async def apply_as_ambassador(
         )
     except UploadRejectedError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except StorageUnavailableError as exc:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
 
     ambassador = Ambassador(
         first_name=body.first_name,
@@ -339,6 +352,8 @@ async def apply_as_partner(
             logo_url = await upload_file(content, logo.filename, logo.content_type or "")
         except UploadRejectedError as exc:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        except StorageUnavailableError as exc:
+            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
 
     partner = Partner(
         organization_name=body.organization_name,
@@ -394,6 +409,8 @@ async def apply_as_exhibitor(
             visuals_url = await upload_file(content, visuals.filename, visuals.content_type or "")
         except UploadRejectedError as exc:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        except StorageUnavailableError as exc:
+            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
 
     exhibitor = Exhibitor(
         organization_name=body.organization_name,

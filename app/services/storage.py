@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 from pathlib import PurePosixPath
 
 import boto3
+from botocore.exceptions import BotoCoreError, ClientError
 from loguru import logger
 from PIL import Image, UnidentifiedImageError
 
@@ -21,6 +22,11 @@ MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 Mo
 
 class UploadRejectedError(ValueError):
     pass
+
+
+class StorageUnavailableError(RuntimeError):
+    """Raised when the object storage (B2) call itself fails -- misconfiguration
+    or an outage, not something the uploader did wrong."""
 
 
 def validate_is_real_image(content: bytes) -> None:
@@ -88,5 +94,11 @@ async def upload_file(
             Bucket=settings.b2_bucket_name, Key=key, Body=content, ContentType=content_type
         )
 
-    await asyncio.to_thread(_put)
+    try:
+        await asyncio.to_thread(_put)
+    except (BotoCoreError, ClientError) as exc:
+        logger.bind(channel="storage").error(f"Échec de l'upload vers le stockage objet : {exc}")
+        raise StorageUnavailableError(
+            "Le service de stockage est momentanément indisponible."
+        ) from exc
     return f"{settings.b2_public_url}/{key}"

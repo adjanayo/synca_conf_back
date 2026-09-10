@@ -16,11 +16,12 @@ from app.services.email_templates import waitlist_ticketing_open_email
 router = APIRouter(prefix="/api/admin/campaign-windows", tags=["admin-campaign-windows"])
 
 
+def _aware(dt: datetime) -> datetime:
+    return dt if dt.tzinfo is not None else dt.replace(tzinfo=UTC)
+
+
 def _is_open(window: CampaignWindow, now: datetime) -> bool:
-    return (
-        window.is_active
-        and window.start_at.replace(tzinfo=UTC) <= now <= window.end_at.replace(tzinfo=UTC)
-    )
+    return window.is_active and _aware(window.start_at) <= now <= _aware(window.end_at)
 
 
 async def _notify_waitlist(db: AsyncSession) -> None:
@@ -93,7 +94,14 @@ async def update_campaign_window(
 
     window.start_at = new_start_at
     window.end_at = new_end_at
-    if body.is_active is not None:
+
+    # Une fenêtre hors de sa période (passée ou future) est désactivée par
+    # défaut ; le statut actif ne peut être choisi manuellement que pendant
+    # la période en cours.
+    in_period = _aware(new_start_at) <= now <= _aware(new_end_at)
+    if not in_period:
+        window.is_active = False
+    elif body.is_active is not None:
         window.is_active = body.is_active
 
     await db.commit()

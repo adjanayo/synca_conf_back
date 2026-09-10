@@ -16,7 +16,12 @@ from app.schemas.hackathon import (
     HackathonTeamRead,
     HackathonTeamUpdate,
 )
-from app.services.storage import MAX_PHOTO_BYTES, UploadRejectedError, upload_file
+from app.services.storage import (
+    MAX_PHOTO_BYTES,
+    StorageUnavailableError,
+    UploadRejectedError,
+    upload_file,
+)
 
 admin_hackathon_teams_router = APIRouter(
     prefix="/api/admin/hackathon/teams", tags=["admin-hackathon"]
@@ -160,6 +165,8 @@ async def create_team_member(
             )
         except UploadRejectedError as exc:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        except StorageUnavailableError as exc:
+            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
 
     member = HackathonTeamMember(
         team_id=team_id,
@@ -203,6 +210,8 @@ async def update_team_member(
             )
         except UploadRejectedError as exc:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        except StorageUnavailableError as exc:
+            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
 
     if body.full_name is not None:
         member.full_name = body.full_name
