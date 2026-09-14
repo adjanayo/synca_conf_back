@@ -33,7 +33,7 @@
 
 ## Relationships
 
-- [[[get_settings() & upload_file()] Cluster]] (1 shared connections)
+- [[[authenticate_admin() & make_admin()] Cluster]] (1 shared connections)
 
 ## Source Files
 

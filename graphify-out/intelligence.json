@@ -17,12 +17,12 @@
     },
     {
       "label": "register()",
-      "risk": 0.364,
+      "risk": 0.371,
       "type": "FUNCTION"
     },
     {
-      "label": "update_campaign_window()",
-      "risk": 0.352,
+      "label": "apply_as_exhibitor()",
+      "risk": 0.358,
       "type": "FUNCTION"
     }
   ],

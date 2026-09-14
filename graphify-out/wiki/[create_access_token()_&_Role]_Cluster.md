@@ -148,8 +148,9 @@ classDiagram
 
 ## Relationships
 
-- [[[ModelView & _has_permission()] Cluster]] (1 shared connections)
+- [[[send_email() & make_ticket()] Cluster]] (1 shared connections)
 - [[[verify_stripe_signature() & payment_webhook()] Cluster]] (1 shared connections)
+- [[[PassType & register_payload()] Cluster]] (1 shared connections)
 
 ## Source Files
 

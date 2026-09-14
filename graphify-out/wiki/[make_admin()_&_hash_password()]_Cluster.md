@@ -48,7 +48,7 @@ classDiagram
 
 ## Relationships
 
-- [[[send_email() & make_ticket()] Cluster]] (2 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

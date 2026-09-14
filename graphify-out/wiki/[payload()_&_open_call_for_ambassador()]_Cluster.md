@@ -17,7 +17,7 @@
 
 ## Relationships
 
-- [[[require_open_campaign() & set_window()] Cluster]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

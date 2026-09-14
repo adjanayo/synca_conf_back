@@ -51,8 +51,7 @@ classDiagram
 
 ## Relationships
 
-- [[[PassType & register_payload()] Cluster]] (2 shared connections)
-- [[[create_access_token() & Role] Cluster]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

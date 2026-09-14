@@ -44,8 +44,7 @@ classDiagram
 
 ## Relationships
 
-- [[[ModelView & _has_permission()] Cluster]] (7 shared connections)
-- [[[verify_stripe_signature() & payment_webhook()] Cluster]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 
