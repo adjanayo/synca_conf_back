@@ -220,7 +220,9 @@ async def apply_as_speaker(
     except UploadRejectedError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     except StorageUnavailableError as exc:
-        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)
+        ) from exc
 
     speaker = Speaker(
         first_name=body.first_name,
@@ -286,7 +288,9 @@ async def apply_as_ambassador(
     except UploadRejectedError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     except StorageUnavailableError as exc:
-        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)
+        ) from exc
 
     ambassador = Ambassador(
         first_name=body.first_name,
@@ -353,7 +357,9 @@ async def apply_as_partner(
         except UploadRejectedError as exc:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
         except StorageUnavailableError as exc:
-            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)
+            ) from exc
 
     partner = Partner(
         organization_name=body.organization_name,
@@ -410,7 +416,9 @@ async def apply_as_exhibitor(
         except UploadRejectedError as exc:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
         except StorageUnavailableError as exc:
-            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)
+            ) from exc
 
     exhibitor = Exhibitor(
         organization_name=body.organization_name,
