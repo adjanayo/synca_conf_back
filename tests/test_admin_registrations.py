@@ -103,7 +103,7 @@ async def test_list_registrations_returns_all_by_default(db_session, client):
         )
 
     assert response.status_code == 200
-    assert len(response.json()) >= 2
+    assert len(response.json()["items"]) >= 2
 
 
 @pytest.mark.asyncio
@@ -120,9 +120,9 @@ async def test_list_registrations_filters_by_status(db_session, client):
         )
 
     assert response.status_code == 200
-    body = response.json()
-    assert all(row["status"] == "completed" for row in body)
-    assert any(row["payment_id"] == completed.id for row in body)
+    items = response.json()["items"]
+    assert all(row["status"] == "completed" for row in items)
+    assert any(row["payment_id"] == completed.id for row in items)
 
 
 @pytest.mark.asyncio
@@ -138,7 +138,7 @@ async def test_list_registrations_respects_pagination_limit(db_session, client):
         )
 
     assert response.status_code == 200
-    assert len(response.json()) == 1
+    assert len(response.json()["items"]) == 1
 
 
 @pytest.mark.asyncio
