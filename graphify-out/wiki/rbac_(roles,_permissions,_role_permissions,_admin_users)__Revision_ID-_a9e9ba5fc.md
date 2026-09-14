@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[campaign_windows  Revision ID: 2c2d07493eb5 Revises: a9e9ba5fc6f7 Create Date: 2]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

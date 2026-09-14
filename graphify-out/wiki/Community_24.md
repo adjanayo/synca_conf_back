@@ -4,11 +4,11 @@
 
 ## Key Concepts
 
-- [test_forms_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L1) (4 connections)
-- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L9) (1 connections)
-- [test_join_waitlist_duplicate_email_conflict()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L31) (1 connections)
-- [test_join_waitlist_invalid_email_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L41) (1 connections)
-- [test_join_waitlist_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py#L19) (1 connections)
+- [test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L1) (4 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L9) (1 connections)
+- [test_newsletter_duplicate_email_conflict()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L28) (1 connections)
+- [test_newsletter_invalid_email_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L38) (1 connections)
+- [test_newsletter_subscribe_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py#L19) (1 connections)
 
 ## Relationships
 
@@ -16,7 +16,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_waitlist.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_newsletter.py)
 
 ## Audit Trail
 

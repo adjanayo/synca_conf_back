@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[initial (empty)  Revision ID: 5e965f30353e Revises:  Create Date: 2026-08-25 21:]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

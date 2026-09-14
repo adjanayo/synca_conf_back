@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[sessions  Revision ID: 9dd893772cc0 Revises: 86b8fb32827d Create Date: 2026-08-2]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

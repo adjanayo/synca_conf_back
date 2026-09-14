@@ -1,6 +1,6 @@
 # upload_file()
 
-> God node · 18 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L57)
+> God node · 22 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L85)
 
 ## Call Trace Diagram
 
@@ -43,15 +43,19 @@ sequenceDiagram
     participant P34 as apply_as_exhibitor()
     participant P35 as create_team_member()
     participant P36 as UploadRejectedError
-    participant P37 as update_team_member()
-    participant P38 as generate_and_upload_ticket_pdf()
-    participant P39 as test_upload_file_rejects_disallowed_content_type()
-    participant P40 as test_upload_file_success_never_uses_original_filename()
-    participant P41 as test_upload_file_respects_custom_max_bytes()
-    participant P42 as _generate_key()
-    participant P43 as test_upload_file_rejects_oversized_file()
-    participant P44 as test_upload_file_rejects_fake_image_bytes()
-    participant P45 as test_upload_file_pdf_skips_image_validation()
+    participant P37 as StorageUnavailableError
+    participant P38 as update_team_member()
+    participant P39 as generate_and_upload_ticket_pdf()
+    participant P40 as _optimize_image()
+    participant P41 as test_upload_file_rejects_disallowed_content_type()
+    participant P42 as test_upload_file_success_never_uses_original_filename()
+    participant P43 as test_upload_file_respects_custom_max_bytes()
+    participant P44 as test_upload_file_resizes_oversized_image()
+    participant P45 as test_upload_file_does_not_upscale_small_image()
+    participant P46 as _generate_key()
+    participant P47 as test_upload_file_rejects_oversized_file()
+    participant P48 as test_upload_file_rejects_fake_image_bytes()
+    participant P49 as test_upload_file_pdf_skips_image_validation()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P0: calls
@@ -148,6 +152,14 @@ sequenceDiagram
     P44-->>- P0: return
     P0->>+ P45: calls
     P45-->>- P0: return
+    P0->>+ P46: calls
+    P46-->>- P0: return
+    P0->>+ P47: calls
+    P47-->>- P0: return
+    P0->>+ P48: calls
+    P48-->>- P0: return
+    P0->>+ P49: calls
+    P49-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -161,15 +173,18 @@ sequenceDiagram
 - [[apply_as_exhibitor()]] `INFERRED`
 - [[create_team_member()]] `INFERRED`
 - [[UploadRejectedError]] `EXTRACTED`
+- [[StorageUnavailableError]] `EXTRACTED`
 - [[update_team_member()]] `INFERRED`
 - [[generate_and_upload_ticket_pdf()]] `INFERRED`
+- [[_optimize_image()]] `EXTRACTED`
 - [[test_upload_file_rejects_disallowed_content_type()]] `INFERRED`
 - [[test_upload_file_success_never_uses_original_filename()]] `INFERRED`
 - [[test_upload_file_respects_custom_max_bytes()]] `INFERRED`
+- [[test_upload_file_resizes_oversized_image()]] `INFERRED`
+- [[test_upload_file_does_not_upscale_small_image()]] `INFERRED`
 - [[_generate_key()]] `EXTRACTED`
 - [[test_upload_file_rejects_oversized_file()]] `INFERRED`
 - [[test_upload_file_rejects_fake_image_bytes()]] `INFERRED`
-- [[test_upload_file_pdf_skips_image_validation()]] `INFERRED`
 
 ### contains
 - [[storage.py]] `EXTRACTED`

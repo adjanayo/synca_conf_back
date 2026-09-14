@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[users and user_profiles  Revision ID: 86b8fb32827d Revises: e15b192c81f5 Create]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[make_speaker() & test_speakers_filter_by_theme_and_format_excludes_private()]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

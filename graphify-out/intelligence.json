@@ -17,20 +17,20 @@
     },
     {
       "label": "register()",
-      "risk": 0.351,
+      "risk": 0.364,
       "type": "FUNCTION"
     },
     {
-      "label": "parse_multipart_form()",
-      "risk": 0.343,
+      "label": "update_campaign_window()",
+      "risk": 0.352,
       "type": "FUNCTION"
     }
   ],
   "blast_radius": {
-    "refresh()": 68,
+    "refresh()": 78,
     "create_access_token()": 47,
     "Base": 38,
     "PassType": 30,
-    "User": 20
+    "upload_file()": 22
   }
 }

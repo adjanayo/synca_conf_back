@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[faqs, contact_messages  Revision ID: 3f306df50f16 Revises: 7b6712058249 Create D]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

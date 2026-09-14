@@ -68,8 +68,8 @@ sequenceDiagram
     participant P59 as Run migrations in 'online' mode.
     participant P60 as make_admin_with_permission()
     participant P61 as make_admin_with_permission()
-    participant P62 as make_admin()
-    participant P63 as make_admin_with_permission()
+    participant P62 as make_admin_with_permission()
+    participant P63 as make_admin()
     participant P64 as make_admin_with_permission()
     participant P65 as make_admin_with_permission()
     participant P66 as make_admin()
@@ -254,8 +254,8 @@ sequenceDiagram
 ### calls
 - [[make_admin_with_permission()]] `INFERRED`
 - [[make_admin_with_permission()]] `INFERRED`
-- [[make_admin()]] `INFERRED`
 - [[make_admin_with_permission()]] `INFERRED`
+- [[make_admin()]] `INFERRED`
 - [[make_admin_with_permission()]] `INFERRED`
 - [[make_admin_with_permission()]] `INFERRED`
 - [[make_admin()]] `INFERRED`

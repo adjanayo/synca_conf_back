@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[promo_codes, payments, tickets, waitlist  Revision ID: a3f8aaae2d58 Revises: 9dd]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

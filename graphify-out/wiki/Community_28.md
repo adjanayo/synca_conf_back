@@ -11,7 +11,7 @@
 
 ## Relationships
 
-- [[make_exhibitor() & test_exhibitors_excludes_private()]] (1 shared connections)
+- No strong cross-community connections detected
 
 ## Source Files
 

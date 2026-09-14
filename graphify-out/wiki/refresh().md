@@ -1,6 +1,6 @@
 # refresh()
 
-> God node · 68 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py#L51)
+> God node · 78 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/auth.py#L51)
 
 ## Call Trace Diagram
 
@@ -63,70 +63,78 @@ sequenceDiagram
     participant P54 as test_wrong_token_type_rejected()
     participant P55 as test_invalid_signature_rejected()
     participant P56 as test_list_registrations_forbidden_without_permission()
-    participant P57 as authenticate_admin()
-    participant P58 as decode_token()
-    participant P59 as make_ticket()
-    participant P60 as payment_webhook()
-    participant P61 as test_webhook_increments_promo_usage_count_on_completion()
-    participant P62 as create_admin_user()
-    participant P63 as register()
-    participant P64 as apply_as_speaker()
-    participant P65 as apply_as_ambassador()
-    participant P66 as apply_as_partner()
-    participant P67 as apply_as_exhibitor()
-    participant P68 as create_team_member()
-    participant P69 as TokenPair
-    participant P70 as create_refresh_token()
-    participant P71 as create_payment()
-    participant P72 as update_admin_user()
-    participant P73 as make_user()
-    participant P74 as create_ambassador_admin()
-    participant P75 as contact()
-    participant P76 as update_team_member()
-    participant P77 as test_finalize_ticket_sets_pdf_url_and_sends_email()
-    participant P78 as test_webhook_completes_payment_and_creates_ticket()
-    participant P79 as test_webhook_failed_status_marks_payment_failed()
-    participant P80 as test_webhook_rejects_transaction_ref_reused_on_other_payment()
-    participant P81 as test_payment_default_status_pending()
-    participant P82 as test_partner_negotiation_workflow()
-    participant P83 as test_faq_crud_basic()
-    participant P84 as create_day()
-    participant P85 as create_session()
-    participant P86 as create_speaker_admin()
-    participant P87 as update_ambassador_status()
-    participant P88 as create_partner_admin()
-    participant P89 as create_exhibitor_admin()
-    participant P90 as join_waitlist()
-    participant P91 as subscribe_newsletter()
-    participant P92 as update_campaign_window()
-    participant P93 as create_faq_category()
-    participant P94 as create_faq()
-    participant P95 as create_partner_benefit()
-    participant P96 as create_promo_code()
-    participant P97 as create_pass_content()
-    participant P98 as test_null_special_needs_stays_null()
-    participant P99 as test_get_ambassador_detail()
-    participant P100 as test_get_ambassador_detail_404_when_not_public()
-    participant P101 as test_delete_me_anonymizes_and_revokes_token()
-    participant P102 as test_get_speaker_detail()
-    participant P103 as test_get_speaker_detail_404_when_not_public()
-    participant P104 as test_speaker_default_status_pending_and_not_public()
-    participant P105 as test_speaker_status_workflow_transition()
-    participant P106 as test_ambassador_social_handles_json()
-    participant P107 as test_exhibitor_default_status_and_public()
-    participant P108 as test_contact_message_default_unread()
-    participant P109 as update_day()
-    participant P110 as update_session()
-    participant P111 as update_speaker_status()
-    participant P112 as update_partner_status()
-    participant P113 as update_exhibitor_status()
-    participant P114 as update_contact_read_status()
-    participant P115 as update_faq_category()
-    participant P116 as update_faq()
-    participant P117 as update_partner_benefit()
-    participant P118 as update_event_settings()
-    participant P119 as update_promo_code()
-    participant P120 as update_pass_content()
+    participant P57 as make_admin_with_permission()
+    participant P58 as authenticate_admin()
+    participant P59 as make_admin_with_permission()
+    participant P60 as decode_token()
+    participant P61 as make_admin_with_permission()
+    participant P62 as make_admin_with_permission()
+    participant P63 as make_ticket()
+    participant P64 as payment_webhook()
+    participant P65 as make_admin_with_role()
+    participant P66 as make_admin_with_permissions()
+    participant P67 as test_webhook_increments_promo_usage_count_on_completion()
+    participant P68 as make_admin_with_role()
+    participant P69 as create_admin_user()
+    participant P70 as register()
+    participant P71 as apply_as_speaker()
+    participant P72 as apply_as_ambassador()
+    participant P73 as apply_as_partner()
+    participant P74 as apply_as_exhibitor()
+    participant P75 as create_team_member()
+    participant P76 as make_admin()
+    participant P77 as TokenPair
+    participant P78 as create_refresh_token()
+    participant P79 as create_payment()
+    participant P80 as update_admin_user()
+    participant P81 as make_user()
+    participant P82 as create_ambassador_admin()
+    participant P83 as contact()
+    participant P84 as update_team_member()
+    participant P85 as update_campaign_window()
+    participant P86 as test_finalize_ticket_sets_pdf_url_and_sends_email()
+    participant P87 as test_webhook_completes_payment_and_creates_ticket()
+    participant P88 as test_webhook_failed_status_marks_payment_failed()
+    participant P89 as test_webhook_rejects_transaction_ref_reused_on_other_payment()
+    participant P90 as test_payment_default_status_pending()
+    participant P91 as test_partner_negotiation_workflow()
+    participant P92 as test_faq_crud_basic()
+    participant P93 as create_day()
+    participant P94 as create_session()
+    participant P95 as create_speaker_admin()
+    participant P96 as update_ambassador_status()
+    participant P97 as create_partner_admin()
+    participant P98 as create_exhibitor_admin()
+    participant P99 as join_waitlist()
+    participant P100 as subscribe_newsletter()
+    participant P101 as create_faq_category()
+    participant P102 as create_faq()
+    participant P103 as create_partner_benefit()
+    participant P104 as create_promo_code()
+    participant P105 as create_pass_content()
+    participant P106 as test_null_special_needs_stays_null()
+    participant P107 as test_get_ambassador_detail()
+    participant P108 as test_get_ambassador_detail_404_when_not_public()
+    participant P109 as test_delete_me_anonymizes_and_revokes_token()
+    participant P110 as test_get_speaker_detail()
+    participant P111 as test_get_speaker_detail_404_when_not_public()
+    participant P112 as test_speaker_default_status_pending_and_not_public()
+    participant P113 as test_speaker_status_workflow_transition()
+    participant P114 as test_ambassador_social_handles_json()
+    participant P115 as test_exhibitor_default_status_and_public()
+    participant P116 as test_contact_message_default_unread()
+    participant P117 as update_day()
+    participant P118 as update_session()
+    participant P119 as update_speaker_status()
+    participant P120 as update_partner_status()
+    participant P121 as update_exhibitor_status()
+    participant P122 as update_contact_read_status()
+    participant P123 as update_faq_category()
+    participant P124 as update_faq()
+    participant P125 as update_partner_benefit()
+    participant P126 as update_event_settings()
+    participant P127 as update_promo_code()
+    participant P128 as update_pass_content()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P0: calls
@@ -149,6 +157,8 @@ sequenceDiagram
     P8-->>- P2: return
     P1->>+ P9: calls
     P9-->>- P1: return
+    P9->>+ P0: calls
+    P0-->>- P9: return
     P9->>+ P1: calls
     P1-->>- P9: return
     P9->>+ P10: calls
@@ -259,12 +269,16 @@ sequenceDiagram
     P62-->>- P0: return
     P0->>+ P63: calls
     P63-->>- P0: return
+    P0->>+ P7: calls
+    P7-->>- P0: return
     P0->>+ P64: calls
     P64-->>- P0: return
     P0->>+ P65: calls
     P65-->>- P0: return
     P0->>+ P66: calls
     P66-->>- P0: return
+    P0->>+ P9: calls
+    P9-->>- P0: return
     P0->>+ P67: calls
     P67-->>- P0: return
     P0->>+ P68: calls
@@ -287,8 +301,6 @@ sequenceDiagram
     P76-->>- P0: return
     P0->>+ P77: calls
     P77-->>- P0: return
-    P0->>+ P17: calls
-    P17-->>- P0: return
     P0->>+ P78: calls
     P78-->>- P0: return
     P0->>+ P79: calls
@@ -307,6 +319,8 @@ sequenceDiagram
     P85-->>- P0: return
     P0->>+ P86: calls
     P86-->>- P0: return
+    P0->>+ P17: calls
+    P17-->>- P0: return
     P0->>+ P87: calls
     P87-->>- P0: return
     P0->>+ P88: calls
@@ -375,31 +389,47 @@ sequenceDiagram
     P119-->>- P0: return
     P0->>+ P120: calls
     P120-->>- P0: return
+    P0->>+ P121: calls
+    P121-->>- P0: return
+    P0->>+ P122: calls
+    P122-->>- P0: return
+    P0->>+ P123: calls
+    P123-->>- P0: return
+    P0->>+ P124: calls
+    P124-->>- P0: return
+    P0->>+ P125: calls
+    P125-->>- P0: return
+    P0->>+ P126: calls
+    P126-->>- P0: return
+    P0->>+ P127: calls
+    P127-->>- P0: return
+    P0->>+ P128: calls
+    P128-->>- P0: return
 ```
 
 ## Connections by Relation
 
 ### calls
 - [[create_access_token()]] `INFERRED`
+- [[make_admin_with_permission()]] `INFERRED`
 - [[authenticate_admin()]] `INFERRED`
+- [[make_admin_with_permission()]] `INFERRED`
 - [[decode_token()]] `INFERRED`
+- [[make_admin_with_permission()]] `INFERRED`
+- [[make_admin_with_permission()]] `INFERRED`
 - [[make_ticket()]] `INFERRED`
+- [[make_admin_with_permission()]] `INFERRED`
 - [[payment_webhook()]] `INFERRED`
+- [[make_admin_with_role()]] `INFERRED`
+- [[make_admin_with_permissions()]] `INFERRED`
+- [[test_admin_endpoint_limited_to_30_per_minute()]] `INFERRED`
 - [[test_webhook_increments_promo_usage_count_on_completion()]] `INFERRED`
+- [[make_admin_with_role()]] `INFERRED`
 - [[create_admin_user()]] `INFERRED`
 - [[register()]] `INFERRED`
 - [[apply_as_speaker()]] `INFERRED`
 - [[apply_as_ambassador()]] `INFERRED`
 - [[apply_as_partner()]] `INFERRED`
-- [[apply_as_exhibitor()]] `INFERRED`
-- [[create_team_member()]] `INFERRED`
-- [[TokenPair]] `INFERRED`
-- [[create_refresh_token()]] `INFERRED`
-- [[create_payment()]] `INFERRED`
-- [[update_admin_user()]] `INFERRED`
-- [[make_user()]] `INFERRED`
-- [[create_ambassador_admin()]] `INFERRED`
-- [[contact()]] `INFERRED`
 
 ### contains
 - [[auth.py]] `EXTRACTED`

@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [Generate the ticket's PDF+QR, upload it, and email it.      Runs as a Background](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py#L11) (0 connections)
+- [Création directe d'un compte participant par un admin (pas via     l'inscription](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/participants.py#L17) (0 connections)
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/ticket_finalization.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/participants.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/participants.py)
 
 ## Audit Trail
 

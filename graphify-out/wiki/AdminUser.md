@@ -68,18 +68,18 @@ sequenceDiagram
     participant P59 as Run migrations in 'online' mode.
     participant P60 as make_admin_with_permission()
     participant P61 as make_admin_with_permission()
-    participant P62 as make_admin()
-    participant P63 as make_admin_with_permission()
+    participant P62 as make_admin_with_permission()
+    participant P63 as make_admin()
     participant P64 as make_admin_with_permission()
     participant P65 as make_admin_with_permission()
     participant P66 as make_admin()
-    participant P67 as create_admin_user()
-    participant P68 as make_admin_with_role()
-    participant P69 as make_admin_with_permissions()
-    participant P70 as test_admin_endpoint_limited_to_30_per_minute()
-    participant P71 as make_admin_with_role()
-    participant P72 as main()
-    participant P73 as make_admin()
+    participant P67 as make_admin_with_role()
+    participant P68 as make_admin_with_permissions()
+    participant P69 as test_admin_endpoint_limited_to_30_per_minute()
+    participant P70 as make_admin_with_role()
+    participant P71 as create_admin_user()
+    participant P72 as make_admin()
+    participant P73 as main()
     participant P74 as test_rbac_read()
     participant P75 as test_admin_user_requires_permission_only_superadmin()
     P0->>+ P1: uses
@@ -251,18 +251,18 @@ sequenceDiagram
 ### calls
 - [[make_admin_with_permission()]] `INFERRED`
 - [[make_admin_with_permission()]] `INFERRED`
-- [[make_admin()]] `INFERRED`
-- [[make_admin_with_permission()]] `INFERRED`
-- [[make_admin_with_permission()]] `INFERRED`
 - [[make_admin_with_permission()]] `INFERRED`
 - [[make_admin()]] `INFERRED`
-- [[create_admin_user()]] `INFERRED`
+- [[make_admin_with_permission()]] `INFERRED`
+- [[make_admin_with_permission()]] `INFERRED`
+- [[make_admin()]] `INFERRED`
 - [[make_admin_with_role()]] `INFERRED`
 - [[make_admin_with_permissions()]] `INFERRED`
 - [[test_admin_endpoint_limited_to_30_per_minute()]] `INFERRED`
 - [[make_admin_with_role()]] `INFERRED`
-- [[main()]] `INFERRED`
+- [[create_admin_user()]] `INFERRED`
 - [[make_admin()]] `INFERRED`
+- [[main()]] `INFERRED`
 - [[test_rbac_read()]] `INFERRED`
 - [[test_admin_user_requires_permission_only_superadmin()]] `INFERRED`
 
