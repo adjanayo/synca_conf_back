@@ -102,3 +102,45 @@ async def test_upload_file_respects_custom_max_bytes():
 
 def test_max_photo_bytes_is_tighter_than_shared_upload_cap():
     assert MAX_PHOTO_BYTES < MAX_UPLOAD_BYTES
+
+
+def make_oversized_jpeg_bytes(size: tuple[int, int] = (3000, 3000)) -> bytes:
+    buffer = io.BytesIO()
+    Image.new("RGB", size, color="blue").save(buffer, format="JPEG")
+    return buffer.getvalue()
+
+
+@pytest.mark.asyncio
+async def test_upload_file_resizes_oversized_image(monkeypatch):
+    mock_client = MagicMock()
+    monkeypatch.setattr("app.services.storage._client", lambda: mock_client)
+    monkeypatch.setattr(
+        "app.services.storage.get_settings",
+        lambda: type(
+            "S", (), {"b2_bucket_name": "test-bucket", "b2_public_url": "https://cdn.example.com"}
+        )(),
+    )
+
+    await upload_file(make_oversized_jpeg_bytes(), "photo.jpg", "image/jpeg")
+
+    stored_bytes = mock_client.put_object.call_args.kwargs["Body"]
+    with Image.open(io.BytesIO(stored_bytes)) as stored_image:
+        assert max(stored_image.size) <= 1920
+
+
+@pytest.mark.asyncio
+async def test_upload_file_does_not_upscale_small_image(monkeypatch):
+    mock_client = MagicMock()
+    monkeypatch.setattr("app.services.storage._client", lambda: mock_client)
+    monkeypatch.setattr(
+        "app.services.storage.get_settings",
+        lambda: type(
+            "S", (), {"b2_bucket_name": "test-bucket", "b2_public_url": "https://cdn.example.com"}
+        )(),
+    )
+
+    await upload_file(make_png_bytes(), "photo.png", "image/png")
+
+    stored_bytes = mock_client.put_object.call_args.kwargs["Body"]
+    with Image.open(io.BytesIO(stored_bytes)) as stored_image:
+        assert stored_image.size == (10, 10)

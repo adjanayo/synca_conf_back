@@ -18,6 +18,7 @@ ALLOWED_CONTENT_TYPES = ALLOWED_IMAGE_CONTENT_TYPES | {"application/pdf"}
 # that don't pass max_bytes explicitly (partner logos, ticket PDFs, 4.10).
 MAX_PHOTO_BYTES = 5 * 1024 * 1024  # 5 Mo
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 Mo
+MAX_IMAGE_DIMENSION = 1920
 
 
 class UploadRejectedError(ValueError):
@@ -41,6 +42,27 @@ def validate_is_real_image(content: bytes) -> None:
             image.verify()
     except UnidentifiedImageError as exc:
         raise UploadRejectedError("Le fichier n'est pas une image valide.") from exc
+
+
+def _optimize_image(content: bytes, content_type: str) -> bytes:
+    """Downscale + re-encode an image before it leaves for object storage.
+
+    Keeps the original format (no PNG->JPEG conversion, would break
+    transparency and the extension in _generate_key). Skips images already
+    within MAX_IMAGE_DIMENSION -- never upscale.
+    """
+    with Image.open(io.BytesIO(content)) as image:
+        if max(image.size) <= MAX_IMAGE_DIMENSION:
+            return content
+        image = image.copy()
+        image.thumbnail((MAX_IMAGE_DIMENSION, MAX_IMAGE_DIMENSION), Image.LANCZOS)
+        buffer = io.BytesIO()
+        if content_type == "image/jpeg":
+            image = image.convert("RGB")
+            image.save(buffer, format="JPEG", quality=85, optimize=True, progressive=True)
+        else:
+            image.save(buffer, format="PNG", optimize=True)
+        return buffer.getvalue()
 
 
 def _client():
@@ -85,6 +107,7 @@ async def upload_file(
                 "Upload rejeté : contenu non identifiable comme image valide"
             )
             raise
+        content = _optimize_image(content, content_type)
 
     settings = get_settings()
     key = _generate_key(original_filename)
