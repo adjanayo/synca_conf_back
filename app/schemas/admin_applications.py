@@ -24,18 +24,25 @@ from app.models.applications import (
 
 class SpeakerStatusUpdate(BaseModel):
     status: Literal[*APPLICATION_STATUS_VALUES]
+    # When omitted, is_public follows status (accepted -> True) as before --
+    # an admin can pass this explicitly to unpublish/republish an already
+    # accepted candidate without changing its status.
+    is_public: bool | None = None
 
 
 class AmbassadorStatusUpdate(BaseModel):
     status: Literal[*APPLICATION_STATUS_VALUES]
+    is_public: bool | None = None
 
 
 class PartnerStatusUpdate(BaseModel):
     status: Literal[*NEGOTIATION_STATUS_VALUES]
+    is_public: bool | None = None
 
 
 class ExhibitorStatusUpdate(BaseModel):
     status: Literal[*NEGOTIATION_STATUS_VALUES]
+    is_public: bool | None = None
 
 
 # --- Admin direct-create schemas (Phase K) -------------------------------

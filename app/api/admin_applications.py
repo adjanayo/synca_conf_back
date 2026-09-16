@@ -117,8 +117,9 @@ async def update_speaker_status(
 
     speaker.status = body.status
     # Publishing to the public speakers list (3.3) is a direct consequence
-    # of acceptance -- there's no separate publish step in the roadmap.
-    speaker.is_public = body.status == "accepted"
+    # of acceptance by default -- but an admin can pass is_public explicitly
+    # to hide/show an accepted speaker without touching its status.
+    speaker.is_public = body.is_public if body.is_public is not None else body.status == "accepted"
     await db.commit()
     await db.refresh(speaker)
     return SpeakerRead.model_validate(speaker)
@@ -205,7 +206,9 @@ async def update_ambassador_status(
         )
 
     ambassador.status = body.status
-    ambassador.is_public = body.status == "accepted"
+    ambassador.is_public = (
+        body.is_public if body.is_public is not None else body.status == "accepted"
+    )
     if body.status == "accepted" and ambassador.promo_code_id is None:
         await generate_ambassador_promo_code(db, ambassador)
     await db.commit()
@@ -294,7 +297,7 @@ async def update_partner_status(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Partenaire introuvable.")
 
     partner.status = body.status
-    partner.is_public = body.status == "confirmed"
+    partner.is_public = body.is_public if body.is_public is not None else body.status == "confirmed"
     await db.commit()
     await db.refresh(partner)
     return PartnerRead.model_validate(partner)
@@ -377,7 +380,9 @@ async def update_exhibitor_status(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Exposant introuvable.")
 
     exhibitor.status = body.status
-    exhibitor.is_public = body.status == "confirmed"
+    exhibitor.is_public = (
+        body.is_public if body.is_public is not None else body.status == "confirmed"
+    )
     await db.commit()
     await db.refresh(exhibitor)
     return ExhibitorRead.model_validate(exhibitor)
