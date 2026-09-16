@@ -83,6 +83,22 @@ def _s3_client(endpoint_url: str, key_id: str, secret_key: str):
     return client
 
 
+def _client():
+    """Resolve a client for the active object-storage backend (B2 or MinIO).
+
+    Sole patch point for tests (monkeypatch "app.services.storage._client")
+    -- kept as a no-arg function, as it was before MinIO support was added,
+    so existing tests didn't need to change. getattr() defaults to "b2" for
+    any settings stub that predates the storage_backend field entirely.
+    """
+    settings = get_settings()
+    if getattr(settings, "storage_backend", "b2") == "minio":
+        return _s3_client(
+            settings.minio_endpoint_url, settings.minio_access_key, settings.minio_secret_key
+        )
+    return _s3_client(settings.b2_endpoint_url, settings.b2_key_id, settings.b2_application_key)
+
+
 def _generate_key(original_filename: str) -> str:
     # Never the original filename -- UUID + timestamp only (4.10).
     suffix = PurePosixPath(original_filename).suffix.lower()
@@ -118,28 +134,21 @@ async def upload_file(
         content = _optimize_image(content, content_type)
 
     settings = get_settings()
+    backend = getattr(settings, "storage_backend", "b2")
     key = _generate_key(original_filename)
 
-    if settings.storage_backend == "local":
+    if backend == "local":
         return await _upload_local(content, key, settings)
 
-    if settings.storage_backend == "minio":
-        endpoint_url = settings.minio_endpoint_url
-        access_key = settings.minio_access_key
-        secret_key = settings.minio_secret_key
+    if backend == "minio":
         bucket = settings.minio_bucket_name
         public_url = settings.minio_public_url
     else:
-        endpoint_url = settings.b2_endpoint_url
-        access_key = settings.b2_key_id
-        secret_key = settings.b2_application_key
         bucket = settings.b2_bucket_name
         public_url = settings.b2_public_url
 
     def _put() -> None:
-        _s3_client(endpoint_url, access_key, secret_key).put_object(
-            Bucket=bucket, Key=key, Body=content, ContentType=content_type
-        )
+        _client().put_object(Bucket=bucket, Key=key, Body=content, ContentType=content_type)
 
     try:
         await asyncio.to_thread(_put)
@@ -148,7 +157,7 @@ async def upload_file(
         raise StorageUnavailableError(
             "Le service de stockage est momentanément indisponible."
         ) from exc
-    if settings.storage_backend == "minio":
+    if backend == "minio":
         return f"{public_url}/{bucket}/{key}"
     return f"{public_url}/{key}"
 
