@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/__init__.py#L1) (0 connections)
+- [rate_limit.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/rate_limit.py#L1) (0 connections)
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/__init__.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/admin/__init__.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/rate_limit.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/core/rate_limit.py)
 
 ## Audit Trail
 

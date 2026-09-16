@@ -1,6 +1,6 @@
 # upload_file()
 
-> God node · 22 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L85)
+> God node · 23 connections · [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/storage.py#L109)
 
 ## Call Trace Diagram
 
@@ -25,37 +25,39 @@ sequenceDiagram
     participant P16 as generate_qr_code_hash()
     participant P17 as verify_recaptcha()
     participant P18 as main()
-    participant P19 as configure_logging()
-    participant P20 as build_admin_auth()
-    participant P21 as _render_ticket_pdf()
-    participant P22 as Settings
-    participant P23 as _client()
-    participant P24 as test_expired_token_rejected()
-    participant P25 as .process_bind_param()
-    participant P26 as .process_result_value()
-    participant P27 as db_session()
-    participant P28 as upgrade()
-    participant P29 as downgrade()
-    participant P30 as validate_is_real_image()
-    participant P31 as apply_as_speaker()
-    participant P32 as apply_as_ambassador()
-    participant P33 as apply_as_partner()
-    participant P34 as apply_as_exhibitor()
-    participant P35 as create_team_member()
-    participant P36 as UploadRejectedError
+    participant P19 as _client()
+    participant P20 as ensure_minio_bucket_ready()
+    participant P21 as configure_logging()
+    participant P22 as build_admin_auth()
+    participant P23 as _render_ticket_pdf()
+    participant P24 as Settings
+    participant P25 as test_expired_token_rejected()
+    participant P26 as .process_bind_param()
+    participant P27 as .process_result_value()
+    participant P28 as db_session()
+    participant P29 as upgrade()
+    participant P30 as downgrade()
+    participant P31 as validate_is_real_image()
+    participant P32 as apply_as_speaker()
+    participant P33 as apply_as_ambassador()
+    participant P34 as apply_as_partner()
+    participant P35 as apply_as_exhibitor()
+    participant P36 as create_team_member()
     participant P37 as StorageUnavailableError
-    participant P38 as update_team_member()
-    participant P39 as generate_and_upload_ticket_pdf()
-    participant P40 as _optimize_image()
-    participant P41 as test_upload_file_rejects_disallowed_content_type()
-    participant P42 as test_upload_file_success_never_uses_original_filename()
-    participant P43 as test_upload_file_respects_custom_max_bytes()
-    participant P44 as test_upload_file_resizes_oversized_image()
-    participant P45 as test_upload_file_does_not_upscale_small_image()
-    participant P46 as _generate_key()
-    participant P47 as test_upload_file_rejects_oversized_file()
-    participant P48 as test_upload_file_rejects_fake_image_bytes()
-    participant P49 as test_upload_file_pdf_skips_image_validation()
+    participant P38 as UploadRejectedError
+    participant P39 as _upload_local()
+    participant P40 as update_team_member()
+    participant P41 as generate_and_upload_ticket_pdf()
+    participant P42 as _optimize_image()
+    participant P43 as test_upload_file_rejects_disallowed_content_type()
+    participant P44 as test_upload_file_success_never_uses_original_filename()
+    participant P45 as test_upload_file_respects_custom_max_bytes()
+    participant P46 as test_upload_file_resizes_oversized_image()
+    participant P47 as test_upload_file_does_not_upscale_small_image()
+    participant P48 as _generate_key()
+    participant P49 as test_upload_file_rejects_oversized_file()
+    participant P50 as test_upload_file_rejects_fake_image_bytes()
+    participant P51 as test_upload_file_pdf_skips_image_validation()
     P0->>+ P1: calls
     P1-->>- P0: return
     P1->>+ P0: calls
@@ -120,8 +122,8 @@ sequenceDiagram
     P28-->>- P1: return
     P1->>+ P29: calls
     P29-->>- P1: return
-    P0->>+ P30: calls
-    P30-->>- P0: return
+    P1->>+ P30: calls
+    P30-->>- P1: return
     P0->>+ P31: calls
     P31-->>- P0: return
     P0->>+ P32: calls
@@ -160,6 +162,10 @@ sequenceDiagram
     P48-->>- P0: return
     P0->>+ P49: calls
     P49-->>- P0: return
+    P0->>+ P50: calls
+    P50-->>- P0: return
+    P0->>+ P51: calls
+    P51-->>- P0: return
 ```
 
 ## Connections by Relation
@@ -172,8 +178,9 @@ sequenceDiagram
 - [[apply_as_partner()]] `INFERRED`
 - [[apply_as_exhibitor()]] `INFERRED`
 - [[create_team_member()]] `INFERRED`
-- [[UploadRejectedError]] `EXTRACTED`
 - [[StorageUnavailableError]] `EXTRACTED`
+- [[UploadRejectedError]] `EXTRACTED`
+- [[_upload_local()]] `EXTRACTED`
 - [[update_team_member()]] `INFERRED`
 - [[generate_and_upload_ticket_pdf()]] `INFERRED`
 - [[_optimize_image()]] `EXTRACTED`
@@ -184,7 +191,6 @@ sequenceDiagram
 - [[test_upload_file_does_not_upscale_small_image()]] `INFERRED`
 - [[_generate_key()]] `EXTRACTED`
 - [[test_upload_file_rejects_oversized_file()]] `INFERRED`
-- [[test_upload_file_rejects_fake_image_bytes()]] `INFERRED`
 
 ### contains
 - [[storage.py]] `EXTRACTED`

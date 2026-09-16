@@ -1,19 +1,20 @@
 # [payload() & open_call_for_ambassador()] Cluster
 
-> 10 nodes · cohesion 0.33
+> 11 nodes · cohesion 0.47
 
 ## Key Concepts
 
-- [verify_recaptcha()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/recaptcha.py#L9) (8 connections)
-- [test_recaptcha.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py#L1) (5 connections)
-- [contact()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py#L161) (4 connections)
-- [_mock_response()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py#L17) (4 connections)
-- [test_verify_recaptcha_accepts_good_score()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py#L23) (3 connections)
-- [test_verify_recaptcha_rejects_low_score()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py#L38) (3 connections)
-- [test_verify_recaptcha_rejects_unsuccessful_response()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py#L55) (3 connections)
-- [test_verify_recaptcha_skips_when_no_secret_configured()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py#L11) (2 connections)
-- [Verify a reCAPTCHA v3 token, raising 400 on failure.      Skipped entirely when](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/recaptcha.py#L10) (1 connections)
-- [recaptcha.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/recaptcha.py#L1) (1 connections)
+- [test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L1) (10 connections)
+- [form_fields()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L45) (7 connections)
+- [make_png_bytes()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L39) (6 connections)
+- [open_call_for_ambassador()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L26) (6 connections)
+- [test_ambassador_apply_empty_channels_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L112) (4 connections)
+- [test_ambassador_apply_missing_gdpr_consent_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L126) (4 connections)
+- [test_ambassador_apply_success()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L77) (4 connections)
+- [test_ambassador_apply_under_age_422()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L98) (4 connections)
+- [test_ambassador_apply_closed_window_forbidden()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L65) (3 connections)
+- [test_ambassador_apply_rejects_fake_image()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L140) (3 connections)
+- [client()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py#L17) (1 connections)
 
 ## Relationships
 
@@ -21,14 +22,12 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/forms.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/recaptcha.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/recaptcha.py)
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_recaptcha.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/tests/test_forms_ambassador_apply.py)
 
 ## Audit Trail
 
-- EXTRACTED: 21 (62%)
-- INFERRED: 13 (38%)
+- EXTRACTED: 52 (100%)
+- INFERRED: 0 (0%)
 - AMBIGUOUS: 0 (0%)
 
 ---

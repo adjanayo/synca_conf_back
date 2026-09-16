@@ -1,6 +1,6 @@
 # [Base & Base] Cluster
 
-> 125 nodes · cohesion 0.02
+> 128 nodes · cohesion 0.02
 
 ## Key Concepts
 
@@ -22,14 +22,14 @@
 - [ExhibitorPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L174) (3 connections)
 - [PartnerPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L162) (3 connections)
 - [SpeakerPublicRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/applications.py#L69) (3 connections)
+- [PromoValidateResponse](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/promo.py#L8) (3 connections)
 - [AdminUserRead](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/rbac.py#L40) (3 connections)
 - [update_role_permissions()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L58) (3 connections)
 - [rbac.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/api/rbac.py#L1) (3 connections)
 - [admin_users.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_users.py#L1) (3 connections)
 - [exhibitor_apply.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/exhibitor_apply.py#L1) (3 connections)
 - [sessions.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/sessions.py#L1) (3 connections)
-- [AmbassadorAdminCreate](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/admin_applications.py#L79) (2 connections)
-- *... and 100 more nodes in this community*
+- *... and 103 more nodes in this community*
 
 ## Class Diagram
 
@@ -185,6 +185,12 @@ classDiagram
     class WaitlistRead {
         +payments.py()
     }
+    class PromoValidateRequest {
+        +promo.py()
+    }
+    class PromoValidateResponse {
+        +promo.py()
+    }
     class AdminUserRead {
         +rbac.py()
     }
@@ -312,8 +318,8 @@ classDiagram
 
 ## Audit Trail
 
-- EXTRACTED: 372 (94%)
-- INFERRED: 24 (6%)
+- EXTRACTED: 378 (94%)
+- INFERRED: 25 (6%)
 - AMBIGUOUS: 0 (0%)
 
 ---

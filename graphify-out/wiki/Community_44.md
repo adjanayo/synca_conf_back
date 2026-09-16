@@ -4,18 +4,18 @@
 
 ## Key Concepts
 
-- [2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L1) (3 connections)
-- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L83) (1 connections)
-- [pass_contents and partner_levels admin  Revision ID: d4e5f6a7b8c9 Revises: c3d4e](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L1) (1 connections)
-- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py#L23) (1 connections)
+- [2026_09_04_0900-b8c9d0e1f2a3_hackathon_team_is_public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-b8c9d0e1f2a3_hackathon_team_is_public.py#L1) (3 connections)
+- [downgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-b8c9d0e1f2a3_hackathon_team_is_public.py#L29) (1 connections)
+- [hackathon_team_is_public  Revision ID: b8c9d0e1f2a3 Revises: a7b8c9d0e1f2 Create](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-b8c9d0e1f2a3_hackathon_team_is_public.py#L1) (1 connections)
+- [upgrade()](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-b8c9d0e1f2a3_hackathon_team_is_public.py#L21) (1 connections)
 
 ## Relationships
 
-- No strong cross-community connections detected
+- [[Community 43]] (1 shared connections)
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_03_2230-d4e5f6a7b8c9_pass_contents_and_partner_levels_admin.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-b8c9d0e1f2a3_hackathon_team_is_public.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/alembic/versions/2026_09_04_0900-b8c9d0e1f2a3_hackathon_team_is_public.py)
 
 ## Audit Trail
 

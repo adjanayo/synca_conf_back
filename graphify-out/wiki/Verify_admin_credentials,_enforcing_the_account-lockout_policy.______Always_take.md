@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- [Création directe d'un compte participant par un admin (pas via     l'inscription](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/participants.py#L17) (0 connections)
+- [Verify admin credentials, enforcing the account-lockout policy.      Always take](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py#L39) (0 connections)
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/participants.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/schemas/participants.py)
+- [/Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py](file:///Users/kodjododjango/Downloads/dev_projects/synca_conf_back/app/services/auth_service.py)
 
 ## Audit Trail
 
