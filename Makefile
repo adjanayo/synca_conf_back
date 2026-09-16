@@ -1,4 +1,4 @@
-.PHONY: help up down restart build logs migrate seed admin curl-health swagger create-admin db-shell backup restore migrate-export migrate-import
+.PHONY: help up down restart build logs migrate seed admin curl-health swagger create-admin db-shell backup restore migrate-export migrate-import minio-console
 
 DOCKER    := docker compose
 APP       := $(DOCKER) exec app
@@ -20,7 +20,7 @@ up: ## Lancer le backend (hot-reload)
 down: ## Arrêter les conteneurs (données conservées)
 	$(DOCKER) down
 
-nuke: ## Arrêter ET supprimer le volume MySQL (reset total)
+nuke: ## Arrêter ET supprimer les volumes MySQL + MinIO (reset total)
 	$(DOCKER) down -v
 
 restart: ## Redémarrer les conteneurs
@@ -54,6 +54,9 @@ health: ## Vérifier que l'API répond
 
 swagger: ## Ouvrir Swagger dans le navigateur
 	@open $(API)/docs
+
+minio-console: ## Ouvrir la console web MinIO (stockage fichiers, voir .env MINIO_ROOT_USER/PASSWORD)
+	@open http://localhost:9011
 
 # ── Dev ────────────────────────────────────────────────────
 

@@ -50,14 +50,39 @@ class Settings(BaseSettings):
     recaptcha_secret_key: str = ""
     recaptcha_min_score: float = 0.5
 
-    # Backblaze B2 (S3-compatible) -- see app/services/storage.py. Empty
-    # defaults are fine for local dev/CI, which never call upload_file for
-    # real; production must set all three.
+    # storage_backend: "minio" (default, dev and prod) | "b2" | "local".
+    #
+    # MinIO -- self-hosted, S3-compatible object storage running as its own
+    # container (docker-compose.yml/.prod.yml), own named volume. Same S3
+    # code path as B2 (app/services/storage.py), just a different
+    # endpoint/credentials -- making a bucket world-readable is a free API
+    # call here, unlike B2 where it required a paid account tier on the
+    # account used for this project. Dev talks to it directly
+    # (MINIO_PUBLIC_URL=http://localhost:<port>); prod reaches it through
+    # Caddy on a bucket-prefixed path (see Caddyfile), so MINIO_PUBLIC_URL is
+    # just the public domain there -- upload_file() appends "/<bucket>/<key>"
+    # in both cases.
+    minio_endpoint_url: str = ""
+    minio_access_key: str = ""
+    minio_secret_key: str = ""
+    minio_bucket_name: str = ""
+    minio_public_url: str = ""
+
+    # Backblaze B2 kept as an alternative backend (storage_backend="b2") --
+    # empty defaults are fine as long as it isn't selected.
     b2_endpoint_url: str = ""
     b2_key_id: str = ""
     b2_application_key: str = ""
     b2_bucket_name: str = ""
     b2_public_url: str = ""
+
+    # storage_backend="local": writes uploads to disk and serves them from
+    # this FastAPI process directly -- no container, no object-storage
+    # account. Kept as a dependency-free fallback (e.g. for tests), not the
+    # default anywhere anymore now that MinIO covers that need.
+    storage_backend: str = "minio"
+    local_upload_dir: str = "/app/uploads"
+    local_public_base_url: str = "http://127.0.0.1:8010"
 
     # Resend (app/services/email_service.py) -- empty key means dev mode:
     # emails are logged via loguru, never actually sent (planning_fastapi.md

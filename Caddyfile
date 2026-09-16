@@ -10,5 +10,14 @@
 		-Server
 	}
 
-	reverse_proxy app:8000
+	# Fichiers uploadés (photos, logos...) servis directement depuis MinIO --
+	# app/services/storage.py construit les URLs publiques sous ce préfixe
+	# (MINIO_PUBLIC_URL=https://{$DOMAIN}, bucket MINIO_BUCKET_NAME=synca-prod).
+	handle /synca-prod/* {
+		reverse_proxy minio:9000
+	}
+
+	handle {
+		reverse_proxy app:8000
+	}
 }

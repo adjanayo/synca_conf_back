@@ -25,6 +25,27 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      minio:
+        condition: service_healthy
+
+  minio:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
+    container_name: prod-minio
+    env_file:
+      - .env
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+    mem_limit: 300m
+    logging: *default-logging
+    # Pas de port publié : atteint en interne par app (API S3) et par caddy
+    # (lecture publique des fichiers), jamais directement depuis l'extérieur.
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   db:
     image: mysql:8.4.11
@@ -62,6 +83,7 @@ services:
       - caddy_config:/config
     depends_on:
       - app
+      - minio
 
 volumes:
   mysql_data:
@@ -72,3 +94,5 @@ volumes:
     name: prod-caddy-config
   app_logs:
     name: prod-app-logs
+  minio_data:
+    name: prod-minio-data

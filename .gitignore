@@ -85,6 +85,9 @@ ACCOUNTS.md
 
 # Logs applicatifs (ROADMAP 8.1) -- volume monté en prod, jamais commité
 /logs/
+
+# Fichiers uploadés en stockage local (STORAGE_BACKEND=local, app/services/storage.py)
+/uploads/
 .venv
 env/
 venv/

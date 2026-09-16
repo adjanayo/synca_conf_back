@@ -1,8 +1,10 @@
 import asyncio
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from loguru import logger
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -17,7 +19,9 @@ from app.api.admin_event_settings import router as admin_event_settings_router
 from app.api.admin_export import router as admin_export_router
 from app.api.admin_faqs import admin_faq_categories_router, admin_faqs_router
 from app.api.admin_hackathon import admin_hackathon_teams_router
-from app.api.admin_partner_levels import benefits_router as admin_partner_benefits_router
+from app.api.admin_partner_levels import (
+    benefits_router as admin_partner_benefits_router,
+)
 from app.api.admin_partner_levels import router as admin_partner_levels_router
 from app.api.admin_pass_types import contents_router as admin_pass_contents_router
 from app.api.admin_pass_types import router as admin_pass_types_router
@@ -39,6 +43,7 @@ from app.core.database import AsyncSessionLocal
 from app.core.logging_config import configure_logging
 from app.core.rate_limit import limiter
 from app.core.security_headers import SecurityHeadersMiddleware
+from app.services.storage import ensure_minio_bucket_ready
 from app.services.waitlist_reminder import send_waitlist_reminders
 
 settings = get_settings()
@@ -64,6 +69,7 @@ async def _waitlist_reminder_loop() -> None:
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
+    await ensure_minio_bucket_ready()
     task = asyncio.create_task(_waitlist_reminder_loop())
     yield
     task.cancel()
@@ -85,6 +91,12 @@ app.add_middleware(
     allow_headers=["Authorization", "Content-Type"],
 )
 app.add_middleware(SecurityHeadersMiddleware, hsts_enabled=settings.environment == "production")
+
+if settings.storage_backend == "local":
+    # STORAGE_BACKEND=local (app/services/storage.py): serve uploaded files
+    # ourselves instead of B2 when there's no object-storage budget yet.
+    Path(settings.local_upload_dir).mkdir(parents=True, exist_ok=True)
+    app.mount("/uploads", StaticFiles(directory=settings.local_upload_dir), name="uploads")
 
 app.state.limiter = limiter
 
